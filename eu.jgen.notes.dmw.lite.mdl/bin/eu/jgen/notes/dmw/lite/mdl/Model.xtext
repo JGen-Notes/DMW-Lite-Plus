@@ -1,0 +1,150 @@
+/**
+ * [The "BSD license"]
+ * Copyright (c) 2016, JGen Notes
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without modification, 
+ * are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this list of conditions 
+ *    and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+ *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS 
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+ */
+grammar eu.jgen.notes.dmw.lite.mdl.Model with org.eclipse.xtext.common.Terminals
+
+generate model "http://www.jgen.eu/notes/dmw/lite/mdl/Model"
+
+YModel:
+	('package' name=QualifiedName ';'?)?
+	imports+=YImport*  
+	annotations+=YAnnotation*;
+	
+YImport returns YImport:
+	'import' importedNamespace=QualifiedNameWithWildcard ';';
+
+YAnnotation:
+	YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift;
+	
+/*
+ * Data model
+ */
+YAnnotEntity:
+	{YAnnotEntity}
+	'@entity' name=ValidID (=> '('
+	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
+	')')? '{'
+	annotations+=YAnnotEntityInner* 
+	'}';
+
+YAnnotAttribute:
+	{YAnnotAttribute} '@attribute' name=ValidID (optional='?')? (=> '('
+	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
+	')')? ';'?;
+
+//YAnnotDataType:
+//	'Int' | 'Short' | 'Long' | 'String' | 'Date' | 'Time' | 'Timestamp' | 'Double' | 'Bool' | 'Blob'
+//;
+
+YAnnotRelationship:
+	{YAnnotRelationship} '@relationship' name=ValidID (optional?='?')? '->'
+	target=[YAnnotEntity|QualifiedName]
+	(many?='*')? 
+	(=> '('	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)? ')')?
+	('<-' inverse=[YAnnotRelationship|QualifiedName])? ';'?;
+
+YAnnotIdInner:
+	YAnnotAttribute | YAnnotRelationship;
+
+YAnnotIdentifier:
+	{YAnnotIdentifier} '@identifier' name=ValidID '(' annots+=[YAnnotIdInner] (',' annots+=[YAnnotIdInner])* ')' ';'?;
+
+YAnnotationElementValuePair:
+	=> (name=ValidID '=') value=YAnnotExpression;
+
+YAnnotEntityInner:
+	YAnnotAttribute | YAnnotRelationship | YAnnotIdentifier;
+
+YAnnotExpression returns YAnnotExpression:
+	{YAnnotKeyword} value = ValidID |
+	{YAnnotStringConstant} value=STRING |
+	{YAnnotNumberConstant} value=Number |
+	{YAnnotBoolConstant} value=('true' | 'false') |
+	{YAnnotArray} => ('[') (elements+=YAnnotExpression (',' elements+=YAnnotExpression)*)? ']';
+	
+/*
+ * Start Technical design
+ */
+YAnnotTechnicalDesign:
+	{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{'
+	features+=YAnnotTable*
+	'}';
+  
+YAnnotTable:
+	{YAnnotTable} '@table' name=ValidID '->' entityref=[YAnnotEntity|QualifiedName] '{'
+	columns+=YAnnotAbstractColumn*
+	primarykey=YAnnotPrimaryKey?
+	foreignkeys+=YAnnotForeignKey*
+	'}';
+
+YAnnotColumn:
+	{YAnnotColumn} '->' attrref=[YAnnotAttribute|QualifiedName]
+	'as' type=('VARCHAR' | 'CHAR' | 'INTEGER' | 'BIGINT' | 'SMALLINT' | 'DECIMAL' | 'TIME' | 'DATE' | 'TIMESTAMP' |
+	'BOOLEAN')
+	(optional='?')? (=> '('
+	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
+	')')?';'?;
+
+YAnnotColumnLike:
+	{YAnnotColumnLike} '->' columnref=[YAnnotAbstractColumn|QualifiedName] ';'?;
+
+YAnnotAbstractColumn:
+	{YAnnotAbstractColumn} '@column' name=ValidID type=(YAnnotColumn | YAnnotColumnLike);
+
+YAnnotPrimaryKey:
+	{YAnnotPrimaryKey} '@primary' '(' columns+=[YAnnotAbstractColumn]* (',' columns+=[YAnnotAbstractColumn])* ')' ';'?;
+
+YAnnotForeignKey:
+	{YAnnotForeignKey} '@foreign' relationship=[YAnnotRelationship|QualifiedName] '{'
+	columns+=YAnnotAbstractColumn (',' columns+=YAnnotAbstractColumn)*
+	'}' ';'?;
+
+	/*
+ * Swift Generation Annotations
+ */
+YAnnotJava:
+	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
+
+	/*
+ * Swift Generation Annotations
+ */
+YAnnotSwift:
+	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
+
+/*
+ * Database Generation Annotations
+ */
+YAnnotDatabase:
+	{YAnnotDatabase} '@database' name=ValidID ';'?;
+	
+QualifiedName:
+	ValidID (=> '.' ValidID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName '.*'?;
+
+ValidID:
+	ID;
+
+Number hidden():
+	INT  ('.' INT)?;
