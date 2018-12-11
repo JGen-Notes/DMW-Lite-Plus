@@ -459,7 +459,7 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 	 *     YModel returns YModel
 	 *
 	 * Constraint:
-	 *     ((name=QualifiedName? imports+=YImport+ annotations+=YAnnotation+) | (name=QualifiedName? annotations+=YAnnotation+) | annotations+=YAnnotation+)?
+	 *     (name=QualifiedName imports+=YImport* annotations+=YAnnotation*)
 	 */
 	protected void sequence_YModel(ISerializationContext context, YModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

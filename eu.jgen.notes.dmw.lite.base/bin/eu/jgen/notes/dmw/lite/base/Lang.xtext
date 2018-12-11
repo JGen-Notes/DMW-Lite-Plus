@@ -28,7 +28,7 @@ import "http://www.jgen.eu/notes/dmw/lite/mdl/Model" as model
 generate lang "http://www.jgen.eu/notes/dmw/lite/base/Lang"
 
 YWidget:
-	('package' name=QualifiedName ';'?)?
+	'package' name=QualifiedName ';'?
 	imports+=YImport*
 	classes+=YClass*;   
 

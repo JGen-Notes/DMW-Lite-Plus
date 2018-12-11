@@ -76,41 +76,39 @@ ruleYModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='package'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getYModelAccess().getPackageKeyword_0());
+		}
 		(
-			otherlv_0='package'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getYModelAccess().getPackageKeyword_0_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getYModelAccess().getNameQualifiedNameParserRuleCall_0_1_0());
-					}
-					lv_name_1_0=ruleQualifiedName
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getYModelRule());
-						}
-						set(
-							$current,
-							"name",
-							lv_name_1_0,
-							"eu.jgen.notes.dmw.lite.mdl.Model.QualifiedName");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_2=';'
 				{
-					newLeafNode(otherlv_2, grammarAccess.getYModelAccess().getSemicolonKeyword_0_2());
+					newCompositeNode(grammarAccess.getYModelAccess().getNameQualifiedNameParserRuleCall_1_0());
 				}
-			)?
+				lv_name_1_0=ruleQualifiedName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYModelRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"eu.jgen.notes.dmw.lite.mdl.Model.QualifiedName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_2=';'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getYModelAccess().getSemicolonKeyword_2());
+			}
 		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYModelAccess().getImportsYImportParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getYModelAccess().getImportsYImportParserRuleCall_3_0());
 				}
 				lv_imports_3_0=ruleYImport
 				{
@@ -129,7 +127,7 @@ ruleYModel returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYModelAccess().getAnnotationsYAnnotationParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getYModelAccess().getAnnotationsYAnnotationParserRuleCall_4_0());
 				}
 				lv_annotations_4_0=ruleYAnnotation
 				{

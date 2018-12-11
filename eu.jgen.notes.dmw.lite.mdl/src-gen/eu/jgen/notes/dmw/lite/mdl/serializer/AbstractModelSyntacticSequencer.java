@@ -35,7 +35,7 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	protected AbstractElementAlias match_YAnnotRelationship_SemicolonKeyword_9_q;
 	protected AbstractElementAlias match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q;
 	protected AbstractElementAlias match_YAnnotSwift_SemicolonKeyword_5_q;
-	protected AbstractElementAlias match_YModel_SemicolonKeyword_0_2_q;
+	protected AbstractElementAlias match_YModel_SemicolonKeyword_2_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -54,7 +54,7 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 		match_YAnnotRelationship_SemicolonKeyword_9_q = new TokenAlias(false, true, grammarAccess.getYAnnotRelationshipAccess().getSemicolonKeyword_9());
 		match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getLeftParenthesisKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getRightParenthesisKeyword_7_2()));
 		match_YAnnotSwift_SemicolonKeyword_5_q = new TokenAlias(false, true, grammarAccess.getYAnnotSwiftAccess().getSemicolonKeyword_5());
-		match_YModel_SemicolonKeyword_0_2_q = new TokenAlias(false, true, grammarAccess.getYModelAccess().getSemicolonKeyword_0_2());
+		match_YModel_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getYModelAccess().getSemicolonKeyword_2());
 	}
 	
 	@Override
@@ -97,8 +97,8 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 				emit_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotSwift_SemicolonKeyword_5_q.equals(syntax))
 				emit_YAnnotSwift_SemicolonKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_YModel_SemicolonKeyword_0_2_q.equals(syntax))
-				emit_YModel_SemicolonKeyword_0_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_YModel_SemicolonKeyword_2_q.equals(syntax))
+				emit_YModel_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -300,7 +300,7 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	 *     name=QualifiedName (ambiguity) annotations+=YAnnotation
 	 *     name=QualifiedName (ambiguity) imports+=YImport
 	 */
-	protected void emit_YModel_SemicolonKeyword_0_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_YModel_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

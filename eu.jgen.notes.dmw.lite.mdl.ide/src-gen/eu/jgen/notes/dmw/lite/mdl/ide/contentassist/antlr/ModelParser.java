@@ -39,7 +39,6 @@ public class ModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotColumnAccess().getTypeAlternatives_4_0(), "rule__YAnnotColumn__TypeAlternatives_4_0");
 			builder.put(grammarAccess.getYAnnotAbstractColumnAccess().getTypeAlternatives_3_0(), "rule__YAnnotAbstractColumn__TypeAlternatives_3_0");
 			builder.put(grammarAccess.getYModelAccess().getGroup(), "rule__YModel__Group__0");
-			builder.put(grammarAccess.getYModelAccess().getGroup_0(), "rule__YModel__Group_0__0");
 			builder.put(grammarAccess.getYImportAccess().getGroup(), "rule__YImport__Group__0");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getGroup(), "rule__YAnnotEntity__Group__0");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getGroup_3(), "rule__YAnnotEntity__Group_3__0");
@@ -89,9 +88,9 @@ public class ModelParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 			builder.put(grammarAccess.getNumberAccess().getGroup(), "rule__Number__Group__0");
 			builder.put(grammarAccess.getNumberAccess().getGroup_1(), "rule__Number__Group_1__0");
-			builder.put(grammarAccess.getYModelAccess().getNameAssignment_0_1(), "rule__YModel__NameAssignment_0_1");
-			builder.put(grammarAccess.getYModelAccess().getImportsAssignment_1(), "rule__YModel__ImportsAssignment_1");
-			builder.put(grammarAccess.getYModelAccess().getAnnotationsAssignment_2(), "rule__YModel__AnnotationsAssignment_2");
+			builder.put(grammarAccess.getYModelAccess().getNameAssignment_1(), "rule__YModel__NameAssignment_1");
+			builder.put(grammarAccess.getYModelAccess().getImportsAssignment_3(), "rule__YModel__ImportsAssignment_3");
+			builder.put(grammarAccess.getYModelAccess().getAnnotationsAssignment_4(), "rule__YModel__AnnotationsAssignment_4");
 			builder.put(grammarAccess.getYImportAccess().getImportedNamespaceAssignment_1(), "rule__YImport__ImportedNamespaceAssignment_1");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getNameAssignment_2(), "rule__YAnnotEntity__NameAssignment_2");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getElementValuePairsAssignment_3_1_0(), "rule__YAnnotEntity__ElementValuePairsAssignment_3_1_0");

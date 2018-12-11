@@ -1391,7 +1391,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YWidget returns YWidget
 	 *
 	 * Constraint:
-	 *     ((name=QualifiedName? imports+=YImport+ classes+=YClass+) | (name=QualifiedName? classes+=YClass+) | classes+=YClass+)?
+	 *     (name=QualifiedName imports+=YImport* classes+=YClass*)
 	 */
 	protected void sequence_YWidget(ISerializationContext context, YWidget semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

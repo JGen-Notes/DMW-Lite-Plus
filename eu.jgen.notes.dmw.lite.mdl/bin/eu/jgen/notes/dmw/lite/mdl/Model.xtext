@@ -26,7 +26,7 @@ grammar eu.jgen.notes.dmw.lite.mdl.Model with org.eclipse.xtext.common.Terminals
 generate model "http://www.jgen.eu/notes/dmw/lite/mdl/Model"
 
 YModel:
-	('package' name=QualifiedName ';'?)?
+	'package' name=QualifiedName ';'?
 	imports+=YImport*  
 	annotations+=YAnnotation*;
 	

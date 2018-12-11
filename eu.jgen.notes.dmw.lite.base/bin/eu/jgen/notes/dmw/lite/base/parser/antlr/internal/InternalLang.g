@@ -77,41 +77,39 @@ ruleYWidget returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='package'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getYWidgetAccess().getPackageKeyword_0());
+		}
 		(
-			otherlv_0='package'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getYWidgetAccess().getPackageKeyword_0_0());
-			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getYWidgetAccess().getNameQualifiedNameParserRuleCall_0_1_0());
-					}
-					lv_name_1_0=ruleQualifiedName
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getYWidgetRule());
-						}
-						set(
-							$current,
-							"name",
-							lv_name_1_0,
-							"eu.jgen.notes.dmw.lite.mdl.Model.QualifiedName");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_2=';'
 				{
-					newLeafNode(otherlv_2, grammarAccess.getYWidgetAccess().getSemicolonKeyword_0_2());
+					newCompositeNode(grammarAccess.getYWidgetAccess().getNameQualifiedNameParserRuleCall_1_0());
 				}
-			)?
+				lv_name_1_0=ruleQualifiedName
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYWidgetRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"eu.jgen.notes.dmw.lite.mdl.Model.QualifiedName");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_2=';'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getYWidgetAccess().getSemicolonKeyword_2());
+			}
 		)?
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYWidgetAccess().getImportsYImportParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getYWidgetAccess().getImportsYImportParserRuleCall_3_0());
 				}
 				lv_imports_3_0=ruleYImport
 				{
@@ -130,7 +128,7 @@ ruleYWidget returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYWidgetAccess().getClassesYClassParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getYWidgetAccess().getClassesYClassParserRuleCall_4_0());
 				}
 				lv_classes_4_0=ruleYClass
 				{

@@ -31,51 +31,47 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	public class YWidgetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YWidget");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Keyword cPackageKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cNameQualifiedNameParserRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Assignment cImportsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportsYImportParserRuleCall_1_0 = (RuleCall)cImportsAssignment_1.eContents().get(0);
-		private final Assignment cClassesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cClassesYClassParserRuleCall_2_0 = (RuleCall)cClassesAssignment_2.eContents().get(0);
+		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportsYImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
+		private final Assignment cClassesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cClassesYClassParserRuleCall_4_0 = (RuleCall)cClassesAssignment_4.eContents().get(0);
 		
 		//YWidget:
-		//	('package' name=QualifiedName ';'?)?
+		//	'package' name=QualifiedName ';'?
 		//	imports+=YImport*
 		//	classes+=YClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('package' name=QualifiedName ';'?)? imports+=YImport* classes+=YClass*
+		//'package' name=QualifiedName ';'? imports+=YImport* classes+=YClass*
 		public Group getGroup() { return cGroup; }
 		
-		//('package' name=QualifiedName ';'?)?
-		public Group getGroup_0() { return cGroup_0; }
-		
 		//'package'
-		public Keyword getPackageKeyword_0_0() { return cPackageKeyword_0_0; }
+		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 		
 		//name=QualifiedName
-		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//QualifiedName
-		public RuleCall getNameQualifiedNameParserRuleCall_0_1_0() { return cNameQualifiedNameParserRuleCall_0_1_0; }
+		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
 		
 		//';'?
-		public Keyword getSemicolonKeyword_0_2() { return cSemicolonKeyword_0_2; }
+		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 		
 		//imports+=YImport*
-		public Assignment getImportsAssignment_1() { return cImportsAssignment_1; }
+		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
 		
 		//YImport
-		public RuleCall getImportsYImportParserRuleCall_1_0() { return cImportsYImportParserRuleCall_1_0; }
+		public RuleCall getImportsYImportParserRuleCall_3_0() { return cImportsYImportParserRuleCall_3_0; }
 		
 		//classes+=YClass*
-		public Assignment getClassesAssignment_2() { return cClassesAssignment_2; }
+		public Assignment getClassesAssignment_4() { return cClassesAssignment_4; }
 		
 		//YClass
-		public RuleCall getClassesYClassParserRuleCall_2_0() { return cClassesYClassParserRuleCall_2_0; }
+		public RuleCall getClassesYClassParserRuleCall_4_0() { return cClassesYClassParserRuleCall_4_0; }
 	}
 	public class YParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YParameter");
@@ -2490,7 +2486,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//YWidget:
-	//	('package' name=QualifiedName ';'?)?
+	//	'package' name=QualifiedName ';'?
 	//	imports+=YImport*
 	//	classes+=YClass*;
 	public YWidgetElements getYWidgetAccess() {
@@ -3025,7 +3021,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YModel:
-	//	('package' name=QualifiedName ';'?)?
+	//	'package' name=QualifiedName ';'?
 	//	imports+=YImport*
 	//	annotations+=YAnnotation*;
 	public ModelGrammarAccess.YModelElements getYModelAccess() {

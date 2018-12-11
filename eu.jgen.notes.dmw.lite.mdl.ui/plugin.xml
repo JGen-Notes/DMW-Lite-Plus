@@ -440,7 +440,7 @@
 			category="eu.jgen.notes.dmw.lite.mdl.ui.category"
 			class="eu.jgen.notes.dmw.lite.mdl.ui.ModelExecutableExtensionFactory:org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard"
 			id="eu.jgen.notes.dmw.lite.mdl.ui.wizard.ModelNewProjectWizard"
-			name="Model Project"
+			name="Widget Project"
 			icon="icons/new_Model_proj.gif"
 			project="true">
 		</wizard>

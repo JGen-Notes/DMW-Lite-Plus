@@ -26,7 +26,7 @@ Require-Bundle: eu.jgen.notes.dmw.lite.mdl,
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: eu.jgen.notes.dmw.lite.mdl.ui.contentassist,
- eu.jgen.notes.dmw.lite.mdl.ui.quickfix,
  eu.jgen.notes.dmw.lite.mdl.ui.internal,
+ eu.jgen.notes.dmw.lite.mdl.ui.quickfix,
  eu.jgen.notes.dmw.lite.mdl.ui.wizard
 Bundle-Activator: eu.jgen.notes.dmw.lite.mdl.ui.internal.MdlActivator

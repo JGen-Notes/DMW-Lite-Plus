@@ -54,7 +54,6 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotAbstractColumnAccess().getTypeAlternatives_3_0(), "rule__YAnnotAbstractColumn__TypeAlternatives_3_0");
 			builder.put(grammarAccess.getYAccessLevelAccess().getAlternatives(), "rule__YAccessLevel__Alternatives");
 			builder.put(grammarAccess.getYWidgetAccess().getGroup(), "rule__YWidget__Group__0");
-			builder.put(grammarAccess.getYWidgetAccess().getGroup_0(), "rule__YWidget__Group_0__0");
 			builder.put(grammarAccess.getYArgumentAccess().getGroup(), "rule__YArgument__Group__0");
 			builder.put(grammarAccess.getYClassAccess().getGroup(), "rule__YClass__Group__0");
 			builder.put(grammarAccess.getYClassAccess().getGroup_3(), "rule__YClass__Group_3__0");
@@ -129,7 +128,6 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYRepeatWhileStatementAccess().getGroup(), "rule__YRepeatWhileStatement__Group__0");
 			builder.put(grammarAccess.getYForInStatementAccess().getGroup(), "rule__YForInStatement__Group__0");
 			builder.put(grammarAccess.getYModelAccess().getGroup(), "rule__YModel__Group__0");
-			builder.put(grammarAccess.getYModelAccess().getGroup_0(), "rule__YModel__Group_0__0");
 			builder.put(grammarAccess.getYImportAccess().getGroup(), "rule__YImport__Group__0");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getGroup(), "rule__YAnnotEntity__Group__0");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getGroup_3(), "rule__YAnnotEntity__Group_3__0");
@@ -179,9 +177,9 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 			builder.put(grammarAccess.getNumberAccess().getGroup(), "rule__Number__Group__0");
 			builder.put(grammarAccess.getNumberAccess().getGroup_1(), "rule__Number__Group_1__0");
-			builder.put(grammarAccess.getYWidgetAccess().getNameAssignment_0_1(), "rule__YWidget__NameAssignment_0_1");
-			builder.put(grammarAccess.getYWidgetAccess().getImportsAssignment_1(), "rule__YWidget__ImportsAssignment_1");
-			builder.put(grammarAccess.getYWidgetAccess().getClassesAssignment_2(), "rule__YWidget__ClassesAssignment_2");
+			builder.put(grammarAccess.getYWidgetAccess().getNameAssignment_1(), "rule__YWidget__NameAssignment_1");
+			builder.put(grammarAccess.getYWidgetAccess().getImportsAssignment_3(), "rule__YWidget__ImportsAssignment_3");
+			builder.put(grammarAccess.getYWidgetAccess().getClassesAssignment_4(), "rule__YWidget__ClassesAssignment_4");
 			builder.put(grammarAccess.getYArgumentAccess().getNameAssignment_0(), "rule__YArgument__NameAssignment_0");
 			builder.put(grammarAccess.getYArgumentAccess().getValueAssignment_2(), "rule__YArgument__ValueAssignment_2");
 			builder.put(grammarAccess.getYClassAccess().getNameAssignment_2(), "rule__YClass__NameAssignment_2");
@@ -277,9 +275,9 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYForInStatementAccess().getItemAssignment_1(), "rule__YForInStatement__ItemAssignment_1");
 			builder.put(grammarAccess.getYForInStatementAccess().getCollectionAssignment_3(), "rule__YForInStatement__CollectionAssignment_3");
 			builder.put(grammarAccess.getYForInStatementAccess().getBodyAssignment_4(), "rule__YForInStatement__BodyAssignment_4");
-			builder.put(grammarAccess.getYModelAccess().getNameAssignment_0_1(), "rule__YModel__NameAssignment_0_1");
-			builder.put(grammarAccess.getYModelAccess().getImportsAssignment_1(), "rule__YModel__ImportsAssignment_1");
-			builder.put(grammarAccess.getYModelAccess().getAnnotationsAssignment_2(), "rule__YModel__AnnotationsAssignment_2");
+			builder.put(grammarAccess.getYModelAccess().getNameAssignment_1(), "rule__YModel__NameAssignment_1");
+			builder.put(grammarAccess.getYModelAccess().getImportsAssignment_3(), "rule__YModel__ImportsAssignment_3");
+			builder.put(grammarAccess.getYModelAccess().getAnnotationsAssignment_4(), "rule__YModel__AnnotationsAssignment_4");
 			builder.put(grammarAccess.getYImportAccess().getImportedNamespaceAssignment_1(), "rule__YImport__ImportedNamespaceAssignment_1");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getNameAssignment_2(), "rule__YAnnotEntity__NameAssignment_2");
 			builder.put(grammarAccess.getYAnnotEntityAccess().getElementValuePairsAssignment_3_1_0(), "rule__YAnnotEntity__ElementValuePairsAssignment_3_1_0");
