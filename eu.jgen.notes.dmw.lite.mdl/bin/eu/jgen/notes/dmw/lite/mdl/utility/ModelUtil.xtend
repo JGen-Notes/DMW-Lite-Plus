@@ -62,12 +62,17 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotKeyword
 
 class ModelUtil {
 
+	public val KW_DATABASE = "database"
+	public val KW_SWIFT = "swift"
+	public val KW_JAVA = "java"
+	public val KW_MODULE = "module"
+
 	public val KW_DERBY = "Derby"
 	public val KW_MYSQL = "MySQL"
 	public val KW_SQLITE = "SQLite"
 	public val KW_POSTGRESQL = "PostgreSQL"
 	public val KW_MONGODB = "MongoDB"
-	
+
 	public val KW_INT = "Int"
 	public val KW_SHORT = "Short"
 	public val KW_LONG = "Long"
@@ -76,10 +81,9 @@ class ModelUtil {
 	public val KW_DATE = "Date"
 	public val KW_TIME = "Time"
 	public val KW_TIMESTAMP = "Timestamp"
-	public val KW_BLOB = "Blob"	
+	public val KW_BLOB = "Blob"
 	public val KW_BOOL = "Bool"
 
-	
 	public val KWUP_INT = "INTEGER"
 	public val KWUP_SMALLINT = "SMALLINT"
 	public val KWUP_DECIMAL = "DECIMAL"
@@ -88,27 +92,26 @@ class ModelUtil {
 	public val KWUP_TIME = "TIME"
 	public val KWUP_BIGINT = "INTEGER"
 	public val KWUP_TIMESTAMP = "TIMESTAMP"
-	public val KWUP_BLOB = "BLOB"	
+	public val KWUP_BLOB = "BLOB"
 	public val KWUP_BOOLEAN = "BOOLEAN"
-	 
-	
+
 	public val KW_TYPE = "type"
 	public val KW_LENGTH = "length"
 	public val KW_DEFAULT = "default"
 	public val KW_DECIMAL = "decimal"
 	public val KW_FORMAT = "format"
 	public val KW_FOREIGNKEY = "foreignkey"
-	
+
 	public val KW_OPTONAL = "?"
-	
+
 	public val DEFAULT_INT = 0
 	public val DEFAULT_SHORT = 0
 	public val DEFAULT_DECIMAL = 0.0
-	
+
 	public val FORMAT_TIMESTAMP = "yyyy.MM.dd.HH:mm:ss.nnn"
 	public val FORMAT_TIME = "HH:mm:ss"
 	public val FORMAT_DATE = "yyyy-MM-dd"
-	
+
 	@Inject ResourceDescriptionsProvider resourceDescriptionsProvider;
 	@Inject IContainer.Manager containerManager;
 
@@ -130,7 +133,7 @@ class ModelUtil {
 			return null
 		} catch (NumberFormatException e) {
 			return "Default value format " + textValue + " as Int is incorrect."
-		} 
+		}
 	}
 
 	def String isShortFormatCorrect(String textValue) {
@@ -194,6 +197,23 @@ class ModelUtil {
 		} catch (IllegalArgumentException e) {
 			return "Format " + formatText + ": " + e.message
 		}
+	}
+
+	def ArrayList<String> createProposalAnnotationList(YAnnotTechnicalDesign annotTechnicalDesign) {
+		val list = newArrayList()
+		if (!annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_DATABASE)) {
+			list.add("database=Derby")
+		}
+		if (!annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_JAVA)) {
+			list.add("java=true")
+		}
+		if (!annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_SWIFT)) {
+			list.add("swift=true")
+		}
+		if (!annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_MODULE)) {
+			list.add("module=\"somename\"")
+		}
+		return list
 	}
 
 	def ArrayList<String> createProposalAnnotationList(YAnnotAttribute annotAttr) {
@@ -318,6 +338,44 @@ class ModelUtil {
 			}
 			return null
 		}
+	}
+
+	def YAnnotationElementValuePair findUnsupportedAnnotation(YAnnotTechnicalDesign annotTechnicalDesign) {
+		for (annotationElementValuePair : annotTechnicalDesign.elementValuePairs) {
+			if (annotationElementValuePair.name != KW_DATABASE && annotationElementValuePair.name != KW_SWIFT &&
+				annotationElementValuePair.name != KW_JAVA && annotationElementValuePair.name != KW_MODULE) {
+				return annotationElementValuePair;
+			}
+		}
+		return null
+	}
+
+	def String extractDatabaseType(YAnnotTechnicalDesign annotTechnicalDesign) {
+		if (annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_DATABASE)) {
+			return annotTechnicalDesign.elementValuePairs.extractAnnotValueKeyword(KW_DATABASE)
+		}
+		return KW_DERBY
+	}
+
+	def String extractModuleName(YAnnotTechnicalDesign annotTechnicalDesign) {
+		if (annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_MODULE)) {
+			return annotTechnicalDesign.elementValuePairs.extractAnnotValueKeyword(KW_MODULE)
+		}
+		return annotTechnicalDesign.name
+	}
+
+	def boolean extractJavaIndicator(YAnnotTechnicalDesign annotTechnicalDesign) {
+		if (annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_JAVA)) {
+			return annotTechnicalDesign.elementValuePairs.extractAnnotValueBoolean(KW_JAVA)
+		}
+		return true
+	}
+
+	def boolean extractSwiftIndicator(YAnnotTechnicalDesign annotTechnicalDesign) {
+		if (annotTechnicalDesign.elementValuePairs.isAnnotHavingSpecificName(KW_SWIFT)) {
+			return annotTechnicalDesign.elementValuePairs.extractAnnotValueBoolean(KW_SWIFT)
+		}
+		return true
 	}
 
 	def boolean isForeignKeyDesignated(YAnnotRelationship relationship) {

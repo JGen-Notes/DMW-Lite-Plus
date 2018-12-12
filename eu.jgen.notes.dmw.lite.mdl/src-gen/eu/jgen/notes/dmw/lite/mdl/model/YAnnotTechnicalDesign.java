@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getDatabase <em>Database</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getFeatures <em>Features</em>}</li>
  * </ul>
  *
@@ -24,32 +23,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface YAnnotTechnicalDesign extends YAnnotation
 {
-  /**
-   * Returns the value of the '<em><b>Database</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Database</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Database</em>' reference.
-   * @see #setDatabase(YAnnotDatabase)
-   * @see eu.jgen.notes.dmw.lite.mdl.model.ModelPackage#getYAnnotTechnicalDesign_Database()
-   * @model
-   * @generated
-   */
-  YAnnotDatabase getDatabase();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getDatabase <em>Database</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Database</em>' reference.
-   * @see #getDatabase()
-   * @generated
-   */
-  void setDatabase(YAnnotDatabase value);
-
   /**
    * Returns the value of the '<em><b>Features</b></em>' containment reference list.
    * The list contents are of type {@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable}.

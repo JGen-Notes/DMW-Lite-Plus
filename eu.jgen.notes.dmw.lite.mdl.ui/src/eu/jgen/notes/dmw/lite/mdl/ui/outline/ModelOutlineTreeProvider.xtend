@@ -37,9 +37,6 @@ import org.eclipse.swt.SWT
 import org.eclipse.swt.graphics.RGB
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity
 import eu.jgen.notes.dmw.lite.mdl.model.YModel
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn
@@ -101,54 +98,52 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	/*
 	 * Database
 	 */
-	def Object _text(YAnnotDatabase annotDatabase) {
-		if (annotDatabase.name !== null) {
-			return annotDatabase.name
-		}
-	}
+//	def Object _text(YAnnotDatabase annotDatabase) {
+//		if (annotDatabase.name !== null) {
+//			return annotDatabase.name
+//		}
+//	}
 
-	def Object _image(YAnnotDatabase annotDatabase) {
-		if (annotDatabase.name !== null) {
-			return imageHelper.getImage("database.gif")
-		}
-	}
+//	def Object _image(YAnnotDatabase annotDatabase) {
+//		if (annotDatabase.name !== null) {
+//			return imageHelper.getImage("database.gif")
+//		}
+//	}
 
 	/*
 	 * Swift
 	 */
-	def Object _text(YAnnotSwift annotSwift) {
-		if (annotSwift.name !== null) {
-			if (annotSwift.database !== null)
-				return "Swift " + annotSwift.name + " + " + annotSwift.database.name
-		}
-	}
+//	def Object _text(YAnnotSwift annotSwift) {
+//		if (annotSwift.name !== null) {
+//			if (annotSwift.database !== null)
+//				return "Swift " + annotSwift.name + " + " + annotSwift.database.name
+//		}
+//	}
 
-	def Object _image(YAnnotSwift annotSwift) {
-		return imageHelper.getImage("swift.png")
-	}
+//	def Object _image(YAnnotSwift annotSwift) {
+//		return imageHelper.getImage("swift.png")
+//	}
 
 	/*
 	 * Java
 	 */
-	def Object _text(YAnnotJava annotJava) {
-		if (annotJava.database !== null) {
-			return "Java + " + annotJava.database.name
-		} else {
-			return "Java"
-		}
-	}
+//	def Object _text(YAnnotJava annotJava) {
+//		if (annotJava.database !== null) {
+//			return "Java + " + annotJava.database.name
+//		} else {
+//			return "Java"
+//		}
+//	}
 
-	def Object _image(YAnnotJava annotJava) {
-		return imageHelper.getImage("java.png")
-	}
+//	def Object _image(YAnnotJava annotJava) {
+//		return imageHelper.getImage("java.png")
+//	}
 
 	/*
 	 *  Technical Design
 	 */
 	def Object _text(YAnnotTechnicalDesign element) {
-		if (element.database !== null) {
-			return element.database.name
-		}
+		element.name
 	}
 
 	def Object _image(YAnnotTechnicalDesign element) {

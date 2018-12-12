@@ -42,7 +42,6 @@ import org.eclipse.xtext.generator.trace.node.TracedAccessors
 
 import eu.jgen.notes.dmw.lite.base.lang.LangFactory
 import eu.jgen.notes.dmw.lite.base.lang.YWidget
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava
 import eu.jgen.notes.dmw.lite.base.lang.YClass
 import eu.jgen.notes.dmw.lite.base.lang.YProperty
 import eu.jgen.notes.dmw.lite.base.lang.YFunction
@@ -85,6 +84,7 @@ import eu.jgen.notes.dmw.lite.base.lang.YParenties
 import eu.jgen.notes.dmw.lite.base.lang.YIntConstant
 import eu.jgen.notes.dmw.lite.base.lang.YStringConstant
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 
 class LangWidgetGeneratorForJava extends AbstractGenerator {
 
@@ -107,7 +107,7 @@ class LangWidgetGeneratorForJava extends AbstractGenerator {
 
 	override doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val model = input.contents.head as YWidget
-		if (input.allContents.exists[it instanceof YAnnotJava]) {
+		if (input.allContents.exists[it instanceof YAnnotTechnicalDesign]) {
 			val list = input.allContents.filter[it instanceof YWidget]
 			list.forEach [
 				val widget = it as YWidget

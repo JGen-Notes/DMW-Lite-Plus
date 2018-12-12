@@ -225,33 +225,6 @@ ruleYAnnotation returns [EObject current=null]
 			$current = $this_YAnnotTechnicalDesign_1.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getYAnnotationAccess().getYAnnotDatabaseParserRuleCall_2());
-		}
-		this_YAnnotDatabase_2=ruleYAnnotDatabase
-		{
-			$current = $this_YAnnotDatabase_2.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getYAnnotationAccess().getYAnnotJavaParserRuleCall_3());
-		}
-		this_YAnnotJava_3=ruleYAnnotJava
-		{
-			$current = $this_YAnnotJava_3.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getYAnnotationAccess().getYAnnotSwiftParserRuleCall_4());
-		}
-		this_YAnnotSwift_4=ruleYAnnotSwift
-		{
-			$current = $this_YAnnotSwift_4.current;
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 
@@ -1206,33 +1179,112 @@ ruleYAnnotTechnicalDesign returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getYAnnotTechnicalDesignAccess().getTdKeyword_1());
 		}
-		otherlv_2='database'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getYAnnotTechnicalDesignAccess().getDatabaseKeyword_2());
-		}
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getYAnnotTechnicalDesignRule());
-					}
+					newCompositeNode(grammarAccess.getYAnnotTechnicalDesignAccess().getNameValidIDParserRuleCall_2_0());
 				}
-				otherlv_3=RULE_ID
+				lv_name_2_0=ruleValidID
 				{
-					newLeafNode(otherlv_3, grammarAccess.getYAnnotTechnicalDesignAccess().getDatabaseYAnnotDatabaseCrossReference_3_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYAnnotTechnicalDesignRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"eu.jgen.notes.dmw.lite.mdl.Model.ValidID");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4='{'
+		(
+			(
+				('(')=>
+				otherlv_3='('
+				{
+					newLeafNode(otherlv_3, grammarAccess.getYAnnotTechnicalDesignAccess().getLeftParenthesisKeyword_3_0());
+				}
+			)
+			(
+				(
+					((
+						(
+							(
+								ruleValidID
+							)
+						)
+						'='
+					)
+					)=>
+					(
+						{
+							newCompositeNode(grammarAccess.getYAnnotTechnicalDesignAccess().getElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_0_0());
+						}
+						lv_elementValuePairs_4_0=ruleYAnnotationElementValuePair
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getYAnnotTechnicalDesignRule());
+							}
+							add(
+								$current,
+								"elementValuePairs",
+								lv_elementValuePairs_4_0,
+								"eu.jgen.notes.dmw.lite.mdl.Model.YAnnotationElementValuePair");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_5=','
+					{
+						newLeafNode(otherlv_5, grammarAccess.getYAnnotTechnicalDesignAccess().getCommaKeyword_3_1_1_0());
+					}
+					(
+						((
+							(
+								(
+									ruleValidID
+								)
+							)
+							'='
+						)
+						)=>
+						(
+							{
+								newCompositeNode(grammarAccess.getYAnnotTechnicalDesignAccess().getElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_1_1_0());
+							}
+							lv_elementValuePairs_6_0=ruleYAnnotationElementValuePair
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getYAnnotTechnicalDesignRule());
+								}
+								add(
+									$current,
+									"elementValuePairs",
+									lv_elementValuePairs_6_0,
+									"eu.jgen.notes.dmw.lite.mdl.Model.YAnnotationElementValuePair");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_7=')'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getYAnnotTechnicalDesignAccess().getRightParenthesisKeyword_3_2());
+			}
+		)
+		otherlv_8='{'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getYAnnotTechnicalDesignAccess().getLeftCurlyBracketKeyword_4());
+			newLeafNode(otherlv_8, grammarAccess.getYAnnotTechnicalDesignAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getYAnnotTechnicalDesignAccess().getFeaturesYAnnotTableParserRuleCall_5_0());
 				}
-				lv_features_5_0=ruleYAnnotTable
+				lv_features_9_0=ruleYAnnotTable
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getYAnnotTechnicalDesignRule());
@@ -1240,15 +1292,15 @@ ruleYAnnotTechnicalDesign returns [EObject current=null]
 					add(
 						$current,
 						"features",
-						lv_features_5_0,
+						lv_features_9_0,
 						"eu.jgen.notes.dmw.lite.mdl.Model.YAnnotTable");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_6='}'
+		otherlv_10='}'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getYAnnotTechnicalDesignAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_10, grammarAccess.getYAnnotTechnicalDesignAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -1962,194 +2014,6 @@ ruleYAnnotForeignKey returns [EObject current=null]
 			otherlv_8=';'
 			{
 				newLeafNode(otherlv_8, grammarAccess.getYAnnotForeignKeyAccess().getSemicolonKeyword_7());
-			}
-		)?
-	)
-;
-
-// Entry rule entryRuleYAnnotJava
-entryRuleYAnnotJava returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getYAnnotJavaRule()); }
-	iv_ruleYAnnotJava=ruleYAnnotJava
-	{ $current=$iv_ruleYAnnotJava.current; }
-	EOF;
-
-// Rule YAnnotJava
-ruleYAnnotJava returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getYAnnotJavaAccess().getYAnnotJavaAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='@java'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getYAnnotJavaAccess().getJavaKeyword_1());
-		}
-		(
-			otherlv_2='uses'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getYAnnotJavaAccess().getUsesKeyword_2_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getYAnnotJavaRule());
-						}
-					}
-					otherlv_3=RULE_ID
-					{
-						newLeafNode(otherlv_3, grammarAccess.getYAnnotJavaAccess().getDatabaseYAnnotDatabaseCrossReference_2_1_0());
-					}
-				)
-			)
-		)?
-		(
-			otherlv_4=';'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getYAnnotJavaAccess().getSemicolonKeyword_3());
-			}
-		)?
-	)
-;
-
-// Entry rule entryRuleYAnnotSwift
-entryRuleYAnnotSwift returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getYAnnotSwiftRule()); }
-	iv_ruleYAnnotSwift=ruleYAnnotSwift
-	{ $current=$iv_ruleYAnnotSwift.current; }
-	EOF;
-
-// Rule YAnnotSwift
-ruleYAnnotSwift returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getYAnnotSwiftAccess().getYAnnotSwiftAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='@swift'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getYAnnotSwiftAccess().getSwiftKeyword_1());
-		}
-		otherlv_2='module'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getYAnnotSwiftAccess().getModuleKeyword_2());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYAnnotSwiftAccess().getNameValidIDParserRuleCall_3_0());
-				}
-				lv_name_3_0=ruleValidID
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYAnnotSwiftRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_3_0,
-						"eu.jgen.notes.dmw.lite.mdl.Model.ValidID");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_4='uses'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getYAnnotSwiftAccess().getUsesKeyword_4_0());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getYAnnotSwiftRule());
-						}
-					}
-					otherlv_5=RULE_ID
-					{
-						newLeafNode(otherlv_5, grammarAccess.getYAnnotSwiftAccess().getDatabaseYAnnotDatabaseCrossReference_4_1_0());
-					}
-				)
-			)
-		)?
-		(
-			otherlv_6=';'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getYAnnotSwiftAccess().getSemicolonKeyword_5());
-			}
-		)?
-	)
-;
-
-// Entry rule entryRuleYAnnotDatabase
-entryRuleYAnnotDatabase returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getYAnnotDatabaseRule()); }
-	iv_ruleYAnnotDatabase=ruleYAnnotDatabase
-	{ $current=$iv_ruleYAnnotDatabase.current; }
-	EOF;
-
-// Rule YAnnotDatabase
-ruleYAnnotDatabase returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getYAnnotDatabaseAccess().getYAnnotDatabaseAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='@database'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getYAnnotDatabaseAccess().getDatabaseKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYAnnotDatabaseAccess().getNameValidIDParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleValidID
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYAnnotDatabaseRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"eu.jgen.notes.dmw.lite.mdl.Model.ValidID");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			otherlv_3=';'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getYAnnotDatabaseAccess().getSemicolonKeyword_3());
 			}
 		)?
 	)

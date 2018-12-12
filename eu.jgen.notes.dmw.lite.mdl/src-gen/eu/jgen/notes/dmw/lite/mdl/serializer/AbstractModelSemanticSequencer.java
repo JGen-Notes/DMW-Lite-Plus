@@ -11,17 +11,14 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotBoolConstant;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotKeyword;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotNumberConstant;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotStringConstant;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair;
@@ -71,9 +68,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 			case ModelPackage.YANNOT_COLUMN_LIKE:
 				sequence_YAnnotColumnLike(context, (YAnnotColumnLike) semanticObject); 
 				return; 
-			case ModelPackage.YANNOT_DATABASE:
-				sequence_YAnnotDatabase(context, (YAnnotDatabase) semanticObject); 
-				return; 
 			case ModelPackage.YANNOT_ENTITY:
 				sequence_YAnnotEntity(context, (YAnnotEntity) semanticObject); 
 				return; 
@@ -82,9 +76,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 				return; 
 			case ModelPackage.YANNOT_IDENTIFIER:
 				sequence_YAnnotIdentifier(context, (YAnnotIdentifier) semanticObject); 
-				return; 
-			case ModelPackage.YANNOT_JAVA:
-				sequence_YAnnotJava(context, (YAnnotJava) semanticObject); 
 				return; 
 			case ModelPackage.YANNOT_KEYWORD:
 				sequence_YAnnotExpression(context, (YAnnotKeyword) semanticObject); 
@@ -100,9 +91,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 				return; 
 			case ModelPackage.YANNOT_STRING_CONSTANT:
 				sequence_YAnnotExpression(context, (YAnnotStringConstant) semanticObject); 
-				return; 
-			case ModelPackage.YANNOT_SWIFT:
-				sequence_YAnnotSwift(context, (YAnnotSwift) semanticObject); 
 				return; 
 			case ModelPackage.YANNOT_TABLE:
 				sequence_YAnnotTable(context, (YAnnotTable) semanticObject); 
@@ -193,25 +181,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 	 */
 	protected void sequence_YAnnotColumn(ISerializationContext context, YAnnotColumn semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     YAnnotation returns YAnnotDatabase
-	 *     YAnnotDatabase returns YAnnotDatabase
-	 *
-	 * Constraint:
-	 *     name=ValidID
-	 */
-	protected void sequence_YAnnotDatabase(ISerializationContext context, YAnnotDatabase semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ModelPackage.Literals.YANNOT_DATABASE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ModelPackage.Literals.YANNOT_DATABASE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getYAnnotDatabaseAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
 	}
 	
 	
@@ -333,19 +302,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Contexts:
-	 *     YAnnotation returns YAnnotJava
-	 *     YAnnotJava returns YAnnotJava
-	 *
-	 * Constraint:
-	 *     database=[YAnnotDatabase|ID]?
-	 */
-	protected void sequence_YAnnotJava(ISerializationContext context, YAnnotJava semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     YAnnotPrimaryKey returns YAnnotPrimaryKey
 	 *
 	 * Constraint:
@@ -379,19 +335,6 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Contexts:
-	 *     YAnnotation returns YAnnotSwift
-	 *     YAnnotSwift returns YAnnotSwift
-	 *
-	 * Constraint:
-	 *     (name=ValidID database=[YAnnotDatabase|ID]?)
-	 */
-	protected void sequence_YAnnotSwift(ISerializationContext context, YAnnotSwift semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     YAnnotTable returns YAnnotTable
 	 *
 	 * Constraint:
@@ -408,7 +351,7 @@ public abstract class AbstractModelSemanticSequencer extends AbstractDelegatingS
 	 *     YAnnotTechnicalDesign returns YAnnotTechnicalDesign
 	 *
 	 * Constraint:
-	 *     (database=[YAnnotDatabase|ID] features+=YAnnotTable*)
+	 *     (name=ValidID (elementValuePairs+=YAnnotationElementValuePair elementValuePairs+=YAnnotationElementValuePair*)? features+=YAnnotTable*)
 	 */
 	protected void sequence_YAnnotTechnicalDesign(ISerializationContext context, YAnnotTechnicalDesign semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

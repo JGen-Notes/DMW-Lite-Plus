@@ -4,21 +4,17 @@
 package eu.jgen.notes.dmw.lite.mdl.model.impl;
 
 import eu.jgen.notes.dmw.lite.mdl.model.ModelPackage;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,7 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotTechnicalDesignImpl#getDatabase <em>Database</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotTechnicalDesignImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  *
@@ -39,16 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnotTechnicalDesign
 {
-  /**
-   * The cached value of the '{@link #getDatabase() <em>Database</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDatabase()
-   * @generated
-   * @ordered
-   */
-  protected YAnnotDatabase database;
-
   /**
    * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -78,49 +63,6 @@ public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnot
   protected EClass eStaticClass()
   {
     return ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YAnnotDatabase getDatabase()
-  {
-    if (database != null && database.eIsProxy())
-    {
-      InternalEObject oldDatabase = (InternalEObject)database;
-      database = (YAnnotDatabase)eResolveProxy(oldDatabase);
-      if (database != oldDatabase)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE, oldDatabase, database));
-      }
-    }
-    return database;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YAnnotDatabase basicGetDatabase()
-  {
-    return database;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDatabase(YAnnotDatabase newDatabase)
-  {
-    YAnnotDatabase oldDatabase = database;
-    database = newDatabase;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE, oldDatabase, database));
   }
 
   /**
@@ -163,9 +105,6 @@ public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnot
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE:
-        if (resolve) return getDatabase();
-        return basicGetDatabase();
       case ModelPackage.YANNOT_TECHNICAL_DESIGN__FEATURES:
         return getFeatures();
     }
@@ -183,9 +122,6 @@ public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnot
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE:
-        setDatabase((YAnnotDatabase)newValue);
-        return;
       case ModelPackage.YANNOT_TECHNICAL_DESIGN__FEATURES:
         getFeatures().clear();
         getFeatures().addAll((Collection<? extends YAnnotTable>)newValue);
@@ -204,9 +140,6 @@ public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnot
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE:
-        setDatabase((YAnnotDatabase)null);
-        return;
       case ModelPackage.YANNOT_TECHNICAL_DESIGN__FEATURES:
         getFeatures().clear();
         return;
@@ -224,8 +157,6 @@ public class YAnnotTechnicalDesignImpl extends YAnnotationImpl implements YAnnot
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_TECHNICAL_DESIGN__DATABASE:
-        return database != null;
       case ModelPackage.YANNOT_TECHNICAL_DESIGN__FEATURES:
         return features != null && !features.isEmpty();
     }

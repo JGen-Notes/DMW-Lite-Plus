@@ -44,13 +44,13 @@ class LangProposalProvider extends AbstractLangProposalProvider {
 	@Inject extension LangIndex
 		@Inject extension ModelUtil
 	
-	override public void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
-				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("SQLite", "SQLite", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("PostgreSQL", "PostgreSQL", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
-	}
+//	override public void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
+//				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("SQLite", "SQLite", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("PostgreSQL", "PostgreSQL", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
+//	}
 
 
 //	override completeYAnnotAttr_Yclass(EObject model, Assignment assignment, ContentAssistContext context,

@@ -28,6 +28,7 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.scoping.ModelIndex;
 import eu.jgen.notes.dmw.lite.mdl.ui.contentassist.AbstractModelProposalProvider;
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil;
@@ -62,16 +63,15 @@ public class ModelProposalProvider extends AbstractModelProposalProvider {
       for (final String entry : _createProposalAnnotationList) {
         acceptor.accept(this.createCompletionProposal(entry, entry, this.imageHelper.getImage("database.gif"), context));
       }
+    } else {
+      if ((object instanceof YAnnotTechnicalDesign)) {
+        final YAnnotTechnicalDesign annotTechnicalDesign = ((YAnnotTechnicalDesign) object);
+        ArrayList<String> _createProposalAnnotationList_1 = this._modelUtil.createProposalAnnotationList(annotTechnicalDesign);
+        for (final String entry_1 : _createProposalAnnotationList_1) {
+          acceptor.accept(this.createCompletionProposal(entry_1, entry_1, this.imageHelper.getImage("database.gif"), context));
+        }
+      }
     }
-  }
-  
-  @Override
-  public void completeYAnnotDatabase_Name(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    acceptor.accept(this.createCompletionProposal("Derby", "Derby", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("MySQL", "MySQL", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("SQLite", "SQLite", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("PostgreSQL", "PostgreSQL", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("MongoDB", "MongoDB", this.imageHelper.getImage("database.gif"), context));
   }
   
   @Override

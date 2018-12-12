@@ -142,13 +142,31 @@ public interface ModelPackage extends EPackage
   int YANNOTATION = 2;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YANNOTATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Element Value Pairs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YANNOTATION__ELEMENT_VALUE_PAIRS = 1;
+
+  /**
    * The number of structural features of the '<em>YAnnotation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YANNOTATION_FEATURE_COUNT = 0;
+  int YANNOTATION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotEntityImpl <em>YAnnot Entity</em>}' class.
@@ -167,7 +185,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_ENTITY__NAME = YANNOTATION_FEATURE_COUNT + 0;
+  int YANNOT_ENTITY__NAME = YANNOTATION__NAME;
 
   /**
    * The feature id for the '<em><b>Element Value Pairs</b></em>' containment reference list.
@@ -176,7 +194,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_ENTITY__ELEMENT_VALUE_PAIRS = YANNOTATION_FEATURE_COUNT + 1;
+  int YANNOT_ENTITY__ELEMENT_VALUE_PAIRS = YANNOTATION__ELEMENT_VALUE_PAIRS;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -185,7 +203,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_ENTITY__ANNOTATIONS = YANNOTATION_FEATURE_COUNT + 2;
+  int YANNOT_ENTITY__ANNOTATIONS = YANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>YAnnot Entity</em>' class.
@@ -194,7 +212,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_ENTITY_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 3;
+  int YANNOT_ENTITY_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotIdInnerImpl <em>YAnnot Id Inner</em>}' class.
@@ -457,13 +475,22 @@ public interface ModelPackage extends EPackage
   int YANNOT_TECHNICAL_DESIGN = 11;
 
   /**
-   * The feature id for the '<em><b>Database</b></em>' reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YANNOT_TECHNICAL_DESIGN__DATABASE = YANNOTATION_FEATURE_COUNT + 0;
+  int YANNOT_TECHNICAL_DESIGN__NAME = YANNOTATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Element Value Pairs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YANNOT_TECHNICAL_DESIGN__ELEMENT_VALUE_PAIRS = YANNOTATION__ELEMENT_VALUE_PAIRS;
 
   /**
    * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -472,7 +499,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_TECHNICAL_DESIGN__FEATURES = YANNOTATION_FEATURE_COUNT + 1;
+  int YANNOT_TECHNICAL_DESIGN__FEATURES = YANNOTATION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>YAnnot Technical Design</em>' class.
@@ -481,7 +508,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YANNOT_TECHNICAL_DESIGN_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 2;
+  int YANNOT_TECHNICAL_DESIGN_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotTableImpl <em>YAnnot Table</em>}' class.
@@ -733,99 +760,6 @@ public interface ModelPackage extends EPackage
   int YANNOT_FOREIGN_KEY_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotJavaImpl <em>YAnnot Java</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotJavaImpl
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotJava()
-   * @generated
-   */
-  int YANNOT_JAVA = 18;
-
-  /**
-   * The feature id for the '<em><b>Database</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_JAVA__DATABASE = YANNOTATION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>YAnnot Java</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_JAVA_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotSwiftImpl <em>YAnnot Swift</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotSwiftImpl
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotSwift()
-   * @generated
-   */
-  int YANNOT_SWIFT = 19;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_SWIFT__NAME = YANNOTATION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Database</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_SWIFT__DATABASE = YANNOTATION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>YAnnot Swift</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_SWIFT_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotDatabaseImpl <em>YAnnot Database</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotDatabaseImpl
-   * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotDatabase()
-   * @generated
-   */
-  int YANNOT_DATABASE = 20;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_DATABASE__NAME = YANNOTATION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>YAnnot Database</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YANNOT_DATABASE_FEATURE_COUNT = YANNOTATION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotKeywordImpl <em>YAnnot Keyword</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -833,7 +767,7 @@ public interface ModelPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotKeyword()
    * @generated
    */
-  int YANNOT_KEYWORD = 21;
+  int YANNOT_KEYWORD = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -861,7 +795,7 @@ public interface ModelPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotStringConstant()
    * @generated
    */
-  int YANNOT_STRING_CONSTANT = 22;
+  int YANNOT_STRING_CONSTANT = 19;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -889,7 +823,7 @@ public interface ModelPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotNumberConstant()
    * @generated
    */
-  int YANNOT_NUMBER_CONSTANT = 23;
+  int YANNOT_NUMBER_CONSTANT = 20;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -917,7 +851,7 @@ public interface ModelPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotBoolConstant()
    * @generated
    */
-  int YANNOT_BOOL_CONSTANT = 24;
+  int YANNOT_BOOL_CONSTANT = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -945,7 +879,7 @@ public interface ModelPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotArray()
    * @generated
    */
-  int YANNOT_ARRAY = 25;
+  int YANNOT_ARRAY = 22;
 
   /**
    * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -1041,6 +975,28 @@ public interface ModelPackage extends EPackage
   EClass getYAnnotation();
 
   /**
+   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotation#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotation#getName()
+   * @see #getYAnnotation()
+   * @generated
+   */
+  EAttribute getYAnnotation_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotation#getElementValuePairs <em>Element Value Pairs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Element Value Pairs</em>'.
+   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotation#getElementValuePairs()
+   * @see #getYAnnotation()
+   * @generated
+   */
+  EReference getYAnnotation_ElementValuePairs();
+
+  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity <em>YAnnot Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1049,28 +1005,6 @@ public interface ModelPackage extends EPackage
    * @generated
    */
   EClass getYAnnotEntity();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getName()
-   * @see #getYAnnotEntity()
-   * @generated
-   */
-  EAttribute getYAnnotEntity_Name();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getElementValuePairs <em>Element Value Pairs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Element Value Pairs</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getElementValuePairs()
-   * @see #getYAnnotEntity()
-   * @generated
-   */
-  EReference getYAnnotEntity_ElementValuePairs();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getAnnotations <em>Annotations</em>}'.
@@ -1305,17 +1239,6 @@ public interface ModelPackage extends EPackage
    * @generated
    */
   EClass getYAnnotTechnicalDesign();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getDatabase <em>Database</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Database</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getDatabase()
-   * @see #getYAnnotTechnicalDesign()
-   * @generated
-   */
-  EReference getYAnnotTechnicalDesign_Database();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign#getFeatures <em>Features</em>}'.
@@ -1554,80 +1477,6 @@ public interface ModelPackage extends EPackage
   EReference getYAnnotForeignKey_Columns();
 
   /**
-   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava <em>YAnnot Java</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>YAnnot Java</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava
-   * @generated
-   */
-  EClass getYAnnotJava();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava#getDatabase <em>Database</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Database</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava#getDatabase()
-   * @see #getYAnnotJava()
-   * @generated
-   */
-  EReference getYAnnotJava_Database();
-
-  /**
-   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift <em>YAnnot Swift</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>YAnnot Swift</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift
-   * @generated
-   */
-  EClass getYAnnotSwift();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift#getName()
-   * @see #getYAnnotSwift()
-   * @generated
-   */
-  EAttribute getYAnnotSwift_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift#getDatabase <em>Database</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Database</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift#getDatabase()
-   * @see #getYAnnotSwift()
-   * @generated
-   */
-  EReference getYAnnotSwift_Database();
-
-  /**
-   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase <em>YAnnot Database</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>YAnnot Database</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase
-   * @generated
-   */
-  EClass getYAnnotDatabase();
-
-  /**
-   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase#getName()
-   * @see #getYAnnotDatabase()
-   * @generated
-   */
-  EAttribute getYAnnotDatabase_Name();
-
-  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotKeyword <em>YAnnot Keyword</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1818,6 +1667,22 @@ public interface ModelPackage extends EPackage
     EClass YANNOTATION = eINSTANCE.getYAnnotation();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute YANNOTATION__NAME = eINSTANCE.getYAnnotation_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Element Value Pairs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YANNOTATION__ELEMENT_VALUE_PAIRS = eINSTANCE.getYAnnotation_ElementValuePairs();
+
+    /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotEntityImpl <em>YAnnot Entity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1826,22 +1691,6 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EClass YANNOT_ENTITY = eINSTANCE.getYAnnotEntity();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute YANNOT_ENTITY__NAME = eINSTANCE.getYAnnotEntity_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Element Value Pairs</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YANNOT_ENTITY__ELEMENT_VALUE_PAIRS = eINSTANCE.getYAnnotEntity_ElementValuePairs();
 
     /**
      * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
@@ -2036,14 +1885,6 @@ public interface ModelPackage extends EPackage
     EClass YANNOT_TECHNICAL_DESIGN = eINSTANCE.getYAnnotTechnicalDesign();
 
     /**
-     * The meta object literal for the '<em><b>Database</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YANNOT_TECHNICAL_DESIGN__DATABASE = eINSTANCE.getYAnnotTechnicalDesign_Database();
-
-    /**
      * The meta object literal for the '<em><b>Features</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2230,68 +2071,6 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EReference YANNOT_FOREIGN_KEY__COLUMNS = eINSTANCE.getYAnnotForeignKey_Columns();
-
-    /**
-     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotJavaImpl <em>YAnnot Java</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotJavaImpl
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotJava()
-     * @generated
-     */
-    EClass YANNOT_JAVA = eINSTANCE.getYAnnotJava();
-
-    /**
-     * The meta object literal for the '<em><b>Database</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YANNOT_JAVA__DATABASE = eINSTANCE.getYAnnotJava_Database();
-
-    /**
-     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotSwiftImpl <em>YAnnot Swift</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotSwiftImpl
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotSwift()
-     * @generated
-     */
-    EClass YANNOT_SWIFT = eINSTANCE.getYAnnotSwift();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute YANNOT_SWIFT__NAME = eINSTANCE.getYAnnotSwift_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Database</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YANNOT_SWIFT__DATABASE = eINSTANCE.getYAnnotSwift_Database();
-
-    /**
-     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotDatabaseImpl <em>YAnnot Database</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotDatabaseImpl
-     * @see eu.jgen.notes.dmw.lite.mdl.model.impl.ModelPackageImpl#getYAnnotDatabase()
-     * @generated
-     */
-    EClass YANNOT_DATABASE = eINSTANCE.getYAnnotDatabase();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute YANNOT_DATABASE__NAME = eINSTANCE.getYAnnotDatabase_Name();
 
     /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotKeywordImpl <em>YAnnot Keyword</em>}' class.

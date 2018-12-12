@@ -58,15 +58,6 @@ public class LangProposalProvider extends AbstractLangProposalProvider {
   private ModelUtil _modelUtil;
   
   @Override
-  public void completeYAnnotDatabase_Name(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    acceptor.accept(this.createCompletionProposal("Derby", "Derby", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("MySQL", "MySQL", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("SQLite", "SQLite", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("PostgreSQL", "PostgreSQL", this.imageHelper.getImage("database.gif"), context));
-    acceptor.accept(this.createCompletionProposal("MongoDB", "MongoDB", this.imageHelper.getImage("database.gif"), context));
-  }
-  
-  @Override
   public void complete_YProperty(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     super.complete_YProperty(model, ruleCall, context, acceptor);
   }

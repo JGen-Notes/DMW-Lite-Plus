@@ -64,12 +64,15 @@ public final class DMWProject extends AbstractProjectTemplate {
     this.name.setEnabled(this.advanced.getValue());
     this.packEntity.setValue(this.getProjectInfo().getProjectName());
     this.packEntity.setEnabled(this.advanced.getValue());
+    this.packTD.setValue(this.getProjectInfo().getProjectName());
+    this.packTD.setEnabled(this.advanced.getValue());
     this.td.setEnabled(this.advanced.getValue());
     boolean _value = this.advanced.getValue();
     boolean _not = (!_value);
     if (_not) {
       this.name.setValue("");
       this.packEntity.setValue("");
+      this.packTD.setValue("");
       this.td.setValue(this.td.getValue());
     }
   }
@@ -134,18 +137,13 @@ public final class DMWProject extends AbstractProjectTemplate {
         _builder_1.newLine();
         _builder_1.append("/*");
         _builder_1.newLine();
-        _builder_1.append("* This is entity ");
-        String _value_4 = this.name.getValue();
-        _builder_1.append(_value_4);
-        _builder_1.append(" fragment.");
-        _builder_1.newLineIfNotEmpty();
-        _builder_1.append("*/");
+        _builder_1.append("* This is ...");
         _builder_1.newLine();
-        _builder_1.append("\t\t\t\t\t\t\t\t\t\t\t ");
+        _builder_1.append("*/\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t ");
         _builder_1.newLine();
         _builder_1.append("@entity ");
-        String _value_5 = this.name.getValue();
-        _builder_1.append(_value_5);
+        String _value_4 = this.name.getValue();
+        _builder_1.append(_value_4);
         _builder_1.append(" {");
         _builder_1.newLineIfNotEmpty();
         _builder_1.append("\t");
@@ -154,8 +152,8 @@ public final class DMWProject extends AbstractProjectTemplate {
         _builder_1.append("}");
         _builder_1.newLine();
         this.addFile(it, _builder, _builder_1);
-        boolean _value_6 = this.td.getValue();
-        if (_value_6) {
+        boolean _value_5 = this.td.getValue();
+        if (_value_5) {
           StringConcatenation _builder_2 = new StringConcatenation();
           _builder_2.append("src/");
           String _replace_1 = this.packTD.getValue().replace(".", "/");
@@ -163,13 +161,13 @@ public final class DMWProject extends AbstractProjectTemplate {
           _builder_2.append("/td.mdl");
           StringConcatenation _builder_3 = new StringConcatenation();
           _builder_3.append("package ");
-          String _value_7 = this.packEntity.getValue();
-          _builder_3.append(_value_7);
+          String _value_6 = this.packEntity.getValue();
+          _builder_3.append(_value_6);
           _builder_3.append(";");
           _builder_3.newLineIfNotEmpty();
           _builder_3.append("import ");
-          String _value_8 = this.packEntity.getValue();
-          _builder_3.append(_value_8);
+          String _value_7 = this.packEntity.getValue();
+          _builder_3.append(_value_7);
           _builder_3.append(".*;");
           _builder_3.newLineIfNotEmpty();
           _builder_3.newLine();
@@ -194,13 +192,13 @@ public final class DMWProject extends AbstractProjectTemplate {
           _builder_4.append("/td.mdl");
           StringConcatenation _builder_5 = new StringConcatenation();
           _builder_5.append("package ");
-          String _value_9 = this.packEntity.getValue();
-          _builder_5.append(_value_9);
+          String _value_8 = this.packEntity.getValue();
+          _builder_5.append(_value_8);
           _builder_5.append(";");
           _builder_5.newLineIfNotEmpty();
           _builder_5.append("import ");
-          String _value_10 = this.packEntity.getValue();
-          _builder_5.append(_value_10);
+          String _value_9 = this.packEntity.getValue();
+          _builder_5.append(_value_9);
           _builder_5.append(".*;");
           _builder_5.newLineIfNotEmpty();
           _builder_5.append("\t\t\t\t\t");

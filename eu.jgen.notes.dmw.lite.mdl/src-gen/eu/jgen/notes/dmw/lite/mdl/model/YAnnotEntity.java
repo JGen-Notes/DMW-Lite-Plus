@@ -14,8 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getName <em>Name</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getElementValuePairs <em>Element Value Pairs</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
@@ -25,48 +23,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface YAnnotEntity extends YAnnotation
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see eu.jgen.notes.dmw.lite.mdl.model.ModelPackage#getYAnnotEntity_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Element Value Pairs</b></em>' containment reference list.
-   * The list contents are of type {@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Element Value Pairs</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Element Value Pairs</em>' containment reference list.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.ModelPackage#getYAnnotEntity_ElementValuePairs()
-   * @model containment="true"
-   * @generated
-   */
-  EList<YAnnotationElementValuePair> getElementValuePairs();
-
   /**
    * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
    * The list contents are of type {@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner}.

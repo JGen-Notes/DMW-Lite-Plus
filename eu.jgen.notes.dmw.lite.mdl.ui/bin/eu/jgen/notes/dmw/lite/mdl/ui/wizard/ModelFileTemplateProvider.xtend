@@ -52,10 +52,10 @@ final class CreateModelFile {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «type» «name» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@entity «name» {
 						   @attribute id (length=9);						
 						}
@@ -65,10 +65,10 @@ final class CreateModelFile {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «type» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@database Derby;	
 						@java;				 
 						@td database Derby {
@@ -80,10 +80,10 @@ final class CreateModelFile {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «type» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@database Derby;	
 
 					''')
@@ -92,10 +92,10 @@ final class CreateModelFile {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «type» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@java;	
 
 					''')
@@ -104,10 +104,10 @@ final class CreateModelFile {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «type» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@swift module «name» ;		
 
 					''')					
@@ -133,10 +133,10 @@ final class CreateWidgetFile {
 					generator.generate('''«folder»/«name».dmw''', '''
 						package «packageName»;
 						import «packageName».*;
+						
 						/*
-						* This is «widgetTypeSelection.value» «name» fragment.
-						*/
-											 
+						* This is ...
+						*/											 
 						@class «name» -> Widget {
 												
 						}

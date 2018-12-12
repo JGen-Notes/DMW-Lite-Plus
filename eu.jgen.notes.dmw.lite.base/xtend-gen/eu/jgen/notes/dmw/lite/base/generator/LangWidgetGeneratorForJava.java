@@ -82,9 +82,9 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil;
 import eu.jgen.notes.dmw.lite.typing.LangTypeComputer;
 import eu.jgen.notes.dmw.lite.utility.LangGeneratorHelperForJava;
@@ -1282,7 +1282,7 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
     EObject _head = IterableExtensions.<EObject>head(input.getContents());
     final YWidget model = ((YWidget) _head);
     final Function1<EObject, Boolean> _function = (EObject it) -> {
-      return Boolean.valueOf((it instanceof YAnnotJava));
+      return Boolean.valueOf((it instanceof YAnnotTechnicalDesign));
     };
     boolean _exists = IteratorExtensions.<EObject>exists(input.getAllContents(), _function);
     if (_exists) {

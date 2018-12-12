@@ -11,9 +11,9 @@ import eu.jgen.notes.dmw.lite.utility.LangSwiftGeneratorHelper
 
 import eu.jgen.notes.dmw.lite.utility.LangGeneratorHelperForJava
 import eu.jgen.notes.dmw.lite.base.lang.YWidget
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift
 import eu.jgen.notes.dmw.lite.base.lang.YClass
 import eu.jgen.notes.dmw.lite.base.lang.YProperty
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 
 class LangWidgetGeneratorForSwift implements IGenerator {
 
@@ -21,19 +21,19 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 	@Inject extension LangSwiftGeneratorHelper
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		input.allContents.filter[element|element instanceof YAnnotSwift].forEach [ element |
-			val annotSwift = element as YAnnotSwift
-			generatePackageModule(fsa, annotSwift)
+		input.allContents.filter[element|element instanceof YAnnotTechnicalDesign].forEach [ element |
+			//val annotSwift = element as YAnnotSwift
+			generatePackageModule(fsa, "mymodule")
 
 			input.allContents.filter[element2|element2 instanceof YWidget].forEach [ element2 |
 				val widget = element2 as YWidget
 		//		generateTableClasses(fsa, widget, annotSwift)
-				generateWidget(fsa, widget, annotSwift)
+				generateWidget(fsa, widget, "mymodule")
 			]
 		]
 	}
 
-	def generateWidget(IFileSystemAccess fsa, YWidget widget, YAnnotSwift annotSwift) {
+	def generateWidget(IFileSystemAccess fsa, YWidget widget, String moduleName) {
 		widget.classes.forEach [ clazz |
 			if (clazz.superclass !== null && clazz.superclass.name == "Widget") {
 				val body = '''
@@ -53,7 +53,7 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 					}
 				'''
 				fsa.generateFile(
-					annotSwift.name + "/Sources/" + annotSwift.name + "/" + clazz.name + ".swift",
+					moduleName + "/Sources/" + moduleName + "/" + clazz.name + ".swift",
 					LangOutputProvider.SWIFT,
 					'''		
 						
@@ -61,7 +61,7 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 					'''
 				)
 				fsa.generateFile(
-					annotSwift.name + "/Sources/" + annotSwift.name + "/" + "main.swift",
+					moduleName + "/Sources/" + moduleName + "/" + "main.swift",
 					LangOutputProvider.SWIFT,
 					'''		
 						// dmw-generator-version: 0.2
@@ -196,9 +196,9 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 		}
 	}
 
-	protected def void generatePackageModule(IFileSystemAccess fsa, YAnnotSwift annotSwift) {
+	protected def void generatePackageModule(IFileSystemAccess fsa, String moduleName) {
 		fsa.generateFile(
-			annotSwift.name + "/" + "Package" + ".swift",
+			moduleName + "/" + "Package" + ".swift",
 			LangOutputProvider.SWIFT,
 			'''				
 				// swift-tools-version:4.0
@@ -207,12 +207,12 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 				import PackageDescription
 				
 				let package = Package(
-				    name: "«annotSwift.name»",
+				    name: "«moduleName»",
 				    products: [
 				        // Products define the executables and libraries produced by a package, and make them visible to other packages.
 				        .library(
-				            name: "«annotSwift.name»",
-				            targets: ["«annotSwift.name»"]),
+				            name: "«moduleName»",
+				            targets: ["«moduleName»"]),
 				    ],
 				    dependencies: [
 				            .package(url: "https://github.com/IBM-Swift/Kitura.git", from: "2.0.0"),
@@ -222,7 +222,7 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 				        ],
 				        targets: [
 				             .target(
-				                name: "«annotSwift.name»",
+				                name: "«moduleName»",
 				                dependencies: ["Kitura","HeliumLogger","SwiftKueryMySQL", "LoggerAPI"]),
 				        ]
 				)
@@ -231,7 +231,7 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 
 		// generate .gitignore
 		fsa.generateFile(
-			annotSwift.name + "/" + ".gitignore",
+			moduleName + "/" + ".gitignore",
 			LangOutputProvider.SWIFT,
 			'''				
 				.DS_Store
@@ -243,12 +243,12 @@ class LangWidgetGeneratorForSwift implements IGenerator {
 
 		// generate .gitignore
 		fsa.generateFile(
-			annotSwift.name + "/" + "README.md",
+			moduleName + "/" + "README.md",
 			LangOutputProvider.SWIFT,
 			'''				
-				# «annotSwift.name»
+				# «moduleName»
 				
-				«annotSwift.documentation»
+				 
 			'''
 		)
 

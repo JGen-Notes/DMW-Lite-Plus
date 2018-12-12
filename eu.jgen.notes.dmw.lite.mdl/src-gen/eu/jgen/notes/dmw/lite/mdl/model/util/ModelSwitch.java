@@ -206,30 +206,6 @@ public class ModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ModelPackage.YANNOT_JAVA:
-      {
-        YAnnotJava yAnnotJava = (YAnnotJava)theEObject;
-        T result = caseYAnnotJava(yAnnotJava);
-        if (result == null) result = caseYAnnotation(yAnnotJava);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ModelPackage.YANNOT_SWIFT:
-      {
-        YAnnotSwift yAnnotSwift = (YAnnotSwift)theEObject;
-        T result = caseYAnnotSwift(yAnnotSwift);
-        if (result == null) result = caseYAnnotation(yAnnotSwift);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ModelPackage.YANNOT_DATABASE:
-      {
-        YAnnotDatabase yAnnotDatabase = (YAnnotDatabase)theEObject;
-        T result = caseYAnnotDatabase(yAnnotDatabase);
-        if (result == null) result = caseYAnnotation(yAnnotDatabase);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ModelPackage.YANNOT_KEYWORD:
       {
         YAnnotKeyword yAnnotKeyword = (YAnnotKeyword)theEObject;
@@ -558,54 +534,6 @@ public class ModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseYAnnotForeignKey(YAnnotForeignKey object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>YAnnot Java</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>YAnnot Java</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseYAnnotJava(YAnnotJava object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>YAnnot Swift</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>YAnnot Swift</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseYAnnotSwift(YAnnotSwift object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>YAnnot Database</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>YAnnot Database</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseYAnnotDatabase(YAnnotDatabase object)
   {
     return null;
   }

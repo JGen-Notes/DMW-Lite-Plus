@@ -34,7 +34,7 @@ YImport returns YImport:
 	'import' importedNamespace=QualifiedNameWithWildcard ';';
 
 YAnnotation:
-	YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift;
+	YAnnotEntity | YAnnotTechnicalDesign ;
 	
 /*
  * Data model
@@ -52,9 +52,6 @@ YAnnotAttribute:
 	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
 	')')? ';'?;
 
-//YAnnotDataType:
-//	'Int' | 'Short' | 'Long' | 'String' | 'Date' | 'Time' | 'Timestamp' | 'Double' | 'Bool' | 'Blob'
-//;
 
 YAnnotRelationship:
 	{YAnnotRelationship} '@relationship' name=ValidID (optional?='?')? '->'
@@ -86,7 +83,9 @@ YAnnotExpression returns YAnnotExpression:
  * Start Technical design
  */
 YAnnotTechnicalDesign:
-	{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{'
+	{YAnnotTechnicalDesign} '@td' name=ValidID (=> '('
+	(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
+	')') '{'
 	features+=YAnnotTable*
 	'}';
   
@@ -119,23 +118,23 @@ YAnnotForeignKey:
 	columns+=YAnnotAbstractColumn (',' columns+=YAnnotAbstractColumn)*
 	'}' ';'?;
 
-	/*
- * Swift Generation Annotations
- */
-YAnnotJava:
-	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
-
-	/*
- * Swift Generation Annotations
- */
-YAnnotSwift:
-	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
-
-/*
- * Database Generation Annotations
- */
-YAnnotDatabase:
-	{YAnnotDatabase} '@database' name=ValidID ';'?;
+//	/*
+// * Swift Generation Annotations
+// */
+//YAnnotJava:
+//	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
+//
+//	/*
+// * Swift Generation Annotations
+// */
+//YAnnotSwift:
+//	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
+//
+///*
+// * Database Generation Annotations
+// */
+//YAnnotDatabase:
+//	{YAnnotDatabase} '@database' name=ValidID ';'?;
 	
 QualifiedName:
 	ValidID (=> '.' ValidID)*;

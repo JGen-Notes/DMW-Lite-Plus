@@ -72,6 +72,14 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class ModelUtil {
+  public final String KW_DATABASE = "database";
+  
+  public final String KW_SWIFT = "swift";
+  
+  public final String KW_JAVA = "java";
+  
+  public final String KW_MODULE = "module";
+  
   public final String KW_DERBY = "Derby";
   
   public final String KW_MYSQL = "MySQL";
@@ -280,6 +288,31 @@ public class ModelUtil {
         throw Exceptions.sneakyThrow(_t_1);
       }
     }
+  }
+  
+  public ArrayList<String> createProposalAnnotationList(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    final ArrayList<String> list = CollectionLiterals.<String>newArrayList();
+    boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_DATABASE);
+    boolean _not = (!_isAnnotHavingSpecificName);
+    if (_not) {
+      list.add("database=Derby");
+    }
+    boolean _isAnnotHavingSpecificName_1 = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_JAVA);
+    boolean _not_1 = (!_isAnnotHavingSpecificName_1);
+    if (_not_1) {
+      list.add("java=true");
+    }
+    boolean _isAnnotHavingSpecificName_2 = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_SWIFT);
+    boolean _not_2 = (!_isAnnotHavingSpecificName_2);
+    if (_not_2) {
+      list.add("swift=true");
+    }
+    boolean _isAnnotHavingSpecificName_3 = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_MODULE);
+    boolean _not_3 = (!_isAnnotHavingSpecificName_3);
+    if (_not_3) {
+      list.add("module=\"somename\"");
+    }
+    return list;
   }
   
   public ArrayList<String> createProposalAnnotationList(final YAnnotAttribute annotAttr) {
@@ -495,6 +528,49 @@ public class ModelUtil {
       return null;
     }
     return null;
+  }
+  
+  public YAnnotationElementValuePair findUnsupportedAnnotation(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    EList<YAnnotationElementValuePair> _elementValuePairs = annotTechnicalDesign.getElementValuePairs();
+    for (final YAnnotationElementValuePair annotationElementValuePair : _elementValuePairs) {
+      if (((((!Objects.equal(annotationElementValuePair.getName(), this.KW_DATABASE)) && (!Objects.equal(annotationElementValuePair.getName(), this.KW_SWIFT))) && 
+        (!Objects.equal(annotationElementValuePair.getName(), this.KW_JAVA))) && (!Objects.equal(annotationElementValuePair.getName(), this.KW_MODULE)))) {
+        return annotationElementValuePair;
+      }
+    }
+    return null;
+  }
+  
+  public String extractDatabaseType(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_DATABASE);
+    if (_isAnnotHavingSpecificName) {
+      return this.extractAnnotValueKeyword(annotTechnicalDesign.getElementValuePairs(), this.KW_DATABASE);
+    }
+    return this.KW_DERBY;
+  }
+  
+  public String extractModuleName(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_MODULE);
+    if (_isAnnotHavingSpecificName) {
+      return this.extractAnnotValueKeyword(annotTechnicalDesign.getElementValuePairs(), this.KW_MODULE);
+    }
+    return annotTechnicalDesign.getName();
+  }
+  
+  public boolean extractJavaIndicator(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_JAVA);
+    if (_isAnnotHavingSpecificName) {
+      return this.extractAnnotValueBoolean(annotTechnicalDesign.getElementValuePairs(), this.KW_JAVA);
+    }
+    return true;
+  }
+  
+  public boolean extractSwiftIndicator(final YAnnotTechnicalDesign annotTechnicalDesign) {
+    boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotTechnicalDesign.getElementValuePairs(), this.KW_SWIFT);
+    if (_isAnnotHavingSpecificName) {
+      return this.extractAnnotValueBoolean(annotTechnicalDesign.getElementValuePairs(), this.KW_SWIFT);
+    }
+    return true;
   }
   
   public boolean isForeignKeyDesignated(final YAnnotRelationship relationship) {

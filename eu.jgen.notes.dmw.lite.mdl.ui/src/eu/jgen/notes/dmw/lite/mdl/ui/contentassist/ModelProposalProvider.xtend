@@ -36,13 +36,14 @@ import org.eclipse.xtext.RuleCall
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 
 class ModelProposalProvider extends AbstractModelProposalProvider {
 
 	@Inject
 	private PluginImageHelper imageHelper;
 	@Inject extension ModelIndex
-	@Inject extension ModelUtil
+	@Inject extension ModelUtil 
 	
 	override  void complete_YAnnotationElementValuePair(EObject object, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (object instanceof YAnnotAttribute) {
@@ -50,16 +51,21 @@ class ModelProposalProvider extends AbstractModelProposalProvider {
 			for (entry : attribute.createProposalAnnotationList) {
 				acceptor.accept(createCompletionProposal(entry, entry, imageHelper.getImage("database.gif"), context))
 			}			
+		} else if (object instanceof YAnnotTechnicalDesign) {
+			val annotTechnicalDesign = object as YAnnotTechnicalDesign
+			for (entry : annotTechnicalDesign.createProposalAnnotationList) {
+				acceptor.accept(createCompletionProposal(entry, entry, imageHelper.getImage("database.gif"), context))
+			}			
 		}
 	}
 	
-	override  void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
-				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("SQLite", "SQLite", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("PostgreSQL", "PostgreSQL", imageHelper.getImage("database.gif"), context))
-		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
-	}
+//	override  void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+//				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
+//				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("SQLite", "SQLite", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("PostgreSQL", "PostgreSQL", imageHelper.getImage("database.gif"), context))
+//		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
+//	}
 
         
 //	override  void completeYAnnotAttribute_Type(EObject model, Assignment assignment, ContentAssistContext context,

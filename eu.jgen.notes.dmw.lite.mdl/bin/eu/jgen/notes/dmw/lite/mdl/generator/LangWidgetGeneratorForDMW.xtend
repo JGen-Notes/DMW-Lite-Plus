@@ -5,14 +5,12 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity
 import eu.jgen.notes.dmw.lite.mdl.model.YModel
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
- 
+
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 class LangWidgetGeneratorForDMW implements IGenerator {
-	
-	
 
 	@Inject extension ModelUtil
 
@@ -39,26 +37,30 @@ class LangWidgetGeneratorForDMW implements IGenerator {
 						«generateVariablesUsingAttribute(entity)» 
 					}
 				'''
-				fsa.generateFile(
-					model.name.getFileSystemPath + "/model/" + entity.name + ".dmw",
-					ModelOutputProvider.SRC,
-					'''								
-						«body»
-					'''
-				)
+				if (model.name !== null) {
+					fsa.generateFile(
+						model.name.getFileSystemPath + "/model/" + entity.name + ".dmw",
+						ModelOutputProvider.SRC,
+						'''								
+							«body»
+						'''
+					)
+				}
 			}
-		]  
+		]
 	}
 
 	def generateVariablesUsingAttribute(YAnnotEntity entity) {
 		val buffer = new StringBuffer()
 		for (annotation : entity.annotations) {
 			if (annotation instanceof YAnnotAttribute) {
-				val attribute = annotation as YAnnotAttribute	
-				buffer.append("public var " + attribute.name + " : " + attribute.extractAttributeType  + " => " + entity.name + "." +  attribute.name + ";\n")
-				 
-			}  
-			
+				val attribute = annotation as YAnnotAttribute
+				buffer.append(
+					"public var " + attribute.name + " : " + attribute.extractAttributeType + " => " + entity.name +
+						"." + attribute.name + ";\n")
+
+			}
+
 		}
 		return buffer.toString
 	}

@@ -28,15 +28,12 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotation;
@@ -123,78 +120,10 @@ public class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
   }
   
   /**
-   * Database
-   */
-  public Object _text(final YAnnotDatabase annotDatabase) {
-    String _name = annotDatabase.getName();
-    boolean _tripleNotEquals = (_name != null);
-    if (_tripleNotEquals) {
-      return annotDatabase.getName();
-    }
-    return null;
-  }
-  
-  public Object _image(final YAnnotDatabase annotDatabase) {
-    String _name = annotDatabase.getName();
-    boolean _tripleNotEquals = (_name != null);
-    if (_tripleNotEquals) {
-      return this.imageHelper.getImage("database.gif");
-    }
-    return null;
-  }
-  
-  /**
-   * Swift
-   */
-  public Object _text(final YAnnotSwift annotSwift) {
-    String _name = annotSwift.getName();
-    boolean _tripleNotEquals = (_name != null);
-    if (_tripleNotEquals) {
-      YAnnotDatabase _database = annotSwift.getDatabase();
-      boolean _tripleNotEquals_1 = (_database != null);
-      if (_tripleNotEquals_1) {
-        String _name_1 = annotSwift.getName();
-        String _plus = ("Swift " + _name_1);
-        String _plus_1 = (_plus + " + ");
-        String _name_2 = annotSwift.getDatabase().getName();
-        return (_plus_1 + _name_2);
-      }
-    }
-    return null;
-  }
-  
-  public Object _image(final YAnnotSwift annotSwift) {
-    return this.imageHelper.getImage("swift.png");
-  }
-  
-  /**
-   * Java
-   */
-  public Object _text(final YAnnotJava annotJava) {
-    YAnnotDatabase _database = annotJava.getDatabase();
-    boolean _tripleNotEquals = (_database != null);
-    if (_tripleNotEquals) {
-      String _name = annotJava.getDatabase().getName();
-      return ("Java + " + _name);
-    } else {
-      return "Java";
-    }
-  }
-  
-  public Object _image(final YAnnotJava annotJava) {
-    return this.imageHelper.getImage("java.png");
-  }
-  
-  /**
    * Technical Design
    */
   public Object _text(final YAnnotTechnicalDesign element) {
-    YAnnotDatabase _database = element.getDatabase();
-    boolean _tripleNotEquals = (_database != null);
-    if (_tripleNotEquals) {
-      return element.getDatabase().getName();
-    }
-    return null;
+    return element.getName();
   }
   
   public Object _image(final YAnnotTechnicalDesign element) {

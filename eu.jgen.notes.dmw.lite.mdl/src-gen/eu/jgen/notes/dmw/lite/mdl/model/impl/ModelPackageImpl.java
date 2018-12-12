@@ -11,20 +11,17 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotBoolConstant;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotExpression;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotKeyword;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotNumberConstant;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotStringConstant;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotation;
@@ -172,27 +169,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * @generated
    */
   private EClass yAnnotForeignKeyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass yAnnotJavaEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass yAnnotSwiftEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass yAnnotDatabaseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -367,6 +343,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getYAnnotation_Name()
+  {
+    return (EAttribute)yAnnotationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYAnnotation_ElementValuePairs()
+  {
+    return (EReference)yAnnotationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getYAnnotEntity()
   {
     return yAnnotEntityEClass;
@@ -377,29 +373,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getYAnnotEntity_Name()
-  {
-    return (EAttribute)yAnnotEntityEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYAnnotEntity_ElementValuePairs()
-  {
-    return (EReference)yAnnotEntityEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getYAnnotEntity_Annotations()
   {
-    return (EReference)yAnnotEntityEClass.getEStructuralFeatures().get(2);
+    return (EReference)yAnnotEntityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -617,19 +593,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getYAnnotTechnicalDesign_Database()
-  {
-    return (EReference)yAnnotTechnicalDesignEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getYAnnotTechnicalDesign_Features()
   {
-    return (EReference)yAnnotTechnicalDesignEClass.getEStructuralFeatures().get(1);
+    return (EReference)yAnnotTechnicalDesignEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -847,76 +813,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getYAnnotJava()
-  {
-    return yAnnotJavaEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYAnnotJava_Database()
-  {
-    return (EReference)yAnnotJavaEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getYAnnotSwift()
-  {
-    return yAnnotSwiftEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getYAnnotSwift_Name()
-  {
-    return (EAttribute)yAnnotSwiftEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYAnnotSwift_Database()
-  {
-    return (EReference)yAnnotSwiftEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getYAnnotDatabase()
-  {
-    return yAnnotDatabaseEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getYAnnotDatabase_Name()
-  {
-    return (EAttribute)yAnnotDatabaseEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getYAnnotKeyword()
   {
     return yAnnotKeywordEClass;
@@ -1051,10 +947,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEAttribute(yImportEClass, YIMPORT__IMPORTED_NAMESPACE);
 
     yAnnotationEClass = createEClass(YANNOTATION);
+    createEAttribute(yAnnotationEClass, YANNOTATION__NAME);
+    createEReference(yAnnotationEClass, YANNOTATION__ELEMENT_VALUE_PAIRS);
 
     yAnnotEntityEClass = createEClass(YANNOT_ENTITY);
-    createEAttribute(yAnnotEntityEClass, YANNOT_ENTITY__NAME);
-    createEReference(yAnnotEntityEClass, YANNOT_ENTITY__ELEMENT_VALUE_PAIRS);
     createEReference(yAnnotEntityEClass, YANNOT_ENTITY__ANNOTATIONS);
 
     yAnnotAttributeEClass = createEClass(YANNOT_ATTRIBUTE);
@@ -1085,7 +981,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     yAnnotExpressionEClass = createEClass(YANNOT_EXPRESSION);
 
     yAnnotTechnicalDesignEClass = createEClass(YANNOT_TECHNICAL_DESIGN);
-    createEReference(yAnnotTechnicalDesignEClass, YANNOT_TECHNICAL_DESIGN__DATABASE);
     createEReference(yAnnotTechnicalDesignEClass, YANNOT_TECHNICAL_DESIGN__FEATURES);
 
     yAnnotTableEClass = createEClass(YANNOT_TABLE);
@@ -1114,16 +1009,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     yAnnotForeignKeyEClass = createEClass(YANNOT_FOREIGN_KEY);
     createEReference(yAnnotForeignKeyEClass, YANNOT_FOREIGN_KEY__RELATIONSHIP);
     createEReference(yAnnotForeignKeyEClass, YANNOT_FOREIGN_KEY__COLUMNS);
-
-    yAnnotJavaEClass = createEClass(YANNOT_JAVA);
-    createEReference(yAnnotJavaEClass, YANNOT_JAVA__DATABASE);
-
-    yAnnotSwiftEClass = createEClass(YANNOT_SWIFT);
-    createEAttribute(yAnnotSwiftEClass, YANNOT_SWIFT__NAME);
-    createEReference(yAnnotSwiftEClass, YANNOT_SWIFT__DATABASE);
-
-    yAnnotDatabaseEClass = createEClass(YANNOT_DATABASE);
-    createEAttribute(yAnnotDatabaseEClass, YANNOT_DATABASE__NAME);
 
     yAnnotKeywordEClass = createEClass(YANNOT_KEYWORD);
     createEAttribute(yAnnotKeywordEClass, YANNOT_KEYWORD__VALUE);
@@ -1177,9 +1062,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     yAnnotRelationshipEClass.getESuperTypes().add(this.getYAnnotEntityInner());
     yAnnotIdentifierEClass.getESuperTypes().add(this.getYAnnotEntityInner());
     yAnnotTechnicalDesignEClass.getESuperTypes().add(this.getYAnnotation());
-    yAnnotJavaEClass.getESuperTypes().add(this.getYAnnotation());
-    yAnnotSwiftEClass.getESuperTypes().add(this.getYAnnotation());
-    yAnnotDatabaseEClass.getESuperTypes().add(this.getYAnnotation());
     yAnnotKeywordEClass.getESuperTypes().add(this.getYAnnotExpression());
     yAnnotStringConstantEClass.getESuperTypes().add(this.getYAnnotExpression());
     yAnnotNumberConstantEClass.getESuperTypes().add(this.getYAnnotExpression());
@@ -1196,10 +1078,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEAttribute(getYImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, YImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yAnnotationEClass, YAnnotation.class, "YAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getYAnnotation_Name(), ecorePackage.getEString(), "name", null, 0, 1, YAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYAnnotation_ElementValuePairs(), this.getYAnnotationElementValuePair(), null, "elementValuePairs", null, 0, -1, YAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yAnnotEntityEClass, YAnnotEntity.class, "YAnnotEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getYAnnotEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, YAnnotEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYAnnotEntity_ElementValuePairs(), this.getYAnnotationElementValuePair(), null, "elementValuePairs", null, 0, -1, YAnnotEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYAnnotEntity_Annotations(), this.getYAnnotEntityInner(), null, "annotations", null, 0, -1, YAnnotEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yAnnotAttributeEClass, YAnnotAttribute.class, "YAnnotAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1230,7 +1112,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEClass(yAnnotExpressionEClass, YAnnotExpression.class, "YAnnotExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(yAnnotTechnicalDesignEClass, YAnnotTechnicalDesign.class, "YAnnotTechnicalDesign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getYAnnotTechnicalDesign_Database(), this.getYAnnotDatabase(), null, "database", null, 0, 1, YAnnotTechnicalDesign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYAnnotTechnicalDesign_Features(), this.getYAnnotTable(), null, "features", null, 0, -1, YAnnotTechnicalDesign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yAnnotTableEClass, YAnnotTable.class, "YAnnotTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1259,16 +1140,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEClass(yAnnotForeignKeyEClass, YAnnotForeignKey.class, "YAnnotForeignKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYAnnotForeignKey_Relationship(), this.getYAnnotRelationship(), null, "relationship", null, 0, 1, YAnnotForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYAnnotForeignKey_Columns(), this.getYAnnotAbstractColumn(), null, "columns", null, 0, -1, YAnnotForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(yAnnotJavaEClass, YAnnotJava.class, "YAnnotJava", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getYAnnotJava_Database(), this.getYAnnotDatabase(), null, "database", null, 0, 1, YAnnotJava.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(yAnnotSwiftEClass, YAnnotSwift.class, "YAnnotSwift", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getYAnnotSwift_Name(), ecorePackage.getEString(), "name", null, 0, 1, YAnnotSwift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYAnnotSwift_Database(), this.getYAnnotDatabase(), null, "database", null, 0, 1, YAnnotSwift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(yAnnotDatabaseEClass, YAnnotDatabase.class, "YAnnotDatabase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getYAnnotDatabase_Name(), ecorePackage.getEString(), "name", null, 0, 1, YAnnotDatabase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yAnnotKeywordEClass, YAnnotKeyword.class, "YAnnotKeyword", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getYAnnotKeyword_Value(), ecorePackage.getEString(), "value", null, 0, 1, YAnnotKeyword.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

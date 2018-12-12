@@ -30,7 +30,6 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
@@ -38,6 +37,7 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotation;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair;
 import eu.jgen.notes.dmw.lite.mdl.model.YModel;
@@ -124,17 +124,18 @@ public class ModelValidator extends AbstractModelValidator {
    * Supported Database
    */
   @Check
-  public void checkSupportedDatabase(final YAnnotDatabase annotDatabase) {
-    String _name = annotDatabase.getName();
-    boolean _tripleNotEquals = (_name != null);
-    if (_tripleNotEquals) {
-      if (((((Objects.equal(annotDatabase.getName(), this._modelUtil.KW_DERBY) || Objects.equal(annotDatabase.getName(), this._modelUtil.KW_MYSQL)) || Objects.equal(annotDatabase.getName(), this._modelUtil.KW_SQLITE)) || 
-        Objects.equal(annotDatabase.getName(), this._modelUtil.KW_POSTGRESQL)) || Objects.equal(annotDatabase.getName(), this._modelUtil.KW_MONGODB))) {
-        return;
-      } else {
-        this.error("This database is not supported yet.", ModelPackage.eINSTANCE.getYAnnotDatabase_Name(), 
-          ModelValidator.UNSUPPORTED_DATABASE, annotDatabase.getName());
-      }
+  public void checkTechnicalDesignAnnotations(final YAnnotTechnicalDesign technicalDesign) {
+    int _size = technicalDesign.getElementValuePairs().size();
+    boolean _equals = (_size == 0);
+    if (_equals) {
+      return;
+    }
+    final YAnnotationElementValuePair pair = this._modelUtil.findUnsupportedAnnotation(technicalDesign);
+    if ((pair == null)) {
+      return;
+    } else {
+      this.error("This annotation is not supported in this context.", pair, 
+        ModelPackage.eINSTANCE.getYAnnotationElementValuePair_Name(), ModelValidator.ANNOATION_NOT_SUPPORTED);
     }
   }
   
@@ -304,7 +305,7 @@ public class ModelValidator extends AbstractModelValidator {
     boolean _notEquals = (!Objects.equal(_firstUpper, _name));
     if (_notEquals) {
       this.error("Entity name should start with a capital letter", annotEntity, 
-        ModelPackage.eINSTANCE.getYAnnotEntity_Name(), ModelValidator.ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL);
+        ModelPackage.eINSTANCE.getYAnnotation_Name(), ModelValidator.ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL);
     }
   }
   
@@ -363,7 +364,7 @@ public class ModelValidator extends AbstractModelValidator {
             String _plus = ((("Duplicate " + "entity") + " \'") + _name);
             String _plus_1 = (_plus + "\'");
             this.error(_plus_1, d, 
-              ModelPackage.eINSTANCE.getYAnnotEntity_Name(), ModelValidator.DUPLICATE_ELEMENT);
+              ModelPackage.eINSTANCE.getYAnnotation_Name(), ModelValidator.DUPLICATE_ELEMENT);
           }
         }
       }
@@ -381,7 +382,7 @@ public class ModelValidator extends AbstractModelValidator {
         boolean _containsKey = externalEntities.containsKey(annotName);
         if (_containsKey) {
           this.error((("The entity " + annotName) + " is already defined"), annotation, 
-            ModelPackage.eINSTANCE.getYAnnotEntity_Name(), ModelValidator.DUPLICATE_ENTITY);
+            ModelPackage.eINSTANCE.getYAnnotation_Name(), ModelValidator.DUPLICATE_ENTITY);
         }
       }
     }
@@ -496,7 +497,7 @@ public class ModelValidator extends AbstractModelValidator {
         return;
       } else {
         this.warning("The declared entity is not yet implemented as table", entity, 
-          ModelPackage.Literals.YANNOT_ENTITY__NAME, ModelValidator.ENTITY_NO_TECH_DESIGN);
+          ModelPackage.Literals.YANNOTATION__NAME, ModelValidator.ENTITY_NO_TECH_DESIGN);
       }
     }
   }

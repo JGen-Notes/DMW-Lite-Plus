@@ -83,9 +83,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
       case ModelPackage.YANNOT_ABSTRACT_COLUMN: return createYAnnotAbstractColumn();
       case ModelPackage.YANNOT_PRIMARY_KEY: return createYAnnotPrimaryKey();
       case ModelPackage.YANNOT_FOREIGN_KEY: return createYAnnotForeignKey();
-      case ModelPackage.YANNOT_JAVA: return createYAnnotJava();
-      case ModelPackage.YANNOT_SWIFT: return createYAnnotSwift();
-      case ModelPackage.YANNOT_DATABASE: return createYAnnotDatabase();
       case ModelPackage.YANNOT_KEYWORD: return createYAnnotKeyword();
       case ModelPackage.YANNOT_STRING_CONSTANT: return createYAnnotStringConstant();
       case ModelPackage.YANNOT_NUMBER_CONSTANT: return createYAnnotNumberConstant();
@@ -292,39 +289,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     YAnnotForeignKeyImpl yAnnotForeignKey = new YAnnotForeignKeyImpl();
     return yAnnotForeignKey;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YAnnotJava createYAnnotJava()
-  {
-    YAnnotJavaImpl yAnnotJava = new YAnnotJavaImpl();
-    return yAnnotJava;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YAnnotSwift createYAnnotSwift()
-  {
-    YAnnotSwiftImpl yAnnotSwift = new YAnnotSwiftImpl();
-    return yAnnotSwift;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YAnnotDatabase createYAnnotDatabase()
-  {
-    YAnnotDatabaseImpl yAnnotDatabase = new YAnnotDatabaseImpl();
-    return yAnnotDatabase;
   }
 
   /**

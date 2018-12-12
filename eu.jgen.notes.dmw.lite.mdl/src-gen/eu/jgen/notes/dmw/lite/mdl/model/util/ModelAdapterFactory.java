@@ -166,21 +166,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
         return createYAnnotForeignKeyAdapter();
       }
       @Override
-      public Adapter caseYAnnotJava(YAnnotJava object)
-      {
-        return createYAnnotJavaAdapter();
-      }
-      @Override
-      public Adapter caseYAnnotSwift(YAnnotSwift object)
-      {
-        return createYAnnotSwiftAdapter();
-      }
-      @Override
-      public Adapter caseYAnnotDatabase(YAnnotDatabase object)
-      {
-        return createYAnnotDatabaseAdapter();
-      }
-      @Override
       public Adapter caseYAnnotKeyword(YAnnotKeyword object)
       {
         return createYAnnotKeywordAdapter();
@@ -493,51 +478,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createYAnnotForeignKeyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava <em>YAnnot Java</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava
-   * @generated
-   */
-  public Adapter createYAnnotJavaAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift <em>YAnnot Swift</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift
-   * @generated
-   */
-  public Adapter createYAnnotSwiftAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase <em>YAnnot Database</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase
-   * @generated
-   */
-  public Adapter createYAnnotDatabaseAdapter()
   {
     return null;
   }

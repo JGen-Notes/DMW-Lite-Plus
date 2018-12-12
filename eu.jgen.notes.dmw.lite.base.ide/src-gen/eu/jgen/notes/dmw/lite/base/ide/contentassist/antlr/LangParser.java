@@ -156,6 +156,9 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotExpressionAccess().getGroup_4_2(), "rule__YAnnotExpression__Group_4_2__0");
 			builder.put(grammarAccess.getYAnnotExpressionAccess().getGroup_4_2_1(), "rule__YAnnotExpression__Group_4_2_1__0");
 			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getGroup(), "rule__YAnnotTechnicalDesign__Group__0");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getGroup_3(), "rule__YAnnotTechnicalDesign__Group_3__0");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getGroup_3_1(), "rule__YAnnotTechnicalDesign__Group_3_1__0");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getGroup_3_1_1(), "rule__YAnnotTechnicalDesign__Group_3_1_1__0");
 			builder.put(grammarAccess.getYAnnotTableAccess().getGroup(), "rule__YAnnotTable__Group__0");
 			builder.put(grammarAccess.getYAnnotColumnAccess().getGroup(), "rule__YAnnotColumn__Group__0");
 			builder.put(grammarAccess.getYAnnotColumnAccess().getGroup_6(), "rule__YAnnotColumn__Group_6__0");
@@ -167,11 +170,6 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotPrimaryKeyAccess().getGroup_4(), "rule__YAnnotPrimaryKey__Group_4__0");
 			builder.put(grammarAccess.getYAnnotForeignKeyAccess().getGroup(), "rule__YAnnotForeignKey__Group__0");
 			builder.put(grammarAccess.getYAnnotForeignKeyAccess().getGroup_5(), "rule__YAnnotForeignKey__Group_5__0");
-			builder.put(grammarAccess.getYAnnotJavaAccess().getGroup(), "rule__YAnnotJava__Group__0");
-			builder.put(grammarAccess.getYAnnotJavaAccess().getGroup_2(), "rule__YAnnotJava__Group_2__0");
-			builder.put(grammarAccess.getYAnnotSwiftAccess().getGroup(), "rule__YAnnotSwift__Group__0");
-			builder.put(grammarAccess.getYAnnotSwiftAccess().getGroup_4(), "rule__YAnnotSwift__Group_4__0");
-			builder.put(grammarAccess.getYAnnotDatabaseAccess().getGroup(), "rule__YAnnotDatabase__Group__0");
 			builder.put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 			builder.put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 			builder.put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
@@ -305,7 +303,9 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotExpressionAccess().getValueAssignment_3_1(), "rule__YAnnotExpression__ValueAssignment_3_1");
 			builder.put(grammarAccess.getYAnnotExpressionAccess().getElementsAssignment_4_2_0(), "rule__YAnnotExpression__ElementsAssignment_4_2_0");
 			builder.put(grammarAccess.getYAnnotExpressionAccess().getElementsAssignment_4_2_1_1(), "rule__YAnnotExpression__ElementsAssignment_4_2_1_1");
-			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getDatabaseAssignment_3(), "rule__YAnnotTechnicalDesign__DatabaseAssignment_3");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getNameAssignment_2(), "rule__YAnnotTechnicalDesign__NameAssignment_2");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getElementValuePairsAssignment_3_1_0(), "rule__YAnnotTechnicalDesign__ElementValuePairsAssignment_3_1_0");
+			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getElementValuePairsAssignment_3_1_1_1(), "rule__YAnnotTechnicalDesign__ElementValuePairsAssignment_3_1_1_1");
 			builder.put(grammarAccess.getYAnnotTechnicalDesignAccess().getFeaturesAssignment_5(), "rule__YAnnotTechnicalDesign__FeaturesAssignment_5");
 			builder.put(grammarAccess.getYAnnotTableAccess().getNameAssignment_2(), "rule__YAnnotTable__NameAssignment_2");
 			builder.put(grammarAccess.getYAnnotTableAccess().getEntityrefAssignment_4(), "rule__YAnnotTable__EntityrefAssignment_4");
@@ -325,10 +325,6 @@ public class LangParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getYAnnotForeignKeyAccess().getRelationshipAssignment_2(), "rule__YAnnotForeignKey__RelationshipAssignment_2");
 			builder.put(grammarAccess.getYAnnotForeignKeyAccess().getColumnsAssignment_4(), "rule__YAnnotForeignKey__ColumnsAssignment_4");
 			builder.put(grammarAccess.getYAnnotForeignKeyAccess().getColumnsAssignment_5_1(), "rule__YAnnotForeignKey__ColumnsAssignment_5_1");
-			builder.put(grammarAccess.getYAnnotJavaAccess().getDatabaseAssignment_2_1(), "rule__YAnnotJava__DatabaseAssignment_2_1");
-			builder.put(grammarAccess.getYAnnotSwiftAccess().getNameAssignment_3(), "rule__YAnnotSwift__NameAssignment_3");
-			builder.put(grammarAccess.getYAnnotSwiftAccess().getDatabaseAssignment_4_1(), "rule__YAnnotSwift__DatabaseAssignment_4_1");
-			builder.put(grammarAccess.getYAnnotDatabaseAccess().getNameAssignment_2(), "rule__YAnnotDatabase__NameAssignment_2");
 		}
 	}
 	

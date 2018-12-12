@@ -28,16 +28,13 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotation;
@@ -82,19 +79,7 @@ public class ModelFormatter extends AbstractFormatter2 {
         if ((annotation instanceof YAnnotTechnicalDesign)) {
           document.<YAnnotTechnicalDesign>format(((YAnnotTechnicalDesign) annotation));
         } else {
-          if ((annotation instanceof YAnnotDatabase)) {
-            document.<YAnnotDatabase>format(((YAnnotDatabase) annotation));
-          } else {
-            if ((annotation instanceof YAnnotJava)) {
-              document.<YAnnotJava>format(((YAnnotJava) annotation));
-            } else {
-              if ((annotation instanceof YAnnotSwift)) {
-                document.<YAnnotSwift>format(((YAnnotSwift) annotation));
-              } else {
-                document.<YAnnotation>format(annotation);
-              }
-            }
-          }
+          document.<YAnnotation>format(annotation);
         }
       }
     }
@@ -109,72 +94,6 @@ public class ModelFormatter extends AbstractFormatter2 {
     };
     document.append(document.prepend(this.textRegionExtensions.regionFor(imp).keyword("import"), _function), _function_1);
     this.textRegionExtensions.regionFor(imp).feature(ModelPackage.eINSTANCE.getYImport_ImportedNamespace());
-  }
-  
-  protected void _format(final YAnnotDatabase annotDatabase, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(annotDatabase).keyword("@database"), _function), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.prepend(this.textRegionExtensions.regionFor(annotDatabase).feature(ModelPackage.eINSTANCE.getYImport_ImportedNamespace()), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
-    };
-    document.prepend(this.textRegionExtensions.regionFor(annotDatabase).keyword(";"), _function_3);
-  }
-  
-  protected void _format(final YAnnotSwift annotSwift, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(annotSwift).keyword("@swift"), _function), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotSwift).keyword("module"), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotSwift).keyword("uses"), _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
-    };
-    document.prepend(this.textRegionExtensions.regionFor(annotSwift).keyword(";"), _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotSwift).feature(ModelPackage.eINSTANCE.getYAnnotSwift_Name()), _function_5);
-  }
-  
-  protected void _format(final YAnnotJava annotJava, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(annotJava).keyword("@java"), _function), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotJava).keyword("uses"), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
-    };
-    document.prepend(this.textRegionExtensions.regionFor(annotJava).keyword(";"), _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotJava).feature(ModelPackage.eINSTANCE.getYAnnotSwift_Name()), _function_4);
   }
   
   protected void _format(final YAnnotEntity annotEntity, @Extension final IFormattableDocument document) {
@@ -192,7 +111,7 @@ public class ModelFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(annotEntity).feature(ModelPackage.eINSTANCE.getYAnnotEntity_Name()), _function_3);
+    document.surround(this.textRegionExtensions.regionFor(annotEntity).feature(ModelPackage.eINSTANCE.getYAnnotation_Name()), _function_3);
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -328,29 +247,21 @@ public class ModelFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(annotTechnicalDesign).keyword("database"), _function_2);
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(annotTechnicalDesign).feature(ModelPackage.eINSTANCE.getYAnnotTechnicalDesign_Database()), _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(annotTechnicalDesign).keyword("{"), _function_4), _function_5);
-    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+    document.append(document.prepend(this.textRegionExtensions.regionFor(annotTechnicalDesign).keyword("{"), _function_2), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.indent();
     };
-    final Consumer<YAnnotTable> _function_7 = (YAnnotTable it) -> {
+    final Consumer<YAnnotTable> _function_5 = (YAnnotTable it) -> {
       document.<YAnnotTable>format(it);
     };
-    document.<YAnnotTechnicalDesign>interior(annotTechnicalDesign, _function_6).getFeatures().forEach(_function_7);
-    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
+    document.<YAnnotTechnicalDesign>interior(annotTechnicalDesign, _function_4).getFeatures().forEach(_function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(annotTechnicalDesign).keyword("}"), _function_8);
+    document.prepend(this.textRegionExtensions.regionFor(annotTechnicalDesign).keyword("}"), _function_6);
   }
   
   protected void _format(final YAnnotTable annotTable, @Extension final IFormattableDocument document) {
@@ -543,23 +454,14 @@ public class ModelFormatter extends AbstractFormatter2 {
     } else if (annotAttr instanceof YAnnotAttribute) {
       _format((YAnnotAttribute)annotAttr, document);
       return;
-    } else if (annotAttr instanceof YAnnotDatabase) {
-      _format((YAnnotDatabase)annotAttr, document);
-      return;
     } else if (annotAttr instanceof YAnnotEntity) {
       _format((YAnnotEntity)annotAttr, document);
       return;
     } else if (annotAttr instanceof YAnnotIdentifier) {
       _format((YAnnotIdentifier)annotAttr, document);
       return;
-    } else if (annotAttr instanceof YAnnotJava) {
-      _format((YAnnotJava)annotAttr, document);
-      return;
     } else if (annotAttr instanceof YAnnotRelationship) {
       _format((YAnnotRelationship)annotAttr, document);
-      return;
-    } else if (annotAttr instanceof YAnnotSwift) {
-      _format((YAnnotSwift)annotAttr, document);
       return;
     } else if (annotAttr instanceof YAnnotTechnicalDesign) {
       _format((YAnnotTechnicalDesign)annotAttr, document);

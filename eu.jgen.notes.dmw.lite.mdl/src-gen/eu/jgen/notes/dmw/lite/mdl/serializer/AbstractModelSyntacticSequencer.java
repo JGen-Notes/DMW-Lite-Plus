@@ -26,15 +26,12 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	protected AbstractElementAlias match_YAnnotColumnLike_SemicolonKeyword_3_q;
 	protected AbstractElementAlias match_YAnnotColumn_SemicolonKeyword_7_q;
 	protected AbstractElementAlias match_YAnnotColumn___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q;
-	protected AbstractElementAlias match_YAnnotDatabase_SemicolonKeyword_3_q;
 	protected AbstractElementAlias match_YAnnotEntity___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_YAnnotForeignKey_SemicolonKeyword_7_q;
 	protected AbstractElementAlias match_YAnnotIdentifier_SemicolonKeyword_7_q;
-	protected AbstractElementAlias match_YAnnotJava_SemicolonKeyword_3_q;
 	protected AbstractElementAlias match_YAnnotPrimaryKey_SemicolonKeyword_6_q;
 	protected AbstractElementAlias match_YAnnotRelationship_SemicolonKeyword_9_q;
 	protected AbstractElementAlias match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q;
-	protected AbstractElementAlias match_YAnnotSwift_SemicolonKeyword_5_q;
 	protected AbstractElementAlias match_YModel_SemicolonKeyword_2_q;
 	
 	@Inject
@@ -45,15 +42,12 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 		match_YAnnotColumnLike_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getYAnnotColumnLikeAccess().getSemicolonKeyword_3());
 		match_YAnnotColumn_SemicolonKeyword_7_q = new TokenAlias(false, true, grammarAccess.getYAnnotColumnAccess().getSemicolonKeyword_7());
 		match_YAnnotColumn___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotColumnAccess().getLeftParenthesisKeyword_6_0()), new TokenAlias(false, false, grammarAccess.getYAnnotColumnAccess().getRightParenthesisKeyword_6_2()));
-		match_YAnnotDatabase_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getYAnnotDatabaseAccess().getSemicolonKeyword_3());
 		match_YAnnotEntity___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotEntityAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getYAnnotEntityAccess().getRightParenthesisKeyword_3_2()));
 		match_YAnnotForeignKey_SemicolonKeyword_7_q = new TokenAlias(false, true, grammarAccess.getYAnnotForeignKeyAccess().getSemicolonKeyword_7());
 		match_YAnnotIdentifier_SemicolonKeyword_7_q = new TokenAlias(false, true, grammarAccess.getYAnnotIdentifierAccess().getSemicolonKeyword_7());
-		match_YAnnotJava_SemicolonKeyword_3_q = new TokenAlias(false, true, grammarAccess.getYAnnotJavaAccess().getSemicolonKeyword_3());
 		match_YAnnotPrimaryKey_SemicolonKeyword_6_q = new TokenAlias(false, true, grammarAccess.getYAnnotPrimaryKeyAccess().getSemicolonKeyword_6());
 		match_YAnnotRelationship_SemicolonKeyword_9_q = new TokenAlias(false, true, grammarAccess.getYAnnotRelationshipAccess().getSemicolonKeyword_9());
 		match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getLeftParenthesisKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getRightParenthesisKeyword_7_2()));
-		match_YAnnotSwift_SemicolonKeyword_5_q = new TokenAlias(false, true, grammarAccess.getYAnnotSwiftAccess().getSemicolonKeyword_5());
 		match_YModel_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getYModelAccess().getSemicolonKeyword_2());
 	}
 	
@@ -79,24 +73,18 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 				emit_YAnnotColumn_SemicolonKeyword_7_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotColumn___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q.equals(syntax))
 				emit_YAnnotColumn___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_YAnnotDatabase_SemicolonKeyword_3_q.equals(syntax))
-				emit_YAnnotDatabase_SemicolonKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotEntity___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_YAnnotEntity___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotForeignKey_SemicolonKeyword_7_q.equals(syntax))
 				emit_YAnnotForeignKey_SemicolonKeyword_7_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotIdentifier_SemicolonKeyword_7_q.equals(syntax))
 				emit_YAnnotIdentifier_SemicolonKeyword_7_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_YAnnotJava_SemicolonKeyword_3_q.equals(syntax))
-				emit_YAnnotJava_SemicolonKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotPrimaryKey_SemicolonKeyword_6_q.equals(syntax))
 				emit_YAnnotPrimaryKey_SemicolonKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotRelationship_SemicolonKeyword_9_q.equals(syntax))
 				emit_YAnnotRelationship_SemicolonKeyword_9_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q.equals(syntax))
 				emit_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_YAnnotSwift_SemicolonKeyword_5_q.equals(syntax))
-				emit_YAnnotSwift_SemicolonKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YModel_SemicolonKeyword_2_q.equals(syntax))
 				emit_YModel_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -184,17 +172,6 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     name=ValidID (ambiguity) (rule end)
-	 */
-	protected void emit_YAnnotDatabase_SemicolonKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
@@ -224,18 +201,6 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	 *     annots+=[YAnnotIdInner|ID] ')' (ambiguity) (rule end)
 	 */
 	protected void emit_YAnnotIdentifier_SemicolonKeyword_7_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) '@java' (ambiguity) (rule start)
-	 *     database=[YAnnotDatabase|ID] (ambiguity) (rule end)
-	 */
-	protected void emit_YAnnotJava_SemicolonKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -276,18 +241,6 @@ public abstract class AbstractModelSyntacticSequencer extends AbstractSyntacticS
 	 *     target=[YAnnotEntity|QualifiedName] (ambiguity) '<-' inverse=[YAnnotRelationship|QualifiedName]
 	 */
 	protected void emit_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     database=[YAnnotDatabase|ID] (ambiguity) (rule end)
-	 *     name=ValidID (ambiguity) (rule end)
-	 */
-	protected void emit_YAnnotSwift_SemicolonKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

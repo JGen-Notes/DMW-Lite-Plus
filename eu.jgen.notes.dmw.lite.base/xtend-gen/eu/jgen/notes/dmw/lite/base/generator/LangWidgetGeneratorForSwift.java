@@ -8,7 +8,7 @@ import eu.jgen.notes.dmw.lite.base.lang.YMember;
 import eu.jgen.notes.dmw.lite.base.lang.YProperty;
 import eu.jgen.notes.dmw.lite.base.lang.YWidget;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift;
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
 import eu.jgen.notes.dmw.lite.utility.LangSwiftGeneratorHelper;
 import eu.jgen.notes.dmw.lite.utility.LangUtil;
 import java.util.function.Consumer;
@@ -36,24 +36,23 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
   @Override
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     final Function1<EObject, Boolean> _function = (EObject element) -> {
-      return Boolean.valueOf((element instanceof YAnnotSwift));
+      return Boolean.valueOf((element instanceof YAnnotTechnicalDesign));
     };
     final Procedure1<EObject> _function_1 = (EObject element) -> {
-      final YAnnotSwift annotSwift = ((YAnnotSwift) element);
-      this.generatePackageModule(fsa, annotSwift);
+      this.generatePackageModule(fsa, "mymodule");
       final Function1<EObject, Boolean> _function_2 = (EObject element2) -> {
         return Boolean.valueOf((element2 instanceof YWidget));
       };
       final Procedure1<EObject> _function_3 = (EObject element2) -> {
         final YWidget widget = ((YWidget) element2);
-        this.generateWidget(fsa, widget, annotSwift);
+        this.generateWidget(fsa, widget, "mymodule");
       };
       IteratorExtensions.<EObject>forEach(IteratorExtensions.<EObject>filter(input.getAllContents(), _function_2), _function_3);
     };
     IteratorExtensions.<EObject>forEach(IteratorExtensions.<EObject>filter(input.getAllContents(), _function), _function_1);
   }
   
-  public void generateWidget(final IFileSystemAccess fsa, final YWidget widget, final YAnnotSwift annotSwift) {
+  public void generateWidget(final IFileSystemAccess fsa, final YWidget widget, final String moduleName) {
     final Consumer<YClass> _function = (YClass clazz) -> {
       if (((clazz.getSuperclass() != null) && Objects.equal(clazz.getSuperclass().getName(), "Widget"))) {
         StringConcatenation _builder = new StringConcatenation();
@@ -92,26 +91,15 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
         _builder.append("}");
         _builder.newLine();
         final String body = _builder.toString();
-        String _name_1 = annotSwift.getName();
-        String _plus = (_name_1 + "/Sources/");
-        String _name_2 = annotSwift.getName();
-        String _plus_1 = (_plus + _name_2);
-        String _plus_2 = (_plus_1 + "/");
-        String _name_3 = clazz.getName();
-        String _plus_3 = (_plus_2 + _name_3);
-        String _plus_4 = (_plus_3 + ".swift");
+        String _name_1 = clazz.getName();
+        String _plus = ((((moduleName + "/Sources/") + moduleName) + "/") + _name_1);
+        String _plus_1 = (_plus + ".swift");
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.newLine();
         _builder_1.append(body);
         _builder_1.newLineIfNotEmpty();
-        fsa.generateFile(_plus_4, 
+        fsa.generateFile(_plus_1, 
           LangOutputProvider.SWIFT, _builder_1);
-        String _name_4 = annotSwift.getName();
-        String _plus_5 = (_name_4 + "/Sources/");
-        String _name_5 = annotSwift.getName();
-        String _plus_6 = (_plus_5 + _name_5);
-        String _plus_7 = (_plus_6 + "/");
-        String _plus_8 = (_plus_7 + "main.swift");
         StringConcatenation _builder_2 = new StringConcatenation();
         _builder_2.append("// dmw-generator-version: 0.2");
         _builder_2.newLine();
@@ -150,7 +138,8 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
         _builder_2.newLine();
         _builder_2.append("Kitura.run()");
         _builder_2.newLine();
-        fsa.generateFile(_plus_8, 
+        fsa.generateFile(
+          ((((moduleName + "/Sources/") + moduleName) + "/") + "main.swift"), 
           LangOutputProvider.SWIFT, _builder_2);
       }
     };
@@ -318,11 +307,7 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     }
   }
   
-  protected void generatePackageModule(final IFileSystemAccess fsa, final YAnnotSwift annotSwift) {
-    String _name = annotSwift.getName();
-    String _plus = (_name + "/");
-    String _plus_1 = (_plus + "Package");
-    String _plus_2 = (_plus_1 + ".swift");
+  protected void generatePackageModule(final IFileSystemAccess fsa, final String moduleName) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("// swift-tools-version:4.0");
     _builder.newLine();
@@ -336,8 +321,7 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("name: \"");
-    String _name_1 = annotSwift.getName();
-    _builder.append(_name_1, "    ");
+    _builder.append(moduleName, "    ");
     _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
@@ -351,14 +335,12 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     _builder.newLine();
     _builder.append("            ");
     _builder.append("name: \"");
-    String _name_2 = annotSwift.getName();
-    _builder.append(_name_2, "            ");
+    _builder.append(moduleName, "            ");
     _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("            ");
     _builder.append("targets: [\"");
-    String _name_3 = annotSwift.getName();
-    _builder.append(_name_3, "            ");
+    _builder.append(moduleName, "            ");
     _builder.append("\"]),");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
@@ -390,8 +372,7 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     _builder.newLine();
     _builder.append("                ");
     _builder.append("name: \"");
-    String _name_4 = annotSwift.getName();
-    _builder.append(_name_4, "                ");
+    _builder.append(moduleName, "                ");
     _builder.append("\",");
     _builder.newLineIfNotEmpty();
     _builder.append("                ");
@@ -402,11 +383,9 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     _builder.newLine();
     _builder.append(")");
     _builder.newLine();
-    fsa.generateFile(_plus_2, 
+    fsa.generateFile(
+      (((moduleName + "/") + "Package") + ".swift"), 
       LangOutputProvider.SWIFT, _builder);
-    String _name_5 = annotSwift.getName();
-    String _plus_3 = (_name_5 + "/");
-    String _plus_4 = (_plus_3 + ".gitignore");
     StringConcatenation _builder_1 = new StringConcatenation();
     _builder_1.append(".DS_Store");
     _builder_1.newLine();
@@ -416,21 +395,18 @@ public class LangWidgetGeneratorForSwift implements IGenerator {
     _builder_1.newLine();
     _builder_1.append("/*.xcodeproj");
     _builder_1.newLine();
-    fsa.generateFile(_plus_4, 
+    fsa.generateFile(
+      ((moduleName + "/") + ".gitignore"), 
       LangOutputProvider.SWIFT, _builder_1);
-    String _name_6 = annotSwift.getName();
-    String _plus_5 = (_name_6 + "/");
-    String _plus_6 = (_plus_5 + "README.md");
     StringConcatenation _builder_2 = new StringConcatenation();
     _builder_2.append("# ");
-    String _name_7 = annotSwift.getName();
-    _builder_2.append(_name_7);
+    _builder_2.append(moduleName);
     _builder_2.newLineIfNotEmpty();
     _builder_2.newLine();
-    String _documentation = this._langSwiftGeneratorHelper.getDocumentation(annotSwift);
-    _builder_2.append(_documentation);
-    _builder_2.newLineIfNotEmpty();
-    fsa.generateFile(_plus_6, 
+    _builder_2.append(" ");
+    _builder_2.newLine();
+    fsa.generateFile(
+      ((moduleName + "/") + "README.md"), 
       LangOutputProvider.SWIFT, _builder_2);
   }
 }

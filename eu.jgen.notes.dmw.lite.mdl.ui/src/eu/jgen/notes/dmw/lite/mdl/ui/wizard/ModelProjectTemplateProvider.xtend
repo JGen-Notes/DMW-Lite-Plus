@@ -63,10 +63,13 @@ final class DMWProject {
 		name.enabled = advanced.value
 		packEntity.value = projectInfo.projectName
 		packEntity.enabled = advanced.value
+		packTD.value = projectInfo.projectName
+		packTD.enabled = advanced.value
 		td.enabled = advanced.value
 		if (!advanced.value) {
 			name.value = ""
 			packEntity.value = ""
+			packTD.value = ""
 			td.value = td.value
 		}
 	}
@@ -98,9 +101,8 @@ final class DMWProject {
 					@java;				 
 					
 					/*
-					* This is entity «name.value» fragment.
-					*/
-																 
+					* This is ...
+					*/																 
 					@entity «name.value» {
 						@attribute	id (length=9);										
 					}

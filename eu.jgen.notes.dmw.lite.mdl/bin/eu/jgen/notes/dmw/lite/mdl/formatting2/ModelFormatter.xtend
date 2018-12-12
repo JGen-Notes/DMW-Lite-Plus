@@ -28,14 +28,11 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotForeignKey
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotJava
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotPrimaryKey
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotSwift
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTable
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 import eu.jgen.notes.dmw.lite.mdl.model.YImport
@@ -46,9 +43,8 @@ import eu.jgen.notes.dmw.lite.mdl.services.ModelGrammarAccess
 import com.google.inject.Inject
 
 class ModelFormatter extends AbstractFormatter2 {
-	
-	@Inject extension ModelGrammarAccess
 
+	@Inject extension ModelGrammarAccess
 
 	def dispatch void format(YModel model, extension IFormattableDocument document) {
 		model.regionFor.keyword("package").append[oneSpace]
@@ -58,20 +54,14 @@ class ModelFormatter extends AbstractFormatter2 {
 			yImport.format;
 		}
 		for (annotation : model.getAnnotations()) {
-			if(annotation instanceof YAnnotEntity) {
-				 (annotation as YAnnotEntity).format
-			} else if(annotation instanceof YAnnotTechnicalDesign) {
-				 (annotation as YAnnotTechnicalDesign).format
-			} else if(annotation instanceof YAnnotDatabase) {
-				 (annotation as YAnnotDatabase).format
-			} else if(annotation instanceof YAnnotJava) {
-				 (annotation as YAnnotJava).format
-			} else if(annotation instanceof YAnnotSwift) {
-				 (annotation as YAnnotSwift).format
+			if (annotation instanceof YAnnotEntity) {
+				(annotation as YAnnotEntity).format
+			} else if (annotation instanceof YAnnotTechnicalDesign) {
+				(annotation as YAnnotTechnicalDesign).format
 			} else {
-					annotation.format;
+				annotation.format;
 			}
-		
+
 		}
 
 	}
@@ -81,31 +71,31 @@ class ModelFormatter extends AbstractFormatter2 {
 		imp.regionFor.feature(ModelPackage.eINSTANCE.YImport_ImportedNamespace)
 	}
 
-	def dispatch void format(YAnnotDatabase annotDatabase, extension IFormattableDocument document) {
-		annotDatabase.regionFor.keyword("@database").prepend[newLines = 2].append[oneSpace]
-		annotDatabase.regionFor.feature(ModelPackage.eINSTANCE.YImport_ImportedNamespace).prepend[oneSpace]
-		annotDatabase.regionFor.keyword(";").prepend[noSpace]
-	}
-
-	def dispatch void format(YAnnotSwift annotSwift, extension IFormattableDocument document) {
-		annotSwift.regionFor.keyword("@swift").prepend[newLines = 2].append[oneSpace]
-		annotSwift.regionFor.keyword("module").surround[oneSpace]
-		annotSwift.regionFor.keyword("uses").surround[oneSpace]
-		annotSwift.regionFor.keyword(";").prepend[noSpace]
-		annotSwift.regionFor.feature(ModelPackage.eINSTANCE.YAnnotSwift_Name).surround[oneSpace]
-	}
-
-	def dispatch void format(YAnnotJava annotJava, extension IFormattableDocument document) {
-		annotJava.regionFor.keyword("@java").prepend[newLines = 2].append[oneSpace]
-		annotJava.regionFor.keyword("uses").surround[oneSpace]
-		annotJava.regionFor.keyword(";").prepend[noSpace]
-		annotJava.regionFor.feature(ModelPackage.eINSTANCE.YAnnotSwift_Name).surround[oneSpace]
-	}
+//	def dispatch void format(YAnnotDatabase annotDatabase, extension IFormattableDocument document) {
+//		annotDatabase.regionFor.keyword("@database").prepend[newLines = 2].append[oneSpace]
+//		annotDatabase.regionFor.feature(ModelPackage.eINSTANCE.YImport_ImportedNamespace).prepend[oneSpace]
+//		annotDatabase.regionFor.keyword(";").prepend[noSpace]
+//	}
+//
+//	def dispatch void format(YAnnotSwift annotSwift, extension IFormattableDocument document) {
+//		annotSwift.regionFor.keyword("@swift").prepend[newLines = 2].append[oneSpace]
+//		annotSwift.regionFor.keyword("module").surround[oneSpace]
+//		annotSwift.regionFor.keyword("uses").surround[oneSpace]
+//		annotSwift.regionFor.keyword(";").prepend[noSpace]
+//		annotSwift.regionFor.feature(ModelPackage.eINSTANCE.YAnnotSwift_Name).surround[oneSpace]
+//	}
+//
+//	def dispatch void format(YAnnotJava annotJava, extension IFormattableDocument document) {
+//		annotJava.regionFor.keyword("@java").prepend[newLines = 2].append[oneSpace]
+//		annotJava.regionFor.keyword("uses").surround[oneSpace]
+//		annotJava.regionFor.keyword(";").prepend[noSpace]
+//		annotJava.regionFor.feature(ModelPackage.eINSTANCE.YAnnotSwift_Name).surround[oneSpace]
+//	}
 
 	def dispatch void format(YAnnotEntity annotEntity, extension IFormattableDocument document) {
 		annotEntity.regionFor.keyword("@entity").prepend[newLines = 2].append[oneSpace]
 		annotEntity.regionFor.keyword(":").surround[oneSpace]
-		annotEntity.regionFor.feature(ModelPackage.eINSTANCE.YAnnotEntity_Name).surround[oneSpace]
+		annotEntity.regionFor.feature(ModelPackage.eINSTANCE.YAnnotation_Name).surround[oneSpace]
 		annotEntity.regionFor.keyword("{").prepend[oneSpace].append[newLine]
 		annotEntity.interior[indent].annotations.forEach[format]
 		annotEntity.regionFor.keyword("}").prepend[newLine]
@@ -117,7 +107,6 @@ class ModelFormatter extends AbstractFormatter2 {
 		annotAttr.regionFor.keyword(":").surround[oneSpace]
 		annotAttr.regionFor.keyword(";")
 	}
-
 
 	def dispatch void format(YAnnotRelationship annotRel, extension IFormattableDocument document) {
 		annotRel.regionFor.keyword("@relationship").prepend[newLine].append[oneSpace]
@@ -143,8 +132,6 @@ class ModelFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(YAnnotTechnicalDesign annotTechnicalDesign, extension IFormattableDocument document) {
 		annotTechnicalDesign.regionFor.keyword("@td").prepend[newLines = 2].append[oneSpace]
-		annotTechnicalDesign.regionFor.keyword("database").surround[oneSpace]
-		annotTechnicalDesign.regionFor.feature(ModelPackage.eINSTANCE.YAnnotTechnicalDesign_Database).surround[oneSpace]
 		annotTechnicalDesign.regionFor.keyword("{").prepend[oneSpace].append[newLine]
 		annotTechnicalDesign.interior[indent].features.forEach[format]
 		annotTechnicalDesign.regionFor.keyword("}").prepend[newLine]

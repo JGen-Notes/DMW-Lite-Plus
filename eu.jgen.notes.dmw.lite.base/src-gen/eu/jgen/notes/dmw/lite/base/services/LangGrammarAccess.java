@@ -3043,7 +3043,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YAnnotation:
-	//	YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift;
+	//	YAnnotEntity | YAnnotTechnicalDesign;
 	public ModelGrammarAccess.YAnnotationElements getYAnnotationAccess() {
 		return gaModel.getYAnnotationAccess();
 	}
@@ -3081,9 +3081,6 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		return getYAnnotAttributeAccess().getRule();
 	}
 	
-	////YAnnotDataType:
-	////	'Int' | 'Short' | 'Long' | 'String' | 'Date' | 'Time' | 'Timestamp' | 'Double' | 'Bool' | 'Blob'
-	////;
 	//YAnnotRelationship:
 	//	{YAnnotRelationship} '@relationship' name=ValidID optional?='?'? '->'
 	//	target=[YAnnotEntity|QualifiedName] many?='*'? (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
@@ -3151,7 +3148,9 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	///*
 	// * Start Technical design
 	// */ YAnnotTechnicalDesign:
-	//	{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{'
+	//	{YAnnotTechnicalDesign} '@td' name=ValidID (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
+	//	elementValuePairs+=YAnnotationElementValuePair)*)?
+	//	')')? '{'
 	//	features+=YAnnotTable*
 	//	'}';
 	public ModelGrammarAccess.YAnnotTechnicalDesignElements getYAnnotTechnicalDesignAccess() {
@@ -3232,42 +3231,23 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		return getYAnnotForeignKeyAccess().getRule();
 	}
 	
-	///*
-	// * Swift Generation Annotations
-	// */ YAnnotJava:
-	//	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
-	public ModelGrammarAccess.YAnnotJavaElements getYAnnotJavaAccess() {
-		return gaModel.getYAnnotJavaAccess();
-	}
-	
-	public ParserRule getYAnnotJavaRule() {
-		return getYAnnotJavaAccess().getRule();
-	}
-	
-	///*
-	// * Swift Generation Annotations
-	// */ YAnnotSwift:
-	//	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
-	public ModelGrammarAccess.YAnnotSwiftElements getYAnnotSwiftAccess() {
-		return gaModel.getYAnnotSwiftAccess();
-	}
-	
-	public ParserRule getYAnnotSwiftRule() {
-		return getYAnnotSwiftAccess().getRule();
-	}
-	
-	///*
-	// * Database Generation Annotations
-	// */ YAnnotDatabase:
-	//	{YAnnotDatabase} '@database' name=ValidID ';'?;
-	public ModelGrammarAccess.YAnnotDatabaseElements getYAnnotDatabaseAccess() {
-		return gaModel.getYAnnotDatabaseAccess();
-	}
-	
-	public ParserRule getYAnnotDatabaseRule() {
-		return getYAnnotDatabaseAccess().getRule();
-	}
-	
+	////	/*
+	//// * Swift Generation Annotations
+	//// */
+	////YAnnotJava:
+	////	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
+	////
+	////	/*
+	//// * Swift Generation Annotations
+	//// */
+	////YAnnotSwift:
+	////	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
+	////
+	/////*
+	//// * Database Generation Annotations
+	//// */
+	////YAnnotDatabase:
+	////	{YAnnotDatabase} '@database' name=ValidID ';'?;
 	//QualifiedName:
 	//	ValidID (=> '.' ValidID)*;
 	public ModelGrammarAccess.QualifiedNameElements getQualifiedNameAccess() {

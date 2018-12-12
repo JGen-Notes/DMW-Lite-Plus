@@ -101,15 +101,12 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cYAnnotEntityParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cYAnnotTechnicalDesignParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cYAnnotDatabaseParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cYAnnotJavaParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cYAnnotSwiftParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//YAnnotation:
-		//	YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift;
+		//	YAnnotEntity | YAnnotTechnicalDesign;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift
+		//YAnnotEntity | YAnnotTechnicalDesign
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//YAnnotEntity
@@ -117,15 +114,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//YAnnotTechnicalDesign
 		public RuleCall getYAnnotTechnicalDesignParserRuleCall_1() { return cYAnnotTechnicalDesignParserRuleCall_1; }
-		
-		//YAnnotDatabase
-		public RuleCall getYAnnotDatabaseParserRuleCall_2() { return cYAnnotDatabaseParserRuleCall_2; }
-		
-		//YAnnotJava
-		public RuleCall getYAnnotJavaParserRuleCall_3() { return cYAnnotJavaParserRuleCall_3; }
-		
-		//YAnnotSwift
-		public RuleCall getYAnnotSwiftParserRuleCall_4() { return cYAnnotSwiftParserRuleCall_4; }
 	}
 	public class YAnnotEntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.mdl.Model.YAnnotEntity");
@@ -332,9 +320,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInverseYAnnotRelationshipQualifiedNameParserRuleCall_8_1_0_1 = (RuleCall)cInverseYAnnotRelationshipCrossReference_8_1_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
-		////YAnnotDataType:
-		////	'Int' | 'Short' | 'Long' | 'String' | 'Date' | 'Time' | 'Timestamp' | 'Double' | 'Bool' | 'Blob'
-		////;
 		//YAnnotRelationship:
 		//	{YAnnotRelationship} '@relationship' name=ValidID optional?='?'? '->'
 		//	target=[YAnnotEntity|QualifiedName] many?='*'? (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
@@ -722,10 +707,18 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cYAnnotTechnicalDesignAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cTdKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cDatabaseKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cDatabaseAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cDatabaseYAnnotDatabaseCrossReference_3_0 = (CrossReference)cDatabaseAssignment_3.eContents().get(0);
-		private final RuleCall cDatabaseYAnnotDatabaseIDTerminalRuleCall_3_0_1 = (RuleCall)cDatabaseYAnnotDatabaseCrossReference_3_0.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Assignment cElementValuePairsAssignment_3_1_0 = (Assignment)cGroup_3_1.eContents().get(0);
+		private final RuleCall cElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_0_0 = (RuleCall)cElementValuePairsAssignment_3_1_0.eContents().get(0);
+		private final Group cGroup_3_1_1 = (Group)cGroup_3_1.eContents().get(1);
+		private final Keyword cCommaKeyword_3_1_1_0 = (Keyword)cGroup_3_1_1.eContents().get(0);
+		private final Assignment cElementValuePairsAssignment_3_1_1_1 = (Assignment)cGroup_3_1_1.eContents().get(1);
+		private final RuleCall cElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_1_1_0 = (RuleCall)cElementValuePairsAssignment_3_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cFeaturesAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cFeaturesYAnnotTableParserRuleCall_5_0 = (RuleCall)cFeaturesAssignment_5.eContents().get(0);
@@ -734,12 +727,15 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		///*
 		// * Start Technical design
 		// */ YAnnotTechnicalDesign:
-		//	{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{'
+		//	{YAnnotTechnicalDesign} '@td' name=ValidID (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
+		//	elementValuePairs+=YAnnotationElementValuePair)*)?
+		//	')') '{'
 		//	features+=YAnnotTable*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{' features+=YAnnotTable* '}'
+		//{YAnnotTechnicalDesign} '@td' name=ValidID (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
+		//elementValuePairs+=YAnnotationElementValuePair)*)? ')') '{' features+=YAnnotTable* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{YAnnotTechnicalDesign}
@@ -748,17 +744,41 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		//'@td'
 		public Keyword getTdKeyword_1() { return cTdKeyword_1; }
 		
-		//'database'
-		public Keyword getDatabaseKeyword_2() { return cDatabaseKeyword_2; }
+		//name=ValidID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//database=[YAnnotDatabase]
-		public Assignment getDatabaseAssignment_3() { return cDatabaseAssignment_3; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
 		
-		//[YAnnotDatabase]
-		public CrossReference getDatabaseYAnnotDatabaseCrossReference_3_0() { return cDatabaseYAnnotDatabaseCrossReference_3_0; }
+		//=> '(' (elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)? ')'
+		public Group getGroup_3() { return cGroup_3; }
 		
-		//ID
-		public RuleCall getDatabaseYAnnotDatabaseIDTerminalRuleCall_3_0_1() { return cDatabaseYAnnotDatabaseIDTerminalRuleCall_3_0_1; }
+		//=> '('
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+		
+		//(elementValuePairs+=YAnnotationElementValuePair (',' elementValuePairs+=YAnnotationElementValuePair)*)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+		
+		//elementValuePairs+=YAnnotationElementValuePair
+		public Assignment getElementValuePairsAssignment_3_1_0() { return cElementValuePairsAssignment_3_1_0; }
+		
+		//YAnnotationElementValuePair
+		public RuleCall getElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_0_0() { return cElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_0_0; }
+		
+		//(',' elementValuePairs+=YAnnotationElementValuePair)*
+		public Group getGroup_3_1_1() { return cGroup_3_1_1; }
+		
+		//','
+		public Keyword getCommaKeyword_3_1_1_0() { return cCommaKeyword_3_1_1_0; }
+		
+		//elementValuePairs+=YAnnotationElementValuePair
+		public Assignment getElementValuePairsAssignment_3_1_1_1() { return cElementValuePairsAssignment_3_1_1_1; }
+		
+		//YAnnotationElementValuePair
+		public RuleCall getElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_1_1_0() { return cElementValuePairsYAnnotationElementValuePairParserRuleCall_3_1_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
@@ -1204,141 +1224,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		//';'?
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
-	public class YAnnotJavaElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.mdl.Model.YAnnotJava");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cYAnnotJavaAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cJavaKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cUsesKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cDatabaseAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cDatabaseYAnnotDatabaseCrossReference_2_1_0 = (CrossReference)cDatabaseAssignment_2_1.eContents().get(0);
-		private final RuleCall cDatabaseYAnnotDatabaseIDTerminalRuleCall_2_1_0_1 = (RuleCall)cDatabaseYAnnotDatabaseCrossReference_2_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		///*
-		// * Swift Generation Annotations
-		// */ YAnnotJava:
-		//	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?
-		public Group getGroup() { return cGroup; }
-		
-		//{YAnnotJava}
-		public Action getYAnnotJavaAction_0() { return cYAnnotJavaAction_0; }
-		
-		//'@java'
-		public Keyword getJavaKeyword_1() { return cJavaKeyword_1; }
-		
-		//('uses' database=[YAnnotDatabase])?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'uses'
-		public Keyword getUsesKeyword_2_0() { return cUsesKeyword_2_0; }
-		
-		//database=[YAnnotDatabase]
-		public Assignment getDatabaseAssignment_2_1() { return cDatabaseAssignment_2_1; }
-		
-		//[YAnnotDatabase]
-		public CrossReference getDatabaseYAnnotDatabaseCrossReference_2_1_0() { return cDatabaseYAnnotDatabaseCrossReference_2_1_0; }
-		
-		//ID
-		public RuleCall getDatabaseYAnnotDatabaseIDTerminalRuleCall_2_1_0_1() { return cDatabaseYAnnotDatabaseIDTerminalRuleCall_2_1_0_1; }
-		
-		//';'?
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
-	public class YAnnotSwiftElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.mdl.Model.YAnnotSwift");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cYAnnotSwiftAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cSwiftKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cModuleKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameValidIDParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cUsesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDatabaseAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cDatabaseYAnnotDatabaseCrossReference_4_1_0 = (CrossReference)cDatabaseAssignment_4_1.eContents().get(0);
-		private final RuleCall cDatabaseYAnnotDatabaseIDTerminalRuleCall_4_1_0_1 = (RuleCall)cDatabaseYAnnotDatabaseCrossReference_4_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		///*
-		// * Swift Generation Annotations
-		// */ YAnnotSwift:
-		//	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?
-		public Group getGroup() { return cGroup; }
-		
-		//{YAnnotSwift}
-		public Action getYAnnotSwiftAction_0() { return cYAnnotSwiftAction_0; }
-		
-		//'@swift'
-		public Keyword getSwiftKeyword_1() { return cSwiftKeyword_1; }
-		
-		//'module'
-		public Keyword getModuleKeyword_2() { return cModuleKeyword_2; }
-		
-		//name=ValidID
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
-		
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_3_0() { return cNameValidIDParserRuleCall_3_0; }
-		
-		//('uses' database=[YAnnotDatabase])?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'uses'
-		public Keyword getUsesKeyword_4_0() { return cUsesKeyword_4_0; }
-		
-		//database=[YAnnotDatabase]
-		public Assignment getDatabaseAssignment_4_1() { return cDatabaseAssignment_4_1; }
-		
-		//[YAnnotDatabase]
-		public CrossReference getDatabaseYAnnotDatabaseCrossReference_4_1_0() { return cDatabaseYAnnotDatabaseCrossReference_4_1_0; }
-		
-		//ID
-		public RuleCall getDatabaseYAnnotDatabaseIDTerminalRuleCall_4_1_0_1() { return cDatabaseYAnnotDatabaseIDTerminalRuleCall_4_1_0_1; }
-		
-		//';'?
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
-	}
-	public class YAnnotDatabaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.mdl.Model.YAnnotDatabase");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cYAnnotDatabaseAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cDatabaseKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		///*
-		// * Database Generation Annotations
-		// */ YAnnotDatabase:
-		//	{YAnnotDatabase} '@database' name=ValidID ';'?;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{YAnnotDatabase} '@database' name=ValidID ';'?
-		public Group getGroup() { return cGroup; }
-		
-		//{YAnnotDatabase}
-		public Action getYAnnotDatabaseAction_0() { return cYAnnotDatabaseAction_0; }
-		
-		//'@database'
-		public Keyword getDatabaseKeyword_1() { return cDatabaseKeyword_1; }
-		
-		//name=ValidID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
-		
-		//';'?
-		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
-	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.mdl.Model.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1347,6 +1232,23 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cValidIDParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
+		////	/*
+		//// * Swift Generation Annotations
+		//// */
+		////YAnnotJava:
+		////	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
+		////
+		////	/*
+		//// * Swift Generation Annotations
+		//// */
+		////YAnnotSwift:
+		////	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
+		////
+		/////*
+		//// * Database Generation Annotations
+		//// */
+		////YAnnotDatabase:
+		////	{YAnnotDatabase} '@database' name=ValidID ';'?;
 		//QualifiedName:
 		//	ValidID (=> '.' ValidID)*;
 		@Override public ParserRule getRule() { return rule; }
@@ -1443,9 +1345,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 	private final YAnnotAbstractColumnElements pYAnnotAbstractColumn;
 	private final YAnnotPrimaryKeyElements pYAnnotPrimaryKey;
 	private final YAnnotForeignKeyElements pYAnnotForeignKey;
-	private final YAnnotJavaElements pYAnnotJava;
-	private final YAnnotSwiftElements pYAnnotSwift;
-	private final YAnnotDatabaseElements pYAnnotDatabase;
 	private final QualifiedNameElements pQualifiedName;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final ValidIDElements pValidID;
@@ -1478,9 +1377,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		this.pYAnnotAbstractColumn = new YAnnotAbstractColumnElements();
 		this.pYAnnotPrimaryKey = new YAnnotPrimaryKeyElements();
 		this.pYAnnotForeignKey = new YAnnotForeignKeyElements();
-		this.pYAnnotJava = new YAnnotJavaElements();
-		this.pYAnnotSwift = new YAnnotSwiftElements();
-		this.pYAnnotDatabase = new YAnnotDatabaseElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pValidID = new ValidIDElements();
@@ -1537,7 +1433,7 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YAnnotation:
-	//	YAnnotEntity | YAnnotTechnicalDesign | YAnnotDatabase | YAnnotJava | YAnnotSwift;
+	//	YAnnotEntity | YAnnotTechnicalDesign;
 	public YAnnotationElements getYAnnotationAccess() {
 		return pYAnnotation;
 	}
@@ -1575,9 +1471,6 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getYAnnotAttributeAccess().getRule();
 	}
 	
-	////YAnnotDataType:
-	////	'Int' | 'Short' | 'Long' | 'String' | 'Date' | 'Time' | 'Timestamp' | 'Double' | 'Bool' | 'Blob'
-	////;
 	//YAnnotRelationship:
 	//	{YAnnotRelationship} '@relationship' name=ValidID optional?='?'? '->'
 	//	target=[YAnnotEntity|QualifiedName] many?='*'? (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
@@ -1645,7 +1538,9 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 	///*
 	// * Start Technical design
 	// */ YAnnotTechnicalDesign:
-	//	{YAnnotTechnicalDesign} '@td' 'database' database=[YAnnotDatabase] '{'
+	//	{YAnnotTechnicalDesign} '@td' name=ValidID (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
+	//	elementValuePairs+=YAnnotationElementValuePair)*)?
+	//	')') '{'
 	//	features+=YAnnotTable*
 	//	'}';
 	public YAnnotTechnicalDesignElements getYAnnotTechnicalDesignAccess() {
@@ -1726,42 +1621,23 @@ public class ModelGrammarAccess extends AbstractGrammarElementFinder {
 		return getYAnnotForeignKeyAccess().getRule();
 	}
 	
-	///*
-	// * Swift Generation Annotations
-	// */ YAnnotJava:
-	//	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
-	public YAnnotJavaElements getYAnnotJavaAccess() {
-		return pYAnnotJava;
-	}
-	
-	public ParserRule getYAnnotJavaRule() {
-		return getYAnnotJavaAccess().getRule();
-	}
-	
-	///*
-	// * Swift Generation Annotations
-	// */ YAnnotSwift:
-	//	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
-	public YAnnotSwiftElements getYAnnotSwiftAccess() {
-		return pYAnnotSwift;
-	}
-	
-	public ParserRule getYAnnotSwiftRule() {
-		return getYAnnotSwiftAccess().getRule();
-	}
-	
-	///*
-	// * Database Generation Annotations
-	// */ YAnnotDatabase:
-	//	{YAnnotDatabase} '@database' name=ValidID ';'?;
-	public YAnnotDatabaseElements getYAnnotDatabaseAccess() {
-		return pYAnnotDatabase;
-	}
-	
-	public ParserRule getYAnnotDatabaseRule() {
-		return getYAnnotDatabaseAccess().getRule();
-	}
-	
+	////	/*
+	//// * Swift Generation Annotations
+	//// */
+	////YAnnotJava:
+	////	{YAnnotJava} '@java' ('uses' database=[YAnnotDatabase])? ';'?;
+	////
+	////	/*
+	//// * Swift Generation Annotations
+	//// */
+	////YAnnotSwift:
+	////	{YAnnotSwift} '@swift' 'module' name=ValidID ('uses' database=[YAnnotDatabase])? ';'?;
+	////
+	/////*
+	//// * Database Generation Annotations
+	//// */
+	////YAnnotDatabase:
+	////	{YAnnotDatabase} '@database' name=ValidID ';'?;
 	//QualifiedName:
 	//	ValidID (=> '.' ValidID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {

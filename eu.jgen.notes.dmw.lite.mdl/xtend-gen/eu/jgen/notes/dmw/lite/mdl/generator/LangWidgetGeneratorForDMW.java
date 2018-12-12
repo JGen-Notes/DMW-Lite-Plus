@@ -77,16 +77,20 @@ public class LangWidgetGeneratorForDMW implements IGenerator {
         _builder.append("}");
         _builder.newLine();
         final String body = _builder.toString();
-        String _fileSystemPath = this.getFileSystemPath(model.getName());
-        String _plus = (_fileSystemPath + "/model/");
-        String _name_4 = entity.getName();
-        String _plus_1 = (_plus + _name_4);
-        String _plus_2 = (_plus_1 + ".dmw");
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append(body);
-        _builder_1.newLineIfNotEmpty();
-        fsa.generateFile(_plus_2, 
-          ModelOutputProvider.SRC, _builder_1);
+        String _name_4 = model.getName();
+        boolean _tripleNotEquals = (_name_4 != null);
+        if (_tripleNotEquals) {
+          String _fileSystemPath = this.getFileSystemPath(model.getName());
+          String _plus = (_fileSystemPath + "/model/");
+          String _name_5 = entity.getName();
+          String _plus_1 = (_plus + _name_5);
+          String _plus_2 = (_plus_1 + ".dmw");
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append(body);
+          _builder_1.newLineIfNotEmpty();
+          fsa.generateFile(_plus_2, 
+            ModelOutputProvider.SRC, _builder_1);
+        }
       }
     };
     model.getAnnotations().forEach(_function);
@@ -106,7 +110,8 @@ public class LangWidgetGeneratorForDMW implements IGenerator {
         String _plus_3 = (_plus_2 + " => ");
         String _name_1 = entity.getName();
         String _plus_4 = (_plus_3 + _name_1);
-        String _plus_5 = (_plus_4 + ".");
+        String _plus_5 = (_plus_4 + 
+          ".");
         String _name_2 = attribute.getName();
         String _plus_6 = (_plus_5 + _name_2);
         String _plus_7 = (_plus_6 + ";\n");

@@ -6,19 +6,15 @@ package eu.jgen.notes.dmw.lite.mdl.model.impl;
 import eu.jgen.notes.dmw.lite.mdl.model.ModelPackage;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,8 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotEntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotEntityImpl#getElementValuePairs <em>Element Value Pairs</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.mdl.model.impl.YAnnotEntityImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
@@ -40,36 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getElementValuePairs() <em>Element Value Pairs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElementValuePairs()
-   * @generated
-   * @ordered
-   */
-  protected EList<YAnnotationElementValuePair> elementValuePairs;
-
   /**
    * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -106,43 +70,6 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.YANNOT_ENTITY__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<YAnnotationElementValuePair> getElementValuePairs()
-  {
-    if (elementValuePairs == null)
-    {
-      elementValuePairs = new EObjectContainmentEList<YAnnotationElementValuePair>(YAnnotationElementValuePair.class, this, ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS);
-    }
-    return elementValuePairs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<YAnnotEntityInner> getAnnotations()
   {
     if (annotations == null)
@@ -162,8 +89,6 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS:
-        return ((InternalEList<?>)getElementValuePairs()).basicRemove(otherEnd, msgs);
       case ModelPackage.YANNOT_ENTITY__ANNOTATIONS:
         return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
     }
@@ -180,10 +105,6 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_ENTITY__NAME:
-        return getName();
-      case ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS:
-        return getElementValuePairs();
       case ModelPackage.YANNOT_ENTITY__ANNOTATIONS:
         return getAnnotations();
     }
@@ -201,13 +122,6 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_ENTITY__NAME:
-        setName((String)newValue);
-        return;
-      case ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS:
-        getElementValuePairs().clear();
-        getElementValuePairs().addAll((Collection<? extends YAnnotationElementValuePair>)newValue);
-        return;
       case ModelPackage.YANNOT_ENTITY__ANNOTATIONS:
         getAnnotations().clear();
         getAnnotations().addAll((Collection<? extends YAnnotEntityInner>)newValue);
@@ -226,12 +140,6 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_ENTITY__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS:
-        getElementValuePairs().clear();
-        return;
       case ModelPackage.YANNOT_ENTITY__ANNOTATIONS:
         getAnnotations().clear();
         return;
@@ -249,31 +157,10 @@ public class YAnnotEntityImpl extends YAnnotationImpl implements YAnnotEntity
   {
     switch (featureID)
     {
-      case ModelPackage.YANNOT_ENTITY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ModelPackage.YANNOT_ENTITY__ELEMENT_VALUE_PAIRS:
-        return elementValuePairs != null && !elementValuePairs.isEmpty();
       case ModelPackage.YANNOT_ENTITY__ANNOTATIONS:
         return annotations != null && !annotations.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //YAnnotEntityImpl

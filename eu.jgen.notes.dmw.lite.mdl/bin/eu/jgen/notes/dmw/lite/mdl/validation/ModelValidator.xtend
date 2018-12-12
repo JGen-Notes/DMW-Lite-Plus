@@ -30,7 +30,6 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumnLike
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotDatabase
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship
@@ -41,6 +40,7 @@ import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.CheckType
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign
 
 class ModelValidator extends AbstractModelValidator {
 
@@ -77,17 +77,31 @@ class ModelValidator extends AbstractModelValidator {
 	/*********************************************************
 	 * Supported Database
 	 ********************************************************/
-	@Check
-	def checkSupportedDatabase(YAnnotDatabase annotDatabase) {
-		if (annotDatabase.name !== null) {
+//	@Check
+//	def checkSupportedDatabase(YAnnotDatabase annotDatabase) {
+//		if (annotDatabase.name !== null) {
+//
+//			if (annotDatabase.name == KW_DERBY || annotDatabase.name == KW_MYSQL || annotDatabase.name == KW_SQLITE ||
+//				annotDatabase.name == KW_POSTGRESQL || annotDatabase.name == KW_MONGODB) {
+//				return
+//			} else {
+//				error("This database is not supported yet.", ModelPackage.eINSTANCE.YAnnotDatabase_Name,
+//					UNSUPPORTED_DATABASE, annotDatabase.name)
+//			}
+//		}
+//	}
 
-			if (annotDatabase.name == KW_DERBY || annotDatabase.name == KW_MYSQL || annotDatabase.name == KW_SQLITE ||
-				annotDatabase.name == KW_POSTGRESQL || annotDatabase.name == KW_MONGODB) {
-				return
-			} else {
-				error("This database is not supported yet.", ModelPackage.eINSTANCE.YAnnotDatabase_Name,
-					UNSUPPORTED_DATABASE, annotDatabase.name)
-			}
+	@Check
+	def void checkTechnicalDesignAnnotations(YAnnotTechnicalDesign technicalDesign) {
+		if (technicalDesign.elementValuePairs.size == 0) {
+			return
+		}
+		val pair = technicalDesign.findUnsupportedAnnotation
+		if (pair === null) {
+			return
+		} else {
+			error("This annotation is not supported in this context.", pair,
+				ModelPackage.eINSTANCE.YAnnotationElementValuePair_Name, ANNOATION_NOT_SUPPORTED);
 		}
 	}
 
@@ -230,7 +244,7 @@ class ModelValidator extends AbstractModelValidator {
 	def void checkEntityNameStartsWithCapital(YAnnotEntity annotEntity) {
 		if (annotEntity.name.toFirstUpper != annotEntity.name) {
 			error("Entity name should start with a capital letter", annotEntity,
-				ModelPackage.eINSTANCE.YAnnotEntity_Name, ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL);
+				ModelPackage.eINSTANCE.YAnnotation_Name, ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL);
 		}
 	}
 
@@ -268,7 +282,7 @@ class ModelValidator extends AbstractModelValidator {
 			if (duplicates.size > 1) {
 				for (d : duplicates)
 					error("Duplicate " + "entity" + " '" + (d as YAnnotEntity).name + "'", d,
-						ModelPackage.eINSTANCE.YAnnotEntity_Name, DUPLICATE_ELEMENT)
+						ModelPackage.eINSTANCE.YAnnotation_Name, DUPLICATE_ELEMENT)
 			}
 		}
 	}
@@ -283,7 +297,7 @@ class ModelValidator extends AbstractModelValidator {
 				val annotName = annotEntity.fullyQualifiedName
 				if (externalEntities.containsKey(annotName)) {
 					error("The entity " + annotName + " is already defined", annotation,
-						ModelPackage.eINSTANCE.YAnnotEntity_Name, DUPLICATE_ENTITY)
+						ModelPackage.eINSTANCE.YAnnotation_Name, DUPLICATE_ENTITY)
 				}
 			}
 		}
@@ -365,7 +379,7 @@ class ModelValidator extends AbstractModelValidator {
 				return
 			} else {
 				warning("The declared entity is not yet implemented as table", entity,
-					ModelPackage.Literals.YANNOT_ENTITY__NAME, ENTITY_NO_TECH_DESIGN)
+					ModelPackage.Literals.YANNOTATION__NAME, ENTITY_NO_TECH_DESIGN)
 			}
 		}
 	}

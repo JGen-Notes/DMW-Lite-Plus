@@ -186,33 +186,6 @@ public interface ModelFactory extends EFactory
   YAnnotForeignKey createYAnnotForeignKey();
 
   /**
-   * Returns a new object of class '<em>YAnnot Java</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>YAnnot Java</em>'.
-   * @generated
-   */
-  YAnnotJava createYAnnotJava();
-
-  /**
-   * Returns a new object of class '<em>YAnnot Swift</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>YAnnot Swift</em>'.
-   * @generated
-   */
-  YAnnotSwift createYAnnotSwift();
-
-  /**
-   * Returns a new object of class '<em>YAnnot Database</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>YAnnot Database</em>'.
-   * @generated
-   */
-  YAnnotDatabase createYAnnotDatabase();
-
-  /**
    * Returns a new object of class '<em>YAnnot Keyword</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
