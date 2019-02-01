@@ -32,12 +32,12 @@ class LangGlobalExitStatesGenerator implements IGenerator {
 	protected def void generateWidget(IFileSystemAccess fsa, YWidget widget) {
 				imports.clear		
 		widget.classes.forEach [ clazz |
-			if (clazz.superclass !== null && clazz.superclass.name == "GlobalExitStates") {
-				imports.add("eu.jgen.notes.dmw.lite.runtimes.GlobalExitStates")			
-				imports.add("eu.jgen.notes.dmw.lite.runtimes.ExitState")		
+			if (clazz.superclass !== null && clazz.superclass.name == "XGlobalExitStates") {
+				imports.add("eu.jgen.notes.dmw.lite.runtimes.XGlobalExitStates")			
+				imports.add("eu.jgen.notes.dmw.lite.runtimes.XExitState")		
 				val body = '''
 					«clazz.documentation»  
-					public class «clazz.name» extends GlobalExitStates {
+					public class «clazz.name» extends XGlobalExitStates {
 					   «generateExitStates(clazz)»
 					}
 				'''
@@ -69,7 +69,7 @@ class LangGlobalExitStatesGenerator implements IGenerator {
 	}
 	
 	protected def String generatePropertyForStructure(YProperty property) {
-		'''public ExitState «property.name»;'''
+		'''public XExitState «property.name»;'''
 	}
 
 }

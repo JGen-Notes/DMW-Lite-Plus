@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YFunctionImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YFunctionImpl#isThrow <em>Throw</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YFunctionImpl#isReturnvalue <em>Returnvalue</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YFunctionImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -49,6 +50,26 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
    * @ordered
    */
   protected EList<YParameter> params;
+
+  /**
+   * The default value of the '{@link #isThrow() <em>Throw</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isThrow()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean THROW_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isThrow() <em>Throw</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isThrow()
+   * @generated
+   * @ordered
+   */
+  protected boolean throw_ = THROW_EDEFAULT;
 
   /**
    * The default value of the '{@link #isReturnvalue() <em>Returnvalue</em>}' attribute.
@@ -113,6 +134,29 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
       params = new EObjectContainmentEList<YParameter>(YParameter.class, this, LangPackage.YFUNCTION__PARAMS);
     }
     return params;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isThrow()
+  {
+    return throw_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setThrow(boolean newThrow)
+  {
+    boolean oldThrow = throw_;
+    throw_ = newThrow;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LangPackage.YFUNCTION__THROW, oldThrow, throw_));
   }
 
   /**
@@ -216,6 +260,8 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
     {
       case LangPackage.YFUNCTION__PARAMS:
         return getParams();
+      case LangPackage.YFUNCTION__THROW:
+        return isThrow();
       case LangPackage.YFUNCTION__RETURNVALUE:
         return isReturnvalue();
       case LangPackage.YFUNCTION__BODY:
@@ -238,6 +284,9 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
       case LangPackage.YFUNCTION__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends YParameter>)newValue);
+        return;
+      case LangPackage.YFUNCTION__THROW:
+        setThrow((Boolean)newValue);
         return;
       case LangPackage.YFUNCTION__RETURNVALUE:
         setReturnvalue((Boolean)newValue);
@@ -262,6 +311,9 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
       case LangPackage.YFUNCTION__PARAMS:
         getParams().clear();
         return;
+      case LangPackage.YFUNCTION__THROW:
+        setThrow(THROW_EDEFAULT);
+        return;
       case LangPackage.YFUNCTION__RETURNVALUE:
         setReturnvalue(RETURNVALUE_EDEFAULT);
         return;
@@ -284,6 +336,8 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
     {
       case LangPackage.YFUNCTION__PARAMS:
         return params != null && !params.isEmpty();
+      case LangPackage.YFUNCTION__THROW:
+        return throw_ != THROW_EDEFAULT;
       case LangPackage.YFUNCTION__RETURNVALUE:
         return returnvalue != RETURNVALUE_EDEFAULT;
       case LangPackage.YFUNCTION__BODY:
@@ -303,7 +357,9 @@ public class YFunctionImpl extends YMemberImpl implements YFunction
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (returnvalue: ");
+    result.append(" (throw: ");
+    result.append(throw_);
+    result.append(", returnvalue: ");
     result.append(returnvalue);
     result.append(')');
     return result.toString();

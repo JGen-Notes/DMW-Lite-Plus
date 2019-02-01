@@ -43,22 +43,47 @@ class ModelProposalProvider extends AbstractModelProposalProvider {
 	@Inject
 	private PluginImageHelper imageHelper;
 	@Inject extension ModelIndex
-	@Inject extension ModelUtil 
-	
-	override  void complete_YAnnotationElementValuePair(EObject object, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	@Inject extension ModelUtil
+
+	override void complete_YAnnotationElementValuePair(EObject object, RuleCall ruleCall, ContentAssistContext context,
+		ICompletionProposalAcceptor acceptor) {
 		if (object instanceof YAnnotAttribute) {
 			val attribute = object as YAnnotAttribute
 			for (entry : attribute.createProposalAnnotationList) {
-				acceptor.accept(createCompletionProposal(entry, entry, imageHelper.getImage("database.gif"), context))
-			}			
+				acceptor.accept(
+					createCompletionProposal(entry, entry, imageHelper.getImage("property_type.gif"), context))
+			}
 		} else if (object instanceof YAnnotTechnicalDesign) {
 			val annotTechnicalDesign = object as YAnnotTechnicalDesign
 			for (entry : annotTechnicalDesign.createProposalAnnotationList) {
 				acceptor.accept(createCompletionProposal(entry, entry, imageHelper.getImage("database.gif"), context))
-			}			
+			}
 		}
 	}
-	
+
+	override void completeYAnnotationElementValuePair_Value(EObject object, Assignment assignment,
+		ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		if (object instanceof YAnnotationElementValuePair) {
+			val aAnnotationElementValuePair = object as YAnnotationElementValuePair
+			if (aAnnotationElementValuePair.name == "type") {
+				acceptor.accept(
+					createCompletionProposal("String", "String", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Short", "Short", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Int", "Int", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Long", "Long", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(
+					createCompletionProposal("Double", "Double", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Bool", "Bool", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Date", "Date", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Time", "Time", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(
+					createCompletionProposal("Timestamp", "Timestamp", imageHelper.getImage("class.gif"), context))
+				acceptor.accept(createCompletionProposal("Blob", "Blob", imageHelper.getImage("class.gif"), context))
+			}
+		}
+
+	}
+
 //	override  void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
 //				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
@@ -67,41 +92,29 @@ class ModelProposalProvider extends AbstractModelProposalProvider {
 //		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
 //	}
 
-        
-//	override  void completeYAnnotAttribute_Type(EObject model, Assignment assignment, ContentAssistContext context,
-//		ICompletionProposalAcceptor acceptor) {
-//		acceptor.accept(createCompletionProposal("String", "String", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Short", "Short", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Int", "Int", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Long", "Long", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Double", "Double", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Bool", "Bool", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Date", "Date", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Time", "Time", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Timestamp", "Timestamp", imageHelper.getImage("class.gif"), context))
-//		acceptor.accept(createCompletionProposal("Blob", "Blob", imageHelper.getImage("class.gif"), context))
-//	}
-	
-	override void completeYAnnotRelationship_Inverse(EObject object, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		val annotRelationship = object as YAnnotRelationship 
-		annotRelationship.target.annotations.forEach[element | 
-			if(element instanceof YAnnotRelationship) {
+	override void completeYAnnotRelationship_Inverse(EObject object, Assignment assignment,
+		ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		val annotRelationship = object as YAnnotRelationship
+		annotRelationship.target.annotations.forEach [ element |
+			if (element instanceof YAnnotRelationship) {
 				val targetAnnotRelationship = element as YAnnotRelationship
-				if (targetAnnotRelationship.inverse !== null ) {
+				if (targetAnnotRelationship.inverse !== null) {
 					val targetEnntityName = (targetAnnotRelationship.eContainer as YAnnotEntity).name
-					if(targetEnntityName == annotRelationship.target.name) {
+					if (targetEnntityName == annotRelationship.target.name) {
 						val proposal = annotRelationship.target.name + "." + targetAnnotRelationship.name
-						acceptor.accept(createCompletionProposal(proposal, proposal, imageHelper.getImage("relationship.gif"), context))
+						acceptor.accept(
+							createCompletionProposal(proposal, proposal, imageHelper.getImage("relationship.gif"),
+								context))
 						return
 					}
 				}
 				if (targetAnnotRelationship.inverse === null && targetAnnotRelationship !== annotRelationship) {
 					val proposal = annotRelationship.target.name + "." + targetAnnotRelationship.name
-						acceptor.accept(createCompletionProposal(proposal, proposal, imageHelper.getImage("relationship.gif"), context))
+					acceptor.accept(
+						createCompletionProposal(proposal, proposal, imageHelper.getImage("relationship.gif"), context))
 				}
-			} 
+			}
 		]
 	}
-
 
 }

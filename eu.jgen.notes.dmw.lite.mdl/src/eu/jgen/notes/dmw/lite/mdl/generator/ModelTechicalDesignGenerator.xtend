@@ -63,13 +63,13 @@ class ModelTechicalDesignGenerator implements IGenerator {
 	def private void generateTableForDerby(IFileSystemAccess fsa, YAnnotTable table) {
 		val text = '''
 			CREATE TABLE "«table.name»" (
-				«FOR abstractColumn : table.columns SEPARATOR ',' AFTER ','»
+				«FOR abstractColumn : table.columns  SEPARATOR ',' »
 					«generateColumnForDerby(abstractColumn)»
 				«ENDFOR»
-				«FOR foreignKey : table.foreignkeys SEPARATOR ',' AFTER ','»
-					«generateForeignKeyColumns(foreignKey)»
+				«FOR foreignKey : table.foreignkeys BEFORE ',' SEPARATOR ',' »
+					BEFORE ','«generateForeignKeyColumns(foreignKey)»
 				«ENDFOR»
-				«IF table.primarykey !== null»«generatePrimaryKey(table)»«ENDIF»
+				«IF table.primarykey !== null»,«generatePrimaryKey(table)»«ENDIF»
 			)
 		'''
 		fsa.generateFile(

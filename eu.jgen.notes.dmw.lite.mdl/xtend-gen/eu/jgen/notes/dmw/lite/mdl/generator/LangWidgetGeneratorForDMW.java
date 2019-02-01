@@ -51,7 +51,7 @@ public class LangWidgetGeneratorForDMW implements IGenerator {
         _builder.append("package ");
         String _name = model.getName();
         _builder.append(_name);
-        _builder.append(".model;");
+        _builder.append(".views;");
         _builder.newLineIfNotEmpty();
         _builder.append("import ");
         String _name_1 = model.getName();
@@ -64,7 +64,7 @@ public class LangWidgetGeneratorForDMW implements IGenerator {
         _builder.append("class ");
         String _name_2 = entity.getName();
         _builder.append(_name_2);
-        _builder.append("All : Structure => ");
+        _builder.append("FullView : XStructure => ");
         String _name_3 = entity.getName();
         _builder.append(_name_3);
         _builder.append(" {");
@@ -81,10 +81,10 @@ public class LangWidgetGeneratorForDMW implements IGenerator {
         boolean _tripleNotEquals = (_name_4 != null);
         if (_tripleNotEquals) {
           String _fileSystemPath = this.getFileSystemPath(model.getName());
-          String _plus = (_fileSystemPath + "/model/");
+          String _plus = (_fileSystemPath + "/views/");
           String _name_5 = entity.getName();
           String _plus_1 = (_plus + _name_5);
-          String _plus_2 = (_plus_1 + ".dmw");
+          String _plus_2 = (_plus_1 + "FullView.dmw");
           StringConcatenation _builder_1 = new StringConcatenation();
           _builder_1.append(body);
           _builder_1.newLineIfNotEmpty();

@@ -10,6 +10,7 @@ class LangOutputProvider implements IOutputConfigurationProvider {
 	public static final String DEFAULT = "DEFAULT_OUTPUT"
 	public static final String DDL = "DDL"
 	public static final String SWIFT = "SWIFT"
+//		public static final String SRC = "SRC"
 
 
 	override Set<OutputConfiguration> getOutputConfigurations() {
@@ -43,6 +44,15 @@ class LangOutputProvider implements IOutputConfigurationProvider {
 		swiftOutput.setCleanUpDerivedResources(true)
 		swiftOutput.setSetDerivedProperty(true)
 		configurations.add(swiftOutput)
+		
+//				var originOutput = new OutputConfiguration(SRC);
+//		originOutput.setDescription("Original Folder");
+//		originOutput.setOutputDirectory("./src");
+//		originOutput.setOverrideExistingResources(true);
+//	 	originOutput.setCreateOutputDirectory(true);
+//		originOutput.setCleanUpDerivedResources(true);
+//		originOutput.setSetDerivedProperty(true);
+//		configurations.add(originOutput)
 		
 		return configurations
 

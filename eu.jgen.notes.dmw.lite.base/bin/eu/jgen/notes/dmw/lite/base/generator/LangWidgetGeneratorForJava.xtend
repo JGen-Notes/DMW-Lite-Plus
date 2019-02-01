@@ -521,11 +521,11 @@ class LangWidgetGeneratorForJava extends AbstractGenerator {
 			      PreparedStatement _statement = getContext().getConnection().prepareStatement(buffer.toString());
 			      «generateSetMethodsForCreateStatement(it)»
 			      _statement.execute();
-			      «generateBlock(success)»
+			      
 			      _statement.close();
 			      return;
 			   } catch (DerbySQLIntegrityConstraintViolationException e) {
-			      «generateBlock(alreadyExist)»
+			      
 			   } catch (SQLException e) {
 			      throw new DMWRuntimeException(e);
 			   }
@@ -636,7 +636,7 @@ class LangWidgetGeneratorForJava extends AbstractGenerator {
 			      ResultSet _rs = _statement.getResultSet();
 			      while (_rs.next()) {
 			         «generateGetMethodsForReadEach(it)»
-			      «generateBlock(success)» 
+			      
 			      }
 			      _rs.close();
 			      _statement.close();
@@ -683,9 +683,9 @@ class LangWidgetGeneratorForJava extends AbstractGenerator {
 			   	  ResultSet _rs = _statement.getResultSet();
 			   	  if (_rs.next()) {
 			   	  	 «generateGetMethodsForRead(readStatement)»
-			   	  	  «generateBlock(readStatement.success)»
+			   	   
 			   	  } else {
-			   	  	 «generateBlock(readStatement.notfound)»
+			   	   
 			   	  }
 			   	  _rs.close();
 			   	  _statement.close();			   	  

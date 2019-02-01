@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#getParams <em>Params</em>}</li>
+ *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#isThrow <em>Throw</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#isReturnvalue <em>Returnvalue</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#getBody <em>Body</em>}</li>
  * </ul>
@@ -40,6 +41,32 @@ public interface YFunction extends YMember
    * @generated
    */
   EList<YParameter> getParams();
+
+  /**
+   * Returns the value of the '<em><b>Throw</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Throw</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Throw</em>' attribute.
+   * @see #setThrow(boolean)
+   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYFunction_Throw()
+   * @model
+   * @generated
+   */
+  boolean isThrow();
+
+  /**
+   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#isThrow <em>Throw</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Throw</em>' attribute.
+   * @see #isThrow()
+   * @generated
+   */
+  void setThrow(boolean value);
 
   /**
    * Returns the value of the '<em><b>Returnvalue</b></em>' attribute.

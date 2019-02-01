@@ -6,6 +6,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="ecore:EClass platform:/resource/eu.jgen.notes.dmw.lite.mdl/model/generated/Model.ecore#//YImport"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enums" upperBound="-1"
+        eType="#//YEnumeration" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
         eType="#//YClass" containment="true"/>
   </eClassifiers>
@@ -18,6 +20,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="YArgument">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="YEnumeration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superclass" eType="#//YEnumeration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" upperBound="-1"
+        eType="#//YEnumerationCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="YEnumerationCase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//YParameter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YClass" eSuperTypes="#//YNamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="superclass" eType="#//YClass"/>
@@ -44,6 +57,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="YFunction" eSuperTypes="#//YMember">
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//YParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="throw" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="returnvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//YBlock"
         containment="true"/>
@@ -53,9 +67,29 @@
         eType="#//YStatement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="YDoStatement" eSuperTypes="#//YStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" eType="#//YBlock"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catches" upperBound="-1"
+        eType="#//YCatch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="YCatch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exception" eType="#//YEnumerationCase"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catchBlock" eType="#//YCatchBlock"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="YCatchBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//YStatement" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YVariableDeclaration" eSuperTypes="#//YStatement #//YSymbol">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//YExpression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="YThrow" eSuperTypes="#//YStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exception" eType="#//YEnumerationCase"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//YExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YReturn" eSuperTypes="#//YStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//YExpression"
@@ -97,10 +131,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whereclause" eType="#//YWhere"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="success" eType="#//YBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="notfound" eType="#//YBlock"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YReadEachStatement" eSuperTypes="#//YStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="structs" upperBound="-1"
@@ -110,25 +140,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="whereclause" eType="#//YWhere"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//YProperty"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="success" eType="#//YBlock"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YCreateStatement" eSuperTypes="#//YStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="struct" eType="#//YStructRefPair"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setBlock" eType="#//YBlock"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="success" eType="#//YBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="alreadyExist" eType="#//YBlock"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YUpdateStatement" eSuperTypes="#//YStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="struct" eType="#//YStructRefPair"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setBlock" eType="#//YBlock"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="success" eType="#//YBlock"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="YDeleteStatement" eSuperTypes="#//YStatement">

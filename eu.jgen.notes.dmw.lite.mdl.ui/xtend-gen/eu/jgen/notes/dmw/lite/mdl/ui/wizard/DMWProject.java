@@ -23,6 +23,7 @@
 package eu.jgen.notes.dmw.lite.mdl.ui.wizard;
 
 import com.google.common.collect.Iterables;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.eclipse.core.runtime.IStatus;
@@ -108,6 +109,10 @@ public final class DMWProject extends AbstractProjectTemplate {
         Iterables.<String>addAll(_projectNatures, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(JavaCore.NATURE_ID, "org.eclipse.pde.PluginNature", XtextProjectHelper.NATURE_ID)));
         List<String> _builderIds = it.getBuilderIds();
         Iterables.<String>addAll(_builderIds, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID)));
+        final ArrayList<String> bundles = CollectionLiterals.<String>newArrayList();
+        bundles.add("eu.jgen.notes.dmw.lite.mdl");
+        bundles.add("eu.jgen.notes.dmw.lite.base");
+        it.addRequiredBundles(bundles);
         List<String> _folders = it.getFolders();
         _folders.add("src");
         StringConcatenation _builder = new StringConcatenation();
@@ -130,11 +135,6 @@ public final class DMWProject extends AbstractProjectTemplate {
         _builder_1.append(".*;");
         _builder_1.newLineIfNotEmpty();
         _builder_1.newLine();
-        _builder_1.append("@database Derby;\t");
-        _builder_1.newLine();
-        _builder_1.append("@java;\t\t\t\t ");
-        _builder_1.newLine();
-        _builder_1.newLine();
         _builder_1.append("/*");
         _builder_1.newLine();
         _builder_1.append("* This is ...");
@@ -147,7 +147,7 @@ public final class DMWProject extends AbstractProjectTemplate {
         _builder_1.append(" {");
         _builder_1.newLineIfNotEmpty();
         _builder_1.append("\t");
-        _builder_1.append("@attribute\tid (length=9);\t\t\t\t\t\t\t\t\t\t");
+        _builder_1.append("@attribute\tid (type=Int,length=9);\t\t\t\t\t\t\t\t\t\t");
         _builder_1.newLine();
         _builder_1.append("}");
         _builder_1.newLine();
@@ -171,14 +171,9 @@ public final class DMWProject extends AbstractProjectTemplate {
           _builder_3.append(".*;");
           _builder_3.newLineIfNotEmpty();
           _builder_3.newLine();
-          _builder_3.append("@database Derby;\t");
+          _builder_3.append("@td default (database=Derby,java=true,swift=false,module=\"somename\")  {");
           _builder_3.newLine();
-          _builder_3.append("@java;\t");
-          _builder_3.newLine();
-          _builder_3.newLine();
-          _builder_3.append("@td database Derby {");
-          _builder_3.newLine();
-          _builder_3.append("\t");
+          _builder_3.append("\t\t\t\t\t\t\t");
           _builder_3.newLine();
           _builder_3.append("}");
           _builder_3.newLine();
@@ -217,6 +212,10 @@ public final class DMWProject extends AbstractProjectTemplate {
         Iterables.<String>addAll(_projectNatures, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(JavaCore.NATURE_ID, "org.eclipse.pde.PluginNature", XtextProjectHelper.NATURE_ID)));
         List<String> _builderIds = it.getBuilderIds();
         Iterables.<String>addAll(_builderIds, Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList(JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID)));
+        final ArrayList<String> bundles = CollectionLiterals.<String>newArrayList();
+        bundles.add("eu.jgen.notes.dmw.lite.mdl");
+        bundles.add("eu.jgen.notes.dmw.lite.base");
+        it.addRequiredBundles(bundles);
         List<String> _folders = it.getFolders();
         _folders.add("src");
         StringConcatenation _builder = new StringConcatenation();

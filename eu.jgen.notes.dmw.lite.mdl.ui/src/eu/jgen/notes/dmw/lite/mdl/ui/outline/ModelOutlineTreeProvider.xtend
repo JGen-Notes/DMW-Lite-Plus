@@ -49,6 +49,7 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotIdentifier
 import eu.jgen.notes.dmw.lite.mdl.model.YImport
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
+import eu.jgen.notes.dmw.lite.mdl.DMWRuntimeException
 
 class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
@@ -103,13 +104,11 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 //			return annotDatabase.name
 //		}
 //	}
-
 //	def Object _image(YAnnotDatabase annotDatabase) {
 //		if (annotDatabase.name !== null) {
 //			return imageHelper.getImage("database.gif")
 //		}
 //	}
-
 	/*
 	 * Swift
 	 */
@@ -119,11 +118,9 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 //				return "Swift " + annotSwift.name + " + " + annotSwift.database.name
 //		}
 //	}
-
 //	def Object _image(YAnnotSwift annotSwift) {
 //		return imageHelper.getImage("swift.png")
 //	}
-
 	/*
 	 * Java
 	 */
@@ -134,16 +131,14 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 //			return "Java"
 //		}
 //	}
-
 //	def Object _image(YAnnotJava annotJava) {
 //		return imageHelper.getImage("java.png")
 //	}
-
 	/*
 	 *  Technical Design
 	 */
 	def Object _text(YAnnotTechnicalDesign element) {
-		element.name
+		"Technical Design: " + element.name
 	}
 
 	def Object _image(YAnnotTechnicalDesign element) {
@@ -207,6 +202,10 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 		return true
 	}
 
+	def boolean _isLeaf(YAnnotTechnicalDesign element) {
+		return true
+	}
+
 	/*
 	 * Foreign Key
 	 */
@@ -238,10 +237,14 @@ class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	}
 
 	def Object _text(YAnnotAttribute element) {
-		if (element.extractAttributeType !== null) {
-			return element.name + " : " + element.extractAttributeType
-		} else {
-			return element.name
+		try {
+			if (element.extractAttributeType !== null) {
+				return element.name + " : " + element.extractAttributeType
+			} else {
+				return element.name
+			}
+		} catch (DMWRuntimeException exception) {
+			return ""
 		}
 	}
 

@@ -54,11 +54,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.resource.IResourceDescription;
@@ -66,7 +63,6 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -155,6 +151,8 @@ public class ModelUtil {
   public final String FORMAT_TIME = "HH:mm:ss";
   
   public final String FORMAT_DATE = "yyyy-MM-dd";
+  
+  public final String EXCEPTION_STRING = "Cannot extract value because of not existent annotation pair";
   
   @Inject
   private ResourceDescriptionsProvider resourceDescriptionsProvider;
@@ -317,9 +315,15 @@ public class ModelUtil {
   
   public ArrayList<String> createProposalAnnotationList(final YAnnotAttribute annotAttr) {
     final ArrayList<String> list = CollectionLiterals.<String>newArrayList();
-    String _extractAttributeType = this.extractAttributeType(annotAttr);
-    boolean _equals = Objects.equal(_extractAttributeType, this.KW_INT);
+    int _size = annotAttr.getElementValuePairs().size();
+    boolean _equals = (_size == 0);
     if (_equals) {
+      list.add("type=");
+      return list;
+    }
+    String _extractAttributeType = this.extractAttributeType(annotAttr);
+    boolean _equals_1 = Objects.equal(_extractAttributeType, this.KW_INT);
+    if (_equals_1) {
       boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_LENGTH);
       boolean _not = (!_isAnnotHavingSpecificName);
       if (_not) {
@@ -337,8 +341,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_1 = this.extractAttributeType(annotAttr);
-    boolean _equals_1 = Objects.equal(_extractAttributeType_1, this.KW_SHORT);
-    if (_equals_1) {
+    boolean _equals_2 = Objects.equal(_extractAttributeType_1, this.KW_SHORT);
+    if (_equals_2) {
       boolean _isAnnotHavingSpecificName_3 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_LENGTH);
       boolean _not_3 = (!_isAnnotHavingSpecificName_3);
       if (_not_3) {
@@ -356,8 +360,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_2 = this.extractAttributeType(annotAttr);
-    boolean _equals_2 = Objects.equal(_extractAttributeType_2, this.KW_DOUBLE);
-    if (_equals_2) {
+    boolean _equals_3 = Objects.equal(_extractAttributeType_2, this.KW_DOUBLE);
+    if (_equals_3) {
       boolean _isAnnotHavingSpecificName_6 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_LENGTH);
       boolean _not_6 = (!_isAnnotHavingSpecificName_6);
       if (_not_6) {
@@ -375,8 +379,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_3 = this.extractAttributeType(annotAttr);
-    boolean _equals_3 = Objects.equal(_extractAttributeType_3, this.KW_STRING);
-    if (_equals_3) {
+    boolean _equals_4 = Objects.equal(_extractAttributeType_3, this.KW_STRING);
+    if (_equals_4) {
       boolean _isAnnotHavingSpecificName_9 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_LENGTH);
       boolean _not_9 = (!_isAnnotHavingSpecificName_9);
       if (_not_9) {
@@ -389,8 +393,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_4 = this.extractAttributeType(annotAttr);
-    boolean _equals_4 = Objects.equal(_extractAttributeType_4, this.KW_DATE);
-    if (_equals_4) {
+    boolean _equals_5 = Objects.equal(_extractAttributeType_4, this.KW_DATE);
+    if (_equals_5) {
       boolean _isAnnotHavingSpecificName_11 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_DEFAULT);
       boolean _not_11 = (!_isAnnotHavingSpecificName_11);
       if (_not_11) {
@@ -407,8 +411,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_5 = this.extractAttributeType(annotAttr);
-    boolean _equals_5 = Objects.equal(_extractAttributeType_5, this.KW_TIME);
-    if (_equals_5) {
+    boolean _equals_6 = Objects.equal(_extractAttributeType_5, this.KW_TIME);
+    if (_equals_6) {
       boolean _isAnnotHavingSpecificName_13 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_DEFAULT);
       boolean _not_13 = (!_isAnnotHavingSpecificName_13);
       if (_not_13) {
@@ -425,8 +429,8 @@ public class ModelUtil {
       }
     }
     String _extractAttributeType_6 = this.extractAttributeType(annotAttr);
-    boolean _equals_6 = Objects.equal(_extractAttributeType_6, this.KW_TIMESTAMP);
-    if (_equals_6) {
+    boolean _equals_7 = Objects.equal(_extractAttributeType_6, this.KW_TIMESTAMP);
+    if (_equals_7) {
       boolean _isAnnotHavingSpecificName_15 = this.isAnnotHavingSpecificName(annotAttr.getElementValuePairs(), this.KW_DEFAULT);
       boolean _not_15 = (!_isAnnotHavingSpecificName_15);
       if (_not_15) {
@@ -576,9 +580,9 @@ public class ModelUtil {
   public boolean isForeignKeyDesignated(final YAnnotRelationship relationship) {
     boolean _xblockexpression = false;
     {
-      boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(relationship.getElementValuePairs(), "foreignkey");
+      boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(relationship.getElementValuePairs(), this.KW_FOREIGNKEY);
       if (_isAnnotHavingSpecificName) {
-        return this.extractAnnotValueBoolean(relationship.getElementValuePairs(), "foreignkey");
+        return this.extractAnnotValueBoolean(relationship.getElementValuePairs(), this.KW_FOREIGNKEY);
       }
       _xblockexpression = false;
     }
@@ -604,7 +608,7 @@ public class ModelUtil {
         }
       }
     }
-    throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair");
+    throw new DMWRuntimeException(this.EXCEPTION_STRING);
   }
   
   public String extractAnnotValueString(final EList<YAnnotationElementValuePair> list, final String name) {
@@ -620,7 +624,7 @@ public class ModelUtil {
         }
       }
     }
-    throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair");
+    throw new DMWRuntimeException(this.EXCEPTION_STRING);
   }
   
   public String extractAnnotValueNumber(final EList<YAnnotationElementValuePair> list, final String name) {
@@ -636,7 +640,7 @@ public class ModelUtil {
         }
       }
     }
-    throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair");
+    throw new DMWRuntimeException(this.EXCEPTION_STRING);
   }
   
   public String extractAnnotValueKeyword(final EList<YAnnotationElementValuePair> list, final String name) {
@@ -652,7 +656,7 @@ public class ModelUtil {
         }
       }
     }
-    throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair");
+    throw new DMWRuntimeException(this.EXCEPTION_STRING);
   }
   
   public boolean isAnnotHavingSpecificName(final EList<YAnnotationElementValuePair> list, final String name) {
@@ -739,6 +743,7 @@ public class ModelUtil {
       final YAnnotColumn column = ObjectExtensions.<YAnnotColumn>operator_doubleArrow(_createYAnnotColumn, _function_1);
       it.setType(column);
       this.doSelectColumnProperties(column, attribute);
+      this.doReplicateAttributeAnnotations(column, attribute);
     };
     final YAnnotAbstractColumn abstractColumn = ObjectExtensions.<YAnnotAbstractColumn>operator_doubleArrow(_createYAnnotAbstractColumn, _function);
     return abstractColumn;
@@ -748,58 +753,52 @@ public class ModelUtil {
     String _extractAttributeType = this.extractAttributeType(attribute);
     boolean _equals = Objects.equal(_extractAttributeType, this.KW_STRING);
     if (_equals) {
-      column.setType(this.KW_OPTONAL);
+      column.setType(this.KWUP_CHAR);
     } else {
       String _extractAttributeType_1 = this.extractAttributeType(attribute);
-      boolean _equals_1 = Objects.equal(_extractAttributeType_1, this.KW_STRING);
+      boolean _equals_1 = Objects.equal(_extractAttributeType_1, this.KW_SHORT);
       if (_equals_1) {
-        column.setType(this.KW_OPTONAL);
+        column.setType(this.KWUP_SMALLINT);
       } else {
         String _extractAttributeType_2 = this.extractAttributeType(attribute);
-        boolean _equals_2 = Objects.equal(_extractAttributeType_2, this.KW_SHORT);
+        boolean _equals_2 = Objects.equal(_extractAttributeType_2, this.KW_INT);
         if (_equals_2) {
-          column.setType(this.KWUP_SMALLINT);
+          column.setType(this.KWUP_INT);
         } else {
           String _extractAttributeType_3 = this.extractAttributeType(attribute);
-          boolean _equals_3 = Objects.equal(_extractAttributeType_3, this.KW_INT);
+          boolean _equals_3 = Objects.equal(_extractAttributeType_3, this.KW_LONG);
           if (_equals_3) {
-            column.setType(this.KWUP_INT);
+            column.setType(this.KWUP_BIGINT);
           } else {
             String _extractAttributeType_4 = this.extractAttributeType(attribute);
-            boolean _equals_4 = Objects.equal(_extractAttributeType_4, this.KW_LONG);
+            boolean _equals_4 = Objects.equal(_extractAttributeType_4, this.KW_DOUBLE);
             if (_equals_4) {
-              column.setType(this.KWUP_BIGINT);
+              column.setType(this.KWUP_DECIMAL);
             } else {
               String _extractAttributeType_5 = this.extractAttributeType(attribute);
-              boolean _equals_5 = Objects.equal(_extractAttributeType_5, this.KW_DOUBLE);
+              boolean _equals_5 = Objects.equal(_extractAttributeType_5, this.KW_DATE);
               if (_equals_5) {
-                column.setType(this.KWUP_DECIMAL);
+                column.setType(this.KWUP_DATE);
               } else {
                 String _extractAttributeType_6 = this.extractAttributeType(attribute);
-                boolean _equals_6 = Objects.equal(_extractAttributeType_6, this.KW_DATE);
+                boolean _equals_6 = Objects.equal(_extractAttributeType_6, this.KW_TIME);
                 if (_equals_6) {
-                  column.setType(this.KWUP_DECIMAL);
+                  column.setType(this.KWUP_TIME);
                 } else {
                   String _extractAttributeType_7 = this.extractAttributeType(attribute);
-                  boolean _equals_7 = Objects.equal(_extractAttributeType_7, this.KW_TIME);
+                  boolean _equals_7 = Objects.equal(_extractAttributeType_7, this.KW_TIMESTAMP);
                   if (_equals_7) {
-                    column.setType(this.KWUP_TIME);
+                    column.setType(this.KWUP_TIMESTAMP);
                   } else {
                     String _extractAttributeType_8 = this.extractAttributeType(attribute);
-                    boolean _equals_8 = Objects.equal(_extractAttributeType_8, this.KW_TIMESTAMP);
+                    boolean _equals_8 = Objects.equal(_extractAttributeType_8, this.KW_BOOL);
                     if (_equals_8) {
-                      column.setType(this.KWUP_TIMESTAMP);
+                      column.setType(this.KWUP_BOOLEAN);
                     } else {
                       String _extractAttributeType_9 = this.extractAttributeType(attribute);
-                      boolean _equals_9 = Objects.equal(_extractAttributeType_9, this.KW_BOOL);
+                      boolean _equals_9 = Objects.equal(_extractAttributeType_9, this.KW_BLOB);
                       if (_equals_9) {
-                        column.setType(this.KWUP_BOOLEAN);
-                      } else {
-                        String _extractAttributeType_10 = this.extractAttributeType(attribute);
-                        boolean _equals_10 = Objects.equal(_extractAttributeType_10, this.KW_BLOB);
-                        if (_equals_10) {
-                          column.setType(this.KWUP_BLOB);
-                        }
+                        column.setType(this.KWUP_BLOB);
                       }
                     }
                   }
@@ -812,6 +811,87 @@ public class ModelUtil {
     }
     if (((attribute.getOptional() != null) && Objects.equal(attribute.getOptional(), this.KW_OPTONAL))) {
       column.setOptional(this.KW_OPTONAL);
+    }
+  }
+  
+  public boolean areTypesCompatible(final String columnType, final String attributeType) {
+    boolean _xifexpression = false;
+    if ((Objects.equal(columnType, this.KWUP_CHAR) && Objects.equal(attributeType, this.KW_STRING))) {
+      return true;
+    } else {
+      boolean _xifexpression_1 = false;
+      if ((Objects.equal(columnType, this.KWUP_SMALLINT) && Objects.equal(attributeType, this.KW_SHORT))) {
+        return true;
+      } else {
+        boolean _xifexpression_2 = false;
+        if ((Objects.equal(columnType, this.KWUP_INT) && Objects.equal(attributeType, this.KW_INT))) {
+          return true;
+        } else {
+          boolean _xifexpression_3 = false;
+          if ((Objects.equal(columnType, this.KWUP_BIGINT) && Objects.equal(attributeType, this.KW_LONG))) {
+            return true;
+          } else {
+            boolean _xifexpression_4 = false;
+            if ((Objects.equal(columnType, this.KWUP_DECIMAL) && Objects.equal(attributeType, this.KW_DOUBLE))) {
+              return true;
+            } else {
+              boolean _xifexpression_5 = false;
+              if ((Objects.equal(columnType, this.KWUP_DATE) && Objects.equal(attributeType, this.KW_DATE))) {
+                return true;
+              } else {
+                boolean _xifexpression_6 = false;
+                if ((Objects.equal(columnType, this.KWUP_TIME) && Objects.equal(attributeType, this.KW_TIME))) {
+                  return true;
+                } else {
+                  boolean _xifexpression_7 = false;
+                  if ((Objects.equal(columnType, this.KWUP_TIMESTAMP) && Objects.equal(attributeType, this.KW_TIMESTAMP))) {
+                    return true;
+                  } else {
+                    boolean _xifexpression_8 = false;
+                    if ((Objects.equal(columnType, this.KWUP_BOOLEAN) && Objects.equal(attributeType, this.KW_BOOL))) {
+                      return true;
+                    } else {
+                      boolean _xifexpression_9 = false;
+                      if ((Objects.equal(columnType, this.KWUP_BLOB) && Objects.equal(attributeType, this.KW_BLOB))) {
+                        return true;
+                      } else {
+                        _xifexpression_9 = false;
+                      }
+                      _xifexpression_8 = _xifexpression_9;
+                    }
+                    _xifexpression_7 = _xifexpression_8;
+                  }
+                  _xifexpression_6 = _xifexpression_7;
+                }
+                _xifexpression_5 = _xifexpression_6;
+              }
+              _xifexpression_4 = _xifexpression_5;
+            }
+            _xifexpression_3 = _xifexpression_4;
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        _xifexpression_1 = _xifexpression_2;
+      }
+      _xifexpression = _xifexpression_1;
+    }
+    return _xifexpression;
+  }
+  
+  private void doReplicateAttributeAnnotations(final YAnnotColumn column, final YAnnotAttribute attribute) {
+    String _extractAttributeType = this.extractAttributeType(attribute);
+    boolean _equals = Objects.equal(_extractAttributeType, this.KW_STRING);
+    if (_equals) {
+      EList<YAnnotationElementValuePair> _elementValuePairs = column.getElementValuePairs();
+      YAnnotationElementValuePair _createYAnnotationElementValuePair = ModelFactory.eINSTANCE.createYAnnotationElementValuePair();
+      final Procedure1<YAnnotationElementValuePair> _function = (YAnnotationElementValuePair it) -> {
+        it.setName("length");
+        final YAnnotNumberConstant expression = ModelFactory.eINSTANCE.createYAnnotNumberConstant();
+        expression.setValue(this.extractAnnotValueNumber(attribute.getElementValuePairs(), this.KW_LENGTH));
+        it.setValue(expression);
+      };
+      YAnnotationElementValuePair _doubleArrow = ObjectExtensions.<YAnnotationElementValuePair>operator_doubleArrow(_createYAnnotationElementValuePair, _function);
+      _elementValuePairs.add(_doubleArrow);
     }
   }
   
@@ -948,7 +1028,14 @@ public class ModelUtil {
   public String extractAttributeType(final YAnnotAttribute annotAttribute) {
     boolean _isAnnotHavingSpecificName = this.isAnnotHavingSpecificName(annotAttribute.getElementValuePairs(), this.KW_TYPE);
     if (_isAnnotHavingSpecificName) {
-      return this.extractAnnotValueKeyword(annotAttribute.getElementValuePairs(), this.KW_TYPE);
+      try {
+        return this.extractAnnotValueKeyword(annotAttribute.getElementValuePairs(), this.KW_TYPE);
+      } catch (final Throwable _t) {
+        if (_t instanceof Exception) {
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      }
     }
     return this.KW_STRING;
   }
@@ -1015,10 +1102,17 @@ public class ModelUtil {
   }
   
   public boolean isTechnicalDesign(final EObject context) {
-    List<Notifier> _list = IteratorExtensions.<Notifier>toList(EcoreUtil2.getResourceSet(EcoreUtil2.getRoot(context, true)).getAllContents());
-    for (final Notifier element : _list) {
-      if ((element instanceof YAnnotTechnicalDesign)) {
-        return true;
+    IResourceDescriptions resourceDescriptions = this.resourceDescriptionsProvider.getResourceDescriptions(context.eResource());
+    IResourceDescription resourceDescription = resourceDescriptions.getResourceDescription(context.eResource().getURI());
+    List<IContainer> _visibleContainers = this.containerManager.getVisibleContainers(resourceDescription, resourceDescriptions);
+    for (final IContainer c : _visibleContainers) {
+      Iterable<IEObjectDescription> _exportedObjectsByType = c.getExportedObjectsByType(
+        ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN);
+      for (final IEObjectDescription objectDescription : _exportedObjectsByType) {
+        EObject _eObjectOrProxy = objectDescription.getEObjectOrProxy();
+        if ((_eObjectOrProxy instanceof YAnnotTechnicalDesign)) {
+          return true;
+        }
       }
     }
     return false;
@@ -1042,11 +1136,84 @@ public class ModelUtil {
     return false;
   }
   
-  public YAnnotTechnicalDesign getTechnicalDesign(final EObject context, final EClass clazz) {
-    List<Notifier> _list = IteratorExtensions.<Notifier>toList(EcoreUtil2.getResourceSet(EcoreUtil2.getRoot(context, true)).getAllContents());
-    for (final Notifier element : _list) {
-      if ((element instanceof YAnnotTechnicalDesign)) {
-        return ((YAnnotTechnicalDesign)element);
+  public boolean isEntityImplemented(final YAnnotEntity entity) {
+    boolean _isTechnicalDesign = this.isTechnicalDesign(entity);
+    if (_isTechnicalDesign) {
+      final YAnnotTable table = this.getImplementingTable(entity);
+      if ((table != null)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean isAttributeImplemented(final YAnnotAttribute attribute) {
+    EObject _eContainer = attribute.eContainer();
+    final YAnnotEntity entity = ((YAnnotEntity) _eContainer);
+    boolean _isEntityImplemented = this.isEntityImplemented(entity);
+    if (_isEntityImplemented) {
+      final YAnnotTable table = this.getImplementingTable(entity);
+      EList<YAnnotAbstractColumn> _columns = table.getColumns();
+      for (final YAnnotAbstractColumn abstractColumn : _columns) {
+        EObject _type = abstractColumn.getType();
+        if ((_type instanceof YAnnotColumn)) {
+          EObject _type_1 = abstractColumn.getType();
+          final YAnnotColumn column = ((YAnnotColumn) _type_1);
+          String _name = column.getAttrref().getName();
+          String _name_1 = attribute.getName();
+          boolean _equals = Objects.equal(_name, _name_1);
+          if (_equals) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public YAnnotColumn getAttributeImplementation(final YAnnotAttribute attribute) {
+    EObject _eContainer = attribute.eContainer();
+    final YAnnotEntity entity = ((YAnnotEntity) _eContainer);
+    boolean _isEntityImplemented = this.isEntityImplemented(entity);
+    if (_isEntityImplemented) {
+      final YAnnotTable table = this.getImplementingTable(entity);
+      EList<YAnnotAbstractColumn> _columns = table.getColumns();
+      for (final YAnnotAbstractColumn abstractColumn : _columns) {
+        EObject _type = abstractColumn.getType();
+        if ((_type instanceof YAnnotColumn)) {
+          EObject _type_1 = abstractColumn.getType();
+          final YAnnotColumn column = ((YAnnotColumn) _type_1);
+          String _name = column.getAttrref().getName();
+          String _name_1 = attribute.getName();
+          boolean _equals = Objects.equal(_name, _name_1);
+          if (_equals) {
+            return column;
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public YAnnotTechnicalDesign getTechnicalDesign(final EObject context) {
+    IResourceDescriptions resourceDescriptions = this.resourceDescriptionsProvider.getResourceDescriptions(context.eResource());
+    IResourceDescription resourceDescription = resourceDescriptions.getResourceDescription(context.eResource().getURI());
+    List<IContainer> _visibleContainers = this.containerManager.getVisibleContainers(resourceDescription, resourceDescriptions);
+    for (final IContainer c : _visibleContainers) {
+      Iterable<IEObjectDescription> _exportedObjectsByType = c.getExportedObjectsByType(
+        ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN);
+      for (final IEObjectDescription objectDescription : _exportedObjectsByType) {
+        EObject _eObjectOrProxy = objectDescription.getEObjectOrProxy();
+        if ((_eObjectOrProxy instanceof YAnnotTechnicalDesign)) {
+          EObject _eObjectOrProxy_1 = objectDescription.getEObjectOrProxy();
+          YAnnotTechnicalDesign annotTechnicalDesign = ((YAnnotTechnicalDesign) _eObjectOrProxy_1);
+          boolean _eIsProxy = annotTechnicalDesign.eIsProxy();
+          if (_eIsProxy) {
+            EObject _eObject = context.eResource().getResourceSet().getEObject(
+              objectDescription.getEObjectURI(), true);
+            return annotTechnicalDesign = ((YAnnotTechnicalDesign) _eObject);
+          }
+        }
       }
     }
     return null;

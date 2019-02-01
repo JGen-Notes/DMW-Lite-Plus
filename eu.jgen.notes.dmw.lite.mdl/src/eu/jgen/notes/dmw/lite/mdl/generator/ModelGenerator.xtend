@@ -44,12 +44,12 @@ class ModelGenerator extends AbstractGenerator {
 	'''
 
 		@Inject ModelTechicalDesignGenerator g1
-		@Inject LangWidgetGeneratorForDMW g2
+  		@Inject LangWidgetGeneratorForDMW g2
 
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {		
 			g1.doGenerate(resource, fsa)
-			g2.doGenerate(resource, fsa)
+ 	 		g2.doGenerate(resource, fsa)
 
 	}
 }

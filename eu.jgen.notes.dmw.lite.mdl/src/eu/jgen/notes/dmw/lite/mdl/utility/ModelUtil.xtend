@@ -112,6 +112,8 @@ class ModelUtil {
 	public val FORMAT_TIME = "HH:mm:ss"
 	public val FORMAT_DATE = "yyyy-MM-dd"
 
+	public val EXCEPTION_STRING = "Cannot extract value because of not existent annotation pair"
+
 	@Inject ResourceDescriptionsProvider resourceDescriptionsProvider;
 	@Inject IContainer.Manager containerManager;
 
@@ -218,6 +220,10 @@ class ModelUtil {
 
 	def ArrayList<String> createProposalAnnotationList(YAnnotAttribute annotAttr) {
 		val list = newArrayList()
+		if(annotAttr.elementValuePairs.size == 0) {
+			list.add("type=")
+			return list
+		}		
 		if (annotAttr.extractAttributeType == KW_INT) {
 			if (!annotAttr.elementValuePairs.isAnnotHavingSpecificName(KW_LENGTH)) {
 				list.add("length=9")
@@ -379,8 +385,8 @@ class ModelUtil {
 	}
 
 	def boolean isForeignKeyDesignated(YAnnotRelationship relationship) {
-		if (relationship.elementValuePairs.isAnnotHavingSpecificName("foreignkey")) {
-			return relationship.elementValuePairs.extractAnnotValueBoolean("foreignkey")
+		if (relationship.elementValuePairs.isAnnotHavingSpecificName(KW_FOREIGNKEY)) {
+			return relationship.elementValuePairs.extractAnnotValueBoolean(KW_FOREIGNKEY)
 		}
 		false // This is a default value.
 	}
@@ -398,7 +404,7 @@ class ModelUtil {
 				}
 			}
 		}
-		throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair")
+		throw new DMWRuntimeException(EXCEPTION_STRING)
 	}
 
 	def String extractAnnotValueString(EList<YAnnotationElementValuePair> list, String name) {
@@ -410,7 +416,7 @@ class ModelUtil {
 				}
 			}
 		}
-		throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair")
+		throw new DMWRuntimeException(EXCEPTION_STRING)
 	}
 
 	def String extractAnnotValueNumber(EList<YAnnotationElementValuePair> list, String name) {
@@ -422,7 +428,7 @@ class ModelUtil {
 				}
 			}
 		}
-		throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair")
+		throw new DMWRuntimeException(EXCEPTION_STRING)
 	}
 
 	def String extractAnnotValueKeyword(EList<YAnnotationElementValuePair> list, String name) {
@@ -433,8 +439,8 @@ class ModelUtil {
 					return value.value
 				}
 			}
-		}
-		throw new DMWRuntimeException("Cannot extract value because of not existent annotation pair")
+		}		
+		throw new DMWRuntimeException(EXCEPTION_STRING)
 	}
 
 	def boolean isAnnotHavingSpecificName(EList<YAnnotationElementValuePair> list, String name) {
@@ -465,13 +471,6 @@ class ModelUtil {
 		"yet unknown"
 	}
 
-//	def int getColumnLength(YAnnotAbstractColumn abstractColumn) {
-//		if (abstractColumn.type instanceof YAnnotColumn) {
-//			return (abstractColumn.type as YAnnotColumn).extractLength
-//		}
-//		// TODO like
-//		0
-//	}
 	def boolean isColumnOptional(YAnnotAbstractColumn abstractColumn) {
 		if (abstractColumn.type instanceof YAnnotColumn) {
 			val column = abstractColumn.type as YAnnotColumn
@@ -500,16 +499,15 @@ class ModelUtil {
 			]
 			type = column
 			doSelectColumnProperties(column, attribute)
+			doReplicateAttributeAnnotations(column, attribute)
 		]
 		return abstractColumn
 	}
 
 	def private void doSelectColumnProperties(YAnnotColumn column, YAnnotAttribute attribute) {
-		// Set default values in case annotation does not exist.
+
 		if (attribute.extractAttributeType == KW_STRING) {
-			column.type = KW_OPTONAL
-		} else if (attribute.extractAttributeType == KW_STRING) {
-			column.type = KW_OPTONAL
+			column.type = KWUP_CHAR
 		} else if (attribute.extractAttributeType == KW_SHORT) {
 			column.type = KWUP_SMALLINT
 		} else if (attribute.extractAttributeType == KW_INT) {
@@ -519,7 +517,7 @@ class ModelUtil {
 		} else if (attribute.extractAttributeType == KW_DOUBLE) {
 			column.type = KWUP_DECIMAL
 		} else if (attribute.extractAttributeType == KW_DATE) {
-			column.type = KWUP_DECIMAL
+			column.type = KWUP_DATE
 		} else if (attribute.extractAttributeType == KW_TIME) {
 			column.type = KWUP_TIME
 		} else if (attribute.extractAttributeType == KW_TIMESTAMP) {
@@ -529,9 +527,45 @@ class ModelUtil {
 		} else if (attribute.extractAttributeType == KW_BLOB) {
 			column.type = KWUP_BLOB
 		}
-		// TODO need to check this
 		if (attribute.optional !== null && attribute.optional == KW_OPTONAL) {
 			column.optional = KW_OPTONAL
+		}
+	}
+
+	def boolean areTypesCompatible(String columnType, String attributeType) {
+		if (columnType == KWUP_CHAR && attributeType == KW_STRING) {
+			return true
+		} else if (columnType == KWUP_SMALLINT && attributeType == KW_SHORT) {
+			return true
+		} else if (columnType == KWUP_INT && attributeType == KW_INT) {
+			return true
+		} else if (columnType == KWUP_BIGINT && attributeType == KW_LONG) {
+			return true
+		} else if (columnType == KWUP_DECIMAL && attributeType == KW_DOUBLE) {
+			return true
+		} else if (columnType == KWUP_DATE && attributeType == KW_DATE) {
+			return true
+		} else if (columnType == KWUP_TIME && attributeType == KW_TIME) {
+			return true
+		} else if (columnType == KWUP_TIMESTAMP && attributeType == KW_TIMESTAMP) {
+			return true
+		} else if (columnType == KWUP_BOOLEAN && attributeType == KW_BOOL) {
+			return true
+		} else if (columnType == KWUP_BLOB && attributeType == KW_BLOB) {
+			return true
+		} else {
+			false
+		}
+	}
+
+	def private void doReplicateAttributeAnnotations(YAnnotColumn column, YAnnotAttribute attribute) {
+		if (attribute.extractAttributeType == KW_STRING) {
+			column.elementValuePairs.add(ModelFactory.eINSTANCE.createYAnnotationElementValuePair => [
+				name = "length"
+				val expression = ModelFactory.eINSTANCE.createYAnnotNumberConstant
+				expression.value = attribute.elementValuePairs.extractAnnotValueNumber(KW_LENGTH)
+				value = expression
+			])
 		}
 	}
 
@@ -635,7 +669,10 @@ class ModelUtil {
 
 	def String extractAttributeType(YAnnotAttribute annotAttribute) {
 		if (annotAttribute.elementValuePairs.isAnnotHavingSpecificName(KW_TYPE)) {
-			return annotAttribute.elementValuePairs.extractAnnotValueKeyword(KW_TYPE)
+			try {
+				return annotAttribute.elementValuePairs.extractAnnotValueKeyword(KW_TYPE)
+			} catch (Exception exception) {
+			}			
 		}
 		return KW_STRING
 	}
@@ -688,9 +725,14 @@ class ModelUtil {
 	}
 
 	def boolean isTechnicalDesign(EObject context) {
-		for (element : EcoreUtil2.getResourceSet(EcoreUtil2.getRoot(context, true)).allContents.toList) {
-			if (element instanceof YAnnotTechnicalDesign) {
-				return true
+		var resourceDescriptions = resourceDescriptionsProvider.getResourceDescriptions(context.eResource());
+		var resourceDescription = resourceDescriptions.getResourceDescription(context.eResource().getURI());
+		for (IContainer c : containerManager.getVisibleContainers(resourceDescription, resourceDescriptions)) {
+			for (IEObjectDescription objectDescription : c.getExportedObjectsByType(
+				ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN)) {
+				if (objectDescription.getEObjectOrProxy instanceof YAnnotTechnicalDesign) {
+					return true
+				}
 			}
 		}
 		return false
@@ -708,17 +750,67 @@ class ModelUtil {
 		return false
 	}
 
-	def YAnnotTechnicalDesign getTechnicalDesign(EObject context, EClass clazz) {
-		for (element : EcoreUtil2.getResourceSet(EcoreUtil2.getRoot(context, true)).allContents.toList) {
-			if (element instanceof YAnnotTechnicalDesign) {
-				return element
+	def boolean isEntityImplemented(YAnnotEntity entity) {
+		if (isTechnicalDesign(entity)) {
+			val table = getImplementingTable(entity)
+			if (table !== null) {
+				return true
+			}
+		}
+		return false
+	}
+
+	def boolean isAttributeImplemented(YAnnotAttribute attribute) {
+		val entity = attribute.eContainer as YAnnotEntity
+		if (entity.isEntityImplemented) {
+			val table = entity.implementingTable
+			for (abstractColumn : table.columns) {
+				if (abstractColumn.type instanceof YAnnotColumn) {
+					val column = abstractColumn.type as YAnnotColumn
+					if (column.attrref.name == attribute.name) {
+						return true
+					}
+				}
+			}
+		}
+		return false
+	}
+
+	def YAnnotColumn getAttributeImplementation(YAnnotAttribute attribute) {
+		val entity = attribute.eContainer as YAnnotEntity
+		if (entity.isEntityImplemented) {
+			val table = entity.implementingTable
+			for (abstractColumn : table.columns) {
+				if (abstractColumn.type instanceof YAnnotColumn) {
+					val column = abstractColumn.type as YAnnotColumn
+					if (column.attrref.name == attribute.name) {
+						return column
+					}
+				}
+			}
+		}
+		return null
+	}
+
+	def YAnnotTechnicalDesign getTechnicalDesign(EObject context) {
+		var resourceDescriptions = resourceDescriptionsProvider.getResourceDescriptions(context.eResource());
+		var resourceDescription = resourceDescriptions.getResourceDescription(context.eResource().getURI());
+		for (IContainer c : containerManager.getVisibleContainers(resourceDescription, resourceDescriptions)) {
+			for (IEObjectDescription objectDescription : c.getExportedObjectsByType(
+				ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN)) {
+				if (objectDescription.getEObjectOrProxy instanceof YAnnotTechnicalDesign) {
+					var annotTechnicalDesign = objectDescription.getEObjectOrProxy as YAnnotTechnicalDesign
+					if (annotTechnicalDesign.eIsProxy) {
+						return annotTechnicalDesign = context.eResource.resourceSet.getEObject(
+							objectDescription.getEObjectURI, true) as YAnnotTechnicalDesign
+					}
+				}
 			}
 		}
 		return null
 	}
 
 	def boolean isInverseRelationshipDefinedInTarget(YAnnotRelationship annotRel) {
-
 		return false
 	}
 

@@ -37,16 +37,19 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsYImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
-		private final Assignment cClassesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cClassesYClassParserRuleCall_4_0 = (RuleCall)cClassesAssignment_4.eContents().get(0);
+		private final Assignment cEnumsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cEnumsYEnumerationParserRuleCall_4_0 = (RuleCall)cEnumsAssignment_4.eContents().get(0);
+		private final Assignment cClassesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cClassesYClassParserRuleCall_5_0 = (RuleCall)cClassesAssignment_5.eContents().get(0);
 		
 		//YWidget:
 		//	'package' name=QualifiedName ';'?
 		//	imports+=YImport*
+		//	enums+=YEnumeration*
 		//	classes+=YClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'package' name=QualifiedName ';'? imports+=YImport* classes+=YClass*
+		//'package' name=QualifiedName ';'? imports+=YImport* enums+=YEnumeration* classes+=YClass*
 		public Group getGroup() { return cGroup; }
 		
 		//'package'
@@ -67,11 +70,17 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//YImport
 		public RuleCall getImportsYImportParserRuleCall_3_0() { return cImportsYImportParserRuleCall_3_0; }
 		
+		//enums+=YEnumeration*
+		public Assignment getEnumsAssignment_4() { return cEnumsAssignment_4; }
+		
+		//YEnumeration
+		public RuleCall getEnumsYEnumerationParserRuleCall_4_0() { return cEnumsYEnumerationParserRuleCall_4_0; }
+		
 		//classes+=YClass*
-		public Assignment getClassesAssignment_4() { return cClassesAssignment_4; }
+		public Assignment getClassesAssignment_5() { return cClassesAssignment_5; }
 		
 		//YClass
-		public RuleCall getClassesYClassParserRuleCall_4_0() { return cClassesYClassParserRuleCall_4_0; }
+		public RuleCall getClassesYClassParserRuleCall_5_0() { return cClassesYClassParserRuleCall_5_0; }
 	}
 	public class YParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YParameter");
@@ -141,6 +150,139 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+	}
+	public class YEnumerationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YEnumeration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYEnumerationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cEnumKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cSuperclassAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cSuperclassYEnumerationCrossReference_3_1_0 = (CrossReference)cSuperclassAssignment_3_1.eContents().get(0);
+		private final RuleCall cSuperclassYEnumerationQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cSuperclassYEnumerationCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cCasesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCasesYEnumerationCaseParserRuleCall_5_0 = (RuleCall)cCasesAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//YEnumeration:
+		//	{YEnumeration} 'enum' name=ValidID (':' superclass=[YEnumeration|QualifiedName])? '{'
+		//	cases+=YEnumerationCase*
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YEnumeration} 'enum' name=ValidID (':' superclass=[YEnumeration|QualifiedName])? '{' cases+=YEnumerationCase* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{YEnumeration}
+		public Action getYEnumerationAction_0() { return cYEnumerationAction_0; }
+		
+		//'enum'
+		public Keyword getEnumKeyword_1() { return cEnumKeyword_1; }
+		
+		//name=ValidID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+		
+		//(':' superclass=[YEnumeration|QualifiedName])?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//':'
+		public Keyword getColonKeyword_3_0() { return cColonKeyword_3_0; }
+		
+		//superclass=[YEnumeration|QualifiedName]
+		public Assignment getSuperclassAssignment_3_1() { return cSuperclassAssignment_3_1; }
+		
+		//[YEnumeration|QualifiedName]
+		public CrossReference getSuperclassYEnumerationCrossReference_3_1_0() { return cSuperclassYEnumerationCrossReference_3_1_0; }
+		
+		//QualifiedName
+		public RuleCall getSuperclassYEnumerationQualifiedNameParserRuleCall_3_1_0_1() { return cSuperclassYEnumerationQualifiedNameParserRuleCall_3_1_0_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		
+		//cases+=YEnumerationCase*
+		public Assignment getCasesAssignment_5() { return cCasesAssignment_5; }
+		
+		//YEnumerationCase
+		public RuleCall getCasesYEnumerationCaseParserRuleCall_5_0() { return cCasesYEnumerationCaseParserRuleCall_5_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class YEnumerationCaseElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YEnumerationCase");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYEnumerationCaseAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCaseKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Assignment cParamsAssignment_3_1_0 = (Assignment)cGroup_3_1.eContents().get(0);
+		private final RuleCall cParamsYParameterParserRuleCall_3_1_0_0 = (RuleCall)cParamsAssignment_3_1_0.eContents().get(0);
+		private final Group cGroup_3_1_1 = (Group)cGroup_3_1.eContents().get(1);
+		private final Keyword cCommaKeyword_3_1_1_0 = (Keyword)cGroup_3_1_1.eContents().get(0);
+		private final Assignment cParamsAssignment_3_1_1_1 = (Assignment)cGroup_3_1_1.eContents().get(1);
+		private final RuleCall cParamsYParameterParserRuleCall_3_1_1_1_0 = (RuleCall)cParamsAssignment_3_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		
+		//YEnumerationCase:
+		//	{YEnumerationCase}
+		//	'case' name=ValidID ('(' (params+=YParameter (',' params+=YParameter)*)? ')')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YEnumerationCase} 'case' name=ValidID ('(' (params+=YParameter (',' params+=YParameter)*)? ')')?
+		public Group getGroup() { return cGroup; }
+		
+		//{YEnumerationCase}
+		public Action getYEnumerationCaseAction_0() { return cYEnumerationCaseAction_0; }
+		
+		//'case'
+		public Keyword getCaseKeyword_1() { return cCaseKeyword_1; }
+		
+		//name=ValidID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+		
+		//('(' (params+=YParameter (',' params+=YParameter)*)? ')')?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+		
+		//(params+=YParameter (',' params+=YParameter)*)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+		
+		//params+=YParameter
+		public Assignment getParamsAssignment_3_1_0() { return cParamsAssignment_3_1_0; }
+		
+		//YParameter
+		public RuleCall getParamsYParameterParserRuleCall_3_1_0_0() { return cParamsYParameterParserRuleCall_3_1_0_0; }
+		
+		//(',' params+=YParameter)*
+		public Group getGroup_3_1_1() { return cGroup_3_1_1; }
+		
+		//','
+		public Keyword getCommaKeyword_3_1_1_0() { return cCommaKeyword_3_1_1_0; }
+		
+		//params+=YParameter
+		public Assignment getParamsAssignment_3_1_1_1() { return cParamsAssignment_3_1_1_1; }
+		
+		//YParameter
+		public RuleCall getParamsYParameterParserRuleCall_3_1_1_1_0() { return cParamsYParameterParserRuleCall_3_1_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
 	}
 	public class YClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YClass");
@@ -439,22 +581,25 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cParamsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
 		private final RuleCall cParamsYParameterParserRuleCall_4_1_1_0 = (RuleCall)cParamsAssignment_4_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cReturnvalueAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final Keyword cReturnvalueHyphenMinusGreaterThanSignKeyword_6_0 = (Keyword)cReturnvalueAssignment_6.eContents().get(0);
-		private final Assignment cTypeAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final CrossReference cTypeYClassCrossReference_7_0 = (CrossReference)cTypeAssignment_7.eContents().get(0);
-		private final RuleCall cTypeYClassQualifiedNameParserRuleCall_7_0_1 = (RuleCall)cTypeYClassCrossReference_7_0.eContents().get(1);
-		private final Assignment cBodyAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cBodyYBlockParserRuleCall_8_0 = (RuleCall)cBodyAssignment_8.eContents().get(0);
+		private final Assignment cThrowAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final Keyword cThrowThrowsKeyword_6_0 = (Keyword)cThrowAssignment_6.eContents().get(0);
+		private final Assignment cReturnvalueAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final Keyword cReturnvalueHyphenMinusGreaterThanSignKeyword_7_0 = (Keyword)cReturnvalueAssignment_7.eContents().get(0);
+		private final Assignment cTypeAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cTypeYClassCrossReference_8_0 = (CrossReference)cTypeAssignment_8.eContents().get(0);
+		private final RuleCall cTypeYClassQualifiedNameParserRuleCall_8_0_1 = (RuleCall)cTypeYClassCrossReference_8_0.eContents().get(1);
+		private final Assignment cBodyAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final RuleCall cBodyYBlockParserRuleCall_9_0 = (RuleCall)cBodyAssignment_9.eContents().get(0);
 		
 		//YFunction:
 		//	access=YAccessLevel? 'func' name=ValidID
-		//	'(' (params+=YParameter (',' params+=YParameter)*)? ')' returnvalue?='->'? type=[YClass|QualifiedName]?
+		//	'(' (params+=YParameter (',' params+=YParameter)*)? ')' throw?='throws' returnvalue?='->'?
+		//	type=[YClass|QualifiedName]?
 		//	body=YBlock;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//access=YAccessLevel? 'func' name=ValidID '(' (params+=YParameter (',' params+=YParameter)*)? ')' returnvalue?='->'?
-		//type=[YClass|QualifiedName]? body=YBlock
+		//access=YAccessLevel? 'func' name=ValidID '(' (params+=YParameter (',' params+=YParameter)*)? ')' throw?='throws'
+		//returnvalue?='->'? type=[YClass|QualifiedName]? body=YBlock
 		public Group getGroup() { return cGroup; }
 		
 		//access=YAccessLevel?
@@ -499,26 +644,32 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 		
+		//throw?='throws'
+		public Assignment getThrowAssignment_6() { return cThrowAssignment_6; }
+		
+		//'throws'
+		public Keyword getThrowThrowsKeyword_6_0() { return cThrowThrowsKeyword_6_0; }
+		
 		//returnvalue?='->'?
-		public Assignment getReturnvalueAssignment_6() { return cReturnvalueAssignment_6; }
+		public Assignment getReturnvalueAssignment_7() { return cReturnvalueAssignment_7; }
 		
 		//'->'
-		public Keyword getReturnvalueHyphenMinusGreaterThanSignKeyword_6_0() { return cReturnvalueHyphenMinusGreaterThanSignKeyword_6_0; }
+		public Keyword getReturnvalueHyphenMinusGreaterThanSignKeyword_7_0() { return cReturnvalueHyphenMinusGreaterThanSignKeyword_7_0; }
 		
 		//type=[YClass|QualifiedName]?
-		public Assignment getTypeAssignment_7() { return cTypeAssignment_7; }
+		public Assignment getTypeAssignment_8() { return cTypeAssignment_8; }
 		
 		//[YClass|QualifiedName]
-		public CrossReference getTypeYClassCrossReference_7_0() { return cTypeYClassCrossReference_7_0; }
+		public CrossReference getTypeYClassCrossReference_8_0() { return cTypeYClassCrossReference_8_0; }
 		
 		//QualifiedName
-		public RuleCall getTypeYClassQualifiedNameParserRuleCall_7_0_1() { return cTypeYClassQualifiedNameParserRuleCall_7_0_1; }
+		public RuleCall getTypeYClassQualifiedNameParserRuleCall_8_0_1() { return cTypeYClassQualifiedNameParserRuleCall_8_0_1; }
 		
 		//body=YBlock
-		public Assignment getBodyAssignment_8() { return cBodyAssignment_8; }
+		public Assignment getBodyAssignment_9() { return cBodyAssignment_9; }
 		
 		//YBlock
-		public RuleCall getBodyYBlockParserRuleCall_8_0() { return cBodyYBlockParserRuleCall_8_0; }
+		public RuleCall getBodyYBlockParserRuleCall_9_0() { return cBodyYBlockParserRuleCall_9_0; }
 	}
 	public class YBlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YBlock");
@@ -570,17 +721,19 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cYExpressionParserRuleCall_12_0 = (RuleCall)cGroup_12.eContents().get(0);
 		private final Keyword cSemicolonKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
 		private final RuleCall cYIfStatementParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
-		private final RuleCall cYSwitchStatementParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
+		private final RuleCall cYThrowParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
+		private final RuleCall cYDoStatementParserRuleCall_15 = (RuleCall)cAlternatives.eContents().get(15);
+		private final RuleCall cYSwitchStatementParserRuleCall_16 = (RuleCall)cAlternatives.eContents().get(16);
 		
 		//YStatement:
 		//	YVariableDeclaration | YReturn | YReadStatement | YCreateStatement | YUpdateStatement | YAssociateStatement |
 		//	YDisassociateStatement | YDeleteStatement | YReadEachStatement | YWhileStatement | YRepeatWhileStatement |
-		//	YForInStatement | YExpression ';'? | YIfStatement | YSwitchStatement;
+		//	YForInStatement | YExpression ';'? | YIfStatement | YThrow | YDoStatement | YSwitchStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//YVariableDeclaration | YReturn | YReadStatement | YCreateStatement | YUpdateStatement | YAssociateStatement |
 		//YDisassociateStatement | YDeleteStatement | YReadEachStatement | YWhileStatement | YRepeatWhileStatement |
-		//YForInStatement | YExpression ';'? | YIfStatement | YSwitchStatement
+		//YForInStatement | YExpression ';'? | YIfStatement | YThrow | YDoStatement | YSwitchStatement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//YVariableDeclaration
@@ -631,8 +784,121 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//YIfStatement
 		public RuleCall getYIfStatementParserRuleCall_13() { return cYIfStatementParserRuleCall_13; }
 		
+		//YThrow
+		public RuleCall getYThrowParserRuleCall_14() { return cYThrowParserRuleCall_14; }
+		
+		//YDoStatement
+		public RuleCall getYDoStatementParserRuleCall_15() { return cYDoStatementParserRuleCall_15; }
+		
 		//YSwitchStatement
-		public RuleCall getYSwitchStatementParserRuleCall_14() { return cYSwitchStatementParserRuleCall_14; }
+		public RuleCall getYSwitchStatementParserRuleCall_16() { return cYSwitchStatementParserRuleCall_16; }
+	}
+	public class YDoStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YDoStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYDoStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDoKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cBlockAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cBlockYBlockParserRuleCall_2_0 = (RuleCall)cBlockAssignment_2.eContents().get(0);
+		private final Assignment cCatchesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCatchesYCatchParserRuleCall_3_0 = (RuleCall)cCatchesAssignment_3.eContents().get(0);
+		
+		//YDoStatement:
+		//	{YDoStatement} 'do'
+		//	block=YBlock
+		//	catches+=YCatch*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YDoStatement} 'do' block=YBlock catches+=YCatch*
+		public Group getGroup() { return cGroup; }
+		
+		//{YDoStatement}
+		public Action getYDoStatementAction_0() { return cYDoStatementAction_0; }
+		
+		//'do'
+		public Keyword getDoKeyword_1() { return cDoKeyword_1; }
+		
+		//block=YBlock
+		public Assignment getBlockAssignment_2() { return cBlockAssignment_2; }
+		
+		//YBlock
+		public RuleCall getBlockYBlockParserRuleCall_2_0() { return cBlockYBlockParserRuleCall_2_0; }
+		
+		//catches+=YCatch*
+		public Assignment getCatchesAssignment_3() { return cCatchesAssignment_3; }
+		
+		//YCatch
+		public RuleCall getCatchesYCatchParserRuleCall_3_0() { return cCatchesYCatchParserRuleCall_3_0; }
+	}
+	public class YCatchElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YCatch");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYCatchAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cCatchKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExceptionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cExceptionYEnumerationCaseCrossReference_2_0 = (CrossReference)cExceptionAssignment_2.eContents().get(0);
+		private final RuleCall cExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cExceptionYEnumerationCaseCrossReference_2_0.eContents().get(1);
+		private final Assignment cCatchBlockAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCatchBlockYCatchBlockParserRuleCall_3_0 = (RuleCall)cCatchBlockAssignment_3.eContents().get(0);
+		
+		//YCatch:
+		//	{YCatch} 'catch' exception=[YEnumerationCase|QualifiedName] catchBlock=YCatchBlock;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YCatch} 'catch' exception=[YEnumerationCase|QualifiedName] catchBlock=YCatchBlock
+		public Group getGroup() { return cGroup; }
+		
+		//{YCatch}
+		public Action getYCatchAction_0() { return cYCatchAction_0; }
+		
+		//'catch'
+		public Keyword getCatchKeyword_1() { return cCatchKeyword_1; }
+		
+		//exception=[YEnumerationCase|QualifiedName]
+		public Assignment getExceptionAssignment_2() { return cExceptionAssignment_2; }
+		
+		//[YEnumerationCase|QualifiedName]
+		public CrossReference getExceptionYEnumerationCaseCrossReference_2_0() { return cExceptionYEnumerationCaseCrossReference_2_0; }
+		
+		//QualifiedName
+		public RuleCall getExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1() { return cExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1; }
+		
+		//catchBlock=YCatchBlock
+		public Assignment getCatchBlockAssignment_3() { return cCatchBlockAssignment_3; }
+		
+		//YCatchBlock
+		public RuleCall getCatchBlockYCatchBlockParserRuleCall_3_0() { return cCatchBlockYCatchBlockParserRuleCall_3_0; }
+	}
+	public class YCatchBlockElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YCatchBlock");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYCatchBlockAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatementsYStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//YCatchBlock:
+		//	{YCatchBlock} '{' statements+=YStatement* '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YCatchBlock} '{' statements+=YStatement* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{YCatchBlock}
+		public Action getYCatchBlockAction_0() { return cYCatchBlockAction_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//statements+=YStatement*
+		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
+		
+		//YStatement
+		public RuleCall getStatementsYStatementParserRuleCall_2_0() { return cStatementsYStatementParserRuleCall_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class YVariableDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YVariableDeclaration");
@@ -664,6 +930,80 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//';'
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
+	}
+	public class YThrowElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YThrow");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cYThrowAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cThrowKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cExceptionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cExceptionYEnumerationCaseCrossReference_2_0 = (CrossReference)cExceptionAssignment_2.eContents().get(0);
+		private final RuleCall cExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cExceptionYEnumerationCaseCrossReference_2_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cArgumentsAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cArgumentsYOrExpressionParserRuleCall_4_0_0 = (RuleCall)cArgumentsAssignment_4_0.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Keyword cCommaKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cArgumentsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cArgumentsYOrExpressionParserRuleCall_4_1_1_0 = (RuleCall)cArgumentsAssignment_4_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//YThrow:
+		//	{YThrow} 'throw' exception=[YEnumerationCase|QualifiedName]
+		//	'(' (arguments+=YOrExpression (',' arguments+=YOrExpression)*)? ')'
+		//	';'?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{YThrow} 'throw' exception=[YEnumerationCase|QualifiedName] '(' (arguments+=YOrExpression (','
+		//arguments+=YOrExpression)*)? ')' ';'?
+		public Group getGroup() { return cGroup; }
+		
+		//{YThrow}
+		public Action getYThrowAction_0() { return cYThrowAction_0; }
+		
+		//'throw'
+		public Keyword getThrowKeyword_1() { return cThrowKeyword_1; }
+		
+		//exception=[YEnumerationCase|QualifiedName]
+		public Assignment getExceptionAssignment_2() { return cExceptionAssignment_2; }
+		
+		//[YEnumerationCase|QualifiedName]
+		public CrossReference getExceptionYEnumerationCaseCrossReference_2_0() { return cExceptionYEnumerationCaseCrossReference_2_0; }
+		
+		//QualifiedName
+		public RuleCall getExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1() { return cExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
+		
+		//(arguments+=YOrExpression (',' arguments+=YOrExpression)*)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//arguments+=YOrExpression
+		public Assignment getArgumentsAssignment_4_0() { return cArgumentsAssignment_4_0; }
+		
+		//YOrExpression
+		public RuleCall getArgumentsYOrExpressionParserRuleCall_4_0_0() { return cArgumentsYOrExpressionParserRuleCall_4_0_0; }
+		
+		//(',' arguments+=YOrExpression)*
+		public Group getGroup_4_1() { return cGroup_4_1; }
+		
+		//','
+		public Keyword getCommaKeyword_4_1_0() { return cCommaKeyword_4_1_0; }
+		
+		//arguments+=YOrExpression
+		public Assignment getArgumentsAssignment_4_1_1() { return cArgumentsAssignment_4_1_1; }
+		
+		//YOrExpression
+		public RuleCall getArgumentsYOrExpressionParserRuleCall_4_1_1_0() { return cArgumentsYOrExpressionParserRuleCall_4_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+		
+		//';'?
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 	public class YReturnElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YReturn");
@@ -1636,22 +1976,12 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cJoinclauseYJoinParserRuleCall_3_0 = (RuleCall)cJoinclauseAssignment_3.eContents().get(0);
 		private final Assignment cWhereclauseAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cWhereclauseYWhereParserRuleCall_4_0 = (RuleCall)cWhereclauseAssignment_4.eContents().get(0);
-		private final Keyword cSuccessKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cSuccessAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cSuccessYBlockParserRuleCall_6_0 = (RuleCall)cSuccessAssignment_6.eContents().get(0);
-		private final Keyword cNotKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cFoundKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cNotfoundAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cNotfoundYBlockParserRuleCall_9_0 = (RuleCall)cNotfoundAssignment_9.eContents().get(0);
 		
 		//YReadStatement:
-		//	'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-		//	'success' success=YBlock
-		//	'not' 'found' notfound=YBlock;
+		//	'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere? 'success'
-		//success=YBlock 'not' 'found' notfound=YBlock
+		//'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
 		public Group getGroup() { return cGroup; }
 		
 		//'db-read'
@@ -1686,27 +2016,6 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//YWhere
 		public RuleCall getWhereclauseYWhereParserRuleCall_4_0() { return cWhereclauseYWhereParserRuleCall_4_0; }
-		
-		//'success'
-		public Keyword getSuccessKeyword_5() { return cSuccessKeyword_5; }
-		
-		//success=YBlock
-		public Assignment getSuccessAssignment_6() { return cSuccessAssignment_6; }
-		
-		//YBlock
-		public RuleCall getSuccessYBlockParserRuleCall_6_0() { return cSuccessYBlockParserRuleCall_6_0; }
-		
-		//'not'
-		public Keyword getNotKeyword_7() { return cNotKeyword_7; }
-		
-		//'found'
-		public Keyword getFoundKeyword_8() { return cFoundKeyword_8; }
-		
-		//notfound=YBlock
-		public Assignment getNotfoundAssignment_9() { return cNotfoundAssignment_9; }
-		
-		//YBlock
-		public RuleCall getNotfoundYBlockParserRuleCall_9_0() { return cNotfoundYBlockParserRuleCall_9_0; }
 	}
 	public class YReadEachStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YReadEachStatement");
@@ -1726,16 +2035,14 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTargetAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cTargetYPropertyCrossReference_6_0 = (CrossReference)cTargetAssignment_6.eContents().get(0);
 		private final RuleCall cTargetYPropertyIDTerminalRuleCall_6_0_1 = (RuleCall)cTargetYPropertyCrossReference_6_0.eContents().get(1);
-		private final Assignment cSuccessAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cSuccessYBlockParserRuleCall_7_0 = (RuleCall)cSuccessAssignment_7.eContents().get(0);
 		
 		//YReadEachStatement:
 		//	'db-read-each' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-		//	'target' target=[YProperty] success=YBlock;
+		//	'target' target=[YProperty];
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'db-read-each' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere? 'target'
-		//target=[YProperty] success=YBlock
+		//target=[YProperty]
 		public Group getGroup() { return cGroup; }
 		
 		//'db-read-each'
@@ -1782,12 +2089,6 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getTargetYPropertyIDTerminalRuleCall_6_0_1() { return cTargetYPropertyIDTerminalRuleCall_6_0_1; }
-		
-		//success=YBlock
-		public Assignment getSuccessAssignment_7() { return cSuccessAssignment_7; }
-		
-		//YBlock
-		public RuleCall getSuccessYBlockParserRuleCall_7_0() { return cSuccessYBlockParserRuleCall_7_0; }
 	}
 	public class YCreateStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YCreateStatement");
@@ -1795,24 +2096,16 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDbCreateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cStructAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cStructYStructRefPairParserRuleCall_1_0 = (RuleCall)cStructAssignment_1.eContents().get(0);
-		private final Assignment cSetBlockAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSetBlockYBlockParserRuleCall_2_0 = (RuleCall)cSetBlockAssignment_2.eContents().get(0);
-		private final Keyword cSuccessKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cSuccessAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cSuccessYBlockParserRuleCall_4_0 = (RuleCall)cSuccessAssignment_4.eContents().get(0);
-		private final Keyword cAlreadyKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cExistKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cAlreadyExistAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cAlreadyExistYBlockParserRuleCall_7_0 = (RuleCall)cAlreadyExistAssignment_7.eContents().get(0);
+		private final Keyword cSetKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSetBlockAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSetBlockYBlockParserRuleCall_3_0 = (RuleCall)cSetBlockAssignment_3.eContents().get(0);
 		
 		//YCreateStatement:
 		//	'db-create' struct=YStructRefPair
-		//	setBlock=YBlock
-		//	'success' success=YBlock
-		//	'already' 'exist' alreadyExist=YBlock;
+		//	'set' setBlock=YBlock;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'db-create' struct=YStructRefPair setBlock=YBlock 'success' success=YBlock 'already' 'exist' alreadyExist=YBlock
+		//'db-create' struct=YStructRefPair 'set' setBlock=YBlock
 		public Group getGroup() { return cGroup; }
 		
 		//'db-create'
@@ -1824,32 +2117,14 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//YStructRefPair
 		public RuleCall getStructYStructRefPairParserRuleCall_1_0() { return cStructYStructRefPairParserRuleCall_1_0; }
 		
+		//'set'
+		public Keyword getSetKeyword_2() { return cSetKeyword_2; }
+		
 		//setBlock=YBlock
-		public Assignment getSetBlockAssignment_2() { return cSetBlockAssignment_2; }
+		public Assignment getSetBlockAssignment_3() { return cSetBlockAssignment_3; }
 		
 		//YBlock
-		public RuleCall getSetBlockYBlockParserRuleCall_2_0() { return cSetBlockYBlockParserRuleCall_2_0; }
-		
-		//'success'
-		public Keyword getSuccessKeyword_3() { return cSuccessKeyword_3; }
-		
-		//success=YBlock
-		public Assignment getSuccessAssignment_4() { return cSuccessAssignment_4; }
-		
-		//YBlock
-		public RuleCall getSuccessYBlockParserRuleCall_4_0() { return cSuccessYBlockParserRuleCall_4_0; }
-		
-		//'already'
-		public Keyword getAlreadyKeyword_5() { return cAlreadyKeyword_5; }
-		
-		//'exist'
-		public Keyword getExistKeyword_6() { return cExistKeyword_6; }
-		
-		//alreadyExist=YBlock
-		public Assignment getAlreadyExistAssignment_7() { return cAlreadyExistAssignment_7; }
-		
-		//YBlock
-		public RuleCall getAlreadyExistYBlockParserRuleCall_7_0() { return cAlreadyExistYBlockParserRuleCall_7_0; }
+		public RuleCall getSetBlockYBlockParserRuleCall_3_0() { return cSetBlockYBlockParserRuleCall_3_0; }
 	}
 	public class YUpdateStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YUpdateStatement");
@@ -1857,19 +2132,16 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDbUpdateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cStructAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cStructYStructRefPairParserRuleCall_1_0 = (RuleCall)cStructAssignment_1.eContents().get(0);
-		private final Assignment cSetBlockAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSetBlockYBlockParserRuleCall_2_0 = (RuleCall)cSetBlockAssignment_2.eContents().get(0);
-		private final Keyword cSuccessKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cSuccessAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cSuccessYBlockParserRuleCall_4_0 = (RuleCall)cSuccessAssignment_4.eContents().get(0);
+		private final Keyword cSetKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSetBlockAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSetBlockYBlockParserRuleCall_3_0 = (RuleCall)cSetBlockAssignment_3.eContents().get(0);
 		
 		//YUpdateStatement:
 		//	'db-update' struct=YStructRefPair
-		//	setBlock=YBlock
-		//	'success' success=YBlock;
+		//	'set' setBlock=YBlock;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'db-update' struct=YStructRefPair setBlock=YBlock 'success' success=YBlock
+		//'db-update' struct=YStructRefPair 'set' setBlock=YBlock
 		public Group getGroup() { return cGroup; }
 		
 		//'db-update'
@@ -1881,20 +2153,14 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//YStructRefPair
 		public RuleCall getStructYStructRefPairParserRuleCall_1_0() { return cStructYStructRefPairParserRuleCall_1_0; }
 		
+		//'set'
+		public Keyword getSetKeyword_2() { return cSetKeyword_2; }
+		
 		//setBlock=YBlock
-		public Assignment getSetBlockAssignment_2() { return cSetBlockAssignment_2; }
+		public Assignment getSetBlockAssignment_3() { return cSetBlockAssignment_3; }
 		
 		//YBlock
-		public RuleCall getSetBlockYBlockParserRuleCall_2_0() { return cSetBlockYBlockParserRuleCall_2_0; }
-		
-		//'success'
-		public Keyword getSuccessKeyword_3() { return cSuccessKeyword_3; }
-		
-		//success=YBlock
-		public Assignment getSuccessAssignment_4() { return cSuccessAssignment_4; }
-		
-		//YBlock
-		public RuleCall getSuccessYBlockParserRuleCall_4_0() { return cSuccessYBlockParserRuleCall_4_0; }
+		public RuleCall getSetBlockYBlockParserRuleCall_3_0() { return cSetBlockYBlockParserRuleCall_3_0; }
 	}
 	public class YDeleteStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "eu.jgen.notes.dmw.lite.base.Lang.YDeleteStatement");
@@ -2007,16 +2273,16 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cStructpropertyAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cStructpropertyYPropertyCrossReference_0_0 = (CrossReference)cStructpropertyAssignment_0.eContents().get(0);
 		private final RuleCall cStructpropertyYPropertyIDTerminalRuleCall_0_0_1 = (RuleCall)cStructpropertyYPropertyCrossReference_0_0.eContents().get(1);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cStructclassAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cStructclassYAnnotEntityCrossReference_2_0 = (CrossReference)cStructclassAssignment_2.eContents().get(0);
 		private final RuleCall cStructclassYAnnotEntityIDTerminalRuleCall_2_0_1 = (RuleCall)cStructclassYAnnotEntityCrossReference_2_0.eContents().get(1);
 		
 		//YStructRefPair:
-		//	structproperty=[YProperty] '->' structclass=[model::YAnnotEntity];
+		//	structproperty=[YProperty] '=>' structclass=[model::YAnnotEntity];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//structproperty=[YProperty] '->' structclass=[model::YAnnotEntity]
+		//structproperty=[YProperty] '=>' structclass=[model::YAnnotEntity]
 		public Group getGroup() { return cGroup; }
 		
 		//structproperty=[YProperty]
@@ -2028,8 +2294,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getStructpropertyYPropertyIDTerminalRuleCall_0_0_1() { return cStructpropertyYPropertyIDTerminalRuleCall_0_0_1; }
 		
-		//'->'
-		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
 		
 		//structclass=[model::YAnnotEntity]
 		public Assignment getStructclassAssignment_2() { return cStructclassAssignment_2; }
@@ -2089,20 +2355,20 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFromViewAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cFromViewYPropertyCrossReference_0_0 = (CrossReference)cFromViewAssignment_0.eContents().get(0);
 		private final RuleCall cFromViewYPropertyIDTerminalRuleCall_0_0_1 = (RuleCall)cFromViewYPropertyCrossReference_0_0.eContents().get(1);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRelRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cRelRefYAnnotRelationshipCrossReference_2_0 = (CrossReference)cRelRefAssignment_2.eContents().get(0);
 		private final RuleCall cRelRefYAnnotRelationshipQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cRelRefYAnnotRelationshipCrossReference_2_0.eContents().get(1);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cToViewAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cToViewYPropertyCrossReference_4_0 = (CrossReference)cToViewAssignment_4.eContents().get(0);
 		private final RuleCall cToViewYPropertyIDTerminalRuleCall_4_0_1 = (RuleCall)cToViewYPropertyCrossReference_4_0.eContents().get(1);
 		
 		//YJoinDef:
-		//	fromView=[YProperty] '->' relRef=[model::YAnnotRelationship|QualifiedName] '->' toView=[YProperty];
+		//	fromView=[YProperty] '=>' relRef=[model::YAnnotRelationship|QualifiedName] '=>' toView=[YProperty];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//fromView=[YProperty] '->' relRef=[model::YAnnotRelationship|QualifiedName] '->' toView=[YProperty]
+		//fromView=[YProperty] '=>' relRef=[model::YAnnotRelationship|QualifiedName] '=>' toView=[YProperty]
 		public Group getGroup() { return cGroup; }
 		
 		//fromView=[YProperty]
@@ -2114,8 +2380,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getFromViewYPropertyIDTerminalRuleCall_0_0_1() { return cFromViewYPropertyIDTerminalRuleCall_0_0_1; }
 		
-		//'->'
-		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_1() { return cEqualsSignGreaterThanSignKeyword_1; }
 		
 		//relRef=[model::YAnnotRelationship|QualifiedName]
 		public Assignment getRelRefAssignment_2() { return cRelRefAssignment_2; }
@@ -2126,8 +2392,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getRelRefYAnnotRelationshipQualifiedNameParserRuleCall_2_0_1() { return cRelRefYAnnotRelationshipQualifiedNameParserRuleCall_2_0_1; }
 		
-		//'->'
-		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_3() { return cEqualsSignGreaterThanSignKeyword_3; }
 		
 		//toView=[YProperty]
 		public Assignment getToViewAssignment_4() { return cToViewAssignment_4; }
@@ -2343,6 +2609,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	private final YAccessLevelElements eYAccessLevel;
 	private final YArgumentElements pYArgument;
 	private final YArgumentValueElements pYArgumentValue;
+	private final YEnumerationElements pYEnumeration;
+	private final YEnumerationCaseElements pYEnumerationCase;
 	private final YClassElements pYClass;
 	private final YMemberElements pYMember;
 	private final YTypedDeclarationElements pYTypedDeclaration;
@@ -2351,7 +2619,11 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	private final YFunctionElements pYFunction;
 	private final YBlockElements pYBlock;
 	private final YStatementElements pYStatement;
+	private final YDoStatementElements pYDoStatement;
+	private final YCatchElements pYCatch;
+	private final YCatchBlockElements pYCatchBlock;
 	private final YVariableDeclarationElements pYVariableDeclaration;
+	private final YThrowElements pYThrow;
 	private final YReturnElements pYReturn;
 	private final YIfStatementElements pYIfStatement;
 	private final YSwitchStatementElements pYSwitchStatement;
@@ -2407,6 +2679,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		this.eYAccessLevel = new YAccessLevelElements();
 		this.pYArgument = new YArgumentElements();
 		this.pYArgumentValue = new YArgumentValueElements();
+		this.pYEnumeration = new YEnumerationElements();
+		this.pYEnumerationCase = new YEnumerationCaseElements();
 		this.pYClass = new YClassElements();
 		this.pYMember = new YMemberElements();
 		this.pYTypedDeclaration = new YTypedDeclarationElements();
@@ -2415,7 +2689,11 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pYFunction = new YFunctionElements();
 		this.pYBlock = new YBlockElements();
 		this.pYStatement = new YStatementElements();
+		this.pYDoStatement = new YDoStatementElements();
+		this.pYCatch = new YCatchElements();
+		this.pYCatchBlock = new YCatchBlockElements();
 		this.pYVariableDeclaration = new YVariableDeclarationElements();
+		this.pYThrow = new YThrowElements();
 		this.pYReturn = new YReturnElements();
 		this.pYIfStatement = new YIfStatementElements();
 		this.pYSwitchStatement = new YSwitchStatementElements();
@@ -2488,6 +2766,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	//YWidget:
 	//	'package' name=QualifiedName ';'?
 	//	imports+=YImport*
+	//	enums+=YEnumeration*
 	//	classes+=YClass*;
 	public YWidgetElements getYWidgetAccess() {
 		return pYWidget;
@@ -2535,6 +2814,29 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getYArgumentValueRule() {
 		return getYArgumentValueAccess().getRule();
+	}
+	
+	//YEnumeration:
+	//	{YEnumeration} 'enum' name=ValidID (':' superclass=[YEnumeration|QualifiedName])? '{'
+	//	cases+=YEnumerationCase*
+	//	'}';
+	public YEnumerationElements getYEnumerationAccess() {
+		return pYEnumeration;
+	}
+	
+	public ParserRule getYEnumerationRule() {
+		return getYEnumerationAccess().getRule();
+	}
+	
+	//YEnumerationCase:
+	//	{YEnumerationCase}
+	//	'case' name=ValidID ('(' (params+=YParameter (',' params+=YParameter)*)? ')')?;
+	public YEnumerationCaseElements getYEnumerationCaseAccess() {
+		return pYEnumerationCase;
+	}
+	
+	public ParserRule getYEnumerationCaseRule() {
+		return getYEnumerationCaseAccess().getRule();
 	}
 	
 	//YClass:
@@ -2596,7 +2898,8 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//YFunction:
 	//	access=YAccessLevel? 'func' name=ValidID
-	//	'(' (params+=YParameter (',' params+=YParameter)*)? ')' returnvalue?='->'? type=[YClass|QualifiedName]?
+	//	'(' (params+=YParameter (',' params+=YParameter)*)? ')' throw?='throws' returnvalue?='->'?
+	//	type=[YClass|QualifiedName]?
 	//	body=YBlock;
 	public YFunctionElements getYFunctionAccess() {
 		return pYFunction;
@@ -2619,13 +2922,45 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	//YStatement:
 	//	YVariableDeclaration | YReturn | YReadStatement | YCreateStatement | YUpdateStatement | YAssociateStatement |
 	//	YDisassociateStatement | YDeleteStatement | YReadEachStatement | YWhileStatement | YRepeatWhileStatement |
-	//	YForInStatement | YExpression ';'? | YIfStatement | YSwitchStatement;
+	//	YForInStatement | YExpression ';'? | YIfStatement | YThrow | YDoStatement | YSwitchStatement;
 	public YStatementElements getYStatementAccess() {
 		return pYStatement;
 	}
 	
 	public ParserRule getYStatementRule() {
 		return getYStatementAccess().getRule();
+	}
+	
+	//YDoStatement:
+	//	{YDoStatement} 'do'
+	//	block=YBlock
+	//	catches+=YCatch*;
+	public YDoStatementElements getYDoStatementAccess() {
+		return pYDoStatement;
+	}
+	
+	public ParserRule getYDoStatementRule() {
+		return getYDoStatementAccess().getRule();
+	}
+	
+	//YCatch:
+	//	{YCatch} 'catch' exception=[YEnumerationCase|QualifiedName] catchBlock=YCatchBlock;
+	public YCatchElements getYCatchAccess() {
+		return pYCatch;
+	}
+	
+	public ParserRule getYCatchRule() {
+		return getYCatchAccess().getRule();
+	}
+	
+	//YCatchBlock:
+	//	{YCatchBlock} '{' statements+=YStatement* '}';
+	public YCatchBlockElements getYCatchBlockAccess() {
+		return pYCatchBlock;
+	}
+	
+	public ParserRule getYCatchBlockRule() {
+		return getYCatchBlockAccess().getRule();
 	}
 	
 	//YVariableDeclaration:
@@ -2636,6 +2971,18 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getYVariableDeclarationRule() {
 		return getYVariableDeclarationAccess().getRule();
+	}
+	
+	//YThrow:
+	//	{YThrow} 'throw' exception=[YEnumerationCase|QualifiedName]
+	//	'(' (arguments+=YOrExpression (',' arguments+=YOrExpression)*)? ')'
+	//	';'?;
+	public YThrowElements getYThrowAccess() {
+		return pYThrow;
+	}
+	
+	public ParserRule getYThrowRule() {
+		return getYThrowAccess().getRule();
 	}
 	
 	//YReturn:
@@ -2870,9 +3217,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YReadStatement:
-	//	'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-	//	'success' success=YBlock
-	//	'not' 'found' notfound=YBlock;
+	//	'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?;
 	public YReadStatementElements getYReadStatementAccess() {
 		return pYReadStatement;
 	}
@@ -2883,7 +3228,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//YReadEachStatement:
 	//	'db-read-each' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-	//	'target' target=[YProperty] success=YBlock;
+	//	'target' target=[YProperty];
 	public YReadEachStatementElements getYReadEachStatementAccess() {
 		return pYReadEachStatement;
 	}
@@ -2894,9 +3239,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//YCreateStatement:
 	//	'db-create' struct=YStructRefPair
-	//	setBlock=YBlock
-	//	'success' success=YBlock
-	//	'already' 'exist' alreadyExist=YBlock;
+	//	'set' setBlock=YBlock;
 	public YCreateStatementElements getYCreateStatementAccess() {
 		return pYCreateStatement;
 	}
@@ -2907,8 +3250,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//YUpdateStatement:
 	//	'db-update' struct=YStructRefPair
-	//	setBlock=YBlock
-	//	'success' success=YBlock;
+	//	'set' setBlock=YBlock;
 	public YUpdateStatementElements getYUpdateStatementAccess() {
 		return pYUpdateStatement;
 	}
@@ -2948,7 +3290,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YStructRefPair:
-	//	structproperty=[YProperty] '->' structclass=[model::YAnnotEntity];
+	//	structproperty=[YProperty] '=>' structclass=[model::YAnnotEntity];
 	public YStructRefPairElements getYStructRefPairAccess() {
 		return pYStructRefPair;
 	}
@@ -2968,7 +3310,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//YJoinDef:
-	//	fromView=[YProperty] '->' relRef=[model::YAnnotRelationship|QualifiedName] '->' toView=[YProperty];
+	//	fromView=[YProperty] '=>' relRef=[model::YAnnotRelationship|QualifiedName] '=>' toView=[YProperty];
 	public YJoinDefElements getYJoinDefAccess() {
 		return pYJoinDef;
 	}
@@ -3150,7 +3492,7 @@ public class LangGrammarAccess extends AbstractGrammarElementFinder {
 	// */ YAnnotTechnicalDesign:
 	//	{YAnnotTechnicalDesign} '@td' name=ValidID (=> '(' (elementValuePairs+=YAnnotationElementValuePair (','
 	//	elementValuePairs+=YAnnotationElementValuePair)*)?
-	//	')')? '{'
+	//	')') '{'
 	//	features+=YAnnotTable*
 	//	'}';
 	public ModelGrammarAccess.YAnnotTechnicalDesignElements getYAnnotTechnicalDesignAccess() {

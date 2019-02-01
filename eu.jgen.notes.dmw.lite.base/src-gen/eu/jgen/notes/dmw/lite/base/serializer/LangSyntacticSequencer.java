@@ -32,9 +32,10 @@ public class LangSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_YAnnotPrimaryKey_SemicolonKeyword_6_q;
 	protected AbstractElementAlias match_YAnnotRelationship_SemicolonKeyword_9_q;
 	protected AbstractElementAlias match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q;
-	protected AbstractElementAlias match_YAnnotTechnicalDesign___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
+	protected AbstractElementAlias match_YEnumerationCase___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_YModel_SemicolonKeyword_2_q;
 	protected AbstractElementAlias match_YStatement_SemicolonKeyword_12_1_q;
+	protected AbstractElementAlias match_YThrow_SemicolonKeyword_6_q;
 	protected AbstractElementAlias match_YWidget_SemicolonKeyword_2_q;
 	
 	@Inject
@@ -51,9 +52,10 @@ public class LangSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_YAnnotPrimaryKey_SemicolonKeyword_6_q = new TokenAlias(false, true, grammarAccess.getYAnnotPrimaryKeyAccess().getSemicolonKeyword_6());
 		match_YAnnotRelationship_SemicolonKeyword_9_q = new TokenAlias(false, true, grammarAccess.getYAnnotRelationshipAccess().getSemicolonKeyword_9());
 		match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getLeftParenthesisKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getYAnnotRelationshipAccess().getRightParenthesisKeyword_7_2()));
-		match_YAnnotTechnicalDesign___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYAnnotTechnicalDesignAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getYAnnotTechnicalDesignAccess().getRightParenthesisKeyword_3_2()));
+		match_YEnumerationCase___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getYEnumerationCaseAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getYEnumerationCaseAccess().getRightParenthesisKeyword_3_2()));
 		match_YModel_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getYModelAccess().getSemicolonKeyword_2());
 		match_YStatement_SemicolonKeyword_12_1_q = new TokenAlias(false, true, grammarAccess.getYStatementAccess().getSemicolonKeyword_12_1());
+		match_YThrow_SemicolonKeyword_6_q = new TokenAlias(false, true, grammarAccess.getYThrowAccess().getSemicolonKeyword_6());
 		match_YWidget_SemicolonKeyword_2_q = new TokenAlias(false, true, grammarAccess.getYWidgetAccess().getSemicolonKeyword_2());
 	}
 	
@@ -114,12 +116,14 @@ public class LangSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_YAnnotRelationship_SemicolonKeyword_9_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q.equals(syntax))
 				emit_YAnnotRelationship___LeftParenthesisKeyword_7_0_RightParenthesisKeyword_7_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_YAnnotTechnicalDesign___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
-				emit_YAnnotTechnicalDesign___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_YEnumerationCase___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
+				emit_YEnumerationCase___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YModel_SemicolonKeyword_2_q.equals(syntax))
 				emit_YModel_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YStatement_SemicolonKeyword_12_1_q.equals(syntax))
 				emit_YStatement_SemicolonKeyword_12_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_YThrow_SemicolonKeyword_6_q.equals(syntax))
+				emit_YThrow_SemicolonKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_YWidget_SemicolonKeyword_2_q.equals(syntax))
 				emit_YWidget_SemicolonKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -284,10 +288,9 @@ public class LangSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=ValidID (ambiguity) '{' '}' (rule end)
-	 *     name=ValidID (ambiguity) '{' features+=YAnnotTable
+	 *     name=ValidID (ambiguity) (rule end)
 	 */
-	protected void emit_YAnnotTechnicalDesign___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_YEnumerationCase___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -333,8 +336,21 @@ public class LangSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ';'?
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     arguments+=YOrExpression ')' (ambiguity) (rule end)
+	 *     exception=[YEnumerationCase|QualifiedName] '(' ')' (ambiguity) (rule end)
+	 */
+	protected void emit_YThrow_SemicolonKeyword_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
 	 *     name=QualifiedName (ambiguity) (rule end)
 	 *     name=QualifiedName (ambiguity) classes+=YClass
+	 *     name=QualifiedName (ambiguity) enums+=YEnumeration
 	 *     name=QualifiedName (ambiguity) imports+=YImport
 	 */
 	protected void emit_YWidget_SemicolonKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

@@ -15,7 +15,6 @@ package eu.jgen.notes.dmw.lite.base.lang;
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getStruct <em>Struct</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getSetBlock <em>Set Block</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getSuccess <em>Success</em>}</li>
  * </ul>
  *
  * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYUpdateStatement()
@@ -75,31 +74,5 @@ public interface YUpdateStatement extends YStatement
    * @generated
    */
   void setSetBlock(YBlock value);
-
-  /**
-   * Returns the value of the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Success</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Success</em>' containment reference.
-   * @see #setSuccess(YBlock)
-   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYUpdateStatement_Success()
-   * @model containment="true"
-   * @generated
-   */
-  YBlock getSuccess();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getSuccess <em>Success</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Success</em>' containment reference.
-   * @see #getSuccess()
-   * @generated
-   */
-  void setSuccess(YBlock value);
 
 } // YUpdateStatement

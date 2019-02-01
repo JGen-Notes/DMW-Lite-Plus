@@ -32,6 +32,7 @@ import org.eclipse.xtext.ui.wizard.template.IProjectTemplateProvider
 import org.eclipse.xtext.ui.wizard.template.ProjectTemplate
 
 import static org.eclipse.core.runtime.IStatus.*
+import java.util.List
 
 /**
  * Create a list with all project templates to be shown in the template new project wizard.
@@ -92,19 +93,20 @@ final class DMWProject {
 				location = projectInfo.locationPath
 				projectNatures += #[JavaCore.NATURE_ID, "org.eclipse.pde.PluginNature", XtextProjectHelper.NATURE_ID]
 				builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID]
+				val bundles = newArrayList()
+				bundles.add("eu.jgen.notes.dmw.lite.mdl")
+				bundles.add("eu.jgen.notes.dmw.lite.base")
+				addRequiredBundles(bundles)
 				folders += "src"
 				addFile('''src/«packEntity.value.replace('.','/')»/«name.value».mdl''', '''
 					package «packEntity.value»;
 					import «packEntity.value».*;
 					
-					@database Derby;	
-					@java;				 
-					
 					/*
 					* This is ...
 					*/																 
 					@entity «name.value» {
-						@attribute	id (length=9);										
+						@attribute	id (type=Int,length=9);										
 					}
 				''')
 				if(td.value) {
@@ -112,11 +114,8 @@ final class DMWProject {
 					package «packEntity.value»;
 					import «packEntity.value».*;
 					
-					@database Derby;	
-					@java;	
-					
-					@td database Derby {
-						
+					@td default (database=Derby,java=true,swift=false,module="somename")  {
+												
 					}
 					
 				''')
@@ -135,6 +134,10 @@ final class DMWProject {
 				location = projectInfo.locationPath
 				projectNatures += #[JavaCore.NATURE_ID, "org.eclipse.pde.PluginNature", XtextProjectHelper.NATURE_ID]
 				builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID]
+				val bundles = newArrayList()
+				bundles.add("eu.jgen.notes.dmw.lite.mdl")
+				bundles.add("eu.jgen.notes.dmw.lite.base")
+				addRequiredBundles(bundles)
 				folders += "src"
 				addFile('''src/«packEntity.value.replace('.','/')»/«name.value».mdl''', '''
 					package «packEntity.value»;

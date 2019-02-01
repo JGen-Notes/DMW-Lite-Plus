@@ -47,11 +47,12 @@ class ModelQuickfixProvider extends DefaultQuickfixProvider {
 	@Fix(ModelValidator.ENTITY_NO_TECH_DESIGN)
 	def createTableForEntityType(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Create missing table', 'Creates table implementing entity type.', 'table.gif') [ element, context |
-			val technicalDesign = getTechnicalDesign(element, ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN)
+			val technicalDesign = getTechnicalDesign(element)
 			val entity = element as YAnnotEntity
 			technicalDesign.features.add(
 				converEntityIntoTable(entity)
 			)
+			technicalDesign.eResource.save(null)
 		]
 	}
 

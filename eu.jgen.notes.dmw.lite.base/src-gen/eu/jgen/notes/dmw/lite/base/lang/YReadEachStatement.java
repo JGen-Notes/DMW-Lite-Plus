@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getJoinclause <em>Joinclause</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getWhereclause <em>Whereclause</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getTarget <em>Target</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getSuccess <em>Success</em>}</li>
  * </ul>
  *
  * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYReadEachStatement()
@@ -120,31 +119,5 @@ public interface YReadEachStatement extends YStatement
    * @generated
    */
   void setTarget(YProperty value);
-
-  /**
-   * Returns the value of the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Success</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Success</em>' containment reference.
-   * @see #setSuccess(YBlock)
-   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYReadEachStatement_Success()
-   * @model containment="true"
-   * @generated
-   */
-  YBlock getSuccess();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getSuccess <em>Success</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Success</em>' containment reference.
-   * @see #getSuccess()
-   * @generated
-   */
-  void setSuccess(YBlock value);
 
 } // YReadEachStatement

@@ -91,6 +91,16 @@ public class LangAdapterFactory extends AdapterFactoryImpl
         return createYArgumentAdapter();
       }
       @Override
+      public Adapter caseYEnumeration(YEnumeration object)
+      {
+        return createYEnumerationAdapter();
+      }
+      @Override
+      public Adapter caseYEnumerationCase(YEnumerationCase object)
+      {
+        return createYEnumerationCaseAdapter();
+      }
+      @Override
       public Adapter caseYClass(YClass object)
       {
         return createYClassAdapter();
@@ -126,9 +136,29 @@ public class LangAdapterFactory extends AdapterFactoryImpl
         return createYStatementAdapter();
       }
       @Override
+      public Adapter caseYDoStatement(YDoStatement object)
+      {
+        return createYDoStatementAdapter();
+      }
+      @Override
+      public Adapter caseYCatch(YCatch object)
+      {
+        return createYCatchAdapter();
+      }
+      @Override
+      public Adapter caseYCatchBlock(YCatchBlock object)
+      {
+        return createYCatchBlockAdapter();
+      }
+      @Override
       public Adapter caseYVariableDeclaration(YVariableDeclaration object)
       {
         return createYVariableDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseYThrow(YThrow object)
+      {
+        return createYThrowAdapter();
       }
       @Override
       public Adapter caseYReturn(YReturn object)
@@ -398,6 +428,36 @@ public class LangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration <em>YEnumeration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumeration
+   * @generated
+   */
+  public Adapter createYEnumerationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase <em>YEnumeration Case</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase
+   * @generated
+   */
+  public Adapter createYEnumerationCaseAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YClass <em>YClass</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -503,6 +563,51 @@ public class LangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YDoStatement <em>YDo Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YDoStatement
+   * @generated
+   */
+  public Adapter createYDoStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YCatch <em>YCatch</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatch
+   * @generated
+   */
+  public Adapter createYCatchAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YCatchBlock <em>YCatch Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatchBlock
+   * @generated
+   */
+  public Adapter createYCatchBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration <em>YVariable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -513,6 +618,21 @@ public class LangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createYVariableDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link eu.jgen.notes.dmw.lite.base.lang.YThrow <em>YThrow</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YThrow
+   * @generated
+   */
+  public Adapter createYThrowAdapter()
   {
     return null;
   }

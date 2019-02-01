@@ -35,7 +35,7 @@ import org.eclipse.xtext.ui.wizard.template.StringSelectionTemplateVariable;
 public final class CreateModelFile extends AbstractFileTemplate {
   private final Util util = new Util();
   
-  private final StringSelectionTemplateVariable type = this.combo("Type of model element:", new String[] { "Entity", "Technical Design", "Database", "Java", "Swift" }, 
+  private final StringSelectionTemplateVariable type = this.combo("Type of model element:", new String[] { "Entity", "Technical Design" }, 
     "The type of model fragment");
   
   @Override
@@ -77,7 +77,7 @@ public final class CreateModelFile extends AbstractFileTemplate {
           _builder_1.append(" {");
           _builder_1.newLineIfNotEmpty();
           _builder_1.append("   ");
-          _builder_1.append("@attribute id (length=9);\t\t\t\t\t\t");
+          _builder_1.append("@attribute id (type=Int,length=9);\t\t\t\t\t\t");
           _builder_1.newLine();
           _builder_1.append("}");
           _builder_1.newLine();
@@ -110,11 +110,7 @@ public final class CreateModelFile extends AbstractFileTemplate {
             _builder_3.newLine();
             _builder_3.append("*/\t\t\t\t\t\t\t\t\t\t\t ");
             _builder_3.newLine();
-            _builder_3.append("@database Derby;\t");
-            _builder_3.newLine();
-            _builder_3.append("@java;\t\t\t\t ");
-            _builder_3.newLine();
-            _builder_3.append("@td database Derby {");
+            _builder_3.append("@td default (database=Derby,java=true,swift=false,module=\"somename\")  {");
             _builder_3.newLine();
             _builder_3.append("\t");
             _builder_3.newLine();
@@ -122,110 +118,9 @@ public final class CreateModelFile extends AbstractFileTemplate {
             _builder_3.newLine();
             generator.generate(_builder_2, _builder_3);
             return;
-          } else {
-            String _value_2 = this.type.getValue();
-            boolean _equals_2 = Objects.equal(_value_2, "Database");
-            if (_equals_2) {
-              StringConcatenation _builder_4 = new StringConcatenation();
-              String _folder_3 = this.getFolder();
-              _builder_4.append(_folder_3);
-              _builder_4.append("/");
-              String _name_3 = this.getName();
-              _builder_4.append(_name_3);
-              _builder_4.append(".mdl");
-              StringConcatenation _builder_5 = new StringConcatenation();
-              _builder_5.append("package ");
-              _builder_5.append(packageName);
-              _builder_5.append(";");
-              _builder_5.newLineIfNotEmpty();
-              _builder_5.append("import ");
-              _builder_5.append(packageName);
-              _builder_5.append(".*;");
-              _builder_5.newLineIfNotEmpty();
-              _builder_5.newLine();
-              _builder_5.append("/*");
-              _builder_5.newLine();
-              _builder_5.append("* This is ...");
-              _builder_5.newLine();
-              _builder_5.append("*/\t\t\t\t\t\t\t\t\t\t\t ");
-              _builder_5.newLine();
-              _builder_5.append("@database Derby;\t");
-              _builder_5.newLine();
-              _builder_5.newLine();
-              generator.generate(_builder_4, _builder_5);
-              return;
-            } else {
-              String _value_3 = this.type.getValue();
-              boolean _equals_3 = Objects.equal(_value_3, "Java");
-              if (_equals_3) {
-                StringConcatenation _builder_6 = new StringConcatenation();
-                String _folder_4 = this.getFolder();
-                _builder_6.append(_folder_4);
-                _builder_6.append("/");
-                String _name_4 = this.getName();
-                _builder_6.append(_name_4);
-                _builder_6.append(".mdl");
-                StringConcatenation _builder_7 = new StringConcatenation();
-                _builder_7.append("package ");
-                _builder_7.append(packageName);
-                _builder_7.append(";");
-                _builder_7.newLineIfNotEmpty();
-                _builder_7.append("import ");
-                _builder_7.append(packageName);
-                _builder_7.append(".*;");
-                _builder_7.newLineIfNotEmpty();
-                _builder_7.newLine();
-                _builder_7.append("/*");
-                _builder_7.newLine();
-                _builder_7.append("* This is ...");
-                _builder_7.newLine();
-                _builder_7.append("*/\t\t\t\t\t\t\t\t\t\t\t ");
-                _builder_7.newLine();
-                _builder_7.append("@java;\t");
-                _builder_7.newLine();
-                _builder_7.newLine();
-                generator.generate(_builder_6, _builder_7);
-                return;
-              } else {
-                String _value_4 = this.type.getValue();
-                boolean _equals_4 = Objects.equal(_value_4, "Swift");
-                if (_equals_4) {
-                  StringConcatenation _builder_8 = new StringConcatenation();
-                  String _folder_5 = this.getFolder();
-                  _builder_8.append(_folder_5);
-                  _builder_8.append("/");
-                  String _name_5 = this.getName();
-                  _builder_8.append(_name_5);
-                  _builder_8.append(".mdl");
-                  StringConcatenation _builder_9 = new StringConcatenation();
-                  _builder_9.append("package ");
-                  _builder_9.append(packageName);
-                  _builder_9.append(";");
-                  _builder_9.newLineIfNotEmpty();
-                  _builder_9.append("import ");
-                  _builder_9.append(packageName);
-                  _builder_9.append(".*;");
-                  _builder_9.newLineIfNotEmpty();
-                  _builder_9.newLine();
-                  _builder_9.append("/*");
-                  _builder_9.newLine();
-                  _builder_9.append("* This is ...");
-                  _builder_9.newLine();
-                  _builder_9.append("*/\t\t\t\t\t\t\t\t\t\t\t ");
-                  _builder_9.newLine();
-                  _builder_9.append("@swift module ");
-                  String _name_6 = this.getName();
-                  _builder_9.append(_name_6);
-                  _builder_9.append(" ;\t\t");
-                  _builder_9.newLineIfNotEmpty();
-                  _builder_9.newLine();
-                  generator.generate(_builder_8, _builder_9);
-                  return;
-                }
-              }
-            }
           }
         }
+        return;
       }
     }
   }

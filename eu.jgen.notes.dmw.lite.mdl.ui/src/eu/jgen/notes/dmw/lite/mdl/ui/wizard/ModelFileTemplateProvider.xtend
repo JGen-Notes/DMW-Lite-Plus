@@ -33,7 +33,7 @@ class ModelFileTemplateProvider implements IFileTemplateProvider {
 	override getFileTemplates() {
 		#[new CreateModelFile, new CreateWidgetFile]
 
-	} 
+	}
 }
 
 @FileTemplate(label="Create Model Fragment", icon="model_file.gif", description="Remember to select package in the source folder first. A new model file has to be created in the package.")
@@ -41,7 +41,7 @@ final class CreateModelFile {
 
 	val Util util = new Util()
 
-	val type = combo("Type of model element:", #["Entity", "Technical Design", "Database", "Java", "Swift"],
+	val type = combo("Type of model element:", #["Entity", "Technical Design"],
 		"The type of model fragment")
 
 	override generateFiles(IFileGenerator generator) {
@@ -57,11 +57,11 @@ final class CreateModelFile {
 						* This is ...
 						*/											 
 						@entity «name» {
-						   @attribute id (length=9);						
+						   @attribute id (type=Int,length=9);						
 						}
 					''')
 					return
-				}   else if (type.value == "Technical Design") {
+				} else if (type.value == "Technical Design") {
 					generator.generate('''«folder»/«name».mdl''', '''
 						package «packageName»;
 						import «packageName».*;
@@ -69,55 +69,19 @@ final class CreateModelFile {
 						/*
 						* This is ...
 						*/											 
-						@database Derby;	
-						@java;				 
-						@td database Derby {
+						@td default (database=Derby,java=true,swift=false,module="somename")  {
 							
 						}
 					''')
 					return
-				} else if (type.value == "Database") {
-					generator.generate('''«folder»/«name».mdl''', '''
-						package «packageName»;
-						import «packageName».*;
-						
-						/*
-						* This is ...
-						*/											 
-						@database Derby;	
-
-					''')
-					return
-				} else if (type.value == "Java") {
-					generator.generate('''«folder»/«name».mdl''', '''
-						package «packageName»;
-						import «packageName».*;
-						
-						/*
-						* This is ...
-						*/											 
-						@java;	
-
-					''')
-					return
-				} else if (type.value == "Swift") {
-					generator.generate('''«folder»/«name».mdl''', '''
-						package «packageName»;
-						import «packageName».*;
-						
-						/*
-						* This is ...
-						*/											 
-						@swift module «name» ;		
-
-					''')					
-					return
 				}
+				return
 			}
-		}				
+		}
 	}
-
 }
+
+ 
 
 @FileTemplate(label="Create Widget File", icon="widget.gif", description="Create a new widget file.")
 final class CreateWidgetFile {

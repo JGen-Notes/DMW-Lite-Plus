@@ -101,11 +101,6 @@ class LangFormatter extends AbstractFormatter2 {
 		createStatement.regionFor.keyword("create").prepend[newLine].append[oneSpace]
 		createStatement.struct.format
 		createStatement.setBlock.format
-		createStatement.regionFor.keyword("success").prepend[newLine].append[oneSpace]
-		createStatement.success.format
-		createStatement.regionFor.keyword("already").prepend[newLine].append[oneSpace]
-		createStatement.regionFor.keyword("exist").prepend[oneSpace].append[oneSpace]
-		createStatement.alreadyExist.format
 	}
 	
 	def dispatch void format(YStructRefPair structRefPair, extension IFormattableDocument document) {

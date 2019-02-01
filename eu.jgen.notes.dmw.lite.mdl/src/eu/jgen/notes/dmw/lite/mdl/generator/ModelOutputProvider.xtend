@@ -45,7 +45,7 @@ class ModelOutputProvider implements IOutputConfigurationProvider {
 		originOutput.setOverrideExistingResources(true);
 		originOutput.setCreateOutputDirectory(true);
 		originOutput.setCleanUpDerivedResources(true);
-		originOutput.setSetDerivedProperty(true);
+		originOutput.setSetDerivedProperty(false);
 		configurations.add(originOutput)
 
 		var defaultOutput = new OutputConfiguration(IFileSystemAccess.DEFAULT_OUTPUT);

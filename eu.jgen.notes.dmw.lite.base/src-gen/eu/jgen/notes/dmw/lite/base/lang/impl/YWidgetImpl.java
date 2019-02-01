@@ -5,6 +5,7 @@ package eu.jgen.notes.dmw.lite.base.lang.impl;
 
 import eu.jgen.notes.dmw.lite.base.lang.LangPackage;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumeration;
 import eu.jgen.notes.dmw.lite.base.lang.YWidget;
 
 import eu.jgen.notes.dmw.lite.mdl.model.YImport;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YWidgetImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YWidgetImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YWidgetImpl#getEnums <em>Enums</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YWidgetImpl#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -71,6 +73,16 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
    * @ordered
    */
   protected EList<YImport> imports;
+
+  /**
+   * The cached value of the '{@link #getEnums() <em>Enums</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnums()
+   * @generated
+   * @ordered
+   */
+  protected EList<YEnumeration> enums;
 
   /**
    * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
@@ -145,6 +157,20 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<YEnumeration> getEnums()
+  {
+    if (enums == null)
+    {
+      enums = new EObjectContainmentEList<YEnumeration>(YEnumeration.class, this, LangPackage.YWIDGET__ENUMS);
+    }
+    return enums;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<YClass> getClasses()
   {
     if (classes == null)
@@ -166,6 +192,8 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
     {
       case LangPackage.YWIDGET__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+      case LangPackage.YWIDGET__ENUMS:
+        return ((InternalEList<?>)getEnums()).basicRemove(otherEnd, msgs);
       case LangPackage.YWIDGET__CLASSES:
         return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
     }
@@ -186,6 +214,8 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
         return getName();
       case LangPackage.YWIDGET__IMPORTS:
         return getImports();
+      case LangPackage.YWIDGET__ENUMS:
+        return getEnums();
       case LangPackage.YWIDGET__CLASSES:
         return getClasses();
     }
@@ -209,6 +239,10 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
       case LangPackage.YWIDGET__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends YImport>)newValue);
+        return;
+      case LangPackage.YWIDGET__ENUMS:
+        getEnums().clear();
+        getEnums().addAll((Collection<? extends YEnumeration>)newValue);
         return;
       case LangPackage.YWIDGET__CLASSES:
         getClasses().clear();
@@ -234,6 +268,9 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
       case LangPackage.YWIDGET__IMPORTS:
         getImports().clear();
         return;
+      case LangPackage.YWIDGET__ENUMS:
+        getEnums().clear();
+        return;
       case LangPackage.YWIDGET__CLASSES:
         getClasses().clear();
         return;
@@ -255,6 +292,8 @@ public class YWidgetImpl extends MinimalEObjectImpl.Container implements YWidget
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LangPackage.YWIDGET__IMPORTS:
         return imports != null && !imports.isEmpty();
+      case LangPackage.YWIDGET__ENUMS:
+        return enums != null && !enums.isEmpty();
       case LangPackage.YWIDGET__CLASSES:
         return classes != null && !classes.isEmpty();
     }

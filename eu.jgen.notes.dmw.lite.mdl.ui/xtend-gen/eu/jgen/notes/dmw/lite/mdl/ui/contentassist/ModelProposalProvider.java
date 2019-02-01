@@ -29,6 +29,7 @@ import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntityInner;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotRelationship;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotTechnicalDesign;
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotationElementValuePair;
 import eu.jgen.notes.dmw.lite.mdl.scoping.ModelIndex;
 import eu.jgen.notes.dmw.lite.mdl.ui.contentassist.AbstractModelProposalProvider;
 import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil;
@@ -61,7 +62,8 @@ public class ModelProposalProvider extends AbstractModelProposalProvider {
       final YAnnotAttribute attribute = ((YAnnotAttribute) object);
       ArrayList<String> _createProposalAnnotationList = this._modelUtil.createProposalAnnotationList(attribute);
       for (final String entry : _createProposalAnnotationList) {
-        acceptor.accept(this.createCompletionProposal(entry, entry, this.imageHelper.getImage("database.gif"), context));
+        acceptor.accept(
+          this.createCompletionProposal(entry, entry, this.imageHelper.getImage("property_type.gif"), context));
       }
     } else {
       if ((object instanceof YAnnotTechnicalDesign)) {
@@ -70,6 +72,30 @@ public class ModelProposalProvider extends AbstractModelProposalProvider {
         for (final String entry_1 : _createProposalAnnotationList_1) {
           acceptor.accept(this.createCompletionProposal(entry_1, entry_1, this.imageHelper.getImage("database.gif"), context));
         }
+      }
+    }
+  }
+  
+  @Override
+  public void completeYAnnotationElementValuePair_Value(final EObject object, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    if ((object instanceof YAnnotationElementValuePair)) {
+      final YAnnotationElementValuePair aAnnotationElementValuePair = ((YAnnotationElementValuePair) object);
+      String _name = aAnnotationElementValuePair.getName();
+      boolean _equals = Objects.equal(_name, "type");
+      if (_equals) {
+        acceptor.accept(
+          this.createCompletionProposal("String", "String", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Short", "Short", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Int", "Int", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Long", "Long", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(
+          this.createCompletionProposal("Double", "Double", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Bool", "Bool", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Date", "Date", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Time", "Time", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(
+          this.createCompletionProposal("Timestamp", "Timestamp", this.imageHelper.getImage("class.gif"), context));
+        acceptor.accept(this.createCompletionProposal("Blob", "Blob", this.imageHelper.getImage("class.gif"), context));
       }
     }
   }
@@ -92,7 +118,8 @@ public class ModelProposalProvider extends AbstractModelProposalProvider {
             String _plus = (_name_1 + ".");
             String _name_2 = targetAnnotRelationship.getName();
             final String proposal = (_plus + _name_2);
-            acceptor.accept(this.createCompletionProposal(proposal, proposal, this.imageHelper.getImage("relationship.gif"), context));
+            acceptor.accept(
+              this.createCompletionProposal(proposal, proposal, this.imageHelper.getImage("relationship.gif"), context));
             return;
           }
         }
@@ -101,7 +128,8 @@ public class ModelProposalProvider extends AbstractModelProposalProvider {
           String _plus_1 = (_name_3 + ".");
           String _name_4 = targetAnnotRelationship.getName();
           final String proposal_1 = (_plus_1 + _name_4);
-          acceptor.accept(this.createCompletionProposal(proposal_1, proposal_1, this.imageHelper.getImage("relationship.gif"), context));
+          acceptor.accept(
+            this.createCompletionProposal(proposal_1, proposal_1, this.imageHelper.getImage("relationship.gif"), context));
         }
       }
     };

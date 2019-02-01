@@ -29,17 +29,17 @@ class LangWidgetGeneratorForDMW implements IGenerator {
 				val body = '''
 					«ModelGenerator.GENERATOR_NOTICE»
 					  
-					package «model.name».model;
+					package «model.name».views;
 					import «model.name».*;
 					import eu.jgen.notes.lib.dmw.*;
 					
-					class «entity.name»All : Structure => «entity.name» {
+					class «entity.name»FullView : XStructure => «entity.name» {
 						«generateVariablesUsingAttribute(entity)» 
 					}
 				'''
 				if (model.name !== null) {
 					fsa.generateFile(
-						model.name.getFileSystemPath + "/model/" + entity.name + ".dmw",
+						model.name.getFileSystemPath + "/views/" + entity.name + "FullView.dmw",
 						ModelOutputProvider.SRC,
 						'''								
 							«body»

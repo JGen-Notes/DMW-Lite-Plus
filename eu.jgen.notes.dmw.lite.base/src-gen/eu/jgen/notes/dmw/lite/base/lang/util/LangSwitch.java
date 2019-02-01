@@ -96,6 +96,20 @@ public class LangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LangPackage.YENUMERATION:
+      {
+        YEnumeration yEnumeration = (YEnumeration)theEObject;
+        T result = caseYEnumeration(yEnumeration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LangPackage.YENUMERATION_CASE:
+      {
+        YEnumerationCase yEnumerationCase = (YEnumerationCase)theEObject;
+        T result = caseYEnumerationCase(yEnumerationCase);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LangPackage.YCLASS:
       {
         YClass yClass = (YClass)theEObject;
@@ -151,6 +165,28 @@ public class LangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LangPackage.YDO_STATEMENT:
+      {
+        YDoStatement yDoStatement = (YDoStatement)theEObject;
+        T result = caseYDoStatement(yDoStatement);
+        if (result == null) result = caseYStatement(yDoStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LangPackage.YCATCH:
+      {
+        YCatch yCatch = (YCatch)theEObject;
+        T result = caseYCatch(yCatch);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LangPackage.YCATCH_BLOCK:
+      {
+        YCatchBlock yCatchBlock = (YCatchBlock)theEObject;
+        T result = caseYCatchBlock(yCatchBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LangPackage.YVARIABLE_DECLARATION:
       {
         YVariableDeclaration yVariableDeclaration = (YVariableDeclaration)theEObject;
@@ -158,6 +194,14 @@ public class LangSwitch<T> extends Switch<T>
         if (result == null) result = caseYStatement(yVariableDeclaration);
         if (result == null) result = caseYSymbol(yVariableDeclaration);
         if (result == null) result = caseYNamedElement(yVariableDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LangPackage.YTHROW:
+      {
+        YThrow yThrow = (YThrow)theEObject;
+        T result = caseYThrow(yThrow);
+        if (result == null) result = caseYStatement(yThrow);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -550,6 +594,38 @@ public class LangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>YEnumeration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YEnumeration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYEnumeration(YEnumeration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>YEnumeration Case</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YEnumeration Case</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYEnumerationCase(YEnumerationCase object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>YClass</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -662,6 +738,54 @@ public class LangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>YDo Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YDo Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYDoStatement(YDoStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>YCatch</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YCatch</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYCatch(YCatch object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>YCatch Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YCatch Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYCatchBlock(YCatchBlock object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>YVariable Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -673,6 +797,22 @@ public class LangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseYVariableDeclaration(YVariableDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>YThrow</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>YThrow</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseYThrow(YThrow object)
   {
     return null;
   }

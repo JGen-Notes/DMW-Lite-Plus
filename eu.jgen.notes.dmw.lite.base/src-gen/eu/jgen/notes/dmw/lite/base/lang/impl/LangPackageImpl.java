@@ -12,11 +12,16 @@ import eu.jgen.notes.dmw.lite.base.lang.YAssignment;
 import eu.jgen.notes.dmw.lite.base.lang.YAssociateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YBoolConstant;
+import eu.jgen.notes.dmw.lite.base.lang.YCatch;
+import eu.jgen.notes.dmw.lite.base.lang.YCatchBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
 import eu.jgen.notes.dmw.lite.base.lang.YComparisonExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YCreateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDeleteStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDisassociateStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YDoStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumeration;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase;
 import eu.jgen.notes.dmw.lite.base.lang.YEqualityExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YForInStatement;
@@ -51,6 +56,7 @@ import eu.jgen.notes.dmw.lite.base.lang.YSwitchCase;
 import eu.jgen.notes.dmw.lite.base.lang.YSwitchStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YSymbol;
 import eu.jgen.notes.dmw.lite.base.lang.YSymbolRef;
+import eu.jgen.notes.dmw.lite.base.lang.YThrow;
 import eu.jgen.notes.dmw.lite.base.lang.YTuples;
 import eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration;
@@ -96,6 +102,20 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * @generated
    */
   private EClass yArgumentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yEnumerationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yEnumerationCaseEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -151,7 +171,35 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass yDoStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yCatchEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yCatchBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass yVariableDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yThrowEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -541,9 +589,19 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getYWidget_Classes()
+  public EReference getYWidget_Enums()
   {
     return (EReference)yWidgetEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYWidget_Classes()
+  {
+    return (EReference)yWidgetEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -584,6 +642,76 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
   public EAttribute getYArgument_Value()
   {
     return (EAttribute)yArgumentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getYEnumeration()
+  {
+    return yEnumerationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getYEnumeration_Name()
+  {
+    return (EAttribute)yEnumerationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYEnumeration_Superclass()
+  {
+    return (EReference)yEnumerationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYEnumeration_Cases()
+  {
+    return (EReference)yEnumerationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getYEnumerationCase()
+  {
+    return yEnumerationCaseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getYEnumerationCase_Name()
+  {
+    return (EAttribute)yEnumerationCaseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYEnumerationCase_Params()
+  {
+    return (EReference)yEnumerationCaseEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -751,7 +879,7 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getYFunction_Returnvalue()
+  public EAttribute getYFunction_Throw()
   {
     return (EAttribute)yFunctionEClass.getEStructuralFeatures().get(1);
   }
@@ -761,9 +889,19 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getYFunction_Returnvalue()
+  {
+    return (EAttribute)yFunctionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getYFunction_Body()
   {
-    return (EReference)yFunctionEClass.getEStructuralFeatures().get(2);
+    return (EReference)yFunctionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -801,6 +939,86 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getYDoStatement()
+  {
+    return yDoStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYDoStatement_Block()
+  {
+    return (EReference)yDoStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYDoStatement_Catches()
+  {
+    return (EReference)yDoStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getYCatch()
+  {
+    return yCatchEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYCatch_Exception()
+  {
+    return (EReference)yCatchEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYCatch_CatchBlock()
+  {
+    return (EReference)yCatchEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getYCatchBlock()
+  {
+    return yCatchBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYCatchBlock_Statements()
+  {
+    return (EReference)yCatchBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getYVariableDeclaration()
   {
     return yVariableDeclarationEClass;
@@ -814,6 +1032,36 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
   public EReference getYVariableDeclaration_Expression()
   {
     return (EReference)yVariableDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getYThrow()
+  {
+    return yThrowEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYThrow_Exception()
+  {
+    return (EReference)yThrowEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getYThrow_Arguments()
+  {
+    return (EReference)yThrowEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1041,26 +1289,6 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getYReadStatement_Success()
-  {
-    return (EReference)yReadStatementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYReadStatement_Notfound()
-  {
-    return (EReference)yReadStatementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getYReadEachStatement()
   {
     return yReadEachStatementEClass;
@@ -1111,16 +1339,6 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getYReadEachStatement_Success()
-  {
-    return (EReference)yReadEachStatementEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getYCreateStatement()
   {
     return yCreateStatementEClass;
@@ -1151,26 +1369,6 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getYCreateStatement_Success()
-  {
-    return (EReference)yCreateStatementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYCreateStatement_AlreadyExist()
-  {
-    return (EReference)yCreateStatementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getYUpdateStatement()
   {
     return yUpdateStatementEClass;
@@ -1194,16 +1392,6 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
   public EReference getYUpdateStatement_SetBlock()
   {
     return (EReference)yUpdateStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getYUpdateStatement_Success()
-  {
-    return (EReference)yUpdateStatementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2039,6 +2227,7 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     yWidgetEClass = createEClass(YWIDGET);
     createEAttribute(yWidgetEClass, YWIDGET__NAME);
     createEReference(yWidgetEClass, YWIDGET__IMPORTS);
+    createEReference(yWidgetEClass, YWIDGET__ENUMS);
     createEReference(yWidgetEClass, YWIDGET__CLASSES);
 
     yParameterEClass = createEClass(YPARAMETER);
@@ -2046,6 +2235,15 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     yArgumentEClass = createEClass(YARGUMENT);
     createEAttribute(yArgumentEClass, YARGUMENT__NAME);
     createEAttribute(yArgumentEClass, YARGUMENT__VALUE);
+
+    yEnumerationEClass = createEClass(YENUMERATION);
+    createEAttribute(yEnumerationEClass, YENUMERATION__NAME);
+    createEReference(yEnumerationEClass, YENUMERATION__SUPERCLASS);
+    createEReference(yEnumerationEClass, YENUMERATION__CASES);
+
+    yEnumerationCaseEClass = createEClass(YENUMERATION_CASE);
+    createEAttribute(yEnumerationCaseEClass, YENUMERATION_CASE__NAME);
+    createEReference(yEnumerationCaseEClass, YENUMERATION_CASE__PARAMS);
 
     yClassEClass = createEClass(YCLASS);
     createEReference(yClassEClass, YCLASS__SUPERCLASS);
@@ -2067,6 +2265,7 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
 
     yFunctionEClass = createEClass(YFUNCTION);
     createEReference(yFunctionEClass, YFUNCTION__PARAMS);
+    createEAttribute(yFunctionEClass, YFUNCTION__THROW);
     createEAttribute(yFunctionEClass, YFUNCTION__RETURNVALUE);
     createEReference(yFunctionEClass, YFUNCTION__BODY);
 
@@ -2075,8 +2274,23 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
 
     yStatementEClass = createEClass(YSTATEMENT);
 
+    yDoStatementEClass = createEClass(YDO_STATEMENT);
+    createEReference(yDoStatementEClass, YDO_STATEMENT__BLOCK);
+    createEReference(yDoStatementEClass, YDO_STATEMENT__CATCHES);
+
+    yCatchEClass = createEClass(YCATCH);
+    createEReference(yCatchEClass, YCATCH__EXCEPTION);
+    createEReference(yCatchEClass, YCATCH__CATCH_BLOCK);
+
+    yCatchBlockEClass = createEClass(YCATCH_BLOCK);
+    createEReference(yCatchBlockEClass, YCATCH_BLOCK__STATEMENTS);
+
     yVariableDeclarationEClass = createEClass(YVARIABLE_DECLARATION);
     createEReference(yVariableDeclarationEClass, YVARIABLE_DECLARATION__EXPRESSION);
+
+    yThrowEClass = createEClass(YTHROW);
+    createEReference(yThrowEClass, YTHROW__EXCEPTION);
+    createEReference(yThrowEClass, YTHROW__ARGUMENTS);
 
     yReturnEClass = createEClass(YRETURN);
     createEReference(yReturnEClass, YRETURN__EXPRESSION);
@@ -2107,26 +2321,20 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     createEReference(yReadStatementEClass, YREAD_STATEMENT__STRUCTS);
     createEReference(yReadStatementEClass, YREAD_STATEMENT__JOINCLAUSE);
     createEReference(yReadStatementEClass, YREAD_STATEMENT__WHERECLAUSE);
-    createEReference(yReadStatementEClass, YREAD_STATEMENT__SUCCESS);
-    createEReference(yReadStatementEClass, YREAD_STATEMENT__NOTFOUND);
 
     yReadEachStatementEClass = createEClass(YREAD_EACH_STATEMENT);
     createEReference(yReadEachStatementEClass, YREAD_EACH_STATEMENT__STRUCTS);
     createEReference(yReadEachStatementEClass, YREAD_EACH_STATEMENT__JOINCLAUSE);
     createEReference(yReadEachStatementEClass, YREAD_EACH_STATEMENT__WHERECLAUSE);
     createEReference(yReadEachStatementEClass, YREAD_EACH_STATEMENT__TARGET);
-    createEReference(yReadEachStatementEClass, YREAD_EACH_STATEMENT__SUCCESS);
 
     yCreateStatementEClass = createEClass(YCREATE_STATEMENT);
     createEReference(yCreateStatementEClass, YCREATE_STATEMENT__STRUCT);
     createEReference(yCreateStatementEClass, YCREATE_STATEMENT__SET_BLOCK);
-    createEReference(yCreateStatementEClass, YCREATE_STATEMENT__SUCCESS);
-    createEReference(yCreateStatementEClass, YCREATE_STATEMENT__ALREADY_EXIST);
 
     yUpdateStatementEClass = createEClass(YUPDATE_STATEMENT);
     createEReference(yUpdateStatementEClass, YUPDATE_STATEMENT__STRUCT);
     createEReference(yUpdateStatementEClass, YUPDATE_STATEMENT__SET_BLOCK);
-    createEReference(yUpdateStatementEClass, YUPDATE_STATEMENT__SUCCESS);
 
     yDeleteStatementEClass = createEClass(YDELETE_STATEMENT);
     createEReference(yDeleteStatementEClass, YDELETE_STATEMENT__STRUCT);
@@ -2277,8 +2485,10 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     yMemberEClass.getESuperTypes().add(this.getYNamedElement());
     yPropertyEClass.getESuperTypes().add(this.getYMember());
     yFunctionEClass.getESuperTypes().add(this.getYMember());
+    yDoStatementEClass.getESuperTypes().add(this.getYStatement());
     yVariableDeclarationEClass.getESuperTypes().add(this.getYStatement());
     yVariableDeclarationEClass.getESuperTypes().add(this.getYSymbol());
+    yThrowEClass.getESuperTypes().add(this.getYStatement());
     yReturnEClass.getESuperTypes().add(this.getYStatement());
     yIfStatementEClass.getESuperTypes().add(this.getYStatement());
     ySwitchStatementEClass.getESuperTypes().add(this.getYStatement());
@@ -2319,6 +2529,7 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     initEClass(yWidgetEClass, YWidget.class, "YWidget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getYWidget_Name(), ecorePackage.getEString(), "name", null, 0, 1, YWidget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYWidget_Imports(), theModelPackage.getYImport(), null, "imports", null, 0, -1, YWidget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYWidget_Enums(), this.getYEnumeration(), null, "enums", null, 0, -1, YWidget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYWidget_Classes(), this.getYClass(), null, "classes", null, 0, -1, YWidget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yParameterEClass, YParameter.class, "YParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2326,6 +2537,15 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     initEClass(yArgumentEClass, YArgument.class, "YArgument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getYArgument_Name(), ecorePackage.getEString(), "name", null, 0, 1, YArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getYArgument_Value(), ecorePackage.getEString(), "value", null, 0, 1, YArgument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yEnumerationEClass, YEnumeration.class, "YEnumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getYEnumeration_Name(), ecorePackage.getEString(), "name", null, 0, 1, YEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYEnumeration_Superclass(), this.getYEnumeration(), null, "superclass", null, 0, 1, YEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYEnumeration_Cases(), this.getYEnumerationCase(), null, "cases", null, 0, -1, YEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yEnumerationCaseEClass, YEnumerationCase.class, "YEnumerationCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getYEnumerationCase_Name(), ecorePackage.getEString(), "name", null, 0, 1, YEnumerationCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYEnumerationCase_Params(), this.getYParameter(), null, "params", null, 0, -1, YEnumerationCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yClassEClass, YClass.class, "YClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYClass_Superclass(), this.getYClass(), null, "superclass", null, 0, 1, YClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2347,6 +2567,7 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
 
     initEClass(yFunctionEClass, YFunction.class, "YFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYFunction_Params(), this.getYParameter(), null, "params", null, 0, -1, YFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getYFunction_Throw(), ecorePackage.getEBoolean(), "throw", null, 0, 1, YFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getYFunction_Returnvalue(), ecorePackage.getEBoolean(), "returnvalue", null, 0, 1, YFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYFunction_Body(), this.getYBlock(), null, "body", null, 0, 1, YFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2355,8 +2576,23 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
 
     initEClass(yStatementEClass, YStatement.class, "YStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(yDoStatementEClass, YDoStatement.class, "YDoStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getYDoStatement_Block(), this.getYBlock(), null, "block", null, 0, 1, YDoStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYDoStatement_Catches(), this.getYCatch(), null, "catches", null, 0, -1, YDoStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yCatchEClass, YCatch.class, "YCatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getYCatch_Exception(), this.getYEnumerationCase(), null, "exception", null, 0, 1, YCatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYCatch_CatchBlock(), this.getYCatchBlock(), null, "catchBlock", null, 0, 1, YCatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yCatchBlockEClass, YCatchBlock.class, "YCatchBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getYCatchBlock_Statements(), this.getYStatement(), null, "statements", null, 0, -1, YCatchBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(yVariableDeclarationEClass, YVariableDeclaration.class, "YVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYVariableDeclaration_Expression(), this.getYExpression(), null, "expression", null, 0, 1, YVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yThrowEClass, YThrow.class, "YThrow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getYThrow_Exception(), this.getYEnumerationCase(), null, "exception", null, 0, 1, YThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYThrow_Arguments(), this.getYExpression(), null, "arguments", null, 0, -1, YThrow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yReturnEClass, YReturn.class, "YReturn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYReturn_Expression(), this.getYExpression(), null, "expression", null, 0, 1, YReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2387,26 +2623,20 @@ public class LangPackageImpl extends EPackageImpl implements LangPackage
     initEReference(getYReadStatement_Structs(), this.getYStructRefPair(), null, "structs", null, 0, -1, YReadStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYReadStatement_Joinclause(), this.getYJoin(), null, "joinclause", null, 0, 1, YReadStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYReadStatement_Whereclause(), this.getYWhere(), null, "whereclause", null, 0, 1, YReadStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYReadStatement_Success(), this.getYBlock(), null, "success", null, 0, 1, YReadStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYReadStatement_Notfound(), this.getYBlock(), null, "notfound", null, 0, 1, YReadStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yReadEachStatementEClass, YReadEachStatement.class, "YReadEachStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYReadEachStatement_Structs(), this.getYStructRefPair(), null, "structs", null, 0, -1, YReadEachStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYReadEachStatement_Joinclause(), this.getYJoin(), null, "joinclause", null, 0, 1, YReadEachStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYReadEachStatement_Whereclause(), this.getYWhere(), null, "whereclause", null, 0, 1, YReadEachStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYReadEachStatement_Target(), this.getYProperty(), null, "target", null, 0, 1, YReadEachStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYReadEachStatement_Success(), this.getYBlock(), null, "success", null, 0, 1, YReadEachStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yCreateStatementEClass, YCreateStatement.class, "YCreateStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYCreateStatement_Struct(), this.getYStructRefPair(), null, "struct", null, 0, 1, YCreateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYCreateStatement_SetBlock(), this.getYBlock(), null, "setBlock", null, 0, 1, YCreateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYCreateStatement_Success(), this.getYBlock(), null, "success", null, 0, 1, YCreateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYCreateStatement_AlreadyExist(), this.getYBlock(), null, "alreadyExist", null, 0, 1, YCreateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yUpdateStatementEClass, YUpdateStatement.class, "YUpdateStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYUpdateStatement_Struct(), this.getYStructRefPair(), null, "struct", null, 0, 1, YUpdateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYUpdateStatement_SetBlock(), this.getYBlock(), null, "setBlock", null, 0, 1, YUpdateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getYUpdateStatement_Success(), this.getYBlock(), null, "success", null, 0, 1, YUpdateStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(yDeleteStatementEClass, YDeleteStatement.class, "YDeleteStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getYDeleteStatement_Struct(), this.getYStructRefPair(), null, "struct", null, 0, 1, YDeleteStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

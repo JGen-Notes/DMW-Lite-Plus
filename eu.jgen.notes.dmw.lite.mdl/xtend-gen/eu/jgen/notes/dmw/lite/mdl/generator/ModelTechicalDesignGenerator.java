@@ -90,9 +90,6 @@ public class ModelTechicalDesignGenerator implements IGenerator {
         _builder.append(_generateColumnForDerby, "\t");
         _builder.newLineIfNotEmpty();
       }
-      if (_hasElements) {
-        _builder.append(",", "\t");
-      }
     }
     {
       EList<YAnnotForeignKey> _foreignkeys = table.getForeignkeys();
@@ -100,16 +97,15 @@ public class ModelTechicalDesignGenerator implements IGenerator {
       for(final YAnnotForeignKey foreignKey : _foreignkeys) {
         if (!_hasElements_1) {
           _hasElements_1 = true;
+          _builder.append(",", "\t");
         } else {
           _builder.appendImmediate(",", "\t");
         }
         _builder.append("\t");
+        _builder.append("BEFORE \',\'");
         String _generateForeignKeyColumns = this.generateForeignKeyColumns(foreignKey);
         _builder.append(_generateForeignKeyColumns, "\t");
         _builder.newLineIfNotEmpty();
-      }
-      if (_hasElements_1) {
-        _builder.append(",", "\t");
       }
     }
     _builder.append("\t");
@@ -117,6 +113,7 @@ public class ModelTechicalDesignGenerator implements IGenerator {
       YAnnotPrimaryKey _primarykey = table.getPrimarykey();
       boolean _tripleNotEquals = (_primarykey != null);
       if (_tripleNotEquals) {
+        _builder.append(",");
         String _generatePrimaryKey = this.generatePrimaryKey(table);
         _builder.append(_generatePrimaryKey, "\t");
       }

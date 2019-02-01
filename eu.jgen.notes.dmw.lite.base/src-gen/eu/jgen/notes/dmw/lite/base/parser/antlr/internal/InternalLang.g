@@ -128,9 +128,28 @@ ruleYWidget returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYWidgetAccess().getClassesYClassParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getYWidgetAccess().getEnumsYEnumerationParserRuleCall_4_0());
 				}
-				lv_classes_4_0=ruleYClass
+				lv_enums_4_0=ruleYEnumeration
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYWidgetRule());
+					}
+					add(
+						$current,
+						"enums",
+						lv_enums_4_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YEnumeration");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYWidgetAccess().getClassesYClassParserRuleCall_5_0());
+				}
+				lv_classes_5_0=ruleYClass
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getYWidgetRule());
@@ -138,7 +157,7 @@ ruleYWidget returns [EObject current=null]
 					add(
 						$current,
 						"classes",
-						lv_classes_4_0,
+						lv_classes_5_0,
 						"eu.jgen.notes.dmw.lite.base.Lang.YClass");
 					afterParserOrEnumRuleCall();
 				}
@@ -217,6 +236,209 @@ ruleYArgumentValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
 		{
 			newLeafNode(this_STRING_1, grammarAccess.getYArgumentValueAccess().getSTRINGTerminalRuleCall_1());
 		}
+	)
+;
+
+// Entry rule entryRuleYEnumeration
+entryRuleYEnumeration returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYEnumerationRule()); }
+	iv_ruleYEnumeration=ruleYEnumeration
+	{ $current=$iv_ruleYEnumeration.current; }
+	EOF;
+
+// Rule YEnumeration
+ruleYEnumeration returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYEnumerationAccess().getYEnumerationAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='enum'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYEnumerationAccess().getEnumKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYEnumerationAccess().getNameValidIDParserRuleCall_2_0());
+				}
+				lv_name_2_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYEnumerationRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"eu.jgen.notes.dmw.lite.mdl.Model.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getYEnumerationAccess().getColonKeyword_3_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getYEnumerationRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getYEnumerationAccess().getSuperclassYEnumerationCrossReference_3_1_0());
+					}
+					ruleQualifiedName
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		otherlv_5='{'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getYEnumerationAccess().getLeftCurlyBracketKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYEnumerationAccess().getCasesYEnumerationCaseParserRuleCall_5_0());
+				}
+				lv_cases_6_0=ruleYEnumerationCase
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYEnumerationRule());
+					}
+					add(
+						$current,
+						"cases",
+						lv_cases_6_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YEnumerationCase");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_7='}'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getYEnumerationAccess().getRightCurlyBracketKeyword_6());
+		}
+	)
+;
+
+// Entry rule entryRuleYEnumerationCase
+entryRuleYEnumerationCase returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYEnumerationCaseRule()); }
+	iv_ruleYEnumerationCase=ruleYEnumerationCase
+	{ $current=$iv_ruleYEnumerationCase.current; }
+	EOF;
+
+// Rule YEnumerationCase
+ruleYEnumerationCase returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYEnumerationCaseAccess().getYEnumerationCaseAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='case'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYEnumerationCaseAccess().getCaseKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYEnumerationCaseAccess().getNameValidIDParserRuleCall_2_0());
+				}
+				lv_name_2_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYEnumerationCaseRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"eu.jgen.notes.dmw.lite.mdl.Model.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_3='('
+			{
+				newLeafNode(otherlv_3, grammarAccess.getYEnumerationCaseAccess().getLeftParenthesisKeyword_3_0());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getYEnumerationCaseAccess().getParamsYParameterParserRuleCall_3_1_0_0());
+						}
+						lv_params_4_0=ruleYParameter
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getYEnumerationCaseRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_4_0,
+								"eu.jgen.notes.dmw.lite.base.Lang.YParameter");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_5=','
+					{
+						newLeafNode(otherlv_5, grammarAccess.getYEnumerationCaseAccess().getCommaKeyword_3_1_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getYEnumerationCaseAccess().getParamsYParameterParserRuleCall_3_1_1_1_0());
+							}
+							lv_params_6_0=ruleYParameter
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getYEnumerationCaseRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_6_0,
+									"eu.jgen.notes.dmw.lite.base.Lang.YParameter");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_7=')'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getYEnumerationCaseAccess().getRightParenthesisKeyword_3_2());
+			}
+		)?
 	)
 ;
 
@@ -741,9 +963,23 @@ ruleYFunction returns [EObject current=null]
 		}
 		(
 			(
-				lv_returnvalue_8_0='->'
+				lv_throw_8_0='throws'
 				{
-					newLeafNode(lv_returnvalue_8_0, grammarAccess.getYFunctionAccess().getReturnvalueHyphenMinusGreaterThanSignKeyword_6_0());
+					newLeafNode(lv_throw_8_0, grammarAccess.getYFunctionAccess().getThrowThrowsKeyword_6_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getYFunctionRule());
+					}
+					setWithLastConsumed($current, "throw", true, "throws");
+				}
+			)
+		)
+		(
+			(
+				lv_returnvalue_9_0='->'
+				{
+					newLeafNode(lv_returnvalue_9_0, grammarAccess.getYFunctionAccess().getReturnvalueHyphenMinusGreaterThanSignKeyword_7_0());
 				}
 				{
 					if ($current==null) {
@@ -761,7 +997,7 @@ ruleYFunction returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getYFunctionAccess().getTypeYClassCrossReference_7_0());
+					newCompositeNode(grammarAccess.getYFunctionAccess().getTypeYClassCrossReference_8_0());
 				}
 				ruleQualifiedName
 				{
@@ -772,9 +1008,9 @@ ruleYFunction returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYFunctionAccess().getBodyYBlockParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getYFunctionAccess().getBodyYBlockParserRuleCall_9_0());
 				}
-				lv_body_10_0=ruleYBlock
+				lv_body_11_0=ruleYBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getYFunctionRule());
@@ -782,7 +1018,7 @@ ruleYFunction returns [EObject current=null]
 					set(
 						$current,
 						"body",
-						lv_body_10_0,
+						lv_body_11_0,
 						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
 					afterParserOrEnumRuleCall();
 				}
@@ -995,12 +1231,216 @@ ruleYStatement returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getYStatementAccess().getYSwitchStatementParserRuleCall_14());
+			newCompositeNode(grammarAccess.getYStatementAccess().getYThrowParserRuleCall_14());
 		}
-		this_YSwitchStatement_15=ruleYSwitchStatement
+		this_YThrow_15=ruleYThrow
 		{
-			$current = $this_YSwitchStatement_15.current;
+			$current = $this_YThrow_15.current;
 			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getYStatementAccess().getYDoStatementParserRuleCall_15());
+		}
+		this_YDoStatement_16=ruleYDoStatement
+		{
+			$current = $this_YDoStatement_16.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getYStatementAccess().getYSwitchStatementParserRuleCall_16());
+		}
+		this_YSwitchStatement_17=ruleYSwitchStatement
+		{
+			$current = $this_YSwitchStatement_17.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleYDoStatement
+entryRuleYDoStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYDoStatementRule()); }
+	iv_ruleYDoStatement=ruleYDoStatement
+	{ $current=$iv_ruleYDoStatement.current; }
+	EOF;
+
+// Rule YDoStatement
+ruleYDoStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYDoStatementAccess().getYDoStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='do'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYDoStatementAccess().getDoKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYDoStatementAccess().getBlockYBlockParserRuleCall_2_0());
+				}
+				lv_block_2_0=ruleYBlock
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYDoStatementRule());
+					}
+					set(
+						$current,
+						"block",
+						lv_block_2_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYDoStatementAccess().getCatchesYCatchParserRuleCall_3_0());
+				}
+				lv_catches_3_0=ruleYCatch
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYDoStatementRule());
+					}
+					add(
+						$current,
+						"catches",
+						lv_catches_3_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YCatch");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleYCatch
+entryRuleYCatch returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYCatchRule()); }
+	iv_ruleYCatch=ruleYCatch
+	{ $current=$iv_ruleYCatch.current; }
+	EOF;
+
+// Rule YCatch
+ruleYCatch returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYCatchAccess().getYCatchAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='catch'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYCatchAccess().getCatchKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getYCatchRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getYCatchAccess().getExceptionYEnumerationCaseCrossReference_2_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYCatchAccess().getCatchBlockYCatchBlockParserRuleCall_3_0());
+				}
+				lv_catchBlock_3_0=ruleYCatchBlock
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYCatchRule());
+					}
+					set(
+						$current,
+						"catchBlock",
+						lv_catchBlock_3_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YCatchBlock");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleYCatchBlock
+entryRuleYCatchBlock returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYCatchBlockRule()); }
+	iv_ruleYCatchBlock=ruleYCatchBlock
+	{ $current=$iv_ruleYCatchBlock.current; }
+	EOF;
+
+// Rule YCatchBlock
+ruleYCatchBlock returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYCatchBlockAccess().getYCatchBlockAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='{'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYCatchBlockAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getYCatchBlockAccess().getStatementsYStatementParserRuleCall_2_0());
+				}
+				lv_statements_2_0=ruleYStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getYCatchBlockRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_2_0,
+						"eu.jgen.notes.dmw.lite.base.Lang.YStatement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_3='}'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getYCatchBlockAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -1059,6 +1499,112 @@ ruleYVariableDeclaration returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getYVariableDeclarationAccess().getSemicolonKeyword_3());
 		}
+	)
+;
+
+// Entry rule entryRuleYThrow
+entryRuleYThrow returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getYThrowRule()); }
+	iv_ruleYThrow=ruleYThrow
+	{ $current=$iv_ruleYThrow.current; }
+	EOF;
+
+// Rule YThrow
+ruleYThrow returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getYThrowAccess().getYThrowAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='throw'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getYThrowAccess().getThrowKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getYThrowRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getYThrowAccess().getExceptionYEnumerationCaseCrossReference_2_0());
+				}
+				ruleQualifiedName
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3='('
+		{
+			newLeafNode(otherlv_3, grammarAccess.getYThrowAccess().getLeftParenthesisKeyword_3());
+		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getYThrowAccess().getArgumentsYOrExpressionParserRuleCall_4_0_0());
+					}
+					lv_arguments_4_0=ruleYOrExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getYThrowRule());
+						}
+						add(
+							$current,
+							"arguments",
+							lv_arguments_4_0,
+							"eu.jgen.notes.dmw.lite.base.Lang.YOrExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				otherlv_5=','
+				{
+					newLeafNode(otherlv_5, grammarAccess.getYThrowAccess().getCommaKeyword_4_1_0());
+				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getYThrowAccess().getArgumentsYOrExpressionParserRuleCall_4_1_1_0());
+						}
+						lv_arguments_6_0=ruleYOrExpression
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getYThrowRule());
+							}
+							add(
+								$current,
+								"arguments",
+								lv_arguments_6_0,
+								"eu.jgen.notes.dmw.lite.base.Lang.YOrExpression");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)*
+		)?
+		otherlv_7=')'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getYThrowAccess().getRightParenthesisKeyword_5());
+		}
+		(
+			otherlv_8=';'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getYThrowAccess().getSemicolonKeyword_6());
+			}
+		)?
 	)
 ;
 
@@ -2614,56 +3160,6 @@ ruleYReadStatement returns [EObject current=null]
 				}
 			)
 		)?
-		otherlv_6='success'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getYReadStatementAccess().getSuccessKeyword_5());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYReadStatementAccess().getSuccessYBlockParserRuleCall_6_0());
-				}
-				lv_success_7_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYReadStatementRule());
-					}
-					set(
-						$current,
-						"success",
-						lv_success_7_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_8='not'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getYReadStatementAccess().getNotKeyword_7());
-		}
-		otherlv_9='found'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getYReadStatementAccess().getFoundKeyword_8());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYReadStatementAccess().getNotfoundYBlockParserRuleCall_9_0());
-				}
-				lv_notfound_10_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYReadStatementRule());
-					}
-					set(
-						$current,
-						"notfound",
-						lv_notfound_10_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
 	)
 ;
 
@@ -2786,25 +3282,6 @@ ruleYReadEachStatement returns [EObject current=null]
 				}
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYReadEachStatementAccess().getSuccessYBlockParserRuleCall_7_0());
-				}
-				lv_success_8_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYReadEachStatementRule());
-					}
-					set(
-						$current,
-						"success",
-						lv_success_8_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
 	)
 ;
 
@@ -2847,12 +3324,16 @@ ruleYCreateStatement returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_2='set'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getYCreateStatementAccess().getSetKeyword_2());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYCreateStatementAccess().getSetBlockYBlockParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getYCreateStatementAccess().getSetBlockYBlockParserRuleCall_3_0());
 				}
-				lv_setBlock_2_0=ruleYBlock
+				lv_setBlock_3_0=ruleYBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getYCreateStatementRule());
@@ -2860,57 +3341,7 @@ ruleYCreateStatement returns [EObject current=null]
 					set(
 						$current,
 						"setBlock",
-						lv_setBlock_2_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='success'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getYCreateStatementAccess().getSuccessKeyword_3());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYCreateStatementAccess().getSuccessYBlockParserRuleCall_4_0());
-				}
-				lv_success_4_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYCreateStatementRule());
-					}
-					set(
-						$current,
-						"success",
-						lv_success_4_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_5='already'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getYCreateStatementAccess().getAlreadyKeyword_5());
-		}
-		otherlv_6='exist'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getYCreateStatementAccess().getExistKeyword_6());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYCreateStatementAccess().getAlreadyExistYBlockParserRuleCall_7_0());
-				}
-				lv_alreadyExist_7_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYCreateStatementRule());
-					}
-					set(
-						$current,
-						"alreadyExist",
-						lv_alreadyExist_7_0,
+						lv_setBlock_3_0,
 						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
 					afterParserOrEnumRuleCall();
 				}
@@ -2958,12 +3389,16 @@ ruleYUpdateStatement returns [EObject current=null]
 				}
 			)
 		)
+		otherlv_2='set'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getYUpdateStatementAccess().getSetKeyword_2());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getYUpdateStatementAccess().getSetBlockYBlockParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getYUpdateStatementAccess().getSetBlockYBlockParserRuleCall_3_0());
 				}
-				lv_setBlock_2_0=ruleYBlock
+				lv_setBlock_3_0=ruleYBlock
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getYUpdateStatementRule());
@@ -2971,30 +3406,7 @@ ruleYUpdateStatement returns [EObject current=null]
 					set(
 						$current,
 						"setBlock",
-						lv_setBlock_2_0,
-						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_3='success'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getYUpdateStatementAccess().getSuccessKeyword_3());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getYUpdateStatementAccess().getSuccessYBlockParserRuleCall_4_0());
-				}
-				lv_success_4_0=ruleYBlock
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getYUpdateStatementRule());
-					}
-					set(
-						$current,
-						"success",
-						lv_success_4_0,
+						lv_setBlock_3_0,
 						"eu.jgen.notes.dmw.lite.base.Lang.YBlock");
 					afterParserOrEnumRuleCall();
 				}
@@ -3216,9 +3628,9 @@ ruleYStructRefPair returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_1='->'
+		otherlv_1='=>'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getYStructRefPairAccess().getHyphenMinusGreaterThanSignKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getYStructRefPairAccess().getEqualsSignGreaterThanSignKeyword_1());
 		}
 		(
 			(
@@ -3339,9 +3751,9 @@ ruleYJoinDef returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_1='->'
+		otherlv_1='=>'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getYJoinDefAccess().getHyphenMinusGreaterThanSignKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getYJoinDefAccess().getEqualsSignGreaterThanSignKeyword_1());
 		}
 		(
 			(
@@ -3359,9 +3771,9 @@ ruleYJoinDef returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='->'
+		otherlv_3='=>'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getYJoinDefAccess().getHyphenMinusGreaterThanSignKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getYJoinDefAccess().getEqualsSignGreaterThanSignKeyword_3());
 		}
 		(
 			(
@@ -4770,7 +5182,7 @@ ruleYAnnotTechnicalDesign returns [EObject current=null]
 			{
 				newLeafNode(otherlv_7, grammarAccess.getYAnnotTechnicalDesignAccess().getRightParenthesisKeyword_3_2());
 			}
-		)?
+		)
 		otherlv_8='{'
 		{
 			newLeafNode(otherlv_8, grammarAccess.getYAnnotTechnicalDesignAccess().getLeftCurlyBracketKeyword_4());

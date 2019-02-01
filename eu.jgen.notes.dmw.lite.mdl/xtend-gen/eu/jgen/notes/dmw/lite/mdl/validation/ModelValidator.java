@@ -108,6 +108,8 @@ public class ModelValidator extends AbstractModelValidator {
   
   public final static String ANNOATION_VALUE_HAS_WRONG_VALUE = (ModelValidator.ISSUE_CODE_PREFIX + "AnnotationValueWrongFormat");
   
+  public final static String ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE = "The declared attribute type does not match column type";
+  
   @Inject
   @Extension
   private ModelUtil _modelUtil;
@@ -120,9 +122,35 @@ public class ModelValidator extends AbstractModelValidator {
   @Extension
   private IQualifiedNameProvider _iQualifiedNameProvider;
   
-  /**
-   * Supported Database
-   */
+  @Check
+  public void checkAttributeColumnTypeMatching(final YAnnotAttribute annotAttribute) {
+    boolean _isAttributeImplemented = this._modelUtil.isAttributeImplemented(annotAttribute);
+    if (_isAttributeImplemented) {
+      final YAnnotColumn annotColumn = this._modelUtil.getAttributeImplementation(annotAttribute);
+      boolean _areTypesCompatible = this._modelUtil.areTypesCompatible(annotColumn.getType(), 
+        this._modelUtil.extractAnnotValueKeyword(annotAttribute.getElementValuePairs(), this._modelUtil.KW_TYPE));
+      if (_areTypesCompatible) {
+        return;
+      } else {
+        this.warning("The declared attribute type does not match column type", annotAttribute, 
+          ModelPackage.Literals.YANNOT_ATTRIBUTE__NAME, ModelValidator.ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE);
+      }
+    }
+  }
+  
+  @Check
+  public void checkColumnAttributeTypeMatching(final YAnnotColumn annotColumn) {
+    final YAnnotAttribute annotAttribute = annotColumn.getAttrref();
+    boolean _areTypesCompatible = this._modelUtil.areTypesCompatible(annotColumn.getType(), 
+      this._modelUtil.extractAnnotValueKeyword(annotAttribute.getElementValuePairs(), this._modelUtil.KW_TYPE));
+    if (_areTypesCompatible) {
+      return;
+    } else {
+      this.warning("The declared attribute type does not match column type", annotColumn, 
+        ModelPackage.Literals.YANNOT_COLUMN__TYPE, ModelValidator.ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE);
+    }
+  }
+  
   @Check
   public void checkTechnicalDesignAnnotations(final YAnnotTechnicalDesign technicalDesign) {
     int _size = technicalDesign.getElementValuePairs().size();
@@ -489,16 +517,13 @@ public class ModelValidator extends AbstractModelValidator {
    * design is defined and there is no table implementing entity type.
    */
   @Check
-  public void checkEntityHasTechDesign(final YAnnotEntity entity) {
-    boolean _isTechnicalDesign = this._modelUtil.isTechnicalDesign(entity);
-    if (_isTechnicalDesign) {
-      final YAnnotTable table = this._modelUtil.getImplementingTable(entity);
-      if ((table != null)) {
-        return;
-      } else {
-        this.warning("The declared entity is not yet implemented as table", entity, 
-          ModelPackage.Literals.YANNOTATION__NAME, ModelValidator.ENTITY_NO_TECH_DESIGN);
-      }
+  public void checkEntityImplemented(final YAnnotEntity entity) {
+    boolean _isEntityImplemented = this._modelUtil.isEntityImplemented(entity);
+    if (_isEntityImplemented) {
+      return;
+    } else {
+      this.warning("The declared entity is not yet implemented as table", entity, 
+        ModelPackage.Literals.YANNOTATION__NAME, ModelValidator.ENTITY_NO_TECH_DESIGN);
     }
   }
   

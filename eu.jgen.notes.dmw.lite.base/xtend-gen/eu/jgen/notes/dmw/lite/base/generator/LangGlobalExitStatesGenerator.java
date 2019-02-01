@@ -45,9 +45,9 @@ public class LangGlobalExitStatesGenerator implements IGenerator {
   protected void generateWidget(final IFileSystemAccess fsa, final YWidget widget) {
     this.imports.clear();
     final Consumer<YClass> _function = (YClass clazz) -> {
-      if (((clazz.getSuperclass() != null) && Objects.equal(clazz.getSuperclass().getName(), "GlobalExitStates"))) {
-        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.GlobalExitStates");
-        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.ExitState");
+      if (((clazz.getSuperclass() != null) && Objects.equal(clazz.getSuperclass().getName(), "XGlobalExitStates"))) {
+        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.XGlobalExitStates");
+        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.XExitState");
         StringConcatenation _builder = new StringConcatenation();
         String _documentation = this._langGeneratorHelperForJava.getDocumentation(clazz);
         _builder.append(_documentation);
@@ -56,7 +56,7 @@ public class LangGlobalExitStatesGenerator implements IGenerator {
         _builder.append("public class ");
         String _name = clazz.getName();
         _builder.append(_name);
-        _builder.append(" extends GlobalExitStates {");
+        _builder.append(" extends XGlobalExitStates {");
         _builder.newLineIfNotEmpty();
         _builder.append("   ");
         String _generateExitStates = this.generateExitStates(clazz);
@@ -115,7 +115,7 @@ public class LangGlobalExitStatesGenerator implements IGenerator {
   
   protected String generatePropertyForStructure(final YProperty property) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public ExitState ");
+    _builder.append("public XExitState ");
     String _name = property.getName();
     _builder.append(_name);
     _builder.append(";");

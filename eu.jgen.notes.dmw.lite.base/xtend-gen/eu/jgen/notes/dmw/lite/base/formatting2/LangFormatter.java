@@ -286,29 +286,6 @@ public class LangFormatter extends AbstractFormatter2 {
     document.append(document.prepend(this.textRegionExtensions.regionFor(createStatement).keyword("create"), _function), _function_1);
     document.<YStructRefPair>format(createStatement.getStruct());
     document.<YBlock>format(createStatement.getSetBlock());
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(createStatement).keyword("success"), _function_2), _function_3);
-    document.<YBlock>format(createStatement.getSuccess());
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(createStatement).keyword("already"), _function_4), _function_5);
-    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(createStatement).keyword("exist"), _function_6), _function_7);
-    document.<YBlock>format(createStatement.getAlreadyExist());
   }
   
   protected void _format(final YStructRefPair structRefPair, @Extension final IFormattableDocument document) {

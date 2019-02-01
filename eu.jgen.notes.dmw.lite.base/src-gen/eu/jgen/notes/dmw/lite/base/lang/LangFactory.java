@@ -51,6 +51,24 @@ public interface LangFactory extends EFactory
   YArgument createYArgument();
 
   /**
+   * Returns a new object of class '<em>YEnumeration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YEnumeration</em>'.
+   * @generated
+   */
+  YEnumeration createYEnumeration();
+
+  /**
+   * Returns a new object of class '<em>YEnumeration Case</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YEnumeration Case</em>'.
+   * @generated
+   */
+  YEnumerationCase createYEnumerationCase();
+
+  /**
    * Returns a new object of class '<em>YClass</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,6 +132,33 @@ public interface LangFactory extends EFactory
   YStatement createYStatement();
 
   /**
+   * Returns a new object of class '<em>YDo Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YDo Statement</em>'.
+   * @generated
+   */
+  YDoStatement createYDoStatement();
+
+  /**
+   * Returns a new object of class '<em>YCatch</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YCatch</em>'.
+   * @generated
+   */
+  YCatch createYCatch();
+
+  /**
+   * Returns a new object of class '<em>YCatch Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YCatch Block</em>'.
+   * @generated
+   */
+  YCatchBlock createYCatchBlock();
+
+  /**
    * Returns a new object of class '<em>YVariable Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,6 +166,15 @@ public interface LangFactory extends EFactory
    * @generated
    */
   YVariableDeclaration createYVariableDeclaration();
+
+  /**
+   * Returns a new object of class '<em>YThrow</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>YThrow</em>'.
+   * @generated
+   */
+  YThrow createYThrow();
 
   /**
    * Returns a new object of class '<em>YReturn</em>'.

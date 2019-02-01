@@ -45,9 +45,9 @@ public class LangGlobalCommandsGenerator implements IGenerator {
   protected void generateWidget(final IFileSystemAccess fsa, final YWidget widget) {
     this.imports.clear();
     final Consumer<YClass> _function = (YClass clazz) -> {
-      if (((clazz.getSuperclass() != null) && Objects.equal(clazz.getSuperclass().getName(), "GlobalCommands"))) {
-        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.GlobalCommands");
-        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.Command");
+      if (((clazz.getSuperclass() != null) && Objects.equal(clazz.getSuperclass().getName(), "XGlobalCommands"))) {
+        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.XGlobalCommands");
+        this.imports.add("eu.jgen.notes.dmw.lite.runtimes.XCommand");
         StringConcatenation _builder = new StringConcatenation();
         String _documentation = this._langGeneratorHelperForJava.getDocumentation(clazz);
         _builder.append(_documentation);
@@ -56,7 +56,7 @@ public class LangGlobalCommandsGenerator implements IGenerator {
         _builder.append("public class ");
         String _name = clazz.getName();
         _builder.append(_name);
-        _builder.append(" extends GlobalCommands {");
+        _builder.append(" extends XGlobalCommands {");
         _builder.newLineIfNotEmpty();
         _builder.append("   ");
         String _generateCommands = this.generateCommands(clazz);
@@ -118,7 +118,7 @@ public class LangGlobalCommandsGenerator implements IGenerator {
     String _documentation = this._langGeneratorHelperForJava.getDocumentation(property);
     _builder.append(_documentation);
     _builder.newLineIfNotEmpty();
-    _builder.append("public Command ");
+    _builder.append("public XCommand ");
     String _name = property.getName();
     _builder.append(_name);
     _builder.append(";");

@@ -69,27 +69,37 @@ class ModelValidator extends AbstractModelValidator {
 	public static val ONE_TO_ONE_MANDATORY_NOT_SUPPORTED = ISSUE_CODE_PREFIX + "OneToOneMandatoryNotSuported"
 	public static val ANNOATION_NOT_SUPPORTED = ISSUE_CODE_PREFIX + "AnnotationNotSuported"
 	public static val ANNOATION_VALUE_HAS_WRONG_VALUE = ISSUE_CODE_PREFIX + "AnnotationValueWrongFormat"
+	public static val ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE = "The declared attribute type does not match column type"
 
 	@Inject extension ModelUtil
 	@Inject extension ModelIndex
 	@Inject extension IQualifiedNameProvider
 
-	/*********************************************************
-	 * Supported Database
-	 ********************************************************/
-//	@Check
-//	def checkSupportedDatabase(YAnnotDatabase annotDatabase) {
-//		if (annotDatabase.name !== null) {
-//
-//			if (annotDatabase.name == KW_DERBY || annotDatabase.name == KW_MYSQL || annotDatabase.name == KW_SQLITE ||
-//				annotDatabase.name == KW_POSTGRESQL || annotDatabase.name == KW_MONGODB) {
-//				return
-//			} else {
-//				error("This database is not supported yet.", ModelPackage.eINSTANCE.YAnnotDatabase_Name,
-//					UNSUPPORTED_DATABASE, annotDatabase.name)
-//			}
-//		}
-//	}
+	@Check
+	def void checkAttributeColumnTypeMatching(YAnnotAttribute annotAttribute) {
+		if (annotAttribute.isAttributeImplemented) {
+			val annotColumn = annotAttribute.attributeImplementation
+			if (areTypesCompatible(annotColumn.type,
+				annotAttribute.elementValuePairs.extractAnnotValueKeyword(KW_TYPE))) {
+				return
+			} else {
+				warning("The declared attribute type does not match column type", annotAttribute,
+					ModelPackage.Literals.YANNOT_ATTRIBUTE__NAME, ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE)
+			}
+		}
+	}
+
+	@Check
+	def void checkColumnAttributeTypeMatching(YAnnotColumn annotColumn) {
+		val annotAttribute = annotColumn.attrref
+			if (areTypesCompatible(annotColumn.type,
+				annotAttribute.elementValuePairs.extractAnnotValueKeyword(KW_TYPE))) {
+				return
+			} else {
+				warning("The declared attribute type does not match column type", annotColumn,
+					ModelPackage.Literals.YANNOT_COLUMN__TYPE, ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE)
+			}		
+	}
 
 	@Check
 	def void checkTechnicalDesignAnnotations(YAnnotTechnicalDesign technicalDesign) {
@@ -372,15 +382,12 @@ class ModelValidator extends AbstractModelValidator {
 	 * design is defined and there is no table implementing entity type.
 	 */
 	@Check
-	def void checkEntityHasTechDesign(YAnnotEntity entity) {
-		if (isTechnicalDesign(entity)) {
-			val table = getImplementingTable(entity)
-			if (table !== null) {
-				return
-			} else {
-				warning("The declared entity is not yet implemented as table", entity,
-					ModelPackage.Literals.YANNOTATION__NAME, ENTITY_NO_TECH_DESIGN)
-			}
+	def void checkEntityImplemented(YAnnotEntity entity) {
+		if (entity.isEntityImplemented) {
+			return
+		} else {
+			warning("The declared entity is not yet implemented as table", entity,
+				ModelPackage.Literals.YANNOTATION__NAME, ENTITY_NO_TECH_DESIGN)
 		}
 	}
 

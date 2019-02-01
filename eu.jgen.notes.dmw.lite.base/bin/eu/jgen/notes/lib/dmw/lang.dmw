@@ -1,9 +1,12 @@
 
 package eu.jgen.notes.lib.dmw;
 
+enum XError {
+}
 
-class Object {
-  public  func clone() -> Object {
+
+class XObject {
+  public  func clone() -> XObject {
     return null;
   }
 
@@ -12,7 +15,7 @@ class Object {
     return "not implemented";
   }
 
-  public  func equals(value : Object) -> Bool {
+  public  func equals(value : XObject) -> Bool {
     // fake implementation
     return false;
   }
@@ -29,7 +32,7 @@ class Object {
  * 
  * TODO
  */
- class String : Object {
+ class String : XObject {
    
 } 
 
@@ -41,7 +44,7 @@ class Object {
  * 
  *    @length() setting limits of length
  */
- class Int : Object {
+ class Int : XObject {
  	 
 }
 
@@ -53,7 +56,7 @@ class Object {
  * 
  *    @length() setting limits of length
  */
- class Short : Object {
+ class Short : XObject {
    
 }
 
@@ -66,38 +69,38 @@ class Object {
  *    @length() setting limits of length,
  *    @decimal()  setting limit on decimal digits.
  */
- class Double : Object {
+ class Double : XObject {
 }
 
 /*
  * Bool values are referred to as logical and they can only be <code>true</code> 
  * or <code>false</code>.
  */
- class Bool : Object {
+ class Bool : XObject {
     
 }
 
- class Long : Object {
+ class Long : XObject {
 }  
 
- class Date : Object {
+ class Date : XObject {
 }  
 
- class Time : Object {
+ class Time : XObject {
 }
 
- class Timestamp : Object {
+ class Timestamp : XObject {
 }
 
- class Blob : Object {
+ class Blob : XObject {
 }
 /*
  * This class is a building foundation for every widget. Any widget class 
- * need to extent directly or indirectly <code>Widget</code> class.
+ * need to extent directly or indirectly <code>XWidget</code> class.
  * <code>Widget</code> class provides a lot of useful functions allowing
  * development fully functional widgets.
  */
- class Widget : Object {
+ class XWidget : XObject {
  
  	/*
 	 *  This function allows to set global exit state value .
@@ -109,14 +112,14 @@ class Object {
 	/*
 	 *  This function allows to set global exit state value .
 	 */
-	 public func setExitState(exitState : ExitState)  {
+	 public func setExitState(exitState : XExitState)  {
 	 
 	}
 	
 	/*
 	 *  This function allows to set global command value .
 	 */
-	 public func setCommand(command : Command) {
+	 public func setCommand(command : XCommand) {
 
 	}
 	
@@ -124,7 +127,7 @@ class Object {
 	 *  This function allows to check if global exist state is set to the
 	 *  concrete value .
 	 */
-	 public func isExitState(exitState : ExitState) -> Bool {
+	 public func isExitState(exitState : XExitState) -> Bool {
 		return false;
 	}
 	
@@ -132,17 +135,17 @@ class Object {
 	 *  This function allows to check if global command is set to the
 	 *  concrete value .
 	 */
-	 public func isCommand(command : Command) -> Bool {
+	 public func isCommand(command : XCommand) -> Bool {
 	 	return false;
 	}
 	
-	 public func moveStruct(fromview : Structure, toview : Structure) -> String {
+	 public func moveStruct(fromview : XStructure, toview : XStructure) -> String {
 		return null;
 	}
 	
 }
 
- class ExitState : Object {
+ class XExitState : XObject {
  
  	public func isNormal() -> Bool {
  	   return false;
@@ -150,18 +153,18 @@ class Object {
 	
 }
 
-class Command : Object {
+class XCommand : XObject {
 	
 }
 
-class Structure : Object {
+class XStructure : XObject {
 	
 }
 
 /*
  * Array is collection of structures.
  */
- class Array : Object {
+ class XArray : XObject {
 	
 	/*
 	 * Sets current subscript to the specific value.
@@ -195,13 +198,13 @@ class Structure : Object {
 /*
  * Defines global exit states
  */
-class GlobalExitStates : Object {
+class XGlobalExitStates : XObject {
  
 }
 
 /*
  * Defines global commands
  */
-class GlobalCommands : Object {
+class XGlobalCommands : XObject {
  
 }

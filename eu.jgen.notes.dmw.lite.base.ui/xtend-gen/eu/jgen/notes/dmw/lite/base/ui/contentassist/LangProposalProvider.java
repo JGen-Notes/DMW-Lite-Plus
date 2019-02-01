@@ -26,7 +26,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
 import eu.jgen.notes.dmw.lite.base.lang.YMember;
-import eu.jgen.notes.dmw.lite.base.scoping.LangIndex;
 import eu.jgen.notes.dmw.lite.base.ui.contentassist.AbstractLangProposalProvider;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
@@ -48,10 +47,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 public class LangProposalProvider extends AbstractLangProposalProvider {
   @Inject
   private PluginImageHelper imageHelper;
-  
-  @Inject
-  @Extension
-  private LangIndex _langIndex;
   
   @Inject
   @Extension
@@ -96,7 +91,7 @@ public class LangProposalProvider extends AbstractLangProposalProvider {
           String _plus_1 = (_plus + " : ");
           String _extractAttributeType = this._modelUtil.extractAttributeType(annotAttr);
           String _plus_2 = (_plus_1 + _extractAttributeType);
-          String _plus_3 = (_plus_2 + " -> ");
+          String _plus_3 = (_plus_2 + " => ");
           String _name_1 = clazz.getEntityRef().getName();
           String _plus_4 = (_plus_3 + _name_1);
           String _plus_5 = (_plus_4 + ".");

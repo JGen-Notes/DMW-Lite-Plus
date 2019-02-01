@@ -38,6 +38,9 @@ import eu.jgen.notes.dmw.lite.base.lang.YMemberSelection
 import eu.jgen.notes.dmw.lite.base.lang.YFunction
 import eu.jgen.notes.dmw.lite.base.lang.YBlock
 import eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration
+import eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase
+import eu.jgen.notes.dmw.lite.base.lang.YCatchBlock
+import eu.jgen.notes.dmw.lite.base.lang.YCatch
 
 class LangScopeProvider extends AbstractLangScopeProvider {
 
@@ -58,6 +61,8 @@ class LangScopeProvider extends AbstractLangScopeProvider {
 	def protected IScope scopeForSymbolRef(EObject context) {
 		val container = context.eContainer
 		return switch (container) {
+			YCatchBlock:
+			   Scopes.scopeFor(((container.eContainer as YCatch).exception as YEnumerationCase).params)
 			YFunction:
 				Scopes.scopeFor(container.params)
 			YBlock:

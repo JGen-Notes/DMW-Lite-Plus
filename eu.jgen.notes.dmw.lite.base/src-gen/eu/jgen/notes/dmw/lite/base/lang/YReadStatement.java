@@ -17,8 +17,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getStructs <em>Structs</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getJoinclause <em>Joinclause</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getWhereclause <em>Whereclause</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getSuccess <em>Success</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getNotfound <em>Notfound</em>}</li>
  * </ul>
  *
  * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYReadStatement()
@@ -94,57 +92,5 @@ public interface YReadStatement extends YStatement
    * @generated
    */
   void setWhereclause(YWhere value);
-
-  /**
-   * Returns the value of the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Success</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Success</em>' containment reference.
-   * @see #setSuccess(YBlock)
-   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYReadStatement_Success()
-   * @model containment="true"
-   * @generated
-   */
-  YBlock getSuccess();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getSuccess <em>Success</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Success</em>' containment reference.
-   * @see #getSuccess()
-   * @generated
-   */
-  void setSuccess(YBlock value);
-
-  /**
-   * Returns the value of the '<em><b>Notfound</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Notfound</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Notfound</em>' containment reference.
-   * @see #setNotfound(YBlock)
-   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYReadStatement_Notfound()
-   * @model containment="true"
-   * @generated
-   */
-  YBlock getNotfound();
-
-  /**
-   * Sets the value of the '{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getNotfound <em>Notfound</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Notfound</em>' containment reference.
-   * @see #getNotfound()
-   * @generated
-   */
-  void setNotfound(YBlock value);
 
 } // YReadStatement

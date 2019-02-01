@@ -26,8 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl#getStruct <em>Struct</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl#getSetBlock <em>Set Block</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl#getSuccess <em>Success</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl#getAlreadyExist <em>Already Exist</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,26 +51,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
    * @ordered
    */
   protected YBlock setBlock;
-
-  /**
-   * The cached value of the '{@link #getSuccess() <em>Success</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSuccess()
-   * @generated
-   * @ordered
-   */
-  protected YBlock success;
-
-  /**
-   * The cached value of the '{@link #getAlreadyExist() <em>Already Exist</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAlreadyExist()
-   * @generated
-   * @ordered
-   */
-  protected YBlock alreadyExist;
 
   /**
    * <!-- begin-user-doc -->
@@ -196,102 +174,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
    * <!-- end-user-doc -->
    * @generated
    */
-  public YBlock getSuccess()
-  {
-    return success;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSuccess(YBlock newSuccess, NotificationChain msgs)
-  {
-    YBlock oldSuccess = success;
-    success = newSuccess;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LangPackage.YCREATE_STATEMENT__SUCCESS, oldSuccess, newSuccess);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSuccess(YBlock newSuccess)
-  {
-    if (newSuccess != success)
-    {
-      NotificationChain msgs = null;
-      if (success != null)
-        msgs = ((InternalEObject)success).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LangPackage.YCREATE_STATEMENT__SUCCESS, null, msgs);
-      if (newSuccess != null)
-        msgs = ((InternalEObject)newSuccess).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LangPackage.YCREATE_STATEMENT__SUCCESS, null, msgs);
-      msgs = basicSetSuccess(newSuccess, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LangPackage.YCREATE_STATEMENT__SUCCESS, newSuccess, newSuccess));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public YBlock getAlreadyExist()
-  {
-    return alreadyExist;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAlreadyExist(YBlock newAlreadyExist, NotificationChain msgs)
-  {
-    YBlock oldAlreadyExist = alreadyExist;
-    alreadyExist = newAlreadyExist;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LangPackage.YCREATE_STATEMENT__ALREADY_EXIST, oldAlreadyExist, newAlreadyExist);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAlreadyExist(YBlock newAlreadyExist)
-  {
-    if (newAlreadyExist != alreadyExist)
-    {
-      NotificationChain msgs = null;
-      if (alreadyExist != null)
-        msgs = ((InternalEObject)alreadyExist).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LangPackage.YCREATE_STATEMENT__ALREADY_EXIST, null, msgs);
-      if (newAlreadyExist != null)
-        msgs = ((InternalEObject)newAlreadyExist).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LangPackage.YCREATE_STATEMENT__ALREADY_EXIST, null, msgs);
-      msgs = basicSetAlreadyExist(newAlreadyExist, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LangPackage.YCREATE_STATEMENT__ALREADY_EXIST, newAlreadyExist, newAlreadyExist));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -301,10 +183,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
         return basicSetStruct(null, msgs);
       case LangPackage.YCREATE_STATEMENT__SET_BLOCK:
         return basicSetSetBlock(null, msgs);
-      case LangPackage.YCREATE_STATEMENT__SUCCESS:
-        return basicSetSuccess(null, msgs);
-      case LangPackage.YCREATE_STATEMENT__ALREADY_EXIST:
-        return basicSetAlreadyExist(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -323,10 +201,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
         return getStruct();
       case LangPackage.YCREATE_STATEMENT__SET_BLOCK:
         return getSetBlock();
-      case LangPackage.YCREATE_STATEMENT__SUCCESS:
-        return getSuccess();
-      case LangPackage.YCREATE_STATEMENT__ALREADY_EXIST:
-        return getAlreadyExist();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -346,12 +220,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
         return;
       case LangPackage.YCREATE_STATEMENT__SET_BLOCK:
         setSetBlock((YBlock)newValue);
-        return;
-      case LangPackage.YCREATE_STATEMENT__SUCCESS:
-        setSuccess((YBlock)newValue);
-        return;
-      case LangPackage.YCREATE_STATEMENT__ALREADY_EXIST:
-        setAlreadyExist((YBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -373,12 +241,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
       case LangPackage.YCREATE_STATEMENT__SET_BLOCK:
         setSetBlock((YBlock)null);
         return;
-      case LangPackage.YCREATE_STATEMENT__SUCCESS:
-        setSuccess((YBlock)null);
-        return;
-      case LangPackage.YCREATE_STATEMENT__ALREADY_EXIST:
-        setAlreadyExist((YBlock)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -397,10 +259,6 @@ public class YCreateStatementImpl extends YStatementImpl implements YCreateState
         return struct != null;
       case LangPackage.YCREATE_STATEMENT__SET_BLOCK:
         return setBlock != null;
-      case LangPackage.YCREATE_STATEMENT__SUCCESS:
-        return success != null;
-      case LangPackage.YCREATE_STATEMENT__ALREADY_EXIST:
-        return alreadyExist != null;
     }
     return super.eIsSet(featureID);
   }

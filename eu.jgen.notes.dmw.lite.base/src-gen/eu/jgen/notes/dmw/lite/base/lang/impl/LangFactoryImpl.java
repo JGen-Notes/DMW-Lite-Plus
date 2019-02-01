@@ -69,6 +69,8 @@ public class LangFactoryImpl extends EFactoryImpl implements LangFactory
       case LangPackage.YWIDGET: return createYWidget();
       case LangPackage.YPARAMETER: return createYParameter();
       case LangPackage.YARGUMENT: return createYArgument();
+      case LangPackage.YENUMERATION: return createYEnumeration();
+      case LangPackage.YENUMERATION_CASE: return createYEnumerationCase();
       case LangPackage.YCLASS: return createYClass();
       case LangPackage.YMEMBER: return createYMember();
       case LangPackage.YPROPERTY: return createYProperty();
@@ -76,7 +78,11 @@ public class LangFactoryImpl extends EFactoryImpl implements LangFactory
       case LangPackage.YFUNCTION: return createYFunction();
       case LangPackage.YBLOCK: return createYBlock();
       case LangPackage.YSTATEMENT: return createYStatement();
+      case LangPackage.YDO_STATEMENT: return createYDoStatement();
+      case LangPackage.YCATCH: return createYCatch();
+      case LangPackage.YCATCH_BLOCK: return createYCatchBlock();
       case LangPackage.YVARIABLE_DECLARATION: return createYVariableDeclaration();
+      case LangPackage.YTHROW: return createYThrow();
       case LangPackage.YRETURN: return createYReturn();
       case LangPackage.YIF_STATEMENT: return createYIfStatement();
       case LangPackage.YSWITCH_STATEMENT: return createYSwitchStatement();
@@ -194,6 +200,28 @@ public class LangFactoryImpl extends EFactoryImpl implements LangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public YEnumeration createYEnumeration()
+  {
+    YEnumerationImpl yEnumeration = new YEnumerationImpl();
+    return yEnumeration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public YEnumerationCase createYEnumerationCase()
+  {
+    YEnumerationCaseImpl yEnumerationCase = new YEnumerationCaseImpl();
+    return yEnumerationCase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public YClass createYClass()
   {
     YClassImpl yClass = new YClassImpl();
@@ -271,10 +299,54 @@ public class LangFactoryImpl extends EFactoryImpl implements LangFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public YDoStatement createYDoStatement()
+  {
+    YDoStatementImpl yDoStatement = new YDoStatementImpl();
+    return yDoStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public YCatch createYCatch()
+  {
+    YCatchImpl yCatch = new YCatchImpl();
+    return yCatch;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public YCatchBlock createYCatchBlock()
+  {
+    YCatchBlockImpl yCatchBlock = new YCatchBlockImpl();
+    return yCatchBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public YVariableDeclaration createYVariableDeclaration()
   {
     YVariableDeclarationImpl yVariableDeclaration = new YVariableDeclarationImpl();
     return yVariableDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public YThrow createYThrow()
+  {
+    YThrowImpl yThrow = new YThrowImpl();
+    return yThrow;
   }
 
   /**

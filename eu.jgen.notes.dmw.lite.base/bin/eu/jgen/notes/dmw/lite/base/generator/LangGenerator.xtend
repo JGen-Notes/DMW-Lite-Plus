@@ -28,7 +28,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import com.google.inject.Inject
-
+import eu.jgen.notes.dmw.lite.mdl.generator.LangWidgetGeneratorForDMW
 
 class LangGenerator extends AbstractGenerator {
 	
@@ -38,16 +38,18 @@ class LangGenerator extends AbstractGenerator {
 	* Copyright © 2018 JGen. All rights reserved.
 	*/	
 	'''
-	
+ //	@Inject LangWidgetGeneratorForDMW g1
 	@Inject LangWidgetGeneratorForJava g2
 	@Inject LangGlobalExitStatesGenerator g3
 	@Inject LangGlobalCommandsGenerator g4
 	@Inject LangWidgetGeneratorForSwift g5
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {		
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {	
+
 			g2.doGenerate(resource, fsa, context)
 			g3.doGenerate(resource, fsa)
 			g4.doGenerate(resource, fsa)
 			g5.doGenerate(resource, fsa)
+	//				     g1.doGenerate(resource, fsa)	
 	}
 }

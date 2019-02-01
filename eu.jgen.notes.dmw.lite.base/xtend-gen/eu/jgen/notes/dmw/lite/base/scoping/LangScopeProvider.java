@@ -27,7 +27,10 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import eu.jgen.notes.dmw.lite.base.lang.LangPackage;
 import eu.jgen.notes.dmw.lite.base.lang.YBlock;
+import eu.jgen.notes.dmw.lite.base.lang.YCatch;
+import eu.jgen.notes.dmw.lite.base.lang.YCatchBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase;
 import eu.jgen.notes.dmw.lite.base.lang.YFunction;
 import eu.jgen.notes.dmw.lite.base.lang.YMember;
 import eu.jgen.notes.dmw.lite.base.lang.YMemberSelection;
@@ -78,9 +81,17 @@ public class LangScopeProvider extends AbstractLangScopeProvider {
     final EObject container = context.eContainer();
     IScope _switchResult = null;
     boolean _matched = false;
-    if (container instanceof YFunction) {
+    if (container instanceof YCatchBlock) {
       _matched=true;
-      _switchResult = Scopes.scopeFor(((YFunction)container).getParams());
+      EObject _eContainer = ((YCatchBlock)container).eContainer();
+      YEnumerationCase _exception = ((YCatch) _eContainer).getException();
+      _switchResult = Scopes.scopeFor(((YEnumerationCase) _exception).getParams());
+    }
+    if (!_matched) {
+      if (container instanceof YFunction) {
+        _matched=true;
+        _switchResult = Scopes.scopeFor(((YFunction)container).getParams());
+      }
     }
     if (!_matched) {
       if (container instanceof YBlock) {

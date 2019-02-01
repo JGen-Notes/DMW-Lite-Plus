@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YUpdateStatementImpl#getStruct <em>Struct</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YUpdateStatementImpl#getSetBlock <em>Set Block</em>}</li>
- *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.impl.YUpdateStatementImpl#getSuccess <em>Success</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,16 +51,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
    * @ordered
    */
   protected YBlock setBlock;
-
-  /**
-   * The cached value of the '{@link #getSuccess() <em>Success</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSuccess()
-   * @generated
-   * @ordered
-   */
-  protected YBlock success;
 
   /**
    * <!-- begin-user-doc -->
@@ -185,54 +174,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
    * <!-- end-user-doc -->
    * @generated
    */
-  public YBlock getSuccess()
-  {
-    return success;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetSuccess(YBlock newSuccess, NotificationChain msgs)
-  {
-    YBlock oldSuccess = success;
-    success = newSuccess;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LangPackage.YUPDATE_STATEMENT__SUCCESS, oldSuccess, newSuccess);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSuccess(YBlock newSuccess)
-  {
-    if (newSuccess != success)
-    {
-      NotificationChain msgs = null;
-      if (success != null)
-        msgs = ((InternalEObject)success).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LangPackage.YUPDATE_STATEMENT__SUCCESS, null, msgs);
-      if (newSuccess != null)
-        msgs = ((InternalEObject)newSuccess).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LangPackage.YUPDATE_STATEMENT__SUCCESS, null, msgs);
-      msgs = basicSetSuccess(newSuccess, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LangPackage.YUPDATE_STATEMENT__SUCCESS, newSuccess, newSuccess));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -242,8 +183,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
         return basicSetStruct(null, msgs);
       case LangPackage.YUPDATE_STATEMENT__SET_BLOCK:
         return basicSetSetBlock(null, msgs);
-      case LangPackage.YUPDATE_STATEMENT__SUCCESS:
-        return basicSetSuccess(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -262,8 +201,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
         return getStruct();
       case LangPackage.YUPDATE_STATEMENT__SET_BLOCK:
         return getSetBlock();
-      case LangPackage.YUPDATE_STATEMENT__SUCCESS:
-        return getSuccess();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -283,9 +220,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
         return;
       case LangPackage.YUPDATE_STATEMENT__SET_BLOCK:
         setSetBlock((YBlock)newValue);
-        return;
-      case LangPackage.YUPDATE_STATEMENT__SUCCESS:
-        setSuccess((YBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -307,9 +241,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
       case LangPackage.YUPDATE_STATEMENT__SET_BLOCK:
         setSetBlock((YBlock)null);
         return;
-      case LangPackage.YUPDATE_STATEMENT__SUCCESS:
-        setSuccess((YBlock)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -328,8 +259,6 @@ public class YUpdateStatementImpl extends YStatementImpl implements YUpdateState
         return struct != null;
       case LangPackage.YUPDATE_STATEMENT__SET_BLOCK:
         return setBlock != null;
-      case LangPackage.YUPDATE_STATEMENT__SUCCESS:
-        return success != null;
     }
     return super.eIsSet(featureID);
   }

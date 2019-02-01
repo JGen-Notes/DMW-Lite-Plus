@@ -24,26 +24,22 @@
 package eu.jgen.notes.dmw.lite.base.ui.contentassist
 
 import com.google.inject.Inject
-
+import eu.jgen.notes.dmw.lite.base.lang.YClass
+import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
+import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.ui.PluginImageHelper
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
-import eu.jgen.notes.dmw.lite.base.scoping.LangIndex
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity
-import eu.jgen.notes.dmw.lite.mdl.utility.ModelUtil
-import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute
-import eu.jgen.notes.dmw.lite.base.lang.YClass
 
 class LangProposalProvider extends AbstractLangProposalProvider {
 
 	@Inject
-	private PluginImageHelper imageHelper;
-	@Inject extension LangIndex
-		@Inject extension ModelUtil
-	
+	PluginImageHelper imageHelper;
+	@Inject extension ModelUtil
+
 //	override public void completeYAnnotDatabase_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 //				acceptor.accept(createCompletionProposal("Derby", "Derby", imageHelper.getImage("database.gif"), context))
 //				acceptor.accept(createCompletionProposal("MySQL", "MySQL", imageHelper.getImage("database.gif"), context))
@@ -51,8 +47,6 @@ class LangProposalProvider extends AbstractLangProposalProvider {
 //		 		acceptor.accept(createCompletionProposal("PostgreSQL", "PostgreSQL", imageHelper.getImage("database.gif"), context))
 //		 		acceptor.accept(createCompletionProposal("MongoDB", "MongoDB", imageHelper.getImage("database.gif"), context))
 //	}
-
-
 //	override completeYAnnotAttr_Yclass(EObject model, Assignment assignment, ContentAssistContext context,
 //		ICompletionProposalAcceptor acceptor) {
 //		acceptor.accept(createCompletionProposal("String", "String", imageHelper.getImage("class.gif"), context))
@@ -65,7 +59,6 @@ class LangProposalProvider extends AbstractLangProposalProvider {
 //		acceptor.accept(createCompletionProposal("Time", "Time", imageHelper.getImage("class.gif"), context))
 //		acceptor.accept(createCompletionProposal("Timestamp", "Timestamp", imageHelper.getImage("class.gif"), context))
 //	}
-
 	override complete_YProperty(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		ICompletionProposalAcceptor acceptor) {
 		super.complete_YProperty(model, ruleCall, context, acceptor)
@@ -88,16 +81,15 @@ class LangProposalProvider extends AbstractLangProposalProvider {
 			super.completeYClass_Members(model, assignment, context, acceptor)
 		}
 	}
-	
 
 	protected def void createAttributeIncludeAll(YClass clazz, ICompletionProposalAcceptor acceptor,
 		ContentAssistContext context) {
 		val list = newArrayList()
-		for (annotEntityInner : clazz.entityRef.annotations) { 
+		for (annotEntityInner : clazz.entityRef.annotations) {
 			if (annotEntityInner instanceof YAnnotAttribute) {
 				val annotAttr = annotEntityInner as YAnnotAttribute
 				if (!isPropertyAlreadyIncluded(clazz, annotAttr.name)) {
-					val line = "public var " + annotAttr.name + " : " + annotAttr.extractAttributeType + " -> " +
+					val line = "public var " + annotAttr.name + " : " + annotAttr.extractAttributeType + " => " +
 						clazz.entityRef.name + "." + annotAttr.name + ";"
 					list.add(line)
 				}
@@ -135,7 +127,5 @@ class LangProposalProvider extends AbstractLangProposalProvider {
 		}
 		return false
 	}
-	
-
 
 }

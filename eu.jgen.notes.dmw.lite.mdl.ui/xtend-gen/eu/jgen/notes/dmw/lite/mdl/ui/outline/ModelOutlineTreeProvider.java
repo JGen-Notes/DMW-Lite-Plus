@@ -24,6 +24,7 @@ package eu.jgen.notes.dmw.lite.mdl.ui.outline;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import eu.jgen.notes.dmw.lite.mdl.DMWRuntimeException;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotColumn;
@@ -51,6 +52,7 @@ import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.ui.label.StylerFactory;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 
 @SuppressWarnings("all")
@@ -123,7 +125,8 @@ public class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
    * Technical Design
    */
   public Object _text(final YAnnotTechnicalDesign element) {
-    return element.getName();
+    String _name = element.getName();
+    return ("Technical Design: " + _name);
   }
   
   public Object _image(final YAnnotTechnicalDesign element) {
@@ -214,6 +217,10 @@ public class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
     return true;
   }
   
+  public boolean _isLeaf(final YAnnotTechnicalDesign element) {
+    return true;
+  }
+  
   /**
    * Foreign Key
    */
@@ -254,15 +261,23 @@ public class ModelOutlineTreeProvider extends DefaultOutlineTreeProvider {
   }
   
   public Object _text(final YAnnotAttribute element) {
-    String _extractAttributeType = this._modelUtil.extractAttributeType(element);
-    boolean _tripleNotEquals = (_extractAttributeType != null);
-    if (_tripleNotEquals) {
-      String _name = element.getName();
-      String _plus = (_name + " : ");
-      String _extractAttributeType_1 = this._modelUtil.extractAttributeType(element);
-      return (_plus + _extractAttributeType_1);
-    } else {
-      return element.getName();
+    try {
+      String _extractAttributeType = this._modelUtil.extractAttributeType(element);
+      boolean _tripleNotEquals = (_extractAttributeType != null);
+      if (_tripleNotEquals) {
+        String _name = element.getName();
+        String _plus = (_name + " : ");
+        String _extractAttributeType_1 = this._modelUtil.extractAttributeType(element);
+        return (_plus + _extractAttributeType_1);
+      } else {
+        return element.getName();
+      }
+    } catch (final Throwable _t) {
+      if (_t instanceof DMWRuntimeException) {
+        return "";
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
     }
   }
   

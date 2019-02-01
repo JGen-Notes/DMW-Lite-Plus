@@ -87,13 +87,22 @@ public interface LangPackage extends EPackage
   int YWIDGET__IMPORTS = 1;
 
   /**
+   * The feature id for the '<em><b>Enums</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YWIDGET__ENUMS = 2;
+
+  /**
    * The feature id for the '<em><b>Classes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YWIDGET__CLASSES = 2;
+  int YWIDGET__CLASSES = 3;
 
   /**
    * The number of structural features of the '<em>YWidget</em>' class.
@@ -102,7 +111,7 @@ public interface LangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YWIDGET_FEATURE_COUNT = 3;
+  int YWIDGET_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YNamedElementImpl <em>YNamed Element</em>}' class.
@@ -112,7 +121,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYNamedElement()
    * @generated
    */
-  int YNAMED_ELEMENT = 16;
+  int YNAMED_ELEMENT = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -140,7 +149,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSymbol()
    * @generated
    */
-  int YSYMBOL = 15;
+  int YSYMBOL = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -244,6 +253,89 @@ public interface LangPackage extends EPackage
   int YARGUMENT_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationImpl <em>YEnumeration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYEnumeration()
+   * @generated
+   */
+  int YENUMERATION = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Superclass</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION__SUPERCLASS = 1;
+
+  /**
+   * The feature id for the '<em><b>Cases</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION__CASES = 2;
+
+  /**
+   * The number of structural features of the '<em>YEnumeration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationCaseImpl <em>YEnumeration Case</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationCaseImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYEnumerationCase()
+   * @generated
+   */
+  int YENUMERATION_CASE = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION_CASE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION_CASE__PARAMS = 1;
+
+  /**
+   * The number of structural features of the '<em>YEnumeration Case</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YENUMERATION_CASE_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YClassImpl <em>YClass</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -251,7 +343,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYClass()
    * @generated
    */
-  int YCLASS = 3;
+  int YCLASS = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -315,7 +407,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYMember()
    * @generated
    */
-  int YMEMBER = 4;
+  int YMEMBER = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -361,7 +453,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYProperty()
    * @generated
    */
-  int YPROPERTY = 5;
+  int YPROPERTY = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -434,7 +526,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYTuples()
    * @generated
    */
-  int YTUPLES = 6;
+  int YTUPLES = 8;
 
   /**
    * The feature id for the '<em><b>Includes</b></em>' reference list.
@@ -462,7 +554,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYFunction()
    * @generated
    */
-  int YFUNCTION = 7;
+  int YFUNCTION = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -501,13 +593,22 @@ public interface LangPackage extends EPackage
   int YFUNCTION__PARAMS = YMEMBER_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Throw</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YFUNCTION__THROW = YMEMBER_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Returnvalue</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YFUNCTION__RETURNVALUE = YMEMBER_FEATURE_COUNT + 1;
+  int YFUNCTION__RETURNVALUE = YMEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -516,7 +617,7 @@ public interface LangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YFUNCTION__BODY = YMEMBER_FEATURE_COUNT + 2;
+  int YFUNCTION__BODY = YMEMBER_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>YFunction</em>' class.
@@ -525,7 +626,7 @@ public interface LangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int YFUNCTION_FEATURE_COUNT = YMEMBER_FEATURE_COUNT + 3;
+  int YFUNCTION_FEATURE_COUNT = YMEMBER_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YBlockImpl <em>YBlock</em>}' class.
@@ -535,7 +636,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYBlock()
    * @generated
    */
-  int YBLOCK = 8;
+  int YBLOCK = 10;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -563,7 +664,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYStatement()
    * @generated
    */
-  int YSTATEMENT = 9;
+  int YSTATEMENT = 11;
 
   /**
    * The number of structural features of the '<em>YStatement</em>' class.
@@ -575,6 +676,108 @@ public interface LangPackage extends EPackage
   int YSTATEMENT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YDoStatementImpl <em>YDo Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YDoStatementImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYDoStatement()
+   * @generated
+   */
+  int YDO_STATEMENT = 12;
+
+  /**
+   * The feature id for the '<em><b>Block</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YDO_STATEMENT__BLOCK = YSTATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Catches</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YDO_STATEMENT__CATCHES = YSTATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>YDo Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YDO_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCatchImpl <em>YCatch</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YCatchImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYCatch()
+   * @generated
+   */
+  int YCATCH = 13;
+
+  /**
+   * The feature id for the '<em><b>Exception</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YCATCH__EXCEPTION = 0;
+
+  /**
+   * The feature id for the '<em><b>Catch Block</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YCATCH__CATCH_BLOCK = 1;
+
+  /**
+   * The number of structural features of the '<em>YCatch</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YCATCH_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCatchBlockImpl <em>YCatch Block</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YCatchBlockImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYCatchBlock()
+   * @generated
+   */
+  int YCATCH_BLOCK = 14;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YCATCH_BLOCK__STATEMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>YCatch Block</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YCATCH_BLOCK_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YVariableDeclarationImpl <em>YVariable Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -582,7 +785,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYVariableDeclaration()
    * @generated
    */
-  int YVARIABLE_DECLARATION = 10;
+  int YVARIABLE_DECLARATION = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -621,6 +824,43 @@ public interface LangPackage extends EPackage
   int YVARIABLE_DECLARATION_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YThrowImpl <em>YThrow</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.YThrowImpl
+   * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYThrow()
+   * @generated
+   */
+  int YTHROW = 16;
+
+  /**
+   * The feature id for the '<em><b>Exception</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YTHROW__EXCEPTION = YSTATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YTHROW__ARGUMENTS = YSTATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>YThrow</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YTHROW_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YReturnImpl <em>YReturn</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -628,7 +868,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYReturn()
    * @generated
    */
-  int YRETURN = 11;
+  int YRETURN = 17;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -656,7 +896,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYIfStatement()
    * @generated
    */
-  int YIF_STATEMENT = 12;
+  int YIF_STATEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -702,7 +942,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSwitchStatement()
    * @generated
    */
-  int YSWITCH_STATEMENT = 13;
+  int YSWITCH_STATEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Switch Expression</b></em>' containment reference.
@@ -748,7 +988,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSwitchCase()
    * @generated
    */
-  int YSWITCH_CASE = 14;
+  int YSWITCH_CASE = 20;
 
   /**
    * The feature id for the '<em><b>Case Expression</b></em>' containment reference.
@@ -785,7 +1025,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYExpression()
    * @generated
    */
-  int YEXPRESSION = 17;
+  int YEXPRESSION = 23;
 
   /**
    * The number of structural features of the '<em>YExpression</em>' class.
@@ -804,7 +1044,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYReadStatement()
    * @generated
    */
-  int YREAD_STATEMENT = 18;
+  int YREAD_STATEMENT = 24;
 
   /**
    * The feature id for the '<em><b>Structs</b></em>' containment reference list.
@@ -834,31 +1074,13 @@ public interface LangPackage extends EPackage
   int YREAD_STATEMENT__WHERECLAUSE = YSTATEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YREAD_STATEMENT__SUCCESS = YSTATEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Notfound</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YREAD_STATEMENT__NOTFOUND = YSTATEMENT_FEATURE_COUNT + 4;
-
-  /**
    * The number of structural features of the '<em>YRead Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YREAD_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 5;
+  int YREAD_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YReadEachStatementImpl <em>YRead Each Statement</em>}' class.
@@ -868,7 +1090,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYReadEachStatement()
    * @generated
    */
-  int YREAD_EACH_STATEMENT = 19;
+  int YREAD_EACH_STATEMENT = 25;
 
   /**
    * The feature id for the '<em><b>Structs</b></em>' containment reference list.
@@ -907,22 +1129,13 @@ public interface LangPackage extends EPackage
   int YREAD_EACH_STATEMENT__TARGET = YSTATEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YREAD_EACH_STATEMENT__SUCCESS = YSTATEMENT_FEATURE_COUNT + 4;
-
-  /**
    * The number of structural features of the '<em>YRead Each Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YREAD_EACH_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 5;
+  int YREAD_EACH_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl <em>YCreate Statement</em>}' class.
@@ -932,7 +1145,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYCreateStatement()
    * @generated
    */
-  int YCREATE_STATEMENT = 20;
+  int YCREATE_STATEMENT = 26;
 
   /**
    * The feature id for the '<em><b>Struct</b></em>' containment reference.
@@ -953,31 +1166,13 @@ public interface LangPackage extends EPackage
   int YCREATE_STATEMENT__SET_BLOCK = YSTATEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YCREATE_STATEMENT__SUCCESS = YSTATEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Already Exist</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YCREATE_STATEMENT__ALREADY_EXIST = YSTATEMENT_FEATURE_COUNT + 3;
-
-  /**
    * The number of structural features of the '<em>YCreate Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YCREATE_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 4;
+  int YCREATE_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YUpdateStatementImpl <em>YUpdate Statement</em>}' class.
@@ -987,7 +1182,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYUpdateStatement()
    * @generated
    */
-  int YUPDATE_STATEMENT = 21;
+  int YUPDATE_STATEMENT = 27;
 
   /**
    * The feature id for the '<em><b>Struct</b></em>' containment reference.
@@ -1008,22 +1203,13 @@ public interface LangPackage extends EPackage
   int YUPDATE_STATEMENT__SET_BLOCK = YSTATEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Success</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YUPDATE_STATEMENT__SUCCESS = YSTATEMENT_FEATURE_COUNT + 2;
-
-  /**
    * The number of structural features of the '<em>YUpdate Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int YUPDATE_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 3;
+  int YUPDATE_STATEMENT_FEATURE_COUNT = YSTATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YDeleteStatementImpl <em>YDelete Statement</em>}' class.
@@ -1033,7 +1219,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYDeleteStatement()
    * @generated
    */
-  int YDELETE_STATEMENT = 22;
+  int YDELETE_STATEMENT = 28;
 
   /**
    * The feature id for the '<em><b>Struct</b></em>' containment reference.
@@ -1061,7 +1247,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYAssociateStatement()
    * @generated
    */
-  int YASSOCIATE_STATEMENT = 23;
+  int YASSOCIATE_STATEMENT = 29;
 
   /**
    * The feature id for the '<em><b>Struct</b></em>' containment reference.
@@ -1098,7 +1284,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYDisassociateStatement()
    * @generated
    */
-  int YDISASSOCIATE_STATEMENT = 24;
+  int YDISASSOCIATE_STATEMENT = 30;
 
   /**
    * The feature id for the '<em><b>Struct</b></em>' containment reference.
@@ -1135,7 +1321,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYStructRefPair()
    * @generated
    */
-  int YSTRUCT_REF_PAIR = 25;
+  int YSTRUCT_REF_PAIR = 31;
 
   /**
    * The feature id for the '<em><b>Structproperty</b></em>' reference.
@@ -1172,7 +1358,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYJoin()
    * @generated
    */
-  int YJOIN = 26;
+  int YJOIN = 32;
 
   /**
    * The feature id for the '<em><b>Joindefs</b></em>' containment reference list.
@@ -1200,7 +1386,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYJoinDef()
    * @generated
    */
-  int YJOIN_DEF = 27;
+  int YJOIN_DEF = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1264,7 +1450,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYWhere()
    * @generated
    */
-  int YWHERE = 28;
+  int YWHERE = 34;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1292,7 +1478,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYWhileStatement()
    * @generated
    */
-  int YWHILE_STATEMENT = 29;
+  int YWHILE_STATEMENT = 35;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1329,7 +1515,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYRepeatWhileStatement()
    * @generated
    */
-  int YREPEAT_WHILE_STATEMENT = 30;
+  int YREPEAT_WHILE_STATEMENT = 36;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -1366,7 +1552,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYForInStatement()
    * @generated
    */
-  int YFOR_IN_STATEMENT = 31;
+  int YFOR_IN_STATEMENT = 37;
 
   /**
    * The feature id for the '<em><b>Item</b></em>' reference.
@@ -1412,7 +1598,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYAssignment()
    * @generated
    */
-  int YASSIGNMENT = 32;
+  int YASSIGNMENT = 38;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1449,7 +1635,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYMemberSelection()
    * @generated
    */
-  int YMEMBER_SELECTION = 33;
+  int YMEMBER_SELECTION = 39;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -1504,7 +1690,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYOrExpression()
    * @generated
    */
-  int YOR_EXPRESSION = 34;
+  int YOR_EXPRESSION = 40;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1541,7 +1727,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYAndExpression()
    * @generated
    */
-  int YAND_EXPRESSION = 35;
+  int YAND_EXPRESSION = 41;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1578,7 +1764,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYEqualityExpression()
    * @generated
    */
-  int YEQUALITY_EXPRESSION = 36;
+  int YEQUALITY_EXPRESSION = 42;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1624,7 +1810,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYComparisonExpression()
    * @generated
    */
-  int YCOMPARISON_EXPRESSION = 37;
+  int YCOMPARISON_EXPRESSION = 43;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1670,7 +1856,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYPlus()
    * @generated
    */
-  int YPLUS = 38;
+  int YPLUS = 44;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1707,7 +1893,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYMinus()
    * @generated
    */
-  int YMINUS = 39;
+  int YMINUS = 45;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1744,7 +1930,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYMulOrDiv()
    * @generated
    */
-  int YMUL_OR_DIV = 40;
+  int YMUL_OR_DIV = 46;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1790,7 +1976,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYParenties()
    * @generated
    */
-  int YPARENTIES = 41;
+  int YPARENTIES = 47;
 
   /**
    * The feature id for the '<em><b>A</b></em>' containment reference.
@@ -1818,7 +2004,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYNot()
    * @generated
    */
-  int YNOT = 42;
+  int YNOT = 48;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1846,7 +2032,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYStringConstant()
    * @generated
    */
-  int YSTRING_CONSTANT = 43;
+  int YSTRING_CONSTANT = 49;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1874,7 +2060,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYIntConstant()
    * @generated
    */
-  int YINT_CONSTANT = 44;
+  int YINT_CONSTANT = 50;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1902,7 +2088,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYBoolConstant()
    * @generated
    */
-  int YBOOL_CONSTANT = 45;
+  int YBOOL_CONSTANT = 51;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1930,7 +2116,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSelf()
    * @generated
    */
-  int YSELF = 46;
+  int YSELF = 52;
 
   /**
    * The number of structural features of the '<em>YSelf</em>' class.
@@ -1949,7 +2135,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSuper()
    * @generated
    */
-  int YSUPER = 47;
+  int YSUPER = 53;
 
   /**
    * The number of structural features of the '<em>YSuper</em>' class.
@@ -1968,7 +2154,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYNull()
    * @generated
    */
-  int YNULL = 48;
+  int YNULL = 54;
 
   /**
    * The number of structural features of the '<em>YNull</em>' class.
@@ -1987,7 +2173,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYSymbolRef()
    * @generated
    */
-  int YSYMBOL_REF = 49;
+  int YSYMBOL_REF = 55;
 
   /**
    * The feature id for the '<em><b>Symbol</b></em>' reference.
@@ -2015,7 +2201,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYNew()
    * @generated
    */
-  int YNEW = 50;
+  int YNEW = 56;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -2052,7 +2238,7 @@ public interface LangPackage extends EPackage
    * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYAccessLevel()
    * @generated
    */
-  int YACCESS_LEVEL = 51;
+  int YACCESS_LEVEL = 57;
 
 
   /**
@@ -2086,6 +2272,17 @@ public interface LangPackage extends EPackage
    * @generated
    */
   EReference getYWidget_Imports();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getEnums <em>Enums</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Enums</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YWidget#getEnums()
+   * @see #getYWidget()
+   * @generated
+   */
+  EReference getYWidget_Enums();
 
   /**
    * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getClasses <em>Classes</em>}'.
@@ -2139,6 +2336,81 @@ public interface LangPackage extends EPackage
    * @generated
    */
   EAttribute getYArgument_Value();
+
+  /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration <em>YEnumeration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YEnumeration</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumeration
+   * @generated
+   */
+  EClass getYEnumeration();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getName()
+   * @see #getYEnumeration()
+   * @generated
+   */
+  EAttribute getYEnumeration_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getSuperclass <em>Superclass</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Superclass</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getSuperclass()
+   * @see #getYEnumeration()
+   * @generated
+   */
+  EReference getYEnumeration_Superclass();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getCases <em>Cases</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Cases</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumeration#getCases()
+   * @see #getYEnumeration()
+   * @generated
+   */
+  EReference getYEnumeration_Cases();
+
+  /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase <em>YEnumeration Case</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YEnumeration Case</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase
+   * @generated
+   */
+  EClass getYEnumerationCase();
+
+  /**
+   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase#getName()
+   * @see #getYEnumerationCase()
+   * @generated
+   */
+  EAttribute getYEnumerationCase_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase#getParams()
+   * @see #getYEnumerationCase()
+   * @generated
+   */
+  EReference getYEnumerationCase_Params();
 
   /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YClass <em>YClass</em>}'.
@@ -2312,6 +2584,17 @@ public interface LangPackage extends EPackage
   EReference getYFunction_Params();
 
   /**
+   * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#isThrow <em>Throw</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Throw</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YFunction#isThrow()
+   * @see #getYFunction()
+   * @generated
+   */
+  EAttribute getYFunction_Throw();
+
+  /**
    * Returns the meta object for the attribute '{@link eu.jgen.notes.dmw.lite.base.lang.YFunction#isReturnvalue <em>Returnvalue</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2365,6 +2648,91 @@ public interface LangPackage extends EPackage
   EClass getYStatement();
 
   /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YDoStatement <em>YDo Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YDo Statement</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YDoStatement
+   * @generated
+   */
+  EClass getYDoStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YDoStatement#getBlock <em>Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Block</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YDoStatement#getBlock()
+   * @see #getYDoStatement()
+   * @generated
+   */
+  EReference getYDoStatement_Block();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YDoStatement#getCatches <em>Catches</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Catches</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YDoStatement#getCatches()
+   * @see #getYDoStatement()
+   * @generated
+   */
+  EReference getYDoStatement_Catches();
+
+  /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YCatch <em>YCatch</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YCatch</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatch
+   * @generated
+   */
+  EClass getYCatch();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.base.lang.YCatch#getException <em>Exception</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Exception</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatch#getException()
+   * @see #getYCatch()
+   * @generated
+   */
+  EReference getYCatch_Exception();
+
+  /**
+   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YCatch#getCatchBlock <em>Catch Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Catch Block</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatch#getCatchBlock()
+   * @see #getYCatch()
+   * @generated
+   */
+  EReference getYCatch_CatchBlock();
+
+  /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YCatchBlock <em>YCatch Block</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YCatch Block</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatchBlock
+   * @generated
+   */
+  EClass getYCatchBlock();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YCatchBlock#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YCatchBlock#getStatements()
+   * @see #getYCatchBlock()
+   * @generated
+   */
+  EReference getYCatchBlock_Statements();
+
+  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration <em>YVariable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2384,6 +2752,38 @@ public interface LangPackage extends EPackage
    * @generated
    */
   EReference getYVariableDeclaration_Expression();
+
+  /**
+   * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YThrow <em>YThrow</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>YThrow</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YThrow
+   * @generated
+   */
+  EClass getYThrow();
+
+  /**
+   * Returns the meta object for the reference '{@link eu.jgen.notes.dmw.lite.base.lang.YThrow#getException <em>Exception</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Exception</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YThrow#getException()
+   * @see #getYThrow()
+   * @generated
+   */
+  EReference getYThrow_Exception();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link eu.jgen.notes.dmw.lite.base.lang.YThrow#getArguments <em>Arguments</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Arguments</em>'.
+   * @see eu.jgen.notes.dmw.lite.base.lang.YThrow#getArguments()
+   * @see #getYThrow()
+   * @generated
+   */
+  EReference getYThrow_Arguments();
 
   /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YReturn <em>YReturn</em>}'.
@@ -2620,28 +3020,6 @@ public interface LangPackage extends EPackage
   EReference getYReadStatement_Whereclause();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getSuccess <em>Success</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Success</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getSuccess()
-   * @see #getYReadStatement()
-   * @generated
-   */
-  EReference getYReadStatement_Success();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getNotfound <em>Notfound</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Notfound</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YReadStatement#getNotfound()
-   * @see #getYReadStatement()
-   * @generated
-   */
-  EReference getYReadStatement_Notfound();
-
-  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement <em>YRead Each Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2696,17 +3074,6 @@ public interface LangPackage extends EPackage
   EReference getYReadEachStatement_Target();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getSuccess <em>Success</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Success</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YReadEachStatement#getSuccess()
-   * @see #getYReadEachStatement()
-   * @generated
-   */
-  EReference getYReadEachStatement_Success();
-
-  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YCreateStatement <em>YCreate Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2739,28 +3106,6 @@ public interface LangPackage extends EPackage
   EReference getYCreateStatement_SetBlock();
 
   /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YCreateStatement#getSuccess <em>Success</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Success</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YCreateStatement#getSuccess()
-   * @see #getYCreateStatement()
-   * @generated
-   */
-  EReference getYCreateStatement_Success();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YCreateStatement#getAlreadyExist <em>Already Exist</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Already Exist</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YCreateStatement#getAlreadyExist()
-   * @see #getYCreateStatement()
-   * @generated
-   */
-  EReference getYCreateStatement_AlreadyExist();
-
-  /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement <em>YUpdate Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2791,17 +3136,6 @@ public interface LangPackage extends EPackage
    * @generated
    */
   EReference getYUpdateStatement_SetBlock();
-
-  /**
-   * Returns the meta object for the containment reference '{@link eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getSuccess <em>Success</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Success</em>'.
-   * @see eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement#getSuccess()
-   * @see #getYUpdateStatement()
-   * @generated
-   */
-  EReference getYUpdateStatement_Success();
 
   /**
    * Returns the meta object for class '{@link eu.jgen.notes.dmw.lite.base.lang.YDeleteStatement <em>YDelete Statement</em>}'.
@@ -3703,6 +4037,14 @@ public interface LangPackage extends EPackage
     EReference YWIDGET__IMPORTS = eINSTANCE.getYWidget_Imports();
 
     /**
+     * The meta object literal for the '<em><b>Enums</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YWIDGET__ENUMS = eINSTANCE.getYWidget_Enums();
+
+    /**
      * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3745,6 +4087,66 @@ public interface LangPackage extends EPackage
      * @generated
      */
     EAttribute YARGUMENT__VALUE = eINSTANCE.getYArgument_Value();
+
+    /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationImpl <em>YEnumeration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYEnumeration()
+     * @generated
+     */
+    EClass YENUMERATION = eINSTANCE.getYEnumeration();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute YENUMERATION__NAME = eINSTANCE.getYEnumeration_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Superclass</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YENUMERATION__SUPERCLASS = eINSTANCE.getYEnumeration_Superclass();
+
+    /**
+     * The meta object literal for the '<em><b>Cases</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YENUMERATION__CASES = eINSTANCE.getYEnumeration_Cases();
+
+    /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationCaseImpl <em>YEnumeration Case</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YEnumerationCaseImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYEnumerationCase()
+     * @generated
+     */
+    EClass YENUMERATION_CASE = eINSTANCE.getYEnumerationCase();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute YENUMERATION_CASE__NAME = eINSTANCE.getYEnumerationCase_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YENUMERATION_CASE__PARAMS = eINSTANCE.getYEnumerationCase_Params();
 
     /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YClassImpl <em>YClass</em>}' class.
@@ -3885,6 +4287,14 @@ public interface LangPackage extends EPackage
     EReference YFUNCTION__PARAMS = eINSTANCE.getYFunction_Params();
 
     /**
+     * The meta object literal for the '<em><b>Throw</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute YFUNCTION__THROW = eINSTANCE.getYFunction_Throw();
+
+    /**
      * The meta object literal for the '<em><b>Returnvalue</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3929,6 +4339,76 @@ public interface LangPackage extends EPackage
     EClass YSTATEMENT = eINSTANCE.getYStatement();
 
     /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YDoStatementImpl <em>YDo Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YDoStatementImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYDoStatement()
+     * @generated
+     */
+    EClass YDO_STATEMENT = eINSTANCE.getYDoStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Block</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YDO_STATEMENT__BLOCK = eINSTANCE.getYDoStatement_Block();
+
+    /**
+     * The meta object literal for the '<em><b>Catches</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YDO_STATEMENT__CATCHES = eINSTANCE.getYDoStatement_Catches();
+
+    /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCatchImpl <em>YCatch</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YCatchImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYCatch()
+     * @generated
+     */
+    EClass YCATCH = eINSTANCE.getYCatch();
+
+    /**
+     * The meta object literal for the '<em><b>Exception</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YCATCH__EXCEPTION = eINSTANCE.getYCatch_Exception();
+
+    /**
+     * The meta object literal for the '<em><b>Catch Block</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YCATCH__CATCH_BLOCK = eINSTANCE.getYCatch_CatchBlock();
+
+    /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCatchBlockImpl <em>YCatch Block</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YCatchBlockImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYCatchBlock()
+     * @generated
+     */
+    EClass YCATCH_BLOCK = eINSTANCE.getYCatchBlock();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YCATCH_BLOCK__STATEMENTS = eINSTANCE.getYCatchBlock_Statements();
+
+    /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YVariableDeclarationImpl <em>YVariable Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3945,6 +4425,32 @@ public interface LangPackage extends EPackage
      * @generated
      */
     EReference YVARIABLE_DECLARATION__EXPRESSION = eINSTANCE.getYVariableDeclaration_Expression();
+
+    /**
+     * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YThrowImpl <em>YThrow</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.YThrowImpl
+     * @see eu.jgen.notes.dmw.lite.base.lang.impl.LangPackageImpl#getYThrow()
+     * @generated
+     */
+    EClass YTHROW = eINSTANCE.getYThrow();
+
+    /**
+     * The meta object literal for the '<em><b>Exception</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YTHROW__EXCEPTION = eINSTANCE.getYThrow_Exception();
+
+    /**
+     * The meta object literal for the '<em><b>Arguments</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference YTHROW__ARGUMENTS = eINSTANCE.getYThrow_Arguments();
 
     /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YReturnImpl <em>YReturn</em>}' class.
@@ -4139,22 +4645,6 @@ public interface LangPackage extends EPackage
     EReference YREAD_STATEMENT__WHERECLAUSE = eINSTANCE.getYReadStatement_Whereclause();
 
     /**
-     * The meta object literal for the '<em><b>Success</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YREAD_STATEMENT__SUCCESS = eINSTANCE.getYReadStatement_Success();
-
-    /**
-     * The meta object literal for the '<em><b>Notfound</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YREAD_STATEMENT__NOTFOUND = eINSTANCE.getYReadStatement_Notfound();
-
-    /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YReadEachStatementImpl <em>YRead Each Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4197,14 +4687,6 @@ public interface LangPackage extends EPackage
     EReference YREAD_EACH_STATEMENT__TARGET = eINSTANCE.getYReadEachStatement_Target();
 
     /**
-     * The meta object literal for the '<em><b>Success</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YREAD_EACH_STATEMENT__SUCCESS = eINSTANCE.getYReadEachStatement_Success();
-
-    /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YCreateStatementImpl <em>YCreate Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4231,22 +4713,6 @@ public interface LangPackage extends EPackage
     EReference YCREATE_STATEMENT__SET_BLOCK = eINSTANCE.getYCreateStatement_SetBlock();
 
     /**
-     * The meta object literal for the '<em><b>Success</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YCREATE_STATEMENT__SUCCESS = eINSTANCE.getYCreateStatement_Success();
-
-    /**
-     * The meta object literal for the '<em><b>Already Exist</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YCREATE_STATEMENT__ALREADY_EXIST = eINSTANCE.getYCreateStatement_AlreadyExist();
-
-    /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YUpdateStatementImpl <em>YUpdate Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4271,14 +4737,6 @@ public interface LangPackage extends EPackage
      * @generated
      */
     EReference YUPDATE_STATEMENT__SET_BLOCK = eINSTANCE.getYUpdateStatement_SetBlock();
-
-    /**
-     * The meta object literal for the '<em><b>Success</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference YUPDATE_STATEMENT__SUCCESS = eINSTANCE.getYUpdateStatement_Success();
 
     /**
      * The meta object literal for the '{@link eu.jgen.notes.dmw.lite.base.lang.impl.YDeleteStatementImpl <em>YDelete Statement</em>}' class.

@@ -31,12 +31,12 @@ class LangGlobalCommandsGenerator implements IGenerator {
 	protected def void generateWidget(IFileSystemAccess fsa, YWidget widget) {
 				imports.clear		
 		widget.classes.forEach [ clazz |
-			if (clazz.superclass !== null && clazz.superclass.name == "GlobalCommands") {
-				imports.add("eu.jgen.notes.dmw.lite.runtimes.GlobalCommands")			
-				imports.add("eu.jgen.notes.dmw.lite.runtimes.Command")		
+			if (clazz.superclass !== null && clazz.superclass.name == "XGlobalCommands") {
+				imports.add("eu.jgen.notes.dmw.lite.runtimes.XGlobalCommands")			
+				imports.add("eu.jgen.notes.dmw.lite.runtimes.XCommand")		
 				val body = '''
 					«clazz.documentation»  
-					public class «clazz.name» extends GlobalCommands {
+					public class «clazz.name» extends XGlobalCommands {
 					   «generateCommands(clazz)»
 					}
 				'''
@@ -70,7 +70,7 @@ class LangGlobalCommandsGenerator implements IGenerator {
 	protected def String generatePropertyForCommand(YProperty property) {
 		'''
 			«property.documentation»
-			public Command «property.name»;
+			public XCommand «property.name»;
 		'''
 	}
 

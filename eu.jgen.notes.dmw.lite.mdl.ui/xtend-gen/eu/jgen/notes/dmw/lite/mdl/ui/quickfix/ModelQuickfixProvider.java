@@ -23,7 +23,6 @@
 package eu.jgen.notes.dmw.lite.mdl.ui.quickfix;
 
 import com.google.inject.Inject;
-import eu.jgen.notes.dmw.lite.mdl.model.ModelPackage;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAbstractColumn;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotAttribute;
 import eu.jgen.notes.dmw.lite.mdl.model.YAnnotEntity;
@@ -67,10 +66,11 @@ public class ModelQuickfixProvider extends DefaultQuickfixProvider {
   @Fix(ModelValidator.ENTITY_NO_TECH_DESIGN)
   public void createTableForEntityType(final Issue issue, final IssueResolutionAcceptor acceptor) {
     final ISemanticModification _function = (EObject element, IModificationContext context) -> {
-      final YAnnotTechnicalDesign technicalDesign = this._modelUtil.getTechnicalDesign(element, ModelPackage.Literals.YANNOT_TECHNICAL_DESIGN);
+      final YAnnotTechnicalDesign technicalDesign = this._modelUtil.getTechnicalDesign(element);
       final YAnnotEntity entity = ((YAnnotEntity) element);
       technicalDesign.getFeatures().add(
         this._modelUtil.converEntityIntoTable(entity));
+      technicalDesign.eResource().save(null);
     };
     acceptor.accept(issue, "Create missing table", "Creates table implementing entity type.", "table.gif", _function);
   }

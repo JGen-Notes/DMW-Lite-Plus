@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getName <em>Name</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getImports <em>Imports</em>}</li>
+ *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getEnums <em>Enums</em>}</li>
  *   <li>{@link eu.jgen.notes.dmw.lite.base.lang.YWidget#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -70,6 +71,22 @@ public interface YWidget extends EObject
    * @generated
    */
   EList<YImport> getImports();
+
+  /**
+   * Returns the value of the '<em><b>Enums</b></em>' containment reference list.
+   * The list contents are of type {@link eu.jgen.notes.dmw.lite.base.lang.YEnumeration}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Enums</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Enums</em>' containment reference list.
+   * @see eu.jgen.notes.dmw.lite.base.lang.LangPackage#getYWidget_Enums()
+   * @model containment="true"
+   * @generated
+   */
+  EList<YEnumeration> getEnums();
 
   /**
    * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

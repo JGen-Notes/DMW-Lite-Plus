@@ -11,11 +11,16 @@ import eu.jgen.notes.dmw.lite.base.lang.YAssignment;
 import eu.jgen.notes.dmw.lite.base.lang.YAssociateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YBoolConstant;
+import eu.jgen.notes.dmw.lite.base.lang.YCatch;
+import eu.jgen.notes.dmw.lite.base.lang.YCatchBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
 import eu.jgen.notes.dmw.lite.base.lang.YComparisonExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YCreateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDeleteStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDisassociateStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YDoStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumeration;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase;
 import eu.jgen.notes.dmw.lite.base.lang.YEqualityExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YForInStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YFunction;
@@ -45,6 +50,7 @@ import eu.jgen.notes.dmw.lite.base.lang.YSuper;
 import eu.jgen.notes.dmw.lite.base.lang.YSwitchCase;
 import eu.jgen.notes.dmw.lite.base.lang.YSwitchStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YSymbolRef;
+import eu.jgen.notes.dmw.lite.base.lang.YThrow;
 import eu.jgen.notes.dmw.lite.base.lang.YTuples;
 import eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration;
@@ -115,6 +121,12 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 			case LangPackage.YBOOL_CONSTANT:
 				sequence_YTerminalExpression(context, (YBoolConstant) semanticObject); 
 				return; 
+			case LangPackage.YCATCH:
+				sequence_YCatch(context, (YCatch) semanticObject); 
+				return; 
+			case LangPackage.YCATCH_BLOCK:
+				sequence_YCatchBlock(context, (YCatchBlock) semanticObject); 
+				return; 
 			case LangPackage.YCLASS:
 				sequence_YClass(context, (YClass) semanticObject); 
 				return; 
@@ -129,6 +141,15 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 				return; 
 			case LangPackage.YDISASSOCIATE_STATEMENT:
 				sequence_YDisassociateStatement(context, (YDisassociateStatement) semanticObject); 
+				return; 
+			case LangPackage.YDO_STATEMENT:
+				sequence_YDoStatement(context, (YDoStatement) semanticObject); 
+				return; 
+			case LangPackage.YENUMERATION:
+				sequence_YEnumeration(context, (YEnumeration) semanticObject); 
+				return; 
+			case LangPackage.YENUMERATION_CASE:
+				sequence_YEnumerationCase(context, (YEnumerationCase) semanticObject); 
 				return; 
 			case LangPackage.YEQUALITY_EXPRESSION:
 				sequence_YEqualityExpression(context, (YEqualityExpression) semanticObject); 
@@ -216,6 +237,9 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 				return; 
 			case LangPackage.YSYMBOL_REF:
 				sequence_YTerminalExpression(context, (YSymbolRef) semanticObject); 
+				return; 
+			case LangPackage.YTHROW:
+				sequence_YThrow(context, (YThrow) semanticObject); 
 				return; 
 			case LangPackage.YTUPLES:
 				sequence_YTuples(context, (YTuples) semanticObject); 
@@ -466,6 +490,39 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     YCatchBlock returns YCatchBlock
+	 *
+	 * Constraint:
+	 *     statements+=YStatement*
+	 */
+	protected void sequence_YCatchBlock(ISerializationContext context, YCatchBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     YCatch returns YCatch
+	 *
+	 * Constraint:
+	 *     (exception=[YEnumerationCase|QualifiedName] catchBlock=YCatchBlock)
+	 */
+	protected void sequence_YCatch(ISerializationContext context, YCatch semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YCATCH__EXCEPTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCATCH__EXCEPTION));
+			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YCATCH__CATCH_BLOCK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCATCH__CATCH_BLOCK));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getYCatchAccess().getExceptionYEnumerationCaseQualifiedNameParserRuleCall_2_0_1(), semanticObject.eGet(LangPackage.Literals.YCATCH__EXCEPTION, false));
+		feeder.accept(grammarAccess.getYCatchAccess().getCatchBlockYCatchBlockParserRuleCall_3_0(), semanticObject.getCatchBlock());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     YClass returns YClass
 	 *     YNamedElement returns YClass
 	 *
@@ -514,7 +571,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YCreateStatement returns YCreateStatement
 	 *
 	 * Constraint:
-	 *     (struct=YStructRefPair setBlock=YBlock success=YBlock alreadyExist=YBlock)
+	 *     (struct=YStructRefPair setBlock=YBlock)
 	 */
 	protected void sequence_YCreateStatement(ISerializationContext context, YCreateStatement semanticObject) {
 		if (errorAcceptor != null) {
@@ -522,16 +579,10 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__STRUCT));
 			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__SET_BLOCK) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__SET_BLOCK));
-			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__SUCCESS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__SUCCESS));
-			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__ALREADY_EXIST) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YCREATE_STATEMENT__ALREADY_EXIST));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getYCreateStatementAccess().getStructYStructRefPairParserRuleCall_1_0(), semanticObject.getStruct());
-		feeder.accept(grammarAccess.getYCreateStatementAccess().getSetBlockYBlockParserRuleCall_2_0(), semanticObject.getSetBlock());
-		feeder.accept(grammarAccess.getYCreateStatementAccess().getSuccessYBlockParserRuleCall_4_0(), semanticObject.getSuccess());
-		feeder.accept(grammarAccess.getYCreateStatementAccess().getAlreadyExistYBlockParserRuleCall_7_0(), semanticObject.getAlreadyExist());
+		feeder.accept(grammarAccess.getYCreateStatementAccess().getSetBlockYBlockParserRuleCall_3_0(), semanticObject.getSetBlock());
 		feeder.finish();
 	}
 	
@@ -574,6 +625,43 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 		feeder.accept(grammarAccess.getYDisassociateStatementAccess().getStructYStructRefPairParserRuleCall_1_0(), semanticObject.getStruct());
 		feeder.accept(grammarAccess.getYDisassociateStatementAccess().getJoinrefYJoinDefParserRuleCall_3_0(), semanticObject.getJoinref());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     YStatement returns YDoStatement
+	 *     YDoStatement returns YDoStatement
+	 *
+	 * Constraint:
+	 *     (block=YBlock catches+=YCatch*)
+	 */
+	protected void sequence_YDoStatement(ISerializationContext context, YDoStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     YEnumerationCase returns YEnumerationCase
+	 *
+	 * Constraint:
+	 *     (name=ValidID (params+=YParameter params+=YParameter*)?)
+	 */
+	protected void sequence_YEnumerationCase(ISerializationContext context, YEnumerationCase semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     YEnumeration returns YEnumeration
+	 *
+	 * Constraint:
+	 *     (name=ValidID superclass=[YEnumeration|QualifiedName]? cases+=YEnumerationCase*)
+	 */
+	protected void sequence_YEnumeration(ISerializationContext context, YEnumeration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -630,6 +718,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *         access=YAccessLevel? 
 	 *         name=ValidID 
 	 *         (params+=YParameter params+=YParameter*)? 
+	 *         throw?='throws' 
 	 *         returnvalue?='->'? 
 	 *         type=[YClass|QualifiedName]? 
 	 *         body=YBlock
@@ -827,14 +916,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YReadEachStatement returns YReadEachStatement
 	 *
 	 * Constraint:
-	 *     (
-	 *         structs+=YStructRefPair 
-	 *         structs+=YStructRefPair* 
-	 *         joinclause=YJoin? 
-	 *         whereclause=YWhere? 
-	 *         target=[YProperty|ID] 
-	 *         success=YBlock
-	 *     )
+	 *     (structs+=YStructRefPair structs+=YStructRefPair* joinclause=YJoin? whereclause=YWhere? target=[YProperty|ID])
 	 */
 	protected void sequence_YReadEachStatement(ISerializationContext context, YReadEachStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -847,14 +929,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YReadStatement returns YReadStatement
 	 *
 	 * Constraint:
-	 *     (
-	 *         structs+=YStructRefPair 
-	 *         structs+=YStructRefPair* 
-	 *         joinclause=YJoin? 
-	 *         whereclause=YWhere? 
-	 *         success=YBlock 
-	 *         notfound=YBlock
-	 *     )
+	 *     (structs+=YStructRefPair structs+=YStructRefPair* joinclause=YJoin? whereclause=YWhere?)
 	 */
 	protected void sequence_YReadStatement(ISerializationContext context, YReadStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1249,6 +1324,19 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     YStatement returns YThrow
+	 *     YThrow returns YThrow
+	 *
+	 * Constraint:
+	 *     (exception=[YEnumerationCase|QualifiedName] (arguments+=YOrExpression arguments+=YOrExpression*)?)
+	 */
+	protected void sequence_YThrow(ISerializationContext context, YThrow semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     YTuples returns YTuples
 	 *
 	 * Constraint:
@@ -1315,7 +1403,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YUpdateStatement returns YUpdateStatement
 	 *
 	 * Constraint:
-	 *     (struct=YStructRefPair setBlock=YBlock success=YBlock)
+	 *     (struct=YStructRefPair setBlock=YBlock)
 	 */
 	protected void sequence_YUpdateStatement(ISerializationContext context, YUpdateStatement semanticObject) {
 		if (errorAcceptor != null) {
@@ -1323,13 +1411,10 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YUPDATE_STATEMENT__STRUCT));
 			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YUPDATE_STATEMENT__SET_BLOCK) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YUPDATE_STATEMENT__SET_BLOCK));
-			if (transientValues.isValueTransient(semanticObject, LangPackage.Literals.YUPDATE_STATEMENT__SUCCESS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LangPackage.Literals.YUPDATE_STATEMENT__SUCCESS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getYUpdateStatementAccess().getStructYStructRefPairParserRuleCall_1_0(), semanticObject.getStruct());
-		feeder.accept(grammarAccess.getYUpdateStatementAccess().getSetBlockYBlockParserRuleCall_2_0(), semanticObject.getSetBlock());
-		feeder.accept(grammarAccess.getYUpdateStatementAccess().getSuccessYBlockParserRuleCall_4_0(), semanticObject.getSuccess());
+		feeder.accept(grammarAccess.getYUpdateStatementAccess().getSetBlockYBlockParserRuleCall_3_0(), semanticObject.getSetBlock());
 		feeder.finish();
 	}
 	
@@ -1379,7 +1464,7 @@ public class LangSemanticSequencer extends ModelSemanticSequencer {
 	 *     YWidget returns YWidget
 	 *
 	 * Constraint:
-	 *     (name=QualifiedName imports+=YImport* classes+=YClass*)
+	 *     (name=QualifiedName imports+=YImport* enums+=YEnumeration* classes+=YClass*)
 	 */
 	protected void sequence_YWidget(ISerializationContext context, YWidget semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

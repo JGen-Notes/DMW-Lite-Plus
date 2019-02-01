@@ -14,12 +14,22 @@
     <genClasses ecoreClass="Lang.ecore#//YWidget">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YWidget/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YWidget/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YWidget/enums"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YWidget/classes"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YParameter"/>
     <genClasses ecoreClass="Lang.ecore#//YArgument">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YArgument/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YArgument/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Lang.ecore#//YEnumeration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YEnumeration/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lang.ecore#//YEnumeration/superclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YEnumeration/cases"/>
+    </genClasses>
+    <genClasses ecoreClass="Lang.ecore#//YEnumerationCase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YEnumerationCase/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YEnumerationCase/params"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YClass">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lang.ecore#//YClass/superclass"/>
@@ -41,6 +51,7 @@
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YFunction/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YFunction/throw"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lang.ecore#//YFunction/returnvalue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YFunction/body"/>
     </genClasses>
@@ -48,8 +59,23 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YBlock/statements"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YStatement"/>
+    <genClasses ecoreClass="Lang.ecore#//YDoStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YDoStatement/block"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YDoStatement/catches"/>
+    </genClasses>
+    <genClasses ecoreClass="Lang.ecore#//YCatch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lang.ecore#//YCatch/exception"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCatch/catchBlock"/>
+    </genClasses>
+    <genClasses ecoreClass="Lang.ecore#//YCatchBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCatchBlock/statements"/>
+    </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YVariableDeclaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YVariableDeclaration/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Lang.ecore#//YThrow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lang.ecore#//YThrow/exception"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YThrow/arguments"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YReturn">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReturn/expression"/>
@@ -79,26 +105,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadStatement/structs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadStatement/joinclause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadStatement/whereclause"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadStatement/success"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadStatement/notfound"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YReadEachStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadEachStatement/structs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadEachStatement/joinclause"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadEachStatement/whereclause"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadEachStatement/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YReadEachStatement/success"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YCreateStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCreateStatement/struct"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCreateStatement/setBlock"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCreateStatement/success"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YCreateStatement/alreadyExist"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YUpdateStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YUpdateStatement/struct"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YUpdateStatement/setBlock"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YUpdateStatement/success"/>
     </genClasses>
     <genClasses ecoreClass="Lang.ecore#//YDeleteStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lang.ecore#//YDeleteStatement/struct"/>

@@ -30,7 +30,8 @@ generate lang "http://www.jgen.eu/notes/dmw/lite/base/Lang"
 YWidget:
 	'package' name=QualifiedName ';'?
 	imports+=YImport*
-	classes+=YClass*;   
+	enums+=YEnumeration*
+	classes+=YClass*;
 
 YParameter:
 	YTypedDeclaration | YJoinDef;
@@ -43,6 +44,17 @@ YArgument:
 
 YArgumentValue:
 	INT | STRING;
+	
+YEnumeration:
+	{YEnumeration} 'enum' name=ValidID (':' superclass=[YEnumeration|QualifiedName])? '{'
+	(cases+=YEnumerationCase)* 
+	'}'
+;
+
+YEnumerationCase:
+	{YEnumerationCase}
+	'case' name=ValidID ('(' (params+=YParameter (',' params+=YParameter)*)? ')')?
+; 
 
 YClass:
 	{YClass} 'class' name=ValidID (':' superclass=[YClass|QualifiedName])? ('=>' entityRef=[model::YAnnotEntity|QualifiedName])?
@@ -66,7 +78,7 @@ YTuples:
 
 YFunction:
 	access=YAccessLevel? 'func' name=ValidID
-	'(' (params+=YParameter (',' params+=YParameter)*)? ')' (returnvalue?='->')? type=[YClass|QualifiedName]?
+	'(' (params+=YParameter (',' params+=YParameter)*)? ')' throw?='throws' (returnvalue?='->')? type=[YClass|QualifiedName]?
 	body=YBlock;
 
 YBlock:   
@@ -87,10 +99,32 @@ YStatement:
 	YForInStatement |
 	YExpression ';'? |
 	YIfStatement |
+	YThrow |
+	YDoStatement |
 	YSwitchStatement;
+
+YDoStatement:
+	{YDoStatement} 'do'  
+	block=YBlock	 
+	(catches+=YCatch)*
+;
+
+YCatch:
+	{YCatch} 'catch' exception=[YEnumerationCase|QualifiedName] 
+	catchBlock=YCatchBlock	
+;
+
+YCatchBlock:   
+	{YCatchBlock} '{' statements+=YStatement* '}';
 
 YVariableDeclaration:
 	YTypedDeclaration '=' expression=YOrExpression ';';
+	
+YThrow:
+	{YThrow} 'throw' exception=[YEnumerationCase|QualifiedName] 
+	'('(arguments+=YOrExpression (',' arguments+=YOrExpression)*)?')'
+	';'?
+	;
 
 YReturn:
 	{YReturn} 'return' expression=YOrExpression? ';';
@@ -187,24 +221,22 @@ YTerminalExpression returns YExpression:
 
 YReadStatement:
 	'db-read' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-	'success' success=YBlock
-	'not' 'found' notfound=YBlock;
+	;
 
 YReadEachStatement:
 	'db-read-each' structs+=YStructRefPair (',' structs+=YStructRefPair)* joinclause=YJoin? whereclause=YWhere?
-	'target' target=[YProperty]
-	success=YBlock;
+	'target' target=[YProperty]	
+	;
 
 YCreateStatement:
 	'db-create' struct=YStructRefPair
-	setBlock=YBlock
-	'success' success=YBlock
-	'already' 'exist' alreadyExist=YBlock;
+	'set' setBlock=YBlock
+	;
 
 YUpdateStatement:
 	'db-update' struct=YStructRefPair
-	setBlock=YBlock
-	'success' success=YBlock;
+	'set' setBlock=YBlock
+	;
 
 YDeleteStatement:
 	'db-delete' struct=YStructRefPair ';';
@@ -217,13 +249,13 @@ YDisassociateStatement:
 	'db-disassociate' struct=YStructRefPair 'from' joinref=YJoinDef ';';
 
 YStructRefPair:
-	structproperty=[YProperty] '->' structclass=[model::YAnnotEntity];
+	structproperty=[YProperty] '=>' structclass=[model::YAnnotEntity];
 
 YJoin:
 	{YJoin} 'join' joindefs+=YJoinDef ("," joindefs+=YJoinDef)*;
 
 YJoinDef:
-	fromView=[YProperty] '->' relRef=[model::YAnnotRelationship|QualifiedName] '->' toView=[YProperty];
+	fromView=[YProperty] '=>' relRef=[model::YAnnotRelationship|QualifiedName] '=>' toView=[YProperty];
 
 YWhere:
 	{YWhere} 'where' expression=YOrExpression;

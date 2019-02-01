@@ -32,11 +32,16 @@ import eu.jgen.notes.dmw.lite.base.lang.YAssignment;
 import eu.jgen.notes.dmw.lite.base.lang.YAssociateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YBoolConstant;
+import eu.jgen.notes.dmw.lite.base.lang.YCatch;
+import eu.jgen.notes.dmw.lite.base.lang.YCatchBlock;
 import eu.jgen.notes.dmw.lite.base.lang.YClass;
 import eu.jgen.notes.dmw.lite.base.lang.YComparisonExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YCreateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDeleteStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YDisassociateStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YDoStatement;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumeration;
+import eu.jgen.notes.dmw.lite.base.lang.YEnumerationCase;
 import eu.jgen.notes.dmw.lite.base.lang.YEqualityExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YExpression;
 import eu.jgen.notes.dmw.lite.base.lang.YForInStatement;
@@ -70,6 +75,7 @@ import eu.jgen.notes.dmw.lite.base.lang.YSwitchCase;
 import eu.jgen.notes.dmw.lite.base.lang.YSwitchStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YSymbol;
 import eu.jgen.notes.dmw.lite.base.lang.YSymbolRef;
+import eu.jgen.notes.dmw.lite.base.lang.YThrow;
 import eu.jgen.notes.dmw.lite.base.lang.YTuples;
 import eu.jgen.notes.dmw.lite.base.lang.YUpdateStatement;
 import eu.jgen.notes.dmw.lite.base.lang.YVariableDeclaration;
@@ -240,6 +246,22 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       return trace;
     }
     
+    public IGeneratorNode _catchBlock(final YCatch target, final Function<YCatchBlock, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("catchBlock");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getCatchBlock()));
+      return trace;
+    }
+    
+    public IGeneratorNode _exception(final YCatch target, final Function<YEnumerationCase, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("exception");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getException()));
+      return trace;
+    }
+    
     public IGeneratorNode _entityRef(final YClass target, final Function<YAnnotEntity, String> stringProvider) {
       EStructuralFeature feature = target.eClass().getEStructuralFeature("entityRef");
       ILocationData location = this.location(target, feature, -1);
@@ -320,14 +342,6 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       return trace;
     }
     
-    public IGeneratorNode _alreadyExist(final YCreateStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("alreadyExist");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getAlreadyExist()));
-      return trace;
-    }
-    
     public IGeneratorNode _setBlock(final YCreateStatement target, final Function<YBlock, String> stringProvider) {
       EStructuralFeature feature = target.eClass().getEStructuralFeature("setBlock");
       ILocationData location = this.location(target, feature, -1);
@@ -341,14 +355,6 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       ILocationData location = this.location(target, feature, -1);
       CompositeGeneratorNode trace = this.trace(location);
       this.append(trace, stringProvider.apply(target.getStruct()));
-      return trace;
-    }
-    
-    public IGeneratorNode _success(final YCreateStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("success");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getSuccess()));
       return trace;
     }
     
@@ -373,6 +379,70 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       ILocationData location = this.location(target, feature, -1);
       CompositeGeneratorNode trace = this.trace(location);
       this.append(trace, stringProvider.apply(target.getStruct()));
+      return trace;
+    }
+    
+    public IGeneratorNode _block(final YDoStatement target, final Function<YBlock, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("block");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getBlock()));
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumeration target) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, target.getName());
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumeration target, final boolean useForDebugging) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location, useForDebugging);
+      this.append(trace, target.getName());
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumeration target, final Function<String, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getName()));
+      return trace;
+    }
+    
+    public IGeneratorNode _superclass(final YEnumeration target, final Function<YEnumeration, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("superclass");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getSuperclass()));
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumerationCase target) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, target.getName());
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumerationCase target, final boolean useForDebugging) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location, useForDebugging);
+      this.append(trace, target.getName());
+      return trace;
+    }
+    
+    public IGeneratorNode _name(final YEnumerationCase target, final Function<String, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getName()));
       return trace;
     }
     
@@ -469,6 +539,30 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       ILocationData location = this.location(target, feature, -1);
       CompositeGeneratorNode trace = this.trace(location);
       this.append(trace, stringProvider.apply(target.isReturnvalue()));
+      return trace;
+    }
+    
+    public IGeneratorNode _throw(final YFunction target) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("throw");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, target.isThrow());
+      return trace;
+    }
+    
+    public IGeneratorNode _throw(final YFunction target, final boolean useForDebugging) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("throw");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location, useForDebugging);
+      this.append(trace, target.isThrow());
+      return trace;
+    }
+    
+    public IGeneratorNode _throw(final YFunction target, final Function<Boolean, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("throw");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.isThrow()));
       return trace;
     }
     
@@ -952,14 +1046,6 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       return trace;
     }
     
-    public IGeneratorNode _success(final YReadEachStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("success");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getSuccess()));
-      return trace;
-    }
-    
     public IGeneratorNode _target(final YReadEachStatement target, final Function<YProperty, String> stringProvider) {
       EStructuralFeature feature = target.eClass().getEStructuralFeature("target");
       ILocationData location = this.location(target, feature, -1);
@@ -981,22 +1067,6 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       ILocationData location = this.location(target, feature, -1);
       CompositeGeneratorNode trace = this.trace(location);
       this.append(trace, stringProvider.apply(target.getJoinclause()));
-      return trace;
-    }
-    
-    public IGeneratorNode _notfound(final YReadStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("notfound");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getNotfound()));
-      return trace;
-    }
-    
-    public IGeneratorNode _success(final YReadStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("success");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getSuccess()));
       return trace;
     }
     
@@ -1144,6 +1214,14 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       return trace;
     }
     
+    public IGeneratorNode _exception(final YThrow target, final Function<YEnumerationCase, String> stringProvider) {
+      EStructuralFeature feature = target.eClass().getEStructuralFeature("exception");
+      ILocationData location = this.location(target, feature, -1);
+      CompositeGeneratorNode trace = this.trace(location);
+      this.append(trace, stringProvider.apply(target.getException()));
+      return trace;
+    }
+    
     public IGeneratorNode _setBlock(final YUpdateStatement target, final Function<YBlock, String> stringProvider) {
       EStructuralFeature feature = target.eClass().getEStructuralFeature("setBlock");
       ILocationData location = this.location(target, feature, -1);
@@ -1157,14 +1235,6 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
       ILocationData location = this.location(target, feature, -1);
       CompositeGeneratorNode trace = this.trace(location);
       this.append(trace, stringProvider.apply(target.getStruct()));
-      return trace;
-    }
-    
-    public IGeneratorNode _success(final YUpdateStatement target, final Function<YBlock, String> stringProvider) {
-      EStructuralFeature feature = target.eClass().getEStructuralFeature("success");
-      ILocationData location = this.location(target, feature, -1);
-      CompositeGeneratorNode trace = this.trace(location);
-      this.append(trace, stringProvider.apply(target.getSuccess()));
       return trace;
     }
     
@@ -3458,9 +3528,7 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
         _builder.append("_statement.execute();");
         _builder.newLine();
         _builder.append("      ");
-        IGeneratorNode _generateBlock_1 = LangWidgetGeneratorForJava.this.generateBlock(it.getSuccess());
-        _builder.append(_generateBlock_1, "      ");
-        _builder.newLineIfNotEmpty();
+        _builder.newLine();
         _builder.append("      ");
         _builder.append("_statement.close();");
         _builder.newLine();
@@ -3471,9 +3539,7 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
         _builder.append("} catch (DerbySQLIntegrityConstraintViolationException e) {");
         _builder.newLine();
         _builder.append("      ");
-        IGeneratorNode _generateBlock_2 = LangWidgetGeneratorForJava.this.generateBlock(it.getAlreadyExist());
-        _builder.append(_generateBlock_2, "      ");
-        _builder.newLineIfNotEmpty();
+        _builder.newLine();
         _builder.append("   ");
         _builder.append("} catch (SQLException e) {");
         _builder.newLine();
@@ -3783,10 +3849,7 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
         _builder.append(_generateGetMethodsForReadEach, "         ");
         _builder.newLineIfNotEmpty();
         _builder.append("      ");
-        IGeneratorNode _generateBlock = LangWidgetGeneratorForJava.this.generateBlock(it.getSuccess());
-        _builder.append(_generateBlock, "      ");
-        _builder.append(" ");
-        _builder.newLineIfNotEmpty();
+        _builder.newLine();
         _builder.append("      ");
         _builder.append("}");
         _builder.newLine();
@@ -3940,17 +4003,13 @@ public class LangWidgetGeneratorForJava extends AbstractGenerator {
         String _generateGetMethodsForRead = LangWidgetGeneratorForJava.this._langGeneratorHelperForJava.generateGetMethodsForRead(readStatement);
         _builder.append(_generateGetMethodsForRead, "   \t  \t ");
         _builder.newLineIfNotEmpty();
-        _builder.append("   \t  \t  ");
-        IGeneratorNode _generateBlock = LangWidgetGeneratorForJava.this.generateBlock(readStatement.getSuccess());
-        _builder.append(_generateBlock, "   \t  \t  ");
-        _builder.newLineIfNotEmpty();
+        _builder.append("   \t   ");
+        _builder.newLine();
         _builder.append("   \t  ");
         _builder.append("} else {");
         _builder.newLine();
-        _builder.append("   \t  \t ");
-        IGeneratorNode _generateBlock_1 = LangWidgetGeneratorForJava.this.generateBlock(readStatement.getNotfound());
-        _builder.append(_generateBlock_1, "   \t  \t ");
-        _builder.newLineIfNotEmpty();
+        _builder.append("   \t   ");
+        _builder.newLine();
         _builder.append("   \t  ");
         _builder.append("}");
         _builder.newLine();
