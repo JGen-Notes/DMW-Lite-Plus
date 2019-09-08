@@ -30,13 +30,13 @@ import org.eclipse.xtext.generator.OutputConfiguration;
 
 @SuppressWarnings("all")
 public class ModelOutputProvider implements IOutputConfigurationProvider {
-  public final static String DEFAULT = "DEFAULT_OUTPUT";
+  public static final String DEFAULT = "DEFAULT_OUTPUT";
   
-  public final static String DDL = "DDL";
+  public static final String DDL = "DDL";
   
-  public final static String SWIFT = "SWIFT";
+  public static final String SWIFT = "SWIFT";
   
-  public final static String SRC = "SRC";
+  public static final String SRC = "SRC";
   
   @Override
   public Set<OutputConfiguration> getOutputConfigurations() {

@@ -48,31 +48,31 @@ public class LangLib {
   @Extension
   private LangIndex _langIndex;
   
-  public final static String MAIN_LIB = "eu/jgen/notes/lib/dmw/lang.dmw";
+  public static final String MAIN_LIB = "eu/jgen/notes/lib/dmw/lang.dmw";
   
-  public final static String LIB_PACKAGE = "eu.jgen.notes.lib.dmw";
+  public static final String LIB_PACKAGE = "eu.jgen.notes.lib.dmw";
   
-  public final static String LIB_OBJECT = (LangLib.LIB_PACKAGE + ".Object");
+  public static final String LIB_OBJECT = (LangLib.LIB_PACKAGE + ".Object");
   
-  public final static String LIB_STRING = (LangLib.LIB_PACKAGE + ".String");
+  public static final String LIB_STRING = (LangLib.LIB_PACKAGE + ".String");
   
-  public final static String LIB_INTEGER = (LangLib.LIB_PACKAGE + ".Int");
+  public static final String LIB_INTEGER = (LangLib.LIB_PACKAGE + ".Int");
   
-  public final static String LIB_SHORT = (LangLib.LIB_PACKAGE + ".Short");
+  public static final String LIB_SHORT = (LangLib.LIB_PACKAGE + ".Short");
   
-  public final static String LIB_DATE = (LangLib.LIB_PACKAGE + ".Date");
+  public static final String LIB_DATE = (LangLib.LIB_PACKAGE + ".Date");
   
-  public final static String LIB_TIME = (LangLib.LIB_PACKAGE + ".Time");
+  public static final String LIB_TIME = (LangLib.LIB_PACKAGE + ".Time");
   
-  public final static String LIB_TIMESTAMP = (LangLib.LIB_PACKAGE + ".Timestamp");
+  public static final String LIB_TIMESTAMP = (LangLib.LIB_PACKAGE + ".Timestamp");
   
-  public final static String LIB_BOOL = (LangLib.LIB_PACKAGE + ".Bool");
+  public static final String LIB_BOOL = (LangLib.LIB_PACKAGE + ".Bool");
   
-  public final static String LIB_WIDGET = (LangLib.LIB_PACKAGE + ".Widget");
+  public static final String LIB_WIDGET = (LangLib.LIB_PACKAGE + ".Widget");
   
-  public final static String LIB_EXIT = (LangLib.LIB_PACKAGE + ".Exit");
+  public static final String LIB_EXIT = (LangLib.LIB_PACKAGE + ".Exit");
   
-  private final static Logger LOG = Logger.getLogger(LangLib.class);
+  private static final Logger LOG = Logger.getLogger(LangLib.class);
   
   public String loadLibSource() {
     try {

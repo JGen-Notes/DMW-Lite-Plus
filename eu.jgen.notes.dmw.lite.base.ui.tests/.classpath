@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="src/" kind="src" output="test-bin" path="src">
+	<classpathentry excluding="src/|src/" kind="src" output="test-bin" path="src">
 		<attributes>
 			<attribute name="test" value="true"/>
 		</attributes>
@@ -10,7 +10,7 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="test-bin" path="xtend-gen">
+	<classpathentry excluding="xtend-gen/" kind="src" output="test-bin" path="xtend-gen">
 		<attributes>
 			<attribute name="test" value="true"/>
 		</attributes>

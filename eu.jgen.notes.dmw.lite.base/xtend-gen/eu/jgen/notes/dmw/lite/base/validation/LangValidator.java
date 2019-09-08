@@ -77,93 +77,93 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
  */
 @SuppressWarnings("all")
 public class LangValidator extends AbstractLangValidator {
-  protected final static String ISSUE_CODE_PREFIX = " eu.jgen.notes.dmw.lite.";
+  protected static final String ISSUE_CODE_PREFIX = " eu.jgen.notes.dmw.lite.";
   
-  public final static String HIERARCHY_CYCLE = (LangValidator.ISSUE_CODE_PREFIX + "HierarchyCycle");
+  public static final String HIERARCHY_CYCLE = (LangValidator.ISSUE_CODE_PREFIX + "HierarchyCycle");
   
-  public final static String PROPERTY_SELECTION_ON_FUNCTION = (LangValidator.ISSUE_CODE_PREFIX + "FieldSelectionOnMethod");
+  public static final String PROPERTY_SELECTION_ON_FUNCTION = (LangValidator.ISSUE_CODE_PREFIX + "FieldSelectionOnMethod");
   
-  public final static String FUNCTION_INVOCATION_ON_PROPERTY = (LangValidator.ISSUE_CODE_PREFIX + "FunctionInvocationOnProperty");
+  public static final String FUNCTION_INVOCATION_ON_PROPERTY = (LangValidator.ISSUE_CODE_PREFIX + "FunctionInvocationOnProperty");
   
-  public final static String UNREACHABLE_CODE = (LangValidator.ISSUE_CODE_PREFIX + "UnreachableCode");
+  public static final String UNREACHABLE_CODE = (LangValidator.ISSUE_CODE_PREFIX + "UnreachableCode");
   
-  public final static String FUNCTION_FINAL_RETURN = (LangValidator.ISSUE_CODE_PREFIX + "MissingFinalReturn");
+  public static final String FUNCTION_FINAL_RETURN = (LangValidator.ISSUE_CODE_PREFIX + "MissingFinalReturn");
   
-  public final static String DUPLICATE_ELEMENT = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateElement");
+  public static final String DUPLICATE_ELEMENT = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateElement");
   
-  public final static String INCOMPATIBLE_TYPES = (LangValidator.ISSUE_CODE_PREFIX + "IncompatibleTypes");
+  public static final String INCOMPATIBLE_TYPES = (LangValidator.ISSUE_CODE_PREFIX + "IncompatibleTypes");
   
-  public final static String INVALID_ARGS = (LangValidator.ISSUE_CODE_PREFIX + "InvalidArgs");
+  public static final String INVALID_ARGS = (LangValidator.ISSUE_CODE_PREFIX + "InvalidArgs");
   
-  public final static String WRONG_FUNCTION_OVERRIDE = (LangValidator.ISSUE_CODE_PREFIX + "WrongFunctionOverride");
+  public static final String WRONG_FUNCTION_OVERRIDE = (LangValidator.ISSUE_CODE_PREFIX + "WrongFunctionOverride");
   
-  public final static String MEMBER_NOT_ACCESSIBLE = (LangValidator.ISSUE_CODE_PREFIX + "MemberNotAccessible");
+  public static final String MEMBER_NOT_ACCESSIBLE = (LangValidator.ISSUE_CODE_PREFIX + "MemberNotAccessible");
   
-  public final static String DUPLICATE_CLASS = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateClass");
+  public static final String DUPLICATE_CLASS = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateClass");
   
-  public final static String DUPLICATE_ENTITY = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateEntity");
+  public static final String DUPLICATE_ENTITY = (LangValidator.ISSUE_CODE_PREFIX + "DuplicateEntity");
   
-  public final static String WRONG_SUPER_USAGE = (LangValidator.ISSUE_CODE_PREFIX + "WrongSuperUsage");
+  public static final String WRONG_SUPER_USAGE = (LangValidator.ISSUE_CODE_PREFIX + "WrongSuperUsage");
   
-  public final static String REDUCED_ACCESSIBILITY = (LangValidator.ISSUE_CODE_PREFIX + "ReducedAccessibility");
+  public static final String REDUCED_ACCESSIBILITY = (LangValidator.ISSUE_CODE_PREFIX + "ReducedAccessibility");
   
-  public final static String MISSING_ENTITY_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "MissingEntityReference");
+  public static final String MISSING_ENTITY_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "MissingEntityReference");
   
-  public final static String WRONG_TYPE = (LangValidator.ISSUE_CODE_PREFIX + "WrongType");
+  public static final String WRONG_TYPE = (LangValidator.ISSUE_CODE_PREFIX + "WrongType");
   
-  public final static String WRONG_CROSS_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "WrongCrossReference");
+  public static final String WRONG_CROSS_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "WrongCrossReference");
   
-  public final static String WRONG_INVERT_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "WrongInvertReference");
+  public static final String WRONG_INVERT_REFERENCE = (LangValidator.ISSUE_CODE_PREFIX + "WrongInvertReference");
   
-  public final static String ATTRIBUTE_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "AttributeNoTechDesign");
+  public static final String ATTRIBUTE_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "AttributeNoTechDesign");
   
-  public final static String ENTITY_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "EntityNoTechDesign");
+  public static final String ENTITY_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "EntityNoTechDesign");
   
-  public final static String TABLE_DOES_NOT_HAVE_COLUMNS = (LangValidator.ISSUE_CODE_PREFIX + "TableDoesNotHaveColumns");
+  public static final String TABLE_DOES_NOT_HAVE_COLUMNS = (LangValidator.ISSUE_CODE_PREFIX + "TableDoesNotHaveColumns");
   
-  public final static String TABLE_NAME_NOT_UNIQUE = (LangValidator.ISSUE_CODE_PREFIX + "TableNameNotUnique");
+  public static final String TABLE_NAME_NOT_UNIQUE = (LangValidator.ISSUE_CODE_PREFIX + "TableNameNotUnique");
   
-  public final static String COLUMN_NAME_NOT_UNIQUE = (LangValidator.ISSUE_CODE_PREFIX + "ColumnNameNotUnique");
+  public static final String COLUMN_NAME_NOT_UNIQUE = (LangValidator.ISSUE_CODE_PREFIX + "ColumnNameNotUnique");
   
-  public final static String IDENTIFIER_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "IdentifgierNoTechDesign");
+  public static final String IDENTIFIER_NO_TECH_DESIGN = (LangValidator.ISSUE_CODE_PREFIX + "IdentifgierNoTechDesign");
   
-  public final static String RELATIONSSHIP_NOT_IMPLEMENTED = (LangValidator.ISSUE_CODE_PREFIX + "RelationshipNotImplemented");
+  public static final String RELATIONSSHIP_NOT_IMPLEMENTED = (LangValidator.ISSUE_CODE_PREFIX + "RelationshipNotImplemented");
   
-  public final static String UNSUPPORTED_DATABASE = (LangValidator.ISSUE_CODE_PREFIX + "UnsupportedDatabase");
+  public static final String UNSUPPORTED_DATABASE = (LangValidator.ISSUE_CODE_PREFIX + "UnsupportedDatabase");
   
-  public final static String MISSING_INVERSE_REALTIONSHIP = (LangValidator.ISSUE_CODE_PREFIX + "MissingInverseRelationship");
+  public static final String MISSING_INVERSE_REALTIONSHIP = (LangValidator.ISSUE_CODE_PREFIX + "MissingInverseRelationship");
   
-  public final static String MANY_TO_MANY_NOT_SUPPORTED = (LangValidator.ISSUE_CODE_PREFIX + "ManyToManyNotSuported");
+  public static final String MANY_TO_MANY_NOT_SUPPORTED = (LangValidator.ISSUE_CODE_PREFIX + "ManyToManyNotSuported");
   
-  public final static String ONE_TO_ONE_MANDATORY_NOT_SUPPORTED = (LangValidator.ISSUE_CODE_PREFIX + "OneToOneMandatoryNotSuported");
+  public static final String ONE_TO_ONE_MANDATORY_NOT_SUPPORTED = (LangValidator.ISSUE_CODE_PREFIX + "OneToOneMandatoryNotSuported");
   
-  public final static String INVERSE_RELATIONSHIP_CANNOT_BE_ITSELF = (LangValidator.ISSUE_CODE_PREFIX + "MatchingInverseCannotMatchItself");
+  public static final String INVERSE_RELATIONSHIP_CANNOT_BE_ITSELF = (LangValidator.ISSUE_CODE_PREFIX + "MatchingInverseCannotMatchItself");
   
-  public final static String INVERSE_RELATIONSHIP_DOES_NOT_EXIST_IN_TAGET = (LangValidator.ISSUE_CODE_PREFIX + "InverseDoesNotExistInTarget");
+  public static final String INVERSE_RELATIONSHIP_DOES_NOT_EXIST_IN_TAGET = (LangValidator.ISSUE_CODE_PREFIX + "InverseDoesNotExistInTarget");
   
-  public final static String NO_DESGNATED_PARENT = (LangValidator.ISSUE_CODE_PREFIX + "NoDesignatedParent");
+  public static final String NO_DESGNATED_PARENT = (LangValidator.ISSUE_CODE_PREFIX + "NoDesignatedParent");
   
-  public final static String ONLY_ONE_DESGNATED_PARENT = (LangValidator.ISSUE_CODE_PREFIX + "OnlyOneDesignatedParent");
+  public static final String ONLY_ONE_DESGNATED_PARENT = (LangValidator.ISSUE_CODE_PREFIX + "OnlyOneDesignatedParent");
   
-  public final static String CLASS_NEED_TO_HAVE_PROPERTIES = (LangValidator.ISSUE_CODE_PREFIX + "ClassNeedToHaveProperties");
+  public static final String CLASS_NEED_TO_HAVE_PROPERTIES = (LangValidator.ISSUE_CODE_PREFIX + "ClassNeedToHaveProperties");
   
-  public final static String CLASS_NAME_FIRST_CHARACTER_NOT_CAPITAL = (LangValidator.ISSUE_CODE_PREFIX + "ClassNameFirstCharacterNotCapital");
+  public static final String CLASS_NAME_FIRST_CHARACTER_NOT_CAPITAL = (LangValidator.ISSUE_CODE_PREFIX + "ClassNameFirstCharacterNotCapital");
   
-  public final static String ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL = (LangValidator.ISSUE_CODE_PREFIX + "EntityNameFirstCharacterNotCapital");
+  public static final String ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL = (LangValidator.ISSUE_CODE_PREFIX + "EntityNameFirstCharacterNotCapital");
   
-  public final static String ATTRIBUTE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
+  public static final String ATTRIBUTE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
     "AttributeNameFirstCharacterNotLowercase");
   
-  public final static String FUNCTION_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
+  public static final String FUNCTION_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
     "FunctionNameFirstCharacterNotLowercase");
   
-  public final static String PROPERTY_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
+  public static final String PROPERTY_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
     "PropertyNameFirstCharacterNotLowercase");
   
-  public final static String VARIABLE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
+  public static final String VARIABLE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (LangValidator.ISSUE_CODE_PREFIX + 
     "VariableNameFirstCharacterNotLowercase");
   
-  public final static String ATTRIBUTE_TYPE_NOT_COMP_WITH_DEFAULT = (LangValidator.ISSUE_CODE_PREFIX + "AttributeTypeNotCompatibleWithDefault");
+  public static final String ATTRIBUTE_TYPE_NOT_COMP_WITH_DEFAULT = (LangValidator.ISSUE_CODE_PREFIX + "AttributeTypeNotCompatibleWithDefault");
   
   @Inject
   @Extension

@@ -148,21 +148,21 @@ public class LiteLangAccessibilityTest {
       _builder.newLine();
       EList<YClass> _classes = this._parseHelper.parse(_builder).getClasses();
       final Procedure1<EList<YClass>> _function = (EList<YClass> it) -> {
-        EList<YStatement> _statements = ((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(0)), YFunction.class))[0].getBody().getStatements();
+        EList<YStatement> _statements = (((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(0)), YFunction.class))[0]).getBody().getStatements();
         final Procedure1<EList<YStatement>> _function_1 = (EList<YStatement> it_1) -> {
           this.assertMemberAccessible(it_1.get(0), true);
           this.assertMemberAccessible(it_1.get(1), true);
           this.assertMemberAccessible(it_1.get(2), true);
         };
         ObjectExtensions.<EList<YStatement>>operator_doubleArrow(_statements, _function_1);
-        EList<YStatement> _statements_1 = ((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(1)), YFunction.class))[0].getBody().getStatements();
+        EList<YStatement> _statements_1 = (((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(1)), YFunction.class))[0]).getBody().getStatements();
         final Procedure1<EList<YStatement>> _function_2 = (EList<YStatement> it_1) -> {
           this.assertMemberAccessible(it_1.get(0), false);
           this.assertMemberAccessible(it_1.get(1), true);
           this.assertMemberAccessible(it_1.get(2), true);
         };
         ObjectExtensions.<EList<YStatement>>operator_doubleArrow(_statements_1, _function_2);
-        EList<YStatement> _statements_2 = ((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(2)), YFunction.class))[0].getBody().getStatements();
+        EList<YStatement> _statements_2 = (((YFunction[])Conversions.unwrapArray(this._langUtil.functions(it.get(2)), YFunction.class))[0]).getBody().getStatements();
         final Procedure1<EList<YStatement>> _function_3 = (EList<YStatement> it_1) -> {
           this.assertMemberAccessible(it_1.get(0), false);
           this.assertMemberAccessible(it_1.get(1), false);

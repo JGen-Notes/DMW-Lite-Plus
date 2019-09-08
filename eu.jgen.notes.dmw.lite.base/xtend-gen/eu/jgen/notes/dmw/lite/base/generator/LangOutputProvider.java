@@ -8,11 +8,11 @@ import org.eclipse.xtext.generator.OutputConfiguration;
 
 @SuppressWarnings("all")
 public class LangOutputProvider implements IOutputConfigurationProvider {
-  public final static String DEFAULT = "DEFAULT_OUTPUT";
+  public static final String DEFAULT = "DEFAULT_OUTPUT";
   
-  public final static String DDL = "DDL";
+  public static final String DDL = "DDL";
   
-  public final static String SWIFT = "SWIFT";
+  public static final String SWIFT = "SWIFT";
   
   @Override
   public Set<OutputConfiguration> getOutputConfigurations() {

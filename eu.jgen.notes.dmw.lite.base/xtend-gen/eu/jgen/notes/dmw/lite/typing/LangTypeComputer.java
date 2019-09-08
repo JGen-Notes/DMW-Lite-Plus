@@ -62,25 +62,25 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class LangTypeComputer {
-  private final static LangFactory factory = LangFactory.eINSTANCE;
+  private static final LangFactory factory = LangFactory.eINSTANCE;
   
-  public final static YClass STRING_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
+  public static final YClass STRING_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
     it.setName("stringType");
   }));
   
-  public final static YClass INT_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
+  public static final YClass INT_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
     it.setName("intType");
   }));
   
-  public final static YClass BOOLEAN_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
+  public static final YClass BOOLEAN_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
     it.setName("booleanType");
   }));
   
-  public final static YClass NULL_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
+  public static final YClass NULL_TYPE = ObjectExtensions.<YClass>operator_doubleArrow(LangTypeComputer.factory.createYClass(), ((Procedure1<YClass>) (YClass it) -> {
     it.setName("nullType");
   }));
   
-  private final static LangPackage ep = LangPackage.eINSTANCE;
+  private static final LangPackage ep = LangPackage.eINSTANCE;
   
   @Inject
   @Extension

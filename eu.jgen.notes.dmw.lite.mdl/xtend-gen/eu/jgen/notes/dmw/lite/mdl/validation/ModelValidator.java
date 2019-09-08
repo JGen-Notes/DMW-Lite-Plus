@@ -61,54 +61,54 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class ModelValidator extends AbstractModelValidator {
-  protected final static String ISSUE_CODE_PREFIX = " eu.jgen.notes.dmw.lite.";
+  protected static final String ISSUE_CODE_PREFIX = " eu.jgen.notes.dmw.lite.";
   
-  public final static String DUPLICATE_ELEMENT = (ModelValidator.ISSUE_CODE_PREFIX + "DuplicateElement");
+  public static final String DUPLICATE_ELEMENT = (ModelValidator.ISSUE_CODE_PREFIX + "DuplicateElement");
   
-  public final static String UNSUPPORTED_DATABASE = (ModelValidator.ISSUE_CODE_PREFIX + "UnsupportedDatabase");
+  public static final String UNSUPPORTED_DATABASE = (ModelValidator.ISSUE_CODE_PREFIX + "UnsupportedDatabase");
   
-  public final static String MISSING_INVERSE_REALTIONSHIP = (ModelValidator.ISSUE_CODE_PREFIX + "MissingInverseRelationship");
+  public static final String MISSING_INVERSE_REALTIONSHIP = (ModelValidator.ISSUE_CODE_PREFIX + "MissingInverseRelationship");
   
-  public final static String DUPLICATE_ENTITY = (ModelValidator.ISSUE_CODE_PREFIX + "DuplicateEntity");
+  public static final String DUPLICATE_ENTITY = (ModelValidator.ISSUE_CODE_PREFIX + "DuplicateEntity");
   
-  public final static String ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL = (ModelValidator.ISSUE_CODE_PREFIX + "EntityNameFirstCharacterNotCapital");
+  public static final String ENTITY_NAME_FIRST_CHARACTER_NOT_CAPITAL = (ModelValidator.ISSUE_CODE_PREFIX + "EntityNameFirstCharacterNotCapital");
   
-  public final static String ATTRIBUTE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
+  public static final String ATTRIBUTE_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
     "AttributeNameFirstCharacterNotLowercase");
   
-  public final static String RELATIONSHIP_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
+  public static final String RELATIONSHIP_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
     "RelationshipNameFirstCharacterNotLowercase");
   
-  public final static String IDENTIFIER_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
+  public static final String IDENTIFIER_NAME_FIRST_CHARACTER_NOT_LOWERCASE = (ModelValidator.ISSUE_CODE_PREFIX + 
     "IdentifierNameFirstCharacterNotLowercase");
   
-  public final static String ATTRIBUTE_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "AttributeNoTechDesign");
+  public static final String ATTRIBUTE_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "AttributeNoTechDesign");
   
-  public final static String ENTITY_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "EntityNoTechDesign");
+  public static final String ENTITY_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "EntityNoTechDesign");
   
-  public final static String TABLE_DOES_NOT_HAVE_COLUMNS = (ModelValidator.ISSUE_CODE_PREFIX + "TableDoesNotHaveColumns");
+  public static final String TABLE_DOES_NOT_HAVE_COLUMNS = (ModelValidator.ISSUE_CODE_PREFIX + "TableDoesNotHaveColumns");
   
-  public final static String COLUMN_NAME_NOT_UNIQUE = (ModelValidator.ISSUE_CODE_PREFIX + "ColumnNameNotUnique");
+  public static final String COLUMN_NAME_NOT_UNIQUE = (ModelValidator.ISSUE_CODE_PREFIX + "ColumnNameNotUnique");
   
-  public final static String RELATIONSSHIP_NOT_IMPLEMENTED = (ModelValidator.ISSUE_CODE_PREFIX + "RelationshipNotImplemented");
+  public static final String RELATIONSSHIP_NOT_IMPLEMENTED = (ModelValidator.ISSUE_CODE_PREFIX + "RelationshipNotImplemented");
   
-  public final static String IDENTIFIER_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "IdentifgierNoTechDesign");
+  public static final String IDENTIFIER_NO_TECH_DESIGN = (ModelValidator.ISSUE_CODE_PREFIX + "IdentifgierNoTechDesign");
   
-  public final static String NO_DESGNATED_FOREIGNKEY = (ModelValidator.ISSUE_CODE_PREFIX + "NoDesignatedForeignKey");
+  public static final String NO_DESGNATED_FOREIGNKEY = (ModelValidator.ISSUE_CODE_PREFIX + "NoDesignatedForeignKey");
   
-  public final static String INVERSE_RELATIONSHIP_CANNOT_BE_ITSELF = (ModelValidator.ISSUE_CODE_PREFIX + "MatchingInverseCannotMatchItself");
+  public static final String INVERSE_RELATIONSHIP_CANNOT_BE_ITSELF = (ModelValidator.ISSUE_CODE_PREFIX + "MatchingInverseCannotMatchItself");
   
-  public final static String WRONGLY_DESGNATED_FOREIGNKEY = (ModelValidator.ISSUE_CODE_PREFIX + "WronglyDesignatedForeignKey");
+  public static final String WRONGLY_DESGNATED_FOREIGNKEY = (ModelValidator.ISSUE_CODE_PREFIX + "WronglyDesignatedForeignKey");
   
-  public final static String MANY_TO_MANY_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "ManyToManyNotSuported");
+  public static final String MANY_TO_MANY_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "ManyToManyNotSuported");
   
-  public final static String ONE_TO_ONE_MANDATORY_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "OneToOneMandatoryNotSuported");
+  public static final String ONE_TO_ONE_MANDATORY_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "OneToOneMandatoryNotSuported");
   
-  public final static String ANNOATION_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "AnnotationNotSuported");
+  public static final String ANNOATION_NOT_SUPPORTED = (ModelValidator.ISSUE_CODE_PREFIX + "AnnotationNotSuported");
   
-  public final static String ANNOATION_VALUE_HAS_WRONG_VALUE = (ModelValidator.ISSUE_CODE_PREFIX + "AnnotationValueWrongFormat");
+  public static final String ANNOATION_VALUE_HAS_WRONG_VALUE = (ModelValidator.ISSUE_CODE_PREFIX + "AnnotationValueWrongFormat");
   
-  public final static String ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE = "The declared attribute type does not match column type";
+  public static final String ATTRIBUTE_TYPE_NOT_MATCH_COMUMN_TYPE = "The declared attribute type does not match column type";
   
   @Inject
   @Extension

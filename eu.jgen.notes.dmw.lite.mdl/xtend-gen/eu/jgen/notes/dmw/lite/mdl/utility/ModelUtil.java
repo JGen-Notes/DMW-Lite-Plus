@@ -222,13 +222,13 @@ public class ModelUtil {
           throw Exceptions.sneakyThrow(_t);
         }
       }
-    } catch (final Throwable _t_1) {
-      if (_t_1 instanceof IllegalArgumentException) {
-        final IllegalArgumentException e_1 = (IllegalArgumentException)_t_1;
-        String _message = e_1.getMessage();
+    } catch (final Throwable _t) {
+      if (_t instanceof IllegalArgumentException) {
+        final IllegalArgumentException e = (IllegalArgumentException)_t;
+        String _message = e.getMessage();
         return ((("Format " + formatText) + ": ") + _message);
       } else {
-        throw Exceptions.sneakyThrow(_t_1);
+        throw Exceptions.sneakyThrow(_t);
       }
     }
   }
@@ -250,13 +250,13 @@ public class ModelUtil {
           throw Exceptions.sneakyThrow(_t);
         }
       }
-    } catch (final Throwable _t_1) {
-      if (_t_1 instanceof IllegalArgumentException) {
-        final IllegalArgumentException e_1 = (IllegalArgumentException)_t_1;
-        String _message = e_1.getMessage();
+    } catch (final Throwable _t) {
+      if (_t instanceof IllegalArgumentException) {
+        final IllegalArgumentException e = (IllegalArgumentException)_t;
+        String _message = e.getMessage();
         return ((("Format " + formatText) + ": ") + _message);
       } else {
-        throw Exceptions.sneakyThrow(_t_1);
+        throw Exceptions.sneakyThrow(_t);
       }
     }
   }
@@ -277,13 +277,13 @@ public class ModelUtil {
           throw Exceptions.sneakyThrow(_t);
         }
       }
-    } catch (final Throwable _t_1) {
-      if (_t_1 instanceof IllegalArgumentException) {
-        final IllegalArgumentException e_1 = (IllegalArgumentException)_t_1;
-        String _message = e_1.getMessage();
+    } catch (final Throwable _t) {
+      if (_t instanceof IllegalArgumentException) {
+        final IllegalArgumentException e = (IllegalArgumentException)_t;
+        String _message = e.getMessage();
         return ((("Format " + formatText) + ": ") + _message);
       } else {
-        throw Exceptions.sneakyThrow(_t_1);
+        throw Exceptions.sneakyThrow(_t);
       }
     }
   }
