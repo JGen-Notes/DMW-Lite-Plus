@@ -40,6 +40,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 @SuppressWarnings("all")
 public class ModelGenerator extends AbstractGenerator {
   public static String GENERATOR_NOTICE = new Function0<String>() {
+    @Override
     public String apply() {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("/* dmw-generator-version: 0.5");
