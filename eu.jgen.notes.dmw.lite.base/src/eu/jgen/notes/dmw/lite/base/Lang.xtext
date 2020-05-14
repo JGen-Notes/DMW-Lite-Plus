@@ -21,6 +21,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
+ 
 grammar eu.jgen.notes.dmw.lite.base.Lang with eu.jgen.notes.dmw.lite.mdl.Model
 
 import "http://www.jgen.eu/notes/dmw/lite/mdl/Model" as model
