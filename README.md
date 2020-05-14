@@ -14,3 +14,6 @@ Currently, the proposed DMW solution mostly supports the development of the serv
 The generation process is the essential part of the DMW development environment. You can envisage purpose written generators targetting different programming languages, a different implementation of SQL and non-SQL databases, and target operating systems. Current efforts focus on Java and Swift programming languages, with the emphasis on Swift. Databases of choice are MySQL, SQLite, PostgreSQL, and MongoDB. Any future generator will use created ad-hoc syntax tree created automatically from the contents of a bunch of files created by the developers and containing fragments written using the DWM Language.
 
 Current plans are that generated Swift source code will run on Linux and macOS machines wrapped using Kitura or Vapor server solutions.
+
+http://www.jgen.eu/dmw-language-reference/
+
